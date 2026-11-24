@@ -1,0 +1,72 @@
+{
+  "scope": "Forward AF time estimates from the frozen wrist model on newly scored half-hour times",
+  "plan_sha256": "db36a56c415d9a6e45479baf4256dc7e9c57ba3d7675ad475f2429a2e6e3d565",
+  "pinned_model_sha256": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+  "calibration_support": {
+    "original_calibration_wear": {
+      "scoreable_seconds": 1450,
+      "AF_seconds": 290.0,
+      "participants": 5,
+      "participants_with_AF_seconds": 1
+    },
+    "original_and_additional_wear": {
+      "scoreable_seconds": 5480,
+      "AF_seconds": 870.0,
+      "participants": 5,
+      "participants_with_AF_seconds": 2
+    }
+  },
+  "held_out_support": {
+    "scoreable_seconds": 44140,
+    "AF_seconds": 1790.0,
+    "participants": 25,
+    "participants_with_AF_seconds": 1
+  },
+  "results": {
+    "original": {
+      "mean_brier_score_by_duration": 0.23039383101172106,
+      "actual_af_time_fraction": 0.04055278658812868,
+      "estimated_af_time_fraction": 0.3203125843232389,
+      "mean_absolute_participant_burden_error": 0.32801703273065413,
+      "median_absolute_participant_burden_error": 0.22185603686579036,
+      "mean_probability_during_AF": 0.44636720885228454,
+      "mean_probability_during_non_AF": 0.3149846556831682
+    },
+    "original_calibration_wear": {
+      "mean_brier_score_by_duration": 0.053134765532077646,
+      "actual_af_time_fraction": 0.04055278658812868,
+      "estimated_af_time_fraction": 0.03941304536947987,
+      "mean_absolute_participant_burden_error": 0.07652206069216586,
+      "median_absolute_participant_burden_error": 0.016828688241173315,
+      "mean_probability_during_AF": 0.04090031177916465,
+      "mean_probability_during_non_AF": 0.03935018334177418
+    },
+    "original_and_additional_wear": {
+      "mean_brier_score_by_duration": 0.06043284552676119,
+      "actual_af_time_fraction": 0.04055278658812868,
+      "estimated_af_time_fraction": 0.10358411832241643,
+      "mean_absolute_participant_burden_error": 0.1345668662002781,
+      "median_absolute_participant_burden_error": 0.07828136607213472,
+      "mean_probability_during_AF": 0.124978427431706,
+      "mean_probability_during_non_AF": 0.10267984882287384
+    },
+    "original_calibration_wear_prevalence_only": {
+      "mean_brier_score_by_duration": 0.06433167195287721,
+      "actual_af_time_fraction": 0.04055278658812868,
+      "estimated_af_time_fraction": 0.19999999999999993,
+      "mean_absolute_participant_burden_error": 0.22399999999999995,
+      "median_absolute_participant_burden_error": 0.19999999999999998,
+      "mean_probability_during_AF": 0.19999999999999998,
+      "mean_probability_during_non_AF": 0.19999999999999996
+    },
+    "original_and_additional_wear_prevalence_only": {
+      "mean_brier_score_by_duration": 0.05288099631310323,
+      "actual_af_time_fraction": 0.04055278658812868,
+      "estimated_af_time_fraction": 0.1587591240875912,
+      "mean_absolute_participant_burden_error": 0.18605839416058395,
+      "median_absolute_participant_burden_error": 0.1587591240875912,
+      "mean_probability_during_AF": 0.15875912408759124,
+      "mean_probability_during_non_AF": 0.1587591240875912
+    }
+  }
+}
