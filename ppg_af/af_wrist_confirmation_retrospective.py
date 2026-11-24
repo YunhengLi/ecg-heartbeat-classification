@@ -26,7 +26,7 @@ from .af_wrist_vote_study import _held_out_replay, _IMMEDIATE
 RECENT_RESULTS_SHA = "4756a3da959324b0713ff511496ed16130fecc631a6a76cd119de1993ad21057"
 
 
-def historical_replay(args, protocol, model_lock):
+def historical_inputs(args, protocol, model_lock):
     receipts = _read_pinned(args.data_preflight, _PREFLIGHT_SHA256, public=True)["sha256"]
     coverage = _read_pinned(args.coverage_report, receipts["independent_coverage_report"], public=True)
     previous = _read_pinned(args.historical_results, _HISTORICAL_RESULTS_SHA256, public=True)
@@ -38,7 +38,12 @@ def historical_replay(args, protocol, model_lock):
         model_lock, protocol, staged["parent-features"], staged["stride-raw"], staged["stride-features"], coverage,
     )
     quality = build_quality_matrices(grid, *(staged[key] for key in ("parent-raw", "parent-features", "stride-raw", "stride-features")))
-    predecessor, active = preceding_rows(grid)
+    return grid, model, available, roster, quality, previous
+
+
+def historical_replay(args, protocol, model_lock, *, confirmation_steps=1):
+    grid, model, available, roster, quality, previous = historical_inputs(args, protocol, model_lock)
+    predecessor, active = preceding_rows(grid, steps=confirmation_steps)
     scores = _predict(grid.table[ROUTE], available, model["model"])
     cutoffs = np.full(len(scores), model["cutoff"])
     baseline = _held_out_replay(grid, scores, cutoffs, _IMMEDIATE)
@@ -50,7 +55,7 @@ def historical_replay(args, protocol, model_lock):
             "lost_scoreable_decisions": int(np.sum(np.isfinite(scores) & ~np.isfinite(filtered)))}
 
 
-def replay_on_schedule(schedule, digest, cache, template, model, *, block_seconds=BLOCK_S):
+def replay_on_schedule(schedule, digest, cache, template, model, *, block_seconds=BLOCK_S, confirmation_steps=1):
     baseline_runs, candidate_runs = [], []
     for person, blocks in schedule.items():
         if not blocks:
@@ -60,7 +65,7 @@ def replay_on_schedule(schedule, digest, cache, template, model, *, block_second
         quality = archive[3]["quality"][:, :, -1]
 
         def transform(scores, index):
-            previous_row = np.arange(len(scores)) - 1
+            previous_row = np.arange(len(scores)) - confirmation_steps
             return confirm_scores(scores, previous_row, quality[index] < QUALITY_CUTOFF)
 
         baseline_runs.extend(_person_runs(person, archive, model["model"], model["cutoff"], "baseline"))

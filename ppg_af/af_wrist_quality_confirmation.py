@@ -18,7 +18,9 @@ from .af_wrist_vote_study import _held_out_replay, _IMMEDIATE
 QUALITY_CUTOFF = 0.40
 
 
-def preceding_rows(grid):
+def preceding_rows(grid, *, steps=1):
+    if steps < 1:
+        raise ValueError("Confirmation must use an earlier decision")
     preceding = np.full(len(grid.subjects), -1, dtype=int)
     active = np.zeros(len(grid.subjects), dtype=bool)
     for block in grid.timelines:
@@ -27,7 +29,7 @@ def preceding_rows(grid):
         if (len(np.unique(chain)) != len(chain) or not np.all(grid.subjects[chain] == block.subject)
                 or active[chain].any()):
             raise ValueError("Confirmation split must preserve unique participant-local causal histories")
-        preceding[chain[1:]] = chain[:-1]
+        preceding[chain[steps:]] = chain[:-steps]
         active[chain] = True
     return preceding, active
 
