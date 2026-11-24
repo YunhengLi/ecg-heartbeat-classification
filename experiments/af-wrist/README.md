@@ -157,6 +157,8 @@ The [paired ECG feature regression study](ecg-feature-regression-study.md) learn
 
 The [independent validation plan](prospective-validation-plan.md) defines a frozen primary comparison and gives sample-size and exposure scenarios for sensitivity and false-alert burden.
 
+The [GalaxyPPG study](galaxy-quality-study.md) checks the original PPG quality boundary against measured ECG interval errors on a Galaxy Watch and Empatica E4. The [pulse amplitude study](pulse-amplitude-study.md) adds wearable pulse prominence and its association with the preceding interval on the original AF folds.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
