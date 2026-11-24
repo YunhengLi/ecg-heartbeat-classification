@@ -89,8 +89,8 @@ def remove_linear_motion(pulse, motion):
     return pulse - matrix @ weights
 
 
-def spectral_heart_rate(pulse, motion):
-    """Compare the PPG spectral peak with a motion-coherence-weighted peak."""
+def motion_weighted_spectrum(pulse, motion):
+    """Return PPG spectra before and after weighting by motion coherence."""
     settings = {"fs": PPG_RATE, "nperseg": 8 * PPG_RATE, "nfft": 64 * PPG_RATE, "axis": 0}
     frequencies, pulse_power = welch(pulse, **settings)
     _, motion_power = welch(motion, **settings)
@@ -98,9 +98,15 @@ def spectral_heart_rate(pulse, motion):
     denominator = pulse_power[:, None] * motion_power
     coherence = np.divide(np.abs(cross_power) ** 2, denominator, out=np.zeros_like(motion_power), where=denominator > 0)
     penalty = np.max(np.clip(coherence, 0.0, 1.0), axis=1)
+    return frequencies, pulse_power, pulse_power * (1 - penalty)
+
+
+def spectral_heart_rate(pulse, motion):
+    """Compare the PPG spectral peak with a motion-coherence-weighted peak."""
+    frequencies, pulse_power, weighted = motion_weighted_spectrum(pulse, motion)
     band = (frequencies >= HEART_RATE_BAND_HZ[0]) & (frequencies <= HEART_RATE_BAND_HZ[1])
     bpm = 60 * frequencies[band]
-    spectra = (pulse_power[band], (pulse_power * (1 - penalty))[band])
+    spectra = pulse_power[band], weighted[band]
     return tuple(float(bpm[np.argmax(power)]) if np.max(power) > 0 else np.nan for power in spectra)
 
 

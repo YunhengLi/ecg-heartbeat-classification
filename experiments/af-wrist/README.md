@@ -117,6 +117,8 @@ The [wrist exercise stress study](exercise-stress-study.md) compares heart-rate 
 
 The [ScientISST MOVE study](scientisst-move-study.md) applies the fixed motion-coherence heart-rate estimator to a separate Empatica E4 cohort with synchronized chest ECG.
 
+The [native motion study](motion-af-study.md) audits the original accelerometer clock and compares AF alerts and reconstruction before and after motion processing.
+
 The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography. The [source transfer study](vitaldb-transfer-study.md) compares sinus and ectopy training negatives on the same source and wrist participant splits.
 
 The [negative rearming study](negative-rearm-study.md) checks whether allowing a new alert after two consecutive negative decisions changes held-out detections and false starts at fixed cutoffs.
