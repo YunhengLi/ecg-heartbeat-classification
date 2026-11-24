@@ -184,7 +184,8 @@ def _check_nominal_rates(record: h5py.File, expected: tuple[float, ...]) -> None
 class WristSubject:
     """One paired AFPPGECG v6 subject, backed by open HDF5 files."""
 
-    def __init__(self, ecg: h5py.File, ppg: h5py.File, subject_id: str, max_reference_rr: float):
+    def __init__(self, ecg: h5py.File, ppg: h5py.File, subject_id: str, max_reference_rr: float,
+                 include_acceleration: bool = True):
         self.subject_id = subject_id
         self._ecg = ecg
         self._max_reference_rr = max_reference_rr
@@ -198,8 +199,11 @@ class WristSubject:
             raise ValueError(f"Unexpected wrist signal units in {subject_id}: {wrist_units}")
 
         self._ppg_data = _cell(ppg, "PPG_GREEN")
-        axes = [_cell(ppg, f"Accelerometer_{axis}") for axis in "XYZ"]
-        self._accel_data = tuple(zip(*axes, strict=True))
+        if include_acceleration:
+            axes = [_cell(ppg, f"Accelerometer_{axis}") for axis in "XYZ"]
+            self._accel_data = tuple(zip(*axes, strict=True))
+        else:
+            self._accel_data = (None,) * len(self._ppg_data)
         days = _cell(ppg, "recording_startday")
         times = _cell(ppg, "recording_starttime")
         methods = _cell(ppg, "sync_method")
@@ -209,9 +213,10 @@ class WristSubject:
         for index, (green, accel, day, time, method) in enumerate(sources):
             start = float(_clock_seconds(day, time) - ecg_clock)
             duration = _vector_length(green) / PPG_FS
-            accel_counts = {_vector_length(axis) for axis in accel}
-            if len(accel_counts) != 1 or abs(accel_counts.pop() / ACCEL_FS - duration) > 1 / ACCEL_FS + 1e-9:
-                raise ValueError(f"Inconsistent sample counts in {subject_id} segment {index}")
+            if accel is not None:
+                accel_counts = {_vector_length(axis) for axis in accel}
+                if len(accel_counts) != 1 or abs(accel_counts.pop() / ACCEL_FS - duration) > 1 / ACCEL_FS + 1e-9:
+                    raise ValueError(f"Inconsistent sample counts in {subject_id} segment {index}")
             sync_method = _matlab_text(method).lower()
             if sync_method not in {"beat", "coarse"}:
                 raise ValueError(f"Unexpected sync_method in {subject_id} segment {index}: {sync_method!r}")
@@ -290,7 +295,10 @@ class WristSubject:
         axes = self._accel_data[segment_index]
         ppg_lo, ppg_hi = _sample_bounds(start, stop, segment.start_time, PPG_FS, _vector_length(green))
         ecg_lo, ecg_hi = _sample_bounds(start, stop, 0.0, ECG_FS, _vector_length(self._voltage))
-        acc_lo, acc_hi = _sample_bounds(start, stop, segment.start_time, ACCEL_FS, _vector_length(axes[0]))
+        accel_length = math.ceil(segment.duration_seconds * ACCEL_FS) if axes is None else _vector_length(axes[0])
+        acc_lo, acc_hi = _sample_bounds(start, stop, segment.start_time, ACCEL_FS, accel_length)
+        accel = (np.full((acc_hi - acc_lo, 3), np.nan) if axes is None
+                 else np.column_stack([_read_vector(axis, slice(acc_lo, acc_hi)) for axis in axes]))
         peaks, labels, _, _ = self._reference
         first, last = np.searchsorted(peaks, [ecg_lo / ECG_FS, ecg_hi / ECG_FS])
         return WristSlice(
@@ -304,7 +312,7 @@ class WristSubject:
             accel_start_time=segment.start_time + acc_lo / ACCEL_FS,
             ppg=_read_vector(green, slice(ppg_lo, ppg_hi)),
             ecg=_read_vector(self._voltage, slice(ecg_lo, ecg_hi)),
-            accel=np.column_stack([_read_vector(axis, slice(acc_lo, acc_hi)) for axis in axes]),
+            accel=accel,
             r_peak_times=peaks[first:last].copy(),
             af_beat_labels=labels[first:last].copy(),
             rhythm_intervals=self.reference_rhythm_intervals(start, stop),
@@ -319,16 +327,19 @@ def load_subject(
     *,
     subject_id: str | None = None,
     max_reference_rr: float = DEFAULT_MAX_REFERENCE_RR_SECONDS,
+    include_acceleration: bool = True,
 ) -> Iterator[WristSubject]:
     """Open an AFPPGECG v6 pair and read signals at their original rates.
 
     Inputs are standard local paths or seekable binary streams. Supply the
     subject identifier when using streams. Use matching files from v6. No
     signal resampling or interpolation is performed. ECG and green wrist PPG
-    use the release's native units, as do wrist acceleration X, Y, Z.
+    use the release's native units, as do wrist acceleration X, Y, Z. Set
+    ``include_acceleration=False`` for ECG/PPG-only analyses. Acceleration
+    arrays then contain NaNs on the nominal wrist time grid.
     """
     if not math.isfinite(max_reference_rr) or max_reference_rr <= 0:
         raise ValueError("The maximum annotated RR duration must be finite and positive")
     subject = _subject_id(ecg_path, ppg_path, subject_id)
     with h5py.File(ecg_path, "r") as ecg, h5py.File(ppg_path, "r") as ppg:
-        yield WristSubject(ecg, ppg, subject, max_reference_rr)
+        yield WristSubject(ecg, ppg, subject, max_reference_rr, include_acceleration)

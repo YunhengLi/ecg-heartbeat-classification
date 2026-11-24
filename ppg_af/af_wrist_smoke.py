@@ -16,9 +16,10 @@ from .pulse_timing import correct_timing, fit_pulse_delay, pulse_delay_histogram
 from .template import fit_template_from_stats, template_stats
 
 
-def _ptt_calibration(data_dir, rate):
+def fit_ptt_calibration(data_dir, rate, subject_count=3):
+    """Fit a beat template and pulse timing delay on an external PTT cohort."""
     histograms, stats = [], []
-    for record in islice(iter_ptt_records(data_dir, ("sit",)), 3):
+    for record in islice(iter_ptt_records(data_dir, ("sit",)), subject_count):
         stride = int(record.fs / rate)
         pulse = resample_poly(record.ppg, 1, stride)
         voltage = resample_poly(record.ecg, 1, stride)
@@ -30,8 +31,8 @@ def _ptt_calibration(data_dir, rate):
         pulses, targets, labels = [array[:stop].reshape(-1, width) for array in (pulse, voltage, marks)]
         histograms.append(pulse_delay_histogram(pulses, labels, rate))
         stats.append(template_stats(zip(pulses, targets, strict=True), fs=rate))
-    if len(stats) != 3:
-        raise ValueError("Three local sitting PTT recordings are required for calibration")
+    if len(stats) != subject_count:
+        raise ValueError(f"Calibration requires {subject_count} local sitting PTT recordings")
     return fit_pulse_delay(histograms, rate), fit_template_from_stats(stats)
 
 
@@ -46,7 +47,7 @@ def smoke_routes(windows, ptt_dir, upstream, weights):
     if pulse_rows.shape != (2, 32 * rate) or not np.isfinite(pulse_rows).all():
         raise ValueError("Provide two fully observed, 32-second wrist PPG clips")
 
-    delay, template = _ptt_calibration(ptt_dir, rate)
+    delay, template = fit_ptt_calibration(ptt_dir, rate)
     models = load_author_model(upstream, weights, "cpu")
     estimates, chunks, runtime = generate_author_ecg(pulse_rows, rate, models, 4, "cpu")
     core = slice(rate, -rate)
