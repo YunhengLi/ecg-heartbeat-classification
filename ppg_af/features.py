@@ -51,9 +51,14 @@ def _bandpass(values, fs, low, high):
     return sosfiltfilt(filter_sections, values, padlen=padlen)
 
 
-def _interval_features(peaks, fs, present):
+def _interval_features(peaks, fs, present, *, verified_peaks=None):
     features = np.zeros(len(ECG_FEATURE_NAMES))
-    peaks = peaks[present[peaks]]
+    observed_peaks = present[peaks]
+    if verified_peaks is not None:
+        if verified_peaks.shape != peaks.shape or verified_peaks.dtype != bool:
+            raise ValueError("Verified peak flags must match detected peaks")
+        verified_peaks = verified_peaks[observed_peaks]
+    peaks = peaks[observed_peaks]
     features[0] = len(peaks) * fs / len(present)
     intervals = np.diff(peaks) / fs
     if not len(intervals):
@@ -64,6 +69,8 @@ def _interval_features(peaks, fs, present):
     missing = np.r_[0, np.cumsum(~present)]
     samples_between = np.diff(peaks)
     valid = np.diff(missing[peaks]) <= 0.1 * samples_between
+    if verified_peaks is not None:
+        valid &= verified_peaks[:-1] & verified_peaks[1:]
     features[-1] = np.mean(valid)
     usable = intervals[valid]
     if not len(usable):

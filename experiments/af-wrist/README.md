@@ -137,6 +137,10 @@ The [retrospective monitoring extension](retrospective-monitor-study.md) compare
 
 The [false-start timing audit](false-start-audit.md) compares wrist-derived and native ECG interval irregularity at these starts against matched negative decisions.
 
+The [pulse consensus study](pulse-consensus-study.md) verifies optical peaks across two filter bands, compares measured interval variation and replays the original AF folds.
+
+The [PeriWave dual-wavelength study](periwave-study.md) checks whether separately measured red and infrared PPG corroborate individual pulse timing on a four-center surgical source.
+
 The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography. The [source transfer study](vitaldb-transfer-study.md) compares sinus and ectopy training negatives on the same source and wrist participant splits.
 
 The [negative rearming study](negative-rearm-study.md) checks whether allowing a new alert after two consecutive negative decisions changes held-out detections and false starts at fixed cutoffs.
