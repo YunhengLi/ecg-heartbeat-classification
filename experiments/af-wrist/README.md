@@ -153,6 +153,10 @@ The [quality-conditioned confirmation study](quality-confirmation-study.md) requ
 
 The [SHDB-AF measured ECG reference](shdb-ecg-reference.md) compares short and long interval inputs on the same continuous Holter clock and participant-held-out folds.
 
+The [paired ECG feature regression study](ecg-feature-regression-study.md) learns measured ECG interval statistics from wrist PPG only inside the fitting participants. The [joint wrist context study](joint-context-study.md) fits 10-second and 30-second timing features together on the same decision grid.
+
+The [independent validation plan](prospective-validation-plan.md) defines a frozen primary comparison and gives sample-size and exposure scenarios for sensitivity and false-alert burden.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
