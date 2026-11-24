@@ -39,8 +39,9 @@ def _shared_features(table):
     return available & table["ppg_available"].astype(bool)
 
 
-def _fit_model(features, labels):
-    classifier = make_pipeline(StandardScaler(), LogisticRegression(class_weight="balanced", max_iter=1000))
+def _fit_model(features, labels, *, regularization=1.0):
+    classifier = make_pipeline(StandardScaler(),
+                               LogisticRegression(C=regularization, class_weight="balanced", max_iter=1000))
     classifier.fit(features, labels)
     scaler, regression = [step for _, step in classifier.steps]
     return {"mean": scaler.mean_.tolist(), "scale": scaler.scale_.tolist(),

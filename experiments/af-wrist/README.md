@@ -67,6 +67,8 @@ The [two-of-three alert study](vote-study.md) tests a shorter confirmation rule 
 
 The [template ECG onset study](template-onset-study.md) compares pre-onset and in-episode scores, an added recent beat-timing feature, and fold-local regularization.
 
+The [independent test preparation](template-holdout-preparation.md) freezes the fixed-split template classifier and audits source coverage on the reserved roster.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.

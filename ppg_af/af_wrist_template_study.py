@@ -43,8 +43,8 @@ def fit_template(grid, matrix, lock, regularization):
                      regularization=regularization)
 
 
-def _rank_calibration(fold, regularization):
-    option = fold["operating_point"]
+def rank_calibration(option, regularization):
+    """Rank a cutoff and C using calibration metrics, with C=1 preferred on ties."""
     preference = (regularization != DEFAULT_C, regularization)
     if option["threshold"] is None:
         return (2, 0, 0, *preference)
@@ -70,7 +70,7 @@ def select_regularization(fits):
         options = {value: fitted["routes"][ROUTE]["folds"][fold] for value, fitted in fits.items()}
         if any(option["fold"] != fold for option in options.values()):
             raise ValueError("Candidate calibration results must align by outer fold")
-        chosen = min(options, key=lambda value: _rank_calibration(options[value], value))
+        chosen = min(options, key=lambda value: rank_calibration(options[value]["operating_point"], value))
         point = options[chosen]["operating_point"]
         rows = assignments == fold
         scores[rows] = fits[chosen]["routes"][ROUTE]["scores"][rows]

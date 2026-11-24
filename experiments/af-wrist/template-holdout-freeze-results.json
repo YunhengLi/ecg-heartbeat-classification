@@ -1,0 +1,70 @@
+{
+  "scope": "Fixed-split development freeze before independent evaluation",
+  "fit_participants": 5,
+  "calibration_participants": 5,
+  "planned_independent_participants": 25,
+  "decision_stride_seconds": 10,
+  "feature_window_seconds": 30,
+  "target_episode_sensitivity": 0.8,
+  "sensitivity_tolerance": 0.1,
+  "fit_windows": {
+    "AF": 21,
+    "non_AF": 22
+  },
+  "baseline_C": 1.0,
+  "selected_C": 1.0,
+  "frozen_predictions_identical": true,
+  "calibration_candidates": [
+    {
+      "C": 0.1,
+      "status": "target_not_met",
+      "threshold_candidates": 544,
+      "complete_episodes": 17,
+      "episodes_detected": 11,
+      "episode_sensitivity": 0.6470588235294118,
+      "median_delay_seconds_in_detected_episodes": 27.742000000027474,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 4,
+      "false_alerts_per_observed_wrist_hour": 9.6,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 11,
+      "possible_non_af_alert_timestamps": 0
+    },
+    {
+      "C": 1.0,
+      "status": "target_not_met",
+      "threshold_candidates": 544,
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 10.626000000018394,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 5,
+      "false_alerts_per_observed_wrist_hour": 12.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    {
+      "C": 10.0,
+      "status": "target_not_met",
+      "threshold_candidates": 544,
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 15.863000000012107,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 5,
+      "false_alerts_per_observed_wrist_hour": 12.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    }
+  ]
+}
