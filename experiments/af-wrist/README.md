@@ -151,6 +151,8 @@ The [negative rearming study](negative-rearm-study.md) checks whether allowing a
 
 The [quality-conditioned confirmation study](quality-confirmation-study.md) requires a preceding positive only at low current PPG quality and checks the fixed plain-template rule on both previously scored monitoring sets.
 
+The [SHDB-AF measured ECG reference](shdb-ecg-reference.md) compares short and long interval inputs on the same continuous Holter clock and participant-held-out folds.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
