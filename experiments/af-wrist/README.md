@@ -117,6 +117,8 @@ The [wrist exercise stress study](exercise-stress-study.md) compares heart-rate 
 
 The [ScientISST MOVE study](scientisst-move-study.md) applies the fixed motion-coherence heart-rate estimator to a separate Empatica E4 cohort with synchronized chest ECG.
 
+The [beat-timing study](beat-cnn-study.md) fits a compact neural network for ECG R-peak timing on participant-held-out Empatica E4 recordings and freezes it for transfer to manually marked Shimmer exercise recordings.
+
 The [native motion study](motion-af-study.md) audits the original accelerometer clock and compares AF alerts and reconstruction before and after motion processing.
 
 The [ambient-light study](ambient-light-study.md) tests whether a second native optical measurement improves AF alerting under the original evaluation protocol.

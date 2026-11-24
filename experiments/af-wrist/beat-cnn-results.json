@@ -1,0 +1,531 @@
+{
+  "study": "ECG R-peak timing from wrist signals",
+  "seed": 2026,
+  "epochs": 20,
+  "edge_seconds": 1.0,
+  "fixed_ppg_delay_ms": 300,
+  "probability_threshold": 0.5,
+  "beat_match_tolerance_ms": 100,
+  "source_reference_eligible_windows": 611,
+  "source_folds": [
+    {
+      "training_participants": 12,
+      "held_participants": 2,
+      "held_windows": 120
+    },
+    {
+      "training_participants": 11,
+      "held_participants": 3,
+      "held_windows": 123
+    },
+    {
+      "training_participants": 11,
+      "held_participants": 3,
+      "held_windows": 127
+    },
+    {
+      "training_participants": 11,
+      "held_participants": 3,
+      "held_windows": 125
+    },
+    {
+      "training_participants": 11,
+      "held_participants": 3,
+      "held_windows": 115
+    }
+  ],
+  "scientisst_move_grouped": {
+    "participants": 14,
+    "scheduled_windows": 1010,
+    "paired_windows": 610,
+    "methods": {
+      "fixed_delay": {
+        "reference_peaks": 38937,
+        "predicted_peaks": 32267,
+        "matched_peaks": 16248,
+        "precision": 0.5035485170607742,
+        "recall": 0.41728946760151014,
+        "f1": 0.45637885512049886,
+        "median_abs_timing_error_ms": 50.0,
+        "matched_consecutive_intervals": 7831,
+        "median_abs_rr_error_ms": 40.0,
+        "participant_mean_f1": 0.4352606798570546,
+        "by_activity": {
+          "baseline": {
+            "reference_peaks": 344,
+            "predicted_peaks": 337,
+            "matched_peaks": 76,
+            "precision": 0.22551928783382788,
+            "recall": 0.22093023255813954,
+            "f1": 0.22320117474302498,
+            "median_abs_timing_error_ms": 55.00000000000114,
+            "matched_consecutive_intervals": 18,
+            "median_abs_rr_error_ms": 28.000000000000682
+          },
+          "gesticulate": {
+            "reference_peaks": 1563,
+            "predicted_peaks": 1396,
+            "matched_peaks": 445,
+            "precision": 0.31876790830945556,
+            "recall": 0.2847088931541907,
+            "f1": 0.30077728962487327,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 105,
+            "median_abs_rr_error_ms": 52.000000000000455
+          },
+          "greetings": {
+            "reference_peaks": 247,
+            "predicted_peaks": 242,
+            "matched_peaks": 76,
+            "precision": 0.3140495867768595,
+            "recall": 0.3076923076923077,
+            "f1": 0.310838445807771,
+            "median_abs_timing_error_ms": 41.99999999999932,
+            "matched_consecutive_intervals": 17,
+            "median_abs_rr_error_ms": 57.999999999999545
+          },
+          "jumps": {
+            "reference_peaks": 107,
+            "predicted_peaks": 107,
+            "matched_peaks": 33,
+            "precision": 0.308411214953271,
+            "recall": 0.308411214953271,
+            "f1": 0.308411214953271,
+            "median_abs_timing_error_ms": 56.000000000001364,
+            "matched_consecutive_intervals": 12,
+            "median_abs_rr_error_ms": 51.000000000001364
+          },
+          "lift": {
+            "reference_peaks": 866,
+            "predicted_peaks": 641,
+            "matched_peaks": 225,
+            "precision": 0.35101404056162244,
+            "recall": 0.25981524249422633,
+            "f1": 0.298606502986065,
+            "median_abs_timing_error_ms": 53.99999999999636,
+            "matched_consecutive_intervals": 72,
+            "median_abs_rr_error_ms": 42.999999999999545
+          },
+          "run": {
+            "reference_peaks": 29392,
+            "predicted_peaks": 23984,
+            "matched_peaks": 13050,
+            "precision": 0.5441127418278853,
+            "recall": 0.4439983669025585,
+            "f1": 0.4889838129496403,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 6655,
+            "median_abs_rr_error_ms": 40.0
+          },
+          "walk_after": {
+            "reference_peaks": 3931,
+            "predicted_peaks": 3209,
+            "matched_peaks": 1590,
+            "precision": 0.4954814583982549,
+            "recall": 0.4044772322564233,
+            "f1": 0.44537815126050423,
+            "median_abs_timing_error_ms": 57.99999999999727,
+            "matched_consecutive_intervals": 716,
+            "median_abs_rr_error_ms": 40.0
+          },
+          "walk_before": {
+            "reference_peaks": 2487,
+            "predicted_peaks": 2351,
+            "matched_peaks": 753,
+            "precision": 0.32028923862186304,
+            "recall": 0.3027744270205066,
+            "f1": 0.31128565522943363,
+            "median_abs_timing_error_ms": 53.999999999998636,
+            "matched_consecutive_intervals": 236,
+            "median_abs_rr_error_ms": 53.999999999999204
+          }
+        }
+      },
+      "ppg_cnn": {
+        "reference_peaks": 38937,
+        "predicted_peaks": 43654,
+        "matched_peaks": 19668,
+        "precision": 0.4505429055756632,
+        "recall": 0.5051236612990215,
+        "f1": 0.47627465462338514,
+        "median_abs_timing_error_ms": 50.0,
+        "matched_consecutive_intervals": 11202,
+        "median_abs_rr_error_ms": 32.000000000000455,
+        "participant_mean_f1": 0.44606991032483106,
+        "by_activity": {
+          "baseline": {
+            "reference_peaks": 344,
+            "predicted_peaks": 580,
+            "matched_peaks": 141,
+            "precision": 0.24310344827586206,
+            "recall": 0.40988372093023256,
+            "f1": 0.3051948051948052,
+            "median_abs_timing_error_ms": 56.00000000000364,
+            "matched_consecutive_intervals": 17,
+            "median_abs_rr_error_ms": 41.99999999999818
+          },
+          "gesticulate": {
+            "reference_peaks": 1563,
+            "predicted_peaks": 2442,
+            "matched_peaks": 763,
+            "precision": 0.31244881244881245,
+            "recall": 0.48816378758797185,
+            "f1": 0.38102372034956306,
+            "median_abs_timing_error_ms": 51.99999999999818,
+            "matched_consecutive_intervals": 121,
+            "median_abs_rr_error_ms": 70.0
+          },
+          "greetings": {
+            "reference_peaks": 247,
+            "predicted_peaks": 410,
+            "matched_peaks": 135,
+            "precision": 0.32926829268292684,
+            "recall": 0.5465587044534413,
+            "f1": 0.410958904109589,
+            "median_abs_timing_error_ms": 54.00000000000091,
+            "matched_consecutive_intervals": 23,
+            "median_abs_rr_error_ms": 64.00000000000091
+          },
+          "jumps": {
+            "reference_peaks": 107,
+            "predicted_peaks": 137,
+            "matched_peaks": 61,
+            "precision": 0.44525547445255476,
+            "recall": 0.5700934579439252,
+            "f1": 0.5,
+            "median_abs_timing_error_ms": 43.99999999999977,
+            "matched_consecutive_intervals": 22,
+            "median_abs_rr_error_ms": 63.00000000000068
+          },
+          "lift": {
+            "reference_peaks": 866,
+            "predicted_peaks": 1186,
+            "matched_peaks": 429,
+            "precision": 0.3617200674536256,
+            "recall": 0.4953810623556582,
+            "f1": 0.41812865497076024,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 127,
+            "median_abs_rr_error_ms": 45.99999999999965
+          },
+          "run": {
+            "reference_peaks": 29392,
+            "predicted_peaks": 30869,
+            "matched_peaks": 14972,
+            "precision": 0.4850173313032492,
+            "recall": 0.5093903102885139,
+            "f1": 0.49690512935397685,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 9541,
+            "median_abs_rr_error_ms": 30.0
+          },
+          "walk_after": {
+            "reference_peaks": 3931,
+            "predicted_peaks": 4276,
+            "matched_peaks": 2062,
+            "precision": 0.4822263797942002,
+            "recall": 0.5245484609514118,
+            "f1": 0.5024978676739369,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 1145,
+            "median_abs_rr_error_ms": 45.99999999999909
+          },
+          "walk_before": {
+            "reference_peaks": 2487,
+            "predicted_peaks": 3754,
+            "matched_peaks": 1105,
+            "precision": 0.2943526904635056,
+            "recall": 0.44431041415359873,
+            "f1": 0.3541099182823266,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 206,
+            "median_abs_rr_error_ms": 62.99999999999841
+          }
+        }
+      },
+      "ppg_accelerometer_cnn": {
+        "reference_peaks": 38937,
+        "predicted_peaks": 44271,
+        "matched_peaks": 20360,
+        "precision": 0.4598947392198053,
+        "recall": 0.5228959601407401,
+        "f1": 0.4893760215363907,
+        "median_abs_timing_error_ms": 50.0,
+        "matched_consecutive_intervals": 11817,
+        "median_abs_rr_error_ms": 40.0,
+        "participant_mean_f1": 0.469459481723048,
+        "by_activity": {
+          "baseline": {
+            "reference_peaks": 344,
+            "predicted_peaks": 559,
+            "matched_peaks": 152,
+            "precision": 0.27191413237924866,
+            "recall": 0.4418604651162791,
+            "f1": 0.33665559246954596,
+            "median_abs_timing_error_ms": 55.99999999999909,
+            "matched_consecutive_intervals": 15,
+            "median_abs_rr_error_ms": 124.00000000000091
+          },
+          "gesticulate": {
+            "reference_peaks": 1563,
+            "predicted_peaks": 2381,
+            "matched_peaks": 755,
+            "precision": 0.3170936581268375,
+            "recall": 0.48304542546385154,
+            "f1": 0.3828600405679513,
+            "median_abs_timing_error_ms": 51.99999999999818,
+            "matched_consecutive_intervals": 118,
+            "median_abs_rr_error_ms": 69.00000000000034
+          },
+          "greetings": {
+            "reference_peaks": 247,
+            "predicted_peaks": 386,
+            "matched_peaks": 120,
+            "precision": 0.31088082901554404,
+            "recall": 0.48582995951417,
+            "f1": 0.3791469194312796,
+            "median_abs_timing_error_ms": 46.99999999999875,
+            "matched_consecutive_intervals": 10,
+            "median_abs_rr_error_ms": 59.00000000000006
+          },
+          "jumps": {
+            "reference_peaks": 107,
+            "predicted_peaks": 149,
+            "matched_peaks": 55,
+            "precision": 0.3691275167785235,
+            "recall": 0.514018691588785,
+            "f1": 0.4296875,
+            "median_abs_timing_error_ms": 47.99999999999727,
+            "matched_consecutive_intervals": 16,
+            "median_abs_rr_error_ms": 58.00000000000182
+          },
+          "lift": {
+            "reference_peaks": 866,
+            "predicted_peaks": 898,
+            "matched_peaks": 309,
+            "precision": 0.344097995545657,
+            "recall": 0.3568129330254042,
+            "f1": 0.35034013605442177,
+            "median_abs_timing_error_ms": 47.999999999999545,
+            "matched_consecutive_intervals": 57,
+            "median_abs_rr_error_ms": 80.0
+          },
+          "run": {
+            "reference_peaks": 29392,
+            "predicted_peaks": 31561,
+            "matched_peaks": 15672,
+            "precision": 0.49656221285764074,
+            "recall": 0.5332063146434404,
+            "f1": 0.5142322773284334,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 10283,
+            "median_abs_rr_error_ms": 38.00000000000182
+          },
+          "walk_after": {
+            "reference_peaks": 3931,
+            "predicted_peaks": 4507,
+            "matched_peaks": 2097,
+            "precision": 0.46527623696472153,
+            "recall": 0.5334520478249809,
+            "f1": 0.49703721260962314,
+            "median_abs_timing_error_ms": 50.0,
+            "matched_consecutive_intervals": 1104,
+            "median_abs_rr_error_ms": 48.00000000000125
+          },
+          "walk_before": {
+            "reference_peaks": 2487,
+            "predicted_peaks": 3830,
+            "matched_peaks": 1200,
+            "precision": 0.3133159268929504,
+            "recall": 0.4825090470446321,
+            "f1": 0.3799271806237138,
+            "median_abs_timing_error_ms": 52.00000000000159,
+            "matched_consecutive_intervals": 214,
+            "median_abs_rr_error_ms": 63.00000000000182
+          }
+        }
+      }
+    }
+  },
+  "shimmer_frozen_transfer": {
+    "participants": 8,
+    "scheduled_windows": 218,
+    "paired_windows": 203,
+    "methods": {
+      "fixed_delay": {
+        "reference_peaks": 9563,
+        "predicted_peaks": 11020,
+        "matched_peaks": 3501,
+        "precision": 0.3176950998185118,
+        "recall": 0.3660985046533515,
+        "f1": 0.34018364669873197,
+        "median_abs_timing_error_ms": 47.5,
+        "matched_consecutive_intervals": 1189,
+        "median_abs_rr_error_ms": 47.5,
+        "participant_mean_f1": 0.36288428702541015,
+        "by_activity": {
+          "high_resistance_bike": {
+            "reference_peaks": 2167,
+            "predicted_peaks": 2083,
+            "matched_peaks": 667,
+            "precision": 0.32021123379740757,
+            "recall": 0.307798800184587,
+            "f1": 0.31388235294117645,
+            "median_abs_timing_error_ms": 45.15625,
+            "matched_consecutive_intervals": 285,
+            "median_abs_rr_error_ms": 39.53125
+          },
+          "low_resistance_bike": {
+            "reference_peaks": 2614,
+            "predicted_peaks": 2809,
+            "matched_peaks": 882,
+            "precision": 0.3139907440370239,
+            "recall": 0.33741392501912776,
+            "f1": 0.3252812096625484,
+            "median_abs_timing_error_ms": 48.28125,
+            "matched_consecutive_intervals": 269,
+            "median_abs_rr_error_ms": 42.65625
+          },
+          "run": {
+            "reference_peaks": 2387,
+            "predicted_peaks": 2597,
+            "matched_peaks": 1121,
+            "precision": 0.431651906045437,
+            "recall": 0.4696271470465019,
+            "f1": 0.4498394863563403,
+            "median_abs_timing_error_ms": 46.25,
+            "matched_consecutive_intervals": 475,
+            "median_abs_rr_error_ms": 50.78125
+          },
+          "walk": {
+            "reference_peaks": 2395,
+            "predicted_peaks": 3531,
+            "matched_peaks": 831,
+            "precision": 0.23534409515717927,
+            "recall": 0.34697286012526096,
+            "f1": 0.2804589942625717,
+            "median_abs_timing_error_ms": 49.84375,
+            "matched_consecutive_intervals": 160,
+            "median_abs_rr_error_ms": 58.59375
+          }
+        }
+      },
+      "ppg_cnn": {
+        "reference_peaks": 9563,
+        "predicted_peaks": 14249,
+        "matched_peaks": 5021,
+        "precision": 0.3523756053056355,
+        "recall": 0.5250444421206735,
+        "f1": 0.421720141105325,
+        "median_abs_timing_error_ms": 45.625,
+        "matched_consecutive_intervals": 1448,
+        "median_abs_rr_error_ms": 49.609375,
+        "participant_mean_f1": 0.46069839179751293,
+        "by_activity": {
+          "high_resistance_bike": {
+            "reference_peaks": 2167,
+            "predicted_peaks": 2633,
+            "matched_peaks": 956,
+            "precision": 0.36308393467527533,
+            "recall": 0.4411628980156899,
+            "f1": 0.3983333333333333,
+            "median_abs_timing_error_ms": 49.765625,
+            "matched_consecutive_intervals": 285,
+            "median_abs_rr_error_ms": 70.9375
+          },
+          "low_resistance_bike": {
+            "reference_peaks": 2614,
+            "predicted_peaks": 3702,
+            "matched_peaks": 1315,
+            "precision": 0.35521339816315506,
+            "recall": 0.5030604437643458,
+            "f1": 0.4164027865737809,
+            "median_abs_timing_error_ms": 47.03125,
+            "matched_consecutive_intervals": 330,
+            "median_abs_rr_error_ms": 54.84375
+          },
+          "run": {
+            "reference_peaks": 2387,
+            "predicted_peaks": 3192,
+            "matched_peaks": 1490,
+            "precision": 0.4667919799498747,
+            "recall": 0.6242144951822372,
+            "f1": 0.5341459042839218,
+            "median_abs_timing_error_ms": 37.109375,
+            "matched_consecutive_intervals": 742,
+            "median_abs_rr_error_ms": 39.296875
+          },
+          "walk": {
+            "reference_peaks": 2395,
+            "predicted_peaks": 4722,
+            "matched_peaks": 1260,
+            "precision": 0.2668360864040661,
+            "recall": 0.5260960334029228,
+            "f1": 0.3540817760292258,
+            "median_abs_timing_error_ms": 49.921875,
+            "matched_consecutive_intervals": 91,
+            "median_abs_rr_error_ms": 77.96875
+          }
+        }
+      },
+      "ppg_accelerometer_cnn": {
+        "reference_peaks": 9563,
+        "predicted_peaks": 15433,
+        "matched_peaks": 4930,
+        "precision": 0.3194453443918875,
+        "recall": 0.5155285998117746,
+        "f1": 0.39446311409825574,
+        "median_abs_timing_error_ms": 51.5625,
+        "matched_consecutive_intervals": 851,
+        "median_abs_rr_error_ms": 69.53125,
+        "participant_mean_f1": 0.3922703488725744,
+        "by_activity": {
+          "high_resistance_bike": {
+            "reference_peaks": 2167,
+            "predicted_peaks": 2977,
+            "matched_peaks": 1102,
+            "precision": 0.37017131340275444,
+            "recall": 0.5085371481310568,
+            "f1": 0.4284603421461897,
+            "median_abs_timing_error_ms": 50.625,
+            "matched_consecutive_intervals": 290,
+            "median_abs_rr_error_ms": 66.71875
+          },
+          "low_resistance_bike": {
+            "reference_peaks": 2614,
+            "predicted_peaks": 4055,
+            "matched_peaks": 1358,
+            "precision": 0.3348951911220715,
+            "recall": 0.5195103289977047,
+            "f1": 0.40725745988903883,
+            "median_abs_timing_error_ms": 50.46875,
+            "matched_consecutive_intervals": 266,
+            "median_abs_rr_error_ms": 73.4375
+          },
+          "run": {
+            "reference_peaks": 2387,
+            "predicted_peaks": 3423,
+            "matched_peaks": 1142,
+            "precision": 0.3336254747297692,
+            "recall": 0.47842480100544615,
+            "f1": 0.39311531841652325,
+            "median_abs_timing_error_ms": 54.375,
+            "matched_consecutive_intervals": 249,
+            "median_abs_rr_error_ms": 63.4375
+          },
+          "walk": {
+            "reference_peaks": 2395,
+            "predicted_peaks": 4978,
+            "matched_peaks": 1328,
+            "precision": 0.26677380474085977,
+            "recall": 0.5544885177453027,
+            "f1": 0.3602332836023328,
+            "median_abs_timing_error_ms": 52.421875,
+            "matched_consecutive_intervals": 46,
+            "median_abs_rr_error_ms": 86.953125
+          }
+        }
+      }
+    }
+  }
+}
