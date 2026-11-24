@@ -141,6 +141,10 @@ The [pulse consensus study](pulse-consensus-study.md) verifies optical peaks acr
 
 The [PeriWave dual-wavelength study](periwave-study.md) checks whether separately measured red and infrared PPG corroborate individual pulse timing on a four-center surgical source.
 
+The [Auricle study](auricle-study.md) estimates the relative timing of ear and finger signals before using them to corroborate pulses in later windows.
+
+The [MSPTDfast v2 study](msptd-study.md) uses a published pulse detector to compare timing errors and AF alerts on the original wrist data. The [interval order study](interval-order-study.md) compares observed interval sequences with a distribution-only control on wrist alerts and on surgical rhythm ranking.
+
 The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography. The [source transfer study](vitaldb-transfer-study.md) compares sinus and ectopy training negatives on the same source and wrist participant splits.
 
 The [negative rearming study](negative-rearm-study.md) checks whether allowing a new alert after two consecutive negative decisions changes held-out detections and false starts at fixed cutoffs.

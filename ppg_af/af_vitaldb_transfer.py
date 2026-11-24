@@ -35,7 +35,7 @@ SINUS = "N"
 SOURCE_RHYTHMS = {AF_OR_FLUTTER, SINUS, *ECTOPY}
 
 
-def _source_rows(directory, native_cache, plan):
+def _source_rows(directory, native_cache, plan, *, extra_features=None):
     features, labels, patients, endings = [], [], [], []
     clocks = Counter()
     for patient, item in enumerate(plan["pilot"]):
@@ -61,6 +61,8 @@ def _source_rows(directory, native_cache, plan):
             values, _ = ppg_features(core, PPG_RATE)
             if not np.isfinite(values).all() or values[INTERVAL_SUPPORT] <= 0:
                 continue
+            if extra_features is not None:
+                values = np.r_[values, extra_features(core)]
             features.append(values)
             labels.append(label)
             patients.append(patient)

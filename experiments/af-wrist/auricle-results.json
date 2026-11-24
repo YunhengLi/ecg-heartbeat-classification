@@ -1,0 +1,113 @@
+{
+  "scope": "Ear and finger corroboration on separate healthy and heart-failure waveform samples",
+  "release_sha256": "b801903cf00152830cbde3cf20f5a62a748ff15cec8cf41f4ecb56d3a1ead04e",
+  "participants_by_cohort": {
+    "HC": 10,
+    "HFC": 10
+  },
+  "scheduled_evaluation_windows": 40,
+  "reference_peak_rate_hz": 1000,
+  "ecg_cross_check_rate_hz": 250,
+  "coverage": {
+    "consensus_ecg": 34,
+    "finger": 34,
+    "ear": 34,
+    "unshifted_dual": 26,
+    "optical_calibrated_dual": 24
+  },
+  "available_optical_calibration": 20,
+  "median_ear_minus_finger_lag_ms": 5.0,
+  "median_optical_calibration_correlation": 0.822661477090743,
+  "all": {
+    "paired_windows": 21,
+    "participants": 14,
+    "methods": {
+      "finger": {
+        "median_absolute_irregularity_error": 0.06478779476746044,
+        "mean_absolute_irregularity_error": 0.21289579496067662,
+        "median_absolute_heart_rate_error_bpm": 0.3963884606914476,
+        "median_confirmed_interval_fraction": 1.0
+      },
+      "ear": {
+        "median_absolute_irregularity_error": 0.26836723448141653,
+        "mean_absolute_irregularity_error": 0.45663770150182675,
+        "median_absolute_heart_rate_error_bpm": 0.5591277606932294,
+        "median_confirmed_interval_fraction": 1.0
+      },
+      "unshifted_dual": {
+        "median_absolute_irregularity_error": 0.08339918812923774,
+        "mean_absolute_irregularity_error": 0.1848737597205226,
+        "median_absolute_heart_rate_error_bpm": 0.5668398677374,
+        "median_confirmed_interval_fraction": 0.5813953488372093
+      },
+      "optical_calibrated_dual": {
+        "median_absolute_irregularity_error": 0.08176997549110093,
+        "mean_absolute_irregularity_error": 0.2632942117936524,
+        "median_absolute_heart_rate_error_bpm": 0.5159958720331588,
+        "median_confirmed_interval_fraction": 0.8461538461538461
+      }
+    }
+  },
+  "by_cohort": {
+    "HC": {
+      "paired_windows": 10,
+      "participants": 7,
+      "methods": {
+        "finger": {
+          "median_absolute_irregularity_error": 0.10437101284482744,
+          "mean_absolute_irregularity_error": 0.3392536827111057,
+          "median_absolute_heart_rate_error_bpm": 0.5337839260883328,
+          "median_confirmed_interval_fraction": 1.0
+        },
+        "ear": {
+          "median_absolute_irregularity_error": 0.024470039194841336,
+          "mean_absolute_irregularity_error": 0.36873684212181645,
+          "median_absolute_heart_rate_error_bpm": 0.5375618163631941,
+          "median_confirmed_interval_fraction": 1.0
+        },
+        "unshifted_dual": {
+          "median_absolute_irregularity_error": 0.0761256965268519,
+          "mean_absolute_irregularity_error": 0.08621793805008128,
+          "median_absolute_heart_rate_error_bpm": 0.5337839260883328,
+          "median_confirmed_interval_fraction": 0.8865384615384615
+        },
+        "optical_calibrated_dual": {
+          "median_absolute_irregularity_error": 0.07327888512928069,
+          "mean_absolute_irregularity_error": 0.3029577191415832,
+          "median_absolute_heart_rate_error_bpm": 0.5337839260883328,
+          "median_confirmed_interval_fraction": 0.8846153846153846
+        }
+      }
+    },
+    "HFC": {
+      "paired_windows": 11,
+      "participants": 7,
+      "methods": {
+        "finger": {
+          "median_absolute_irregularity_error": 0.04661197729241229,
+          "mean_absolute_irregularity_error": 0.0980249879148321,
+          "median_absolute_heart_rate_error_bpm": 0.16570008285006566,
+          "median_confirmed_interval_fraction": 1.0
+        },
+        "ear": {
+          "median_absolute_irregularity_error": 0.4724629610579106,
+          "mean_absolute_irregularity_error": 0.5365475736654727,
+          "median_absolute_heart_rate_error_bpm": 0.5747126436781258,
+          "median_confirmed_interval_fraction": 1.0
+        },
+        "unshifted_dual": {
+          "median_absolute_irregularity_error": 0.23340773505655893,
+          "mean_absolute_irregularity_error": 0.27456087033001475,
+          "median_absolute_heart_rate_error_bpm": 0.5783318339545218,
+          "median_confirmed_interval_fraction": 0.17142857142857143
+        },
+        "optical_calibrated_dual": {
+          "median_absolute_irregularity_error": 0.08339918812923774,
+          "mean_absolute_irregularity_error": 0.22723647784098808,
+          "median_absolute_heart_rate_error_bpm": 0.3963884606914476,
+          "median_confirmed_interval_fraction": 0.6341463414634146
+        }
+      }
+    }
+  }
+}

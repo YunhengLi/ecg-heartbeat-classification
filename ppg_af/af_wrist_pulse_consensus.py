@@ -61,7 +61,10 @@ def _paired_diagnostics(args, grid, lock_digest):
     _, template = fit_ptt_calibration(args.ptt_dir, PPG_RATE, subject_count=PTT_SUBJECTS)
     estimated = _extract(pulse, template)["baseline"]
     raw, robust = np.stack([pulse_consensus(window) for window in pulse]).transpose(1, 0, 2)
-    routes = {"template": estimated, "raw_pulse": raw, "consensus_pulse": robust}
+    return interval_diagnostics(reference_score, labels, {"template": estimated, "raw_pulse": raw, "consensus_pulse": robust})
+
+
+def interval_diagnostics(reference_score, labels, routes):
     common = np.isfinite(reference_score) & np.logical_and.reduce([values[:, VALID] > 0 for values in routes.values()])
 
     def compare(group):
@@ -77,7 +80,7 @@ def _paired_diagnostics(args, grid, lock_digest):
                              "median_accepted_interval_fraction": float(np.median(values[paired, VALID]))}
         return {"stable_windows": int(group.sum()), "matched_windows": int(paired.sum()), "methods": summary}
 
-    return {"overall": compare(np.ones(len(pulse), dtype=bool)), "stable_AF": compare(labels == 1),
+    return {"overall": compare(np.ones(len(labels), dtype=bool)), "stable_AF": compare(labels == 1),
             "stable_non_AF": compare(labels == 0)}
 
 

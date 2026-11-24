@@ -12,6 +12,7 @@ from .af_wrist_holdout import _write_json
 from .af_wrist_move import _nearest_fraction
 from .af_wrist_pulse_consensus import AGREEMENT_MS, PNN50, RMSSD, VALID, _find, corroborated_peaks, pulse_consensus
 from .features import _bandpass, _interval_features, _plateaus, _prepare, ecg_peaks
+from .waveform import normalize_ecg
 
 
 REVISION = "0bd11f9dd0fa8a9329ea113b388007d9c7ae7984"
@@ -24,13 +25,18 @@ BOOTSTRAP_REPETITIONS = 10_000
 SEED = 2026
 
 
-def reference_intervals(ecg):
+def reference_intervals(ecg, *, sampling_rate=SOURCE_RATE, xqrs_rate=None):
     from wfdb.processing import xqrs_detect
 
-    if not np.isfinite(ecg).all() or np.ptp(ecg) <= 0 or _plateaus(ecg, np.ones(len(ecg), dtype=bool), SOURCE_RATE).any():
+    if not np.isfinite(ecg).all() or np.ptp(ecg) <= 0 or _plateaus(ecg, np.ones(len(ecg), dtype=bool), sampling_rate).any():
         return None
-    original = ecg_peaks(ecg, SOURCE_RATE) / SOURCE_RATE
-    comparison = xqrs_detect(ecg.astype(float), SOURCE_RATE, verbose=False) / SOURCE_RATE
+    original = ecg_peaks(ecg, sampling_rate) / sampling_rate
+    xqrs_input = ecg.astype(float)
+    if xqrs_rate is None:
+        xqrs_rate = sampling_rate
+    else:
+        xqrs_input = resample_poly(normalize_ecg(xqrs_input), xqrs_rate, sampling_rate, padtype="line")
+    comparison = xqrs_detect(xqrs_input, xqrs_rate, verbose=False) / xqrs_rate
     if (min(len(original), len(comparison)) < 3
             or min(_nearest_fraction(original, comparison), _nearest_fraction(comparison, original)) < MIN_ECG_MATCH_RATE):
         return None
@@ -43,10 +49,10 @@ def reference_intervals(ecg):
     return rates[0], irregularity
 
 
-def pulse_view(signal):
+def pulse_view(signal, *, sampling_rate=SOURCE_RATE):
     if not np.isfinite(signal).all() or np.ptp(signal) <= 0:
         return None
-    values = resample_poly(signal, PPG_RATE, SOURCE_RATE, padtype="line")
+    values = resample_poly(signal, PPG_RATE, sampling_rate, padtype="line")
     prepared = _prepare(values, PPG_RATE, minimum_fs=4.0)
     if prepared is None:
         return None
