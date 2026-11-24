@@ -167,6 +167,8 @@ The [wrist AF time probability study](wrist-state-probability-study.md) calibrat
 
 The [within-person wrist ranking study](wrist-state-ranking-study.md) compares forward AF-time discrimination on the sealed historical replay with pooled and person-level AUC.
 
+The [DeepBeat transfer study](deepbeat-transfer-study.md) applies the authors' two-output wrist model to the same participant groups and checks the effect of preprocessing. The [open ICU clock audit](bashar-mimic-offset-study.md) links reviewed AF annotations to paired bedside ECG and plethysmography near qualified offsets.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
