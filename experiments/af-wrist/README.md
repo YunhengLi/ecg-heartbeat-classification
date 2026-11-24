@@ -93,6 +93,12 @@ The [measured ECG context study](measured-ecg-context.md) and [pulse-template co
 
 The [native transition study](transition-native-study.md) verifies an additional donor's pre-onset and early-AF input pair and repeats the original onset training comparison.
 
+The [lower-quality non-AF study](low-quality-training-study.md) compares alternative training windows on the same participant and time-bin assignments.
+
+The [native wrist waveform study](waveform-study.md) compares external and locally fitted reconstruction on held-out participants and isolates the release's timing assumption.
+
+The [ECG annotation transfer study](afdb-transfer-study.md) tests a frozen external rhythm model on measured and PPG-derived ECG timing features.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
