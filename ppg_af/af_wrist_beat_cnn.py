@@ -2,6 +2,7 @@
 
 import argparse
 from collections import Counter
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 import warnings
@@ -147,12 +148,13 @@ def load_shimmer(directory):
     return BeatWindows(np.stack(pulse), np.stack(motion), np.asarray(group), np.asarray(activity), reference, scheduled)
 
 
-def prepare(windows):
-    def standardize(rows, high):
-        filtered = np.stack([_bandpass(row, PPG_RATE, 0.4, high) for row in rows])
-        scale = np.std(filtered, axis=1, keepdims=True)
-        return np.clip((filtered - np.mean(filtered, axis=1, keepdims=True)) / np.maximum(scale, 1e-6), -6, 6)
+def standardize(rows, high):
+    filtered = np.stack([_bandpass(row, PPG_RATE, 0.4, high) for row in rows])
+    scale = np.std(filtered, axis=1, keepdims=True)
+    return np.clip((filtered - np.mean(filtered, axis=1, keepdims=True)) / np.maximum(scale, 1e-6), -6, 6)
 
+
+def prepare(windows):
     optical = standardize(windows.pulse, 8.0)
     # Acceleration magnitude is insensitive to how the device axes are oriented.
     movement = standardize(np.linalg.norm(windows.motion, axis=2), 10.0)
@@ -169,10 +171,11 @@ def reference_targets(references):
     return np.clip(smoothed / gaussian_peak, 0.0, 1.0).astype(np.float32)
 
 
-def train(inputs, targets, participants, device):
+def train(inputs, targets, participants, device, *, epochs=EPOCHS, initialized=None):
     torch.manual_seed(SEED)
     rng = np.random.default_rng(SEED)
-    model = BeatCNN(inputs.shape[1]).to(device)
+    model = (BeatCNN(inputs.shape[1]) if initialized is None else deepcopy(initialized)).to(device)
+    model.train()
     optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.01)
     array = torch.from_numpy(inputs).to(device)
     expected = torch.from_numpy(targets[:, EDGE:-EDGE].copy()).to(device)
@@ -180,7 +183,7 @@ def train(inputs, targets, participants, device):
     weights = len(participants) / (len(names) * counts[membership])
     weights = torch.as_tensor(weights, dtype=torch.float32, device=device)
     positive = torch.tensor(POSITIVE_WEIGHT, device=device)
-    for _ in range(EPOCHS):
+    for _ in range(epochs):
         for rows in np.array_split(rng.permutation(len(inputs)), int(np.ceil(len(inputs) / BATCH_SIZE))):
             batch = array[rows]
             signs = torch.as_tensor(rng.choice(np.array([-1, 1], dtype=np.float32), size=(len(rows), 1)), device=device)

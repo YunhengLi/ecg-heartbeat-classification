@@ -119,6 +119,8 @@ The [ScientISST MOVE study](scientisst-move-study.md) applies the fixed motion-c
 
 The [beat-timing study](beat-cnn-study.md) fits a compact neural network for ECG R-peak timing on participant-held-out Empatica E4 recordings and freezes it for transfer to manually marked Shimmer exercise recordings.
 
+The [native neural beat study](native-neural-beat-study.md) compares the source-frozen neural beat features with the original AF classifier and evaluates wrist-specific fine-tuning on held-out native ECG pairs.
+
 The [native motion study](motion-af-study.md) audits the original accelerometer clock and compares AF alerts and reconstruction before and after motion processing.
 
 The [ambient-light study](ambient-light-study.md) tests whether a second native optical measurement improves AF alerting under the original evaluation protocol.

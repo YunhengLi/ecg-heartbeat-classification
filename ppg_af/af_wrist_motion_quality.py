@@ -99,14 +99,15 @@ def _compare(grid, matrices, lock, original):
     results = {}
     for seed in SEEDS:
         fits = {name: fit_template(grid, matrix, lock, DEFAULT_C, seed=seed) for name, matrix in matrices.items()}
-        for fit in list(fits.values())[1:]:
-            verify_fit_support(fits[ARMS[0]], fit)
         baseline = _replay(grid, fits[ARMS[0]])
         if seed == SEEDS[0] and baseline[0] != original:
             raise ValueError("The original quality interaction result must reproduce")
         arms = {ARMS[0]: baseline[0]}
-        for name in ARMS[1:]:
-            candidate = _replay(grid, fits[name])
+        for name, fit in fits.items():
+            if name == ARMS[0]:
+                continue
+            verify_fit_support(fits[ARMS[0]], fit)
+            candidate = _replay(grid, fit)
             arms[name] = _compare_with_pre_onset(baseline, candidate, lock)
             print(f"{seed} {name}: {candidate[0]['episodes_detected']}/{candidate[0]['complete_episodes']} detections, "
                   f"{candidate[0]['wrist_false_alerts']} false starts", flush=True)
