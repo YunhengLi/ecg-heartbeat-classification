@@ -1,0 +1,1083 @@
+{
+  "scope": "Historical ten-second versus 30-second PPG template with shared wrist score eligibility",
+  "short_input_seconds": 10,
+  "frozen_development_only_fit": {
+    "fitting_examples": {
+      "AF": 21,
+      "non_AF": 22
+    },
+    "short_input_support": {
+      "scoreable_recent_template": 881
+    },
+    "fitting_participants": 5,
+    "calibration_participants": 5,
+    "calibration_status": "target_met",
+    "calibration_summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 14,
+      "episode_sensitivity": 0.8235294117647058,
+      "median_delay_seconds_in_detected_episodes": 20.538000000000466,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 9,
+      "false_alerts_per_observed_wrist_hour": 21.6,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 14,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "match_calibration_status": "within_tolerance",
+    "matched_calibration_summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 20.538000000000466,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 10,
+      "false_alerts_per_observed_wrist_hour": 24.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "reference_calibration_summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 10.626000000018394,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 5,
+      "false_alerts_per_observed_wrist_hour": 12.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    }
+  },
+  "full_original": {
+    "complete_episodes": 260,
+    "episodes_detected": 155,
+    "episode_sensitivity": 0.5961538461538461,
+    "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+    "wrist_ecg_observed_seconds": 7500.0,
+    "wrist_non_af_seconds": 6872.005999999994,
+    "wrist_false_alerts": 45,
+    "false_alerts_per_observed_wrist_hour": 21.6,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 155,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "historical_signal_support": {
+    "matched_evaluation_rows": 5403,
+    "matched_history_rows": 1714,
+    "lost_evaluation_rows": 21,
+    "lost_history_rows": 9
+  },
+  "comparisons": {
+    "original": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 155,
+        "episode_sensitivity": 0.5961538461538461,
+        "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 47,
+        "false_alerts_per_observed_wrist_hour": 22.56,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 155,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 155,
+          "detected_by_neither": 105,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 22.286000000021886,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 155
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 47,
+          "shared_exact": 47,
+          "baseline_only_exact": 0,
+          "candidate_only_exact": 0
+        }
+      },
+      "sensitivity_change": 0.0,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 42,
+          "shared_exact": 42,
+          "baseline_only_exact": 0,
+          "candidate_only_exact": 0
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 41,
+          "gained": 0,
+          "lost": 0,
+          "both": 41,
+          "neither": 143
+        }
+      }
+    },
+    "original_with_quality_confirmation": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 151,
+        "episode_sensitivity": 0.5807692307692308,
+        "median_delay_seconds_in_detected_episodes": 29.265999999945052,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 41,
+        "false_alerts_per_observed_wrist_hour": 19.68,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 151,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 6,
+          "lost": 10,
+          "detected_by_both": 145,
+          "detected_by_neither": 99,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 29.265999999945052,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 68,
+          "shared_earlier": 2,
+          "shared_unchanged": 75
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 41,
+          "shared_exact": 23,
+          "baseline_only_exact": 24,
+          "candidate_only_exact": 18
+        }
+      },
+      "sensitivity_change": -0.01538461538461533,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 39,
+          "shared_exact": 19,
+          "baseline_only_exact": 23,
+          "candidate_only_exact": 20
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 39,
+          "gained": 6,
+          "lost": 8,
+          "both": 33,
+          "neither": 137
+        }
+      }
+    },
+    "short": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 197,
+        "episode_sensitivity": 0.7576923076923077,
+        "median_delay_seconds_in_detected_episodes": 16.88399999999092,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 77,
+        "false_alerts_per_observed_wrist_hour": 36.96,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 197,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 47,
+          "lost": 5,
+          "detected_by_both": 150,
+          "detected_by_neither": 58,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 16.88399999999092,
+          "median_delay_change_s_for_shared": -10.0,
+          "shared_delayed": 29,
+          "shared_earlier": 89,
+          "shared_unchanged": 32
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 77,
+          "shared_exact": 18,
+          "baseline_only_exact": 29,
+          "candidate_only_exact": 59
+        }
+      },
+      "sensitivity_change": 0.16153846153846152,
+      "within_sensitivity_tolerance": false,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 75,
+          "shared_exact": 12,
+          "baseline_only_exact": 30,
+          "candidate_only_exact": 63
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 69,
+          "gained": 42,
+          "lost": 14,
+          "both": 27,
+          "neither": 101
+        }
+      }
+    },
+    "short_with_quality_confirmation": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 179,
+        "episode_sensitivity": 0.6884615384615385,
+        "median_delay_seconds_in_detected_episodes": 20.0,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 58,
+        "false_alerts_per_observed_wrist_hour": 27.84,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 179,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 40,
+          "lost": 16,
+          "detected_by_both": 139,
+          "detected_by_neither": 65,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 20.0,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 41,
+          "shared_earlier": 62,
+          "shared_unchanged": 36
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 58,
+          "shared_exact": 17,
+          "baseline_only_exact": 30,
+          "candidate_only_exact": 41
+        }
+      },
+      "sensitivity_change": 0.09230769230769231,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 58,
+          "shared_exact": 13,
+          "baseline_only_exact": 29,
+          "candidate_only_exact": 45
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 56,
+          "gained": 35,
+          "lost": 20,
+          "both": 21,
+          "neither": 108
+        }
+      }
+    },
+    "short_matched": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 199,
+        "episode_sensitivity": 0.7653846153846153,
+        "median_delay_seconds_in_detected_episodes": 17.649999999999636,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 69,
+        "false_alerts_per_observed_wrist_hour": 33.12,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 199,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 49,
+          "lost": 5,
+          "detected_by_both": 150,
+          "detected_by_neither": 56,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 17.649999999999636,
+          "median_delay_change_s_for_shared": -10.0,
+          "shared_delayed": 33,
+          "shared_earlier": 79,
+          "shared_unchanged": 38
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 69,
+          "shared_exact": 18,
+          "baseline_only_exact": 29,
+          "candidate_only_exact": 51
+        }
+      },
+      "sensitivity_change": 0.16923076923076918,
+      "within_sensitivity_tolerance": false,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 70,
+          "shared_exact": 11,
+          "baseline_only_exact": 31,
+          "candidate_only_exact": 59
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 65,
+          "gained": 39,
+          "lost": 15,
+          "both": 26,
+          "neither": 104
+        }
+      }
+    },
+    "short_matched_with_quality_confirmation": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 175,
+        "episode_sensitivity": 0.6730769230769231,
+        "median_delay_seconds_in_detected_episodes": 20.294000000001688,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 50,
+        "false_alerts_per_observed_wrist_hour": 24.0,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 175,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 41,
+          "lost": 21,
+          "detected_by_both": 134,
+          "detected_by_neither": 64,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 20.294000000001688,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 44,
+          "shared_earlier": 55,
+          "shared_unchanged": 35
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 50,
+          "shared_exact": 15,
+          "baseline_only_exact": 32,
+          "candidate_only_exact": 35
+        }
+      },
+      "sensitivity_change": 0.07692307692307698,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 54,
+          "shared_exact": 12,
+          "baseline_only_exact": 30,
+          "candidate_only_exact": 42
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 52,
+          "gained": 33,
+          "lost": 22,
+          "both": 19,
+          "neither": 110
+        }
+      }
+    },
+    "short_matched_quality_and_two_negative_rearm": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 166,
+        "episode_sensitivity": 0.6384615384615384,
+        "median_delay_seconds_in_detected_episodes": 22.15099999999802,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 44,
+        "false_alerts_per_observed_wrist_hour": 21.12,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 166,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 32,
+          "lost": 21,
+          "detected_by_both": 134,
+          "detected_by_neither": 73,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 22.15099999999802,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 48,
+          "shared_earlier": 53,
+          "shared_unchanged": 33
+        },
+        "false_starts": {
+          "baseline": 47,
+          "candidate": 44,
+          "shared_exact": 14,
+          "baseline_only_exact": 33,
+          "candidate_only_exact": 30
+        }
+      },
+      "sensitivity_change": 0.04230769230769227,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 44,
+          "shared_exact": 11,
+          "baseline_only_exact": 31,
+          "candidate_only_exact": 33
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 44,
+          "gained": 26,
+          "lost": 23,
+          "both": 18,
+          "neither": 117
+        }
+      }
+    }
+  },
+  "short_vs_original_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 16,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": 14.4,
+      "percentile_95": [
+        6.24,
+        24.48
+      ],
+      "valid_paired_draws": 10000
+    },
+    "sensitivity_change": {
+      "point": 0.16153846153846155,
+      "percentile_95": [
+        0.11290322580645161,
+        0.2846180555555555
+      ],
+      "valid_paired_draws": 10000
+    }
+  },
+  "short_matched_vs_original_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 16,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": 10.56,
+      "percentile_95": [
+        3.36,
+        18.72
+      ],
+      "valid_paired_draws": 10000
+    },
+    "sensitivity_change": {
+      "point": 0.16923076923076924,
+      "percentile_95": [
+        0.10810810810810811,
+        0.2857142857142857
+      ],
+      "valid_paired_draws": 10000
+    }
+  },
+  "short_vs_original_with_confirmation_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 16,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": 8.16,
+      "percentile_95": [
+        1.92,
+        15.36
+      ],
+      "valid_paired_draws": 10000
+    },
+    "sensitivity_change": {
+      "point": 0.1076923076923077,
+      "percentile_95": [
+        0.0425531914893617,
+        0.21666958041958037
+      ],
+      "valid_paired_draws": 10000
+    }
+  },
+  "rearmed_vs_immediate_short": {
+    "summary": {
+      "complete_episodes": 260,
+      "episodes_detected": 166,
+      "episode_sensitivity": 0.6384615384615384,
+      "median_delay_seconds_in_detected_episodes": 22.15099999999802,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 44,
+      "false_alerts_per_observed_wrist_hour": 21.12,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 166,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 260,
+        "gained": 0,
+        "lost": 9,
+        "detected_by_both": 166,
+        "detected_by_neither": 85,
+        "baseline_median_delay_s": 20.294000000001688,
+        "candidate_median_delay_s": 22.15099999999802,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 9,
+        "shared_earlier": 0,
+        "shared_unchanged": 157
+      },
+      "false_starts": {
+        "baseline": 50,
+        "candidate": 44,
+        "shared_exact": 44,
+        "baseline_only_exact": 6,
+        "candidate_only_exact": 0
+      }
+    },
+    "sensitivity_change": -0.034615384615384714,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 260,
+      "supported_episodes": 184,
+      "excluded_insufficient_ecg_coverage": 17,
+      "excluded_prior_af": 59,
+      "pre_onset_starts": {
+        "baseline": 54,
+        "candidate": 44,
+        "shared_exact": 44,
+        "baseline_only_exact": 10,
+        "candidate_only_exact": 0
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 52,
+        "candidate": 44,
+        "gained": 0,
+        "lost": 8,
+        "both": 44,
+        "neither": 132
+      }
+    }
+  },
+  "rearmed_vs_immediate_short_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 16,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": -2.88,
+      "percentile_95": [
+        -4.8,
+        -0.96
+      ],
+      "valid_paired_draws": 10000
+    },
+    "sensitivity_change": {
+      "point": -0.03461538461538462,
+      "percentile_95": [
+        -0.041884816753926704,
+        0.0
+      ],
+      "valid_paired_draws": 10000
+    }
+  },
+  "duration_strata": {
+    "up_to_10_s": {
+      "episodes": 12,
+      "contributors": 5,
+      "largest_contributor_episodes": 7,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "original_with_quality_confirmation": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "short": {
+          "detected_episodes": 2,
+          "pooled_sensitivity": 0.16666666666666666,
+          "participant_average_sensitivity": 0.05714285714285714,
+          "largest_contributor_detections": 2,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 2,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.2608695652173913
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "short_with_quality_confirmation": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "short_matched": {
+          "detected_episodes": 1,
+          "pooled_sensitivity": 0.08333333333333333,
+          "participant_average_sensitivity": 0.02857142857142857,
+          "largest_contributor_detections": 1,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 1,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.13043478260869565
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "short_matched_with_quality_confirmation": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "short_matched_quality_and_two_negative_rearm": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        }
+      }
+    },
+    "over_10_to_30_s": {
+      "episodes": 21,
+      "contributors": 5,
+      "largest_contributor_episodes": 12,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 3,
+          "pooled_sensitivity": 0.14285714285714285,
+          "participant_average_sensitivity": 0.13333333333333333,
+          "largest_contributor_detections": 2,
+          "other_contributors_detections": 1,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "original_with_quality_confirmation": {
+          "detected_episodes": 3,
+          "pooled_sensitivity": 0.14285714285714285,
+          "participant_average_sensitivity": 0.13333333333333333,
+          "largest_contributor_detections": 2,
+          "other_contributors_detections": 1,
+          "paired_gain_over_original": 2,
+          "paired_loss_from_original": 2,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short": {
+          "detected_episodes": 7,
+          "pooled_sensitivity": 0.3333333333333333,
+          "participant_average_sensitivity": 0.3,
+          "largest_contributor_detections": 4,
+          "other_contributors_detections": 3,
+          "paired_gain_over_original": 5,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.4444444444444444
+          ],
+          "shared_detection_median_delay_change_s": -5.0
+        },
+        "short_with_quality_confirmation": {
+          "detected_episodes": 8,
+          "pooled_sensitivity": 0.38095238095238093,
+          "participant_average_sensitivity": 0.3166666666666667,
+          "largest_contributor_detections": 5,
+          "other_contributors_detections": 3,
+          "paired_gain_over_original": 6,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.4583333333333333
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched": {
+          "detected_episodes": 8,
+          "pooled_sensitivity": 0.38095238095238093,
+          "participant_average_sensitivity": 0.3666666666666666,
+          "largest_contributor_detections": 4,
+          "other_contributors_detections": 4,
+          "paired_gain_over_original": 6,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.10526315789473684,
+            0.5
+          ],
+          "shared_detection_median_delay_change_s": -5.0
+        },
+        "short_matched_with_quality_confirmation": {
+          "detected_episodes": 7,
+          "pooled_sensitivity": 0.3333333333333333,
+          "participant_average_sensitivity": 0.3,
+          "largest_contributor_detections": 4,
+          "other_contributors_detections": 3,
+          "paired_gain_over_original": 5,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.4444444444444444
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched_quality_and_two_negative_rearm": {
+          "detected_episodes": 6,
+          "pooled_sensitivity": 0.2857142857142857,
+          "participant_average_sensitivity": 0.2833333333333333,
+          "largest_contributor_detections": 3,
+          "other_contributors_detections": 3,
+          "paired_gain_over_original": 4,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.4444444444444444
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        }
+      }
+    },
+    "over_30_to_60_s": {
+      "episodes": 83,
+      "contributors": 13,
+      "largest_contributor_episodes": 52,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 42,
+          "pooled_sensitivity": 0.5060240963855421,
+          "participant_average_sensitivity": 0.3637708445400753,
+          "largest_contributor_detections": 32,
+          "other_contributors_detections": 10,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "original_with_quality_confirmation": {
+          "detected_episodes": 40,
+          "pooled_sensitivity": 0.4819277108433735,
+          "participant_average_sensitivity": 0.39048771741079435,
+          "largest_contributor_detections": 28,
+          "other_contributors_detections": 12,
+          "paired_gain_over_original": 3,
+          "paired_loss_from_original": 5,
+          "paired_sensitivity_change_interval_95": [
+            -0.06557377049180328,
+            0.1111111111111111
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short": {
+          "detected_episodes": 56,
+          "pooled_sensitivity": 0.6746987951807228,
+          "participant_average_sensitivity": 0.6281603012372243,
+          "largest_contributor_detections": 37,
+          "other_contributors_detections": 19,
+          "paired_gain_over_original": 15,
+          "paired_loss_from_original": 1,
+          "paired_sensitivity_change_interval_95": [
+            0.09302325581395349,
+            0.5
+          ],
+          "shared_detection_median_delay_change_s": -10.0
+        },
+        "short_with_quality_confirmation": {
+          "detected_episodes": 46,
+          "pooled_sensitivity": 0.5542168674698795,
+          "participant_average_sensitivity": 0.4654384077461,
+          "largest_contributor_detections": 31,
+          "other_contributors_detections": 15,
+          "paired_gain_over_original": 11,
+          "paired_loss_from_original": 7,
+          "paired_sensitivity_change_interval_95": [
+            -0.014492753623188406,
+            0.2903225806451613
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched": {
+          "detected_episodes": 56,
+          "pooled_sensitivity": 0.6746987951807228,
+          "participant_average_sensitivity": 0.5340684956069571,
+          "largest_contributor_detections": 38,
+          "other_contributors_detections": 18,
+          "paired_gain_over_original": 16,
+          "paired_loss_from_original": 2,
+          "paired_sensitivity_change_interval_95": [
+            0.08974358974358974,
+            0.42857142857142855
+          ],
+          "shared_detection_median_delay_change_s": -10.0
+        },
+        "short_matched_with_quality_confirmation": {
+          "detected_episodes": 42,
+          "pooled_sensitivity": 0.5060240963855421,
+          "participant_average_sensitivity": 0.4408732293347678,
+          "largest_contributor_detections": 27,
+          "other_contributors_detections": 15,
+          "paired_gain_over_original": 11,
+          "paired_loss_from_original": 11,
+          "paired_sensitivity_change_interval_95": [
+            -0.08333333333333333,
+            0.2702702702702703
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched_quality_and_two_negative_rearm": {
+          "detected_episodes": 39,
+          "pooled_sensitivity": 0.46987951807228917,
+          "participant_average_sensitivity": 0.4364353595122825,
+          "largest_contributor_detections": 24,
+          "other_contributors_detections": 15,
+          "paired_gain_over_original": 8,
+          "paired_loss_from_original": 11,
+          "paired_sensitivity_change_interval_95": [
+            -0.13143005437469105,
+            0.2702702702702703
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        }
+      }
+    },
+    "over_60_s": {
+      "episodes": 144,
+      "contributors": 11,
+      "largest_contributor_episodes": 92,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 110,
+          "pooled_sensitivity": 0.7638888888888888,
+          "participant_average_sensitivity": 0.7972426124600037,
+          "largest_contributor_detections": 73,
+          "other_contributors_detections": 37,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "original_with_quality_confirmation": {
+          "detected_episodes": 108,
+          "pooled_sensitivity": 0.75,
+          "participant_average_sensitivity": 0.7930077169207603,
+          "largest_contributor_detections": 72,
+          "other_contributors_detections": 36,
+          "paired_gain_over_original": 1,
+          "paired_loss_from_original": 3,
+          "paired_sensitivity_change_interval_95": [
+            -0.02830188679245283,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 10.0
+        },
+        "short": {
+          "detected_episodes": 132,
+          "pooled_sensitivity": 0.9166666666666666,
+          "participant_average_sensitivity": 0.8777369973022147,
+          "largest_contributor_detections": 84,
+          "other_contributors_detections": 48,
+          "paired_gain_over_original": 25,
+          "paired_loss_from_original": 3,
+          "paired_sensitivity_change_interval_95": [
+            0.05555555555555555,
+            0.2727272727272727
+          ],
+          "shared_detection_median_delay_change_s": -10.0
+        },
+        "short_with_quality_confirmation": {
+          "detected_episodes": 125,
+          "pooled_sensitivity": 0.8680555555555556,
+          "participant_average_sensitivity": 0.8415051132442436,
+          "largest_contributor_detections": 78,
+          "other_contributors_detections": 47,
+          "paired_gain_over_original": 23,
+          "paired_loss_from_original": 8,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.25964673913043435
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched": {
+          "detected_episodes": 134,
+          "pooled_sensitivity": 0.9305555555555556,
+          "participant_average_sensitivity": 0.881971892841458,
+          "largest_contributor_detections": 85,
+          "other_contributors_detections": 49,
+          "paired_gain_over_original": 26,
+          "paired_loss_from_original": 2,
+          "paired_sensitivity_change_interval_95": [
+            0.05555555555555555,
+            0.30088710370306726
+          ],
+          "shared_detection_median_delay_change_s": -10.0
+        },
+        "short_matched_with_quality_confirmation": {
+          "detected_episodes": 126,
+          "pooled_sensitivity": 0.875,
+          "participant_average_sensitivity": 0.8447518664909968,
+          "largest_contributor_detections": 78,
+          "other_contributors_detections": 48,
+          "paired_gain_over_original": 25,
+          "paired_loss_from_original": 9,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.2882882882882883
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "short_matched_quality_and_two_negative_rearm": {
+          "detected_episodes": 121,
+          "pooled_sensitivity": 0.8402777777777778,
+          "participant_average_sensitivity": 0.83529393312002,
+          "largest_contributor_detections": 75,
+          "other_contributors_detections": 46,
+          "paired_gain_over_original": 20,
+          "paired_loss_from_original": 9,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.23189052795031045
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        }
+      }
+    }
+  }
+}

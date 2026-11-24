@@ -179,6 +179,8 @@ The [PaPaGei-S transfer study](papagei-transfer-study.md) tests public pretraine
 
 The [wearer score study](personal-score-study.md) evaluates fixed and rolling PPG-only baselines after a common warm-up. The [episode subgroup audit](confirmation-subgroups-study.md) reports detection by the duration and contribution of historical complete ECG reference episodes.
 
+The [short-template historical study](short-retrospective-study.md) compares ten- and 30-second PPG inputs on the same 260 episodes and half-hour wear blocks. It reports a cutoff matched on development sensitivity as well as a target-sensitivity cutoff.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.

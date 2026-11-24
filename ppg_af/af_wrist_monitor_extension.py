@@ -155,7 +155,7 @@ def _reuse_fold_models(grid, lock, quality, original):
     return classifiers
 
 
-def _person_runs(person, archive, model, cutoff, family, *, transform=None):
+def _person_runs(person, archive, model, cutoff, family, *, transform=None, replay=_IMMEDIATE):
     starts, validity, episodes, matrices, ppg_available = archive
     if not len(starts):
         return []
@@ -167,7 +167,7 @@ def _person_runs(person, archive, model, cutoff, family, *, transform=None):
         decision = np.where(np.isfinite(probability), probability >= cutoff, -1).astype(np.int8)
         preroll = len(decision) - len(valid)
         run = AFRun(float(start), STRIDE_SECONDS, episodes, decision[preroll:], valid, availability[preroll:], person)
-        (scored,), _ = _IMMEDIATE((run,), prior_decisions=lambda _: decision[:preroll])
+        (scored,), _ = replay((run,), prior_decisions=lambda _: decision[:preroll])
         output.append(scored)
     return output
 
