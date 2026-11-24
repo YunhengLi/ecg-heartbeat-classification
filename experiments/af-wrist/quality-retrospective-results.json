@@ -1,0 +1,182 @@
+{
+  "scope": "Retrospective replay on the previously scored and audited wrist cohort",
+  "fit_participants": 5,
+  "calibration_participants": 5,
+  "retrospective_participants": 25,
+  "logistic_C": 1.0,
+  "rddm_feature_version": "window-seed-v1",
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "alert_policy": "causal_immediate_with_predecessor_state",
+  "target_episode_sensitivity": 0.8,
+  "sensitivity_tolerance": 0.1,
+  "fit_windows": {
+    "AF": 21,
+    "non_AF": 22
+  },
+  "development_calibration": {
+    "baseline": {
+      "status": "target_not_met",
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 10.626000000018394,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 5,
+      "false_alerts_per_observed_wrist_hour": 12.0
+    },
+    "quality": {
+      "status": "target_not_met",
+      "threshold_candidates": 547,
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 26.228000000002794,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 3,
+      "false_alerts_per_observed_wrist_hour": 7.2,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "quality_interactions": {
+      "status": "target_not_met",
+      "threshold_candidates": 547,
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 26.228000000002794,
+      "wrist_ecg_observed_seconds": 1500.0,
+      "wrist_non_af_seconds": 1200.0,
+      "wrist_false_alerts": 3,
+      "false_alerts_per_observed_wrist_hour": 7.2,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    }
+  },
+  "common_retrospective_support": {
+    "scored_evaluation_cells": 5424,
+    "scored_predecessor_cells": 1723,
+    "complete_reference_episodes": 260,
+    "partial_reference_episodes": 82,
+    "all_evaluation_ecg_observed_seconds": 54510,
+    "wrist_ecg_observed_seconds": 7500,
+    "wrist_non_af_seconds": 6872.005999999994,
+    "complete_episodes_with_shared_feature_endpoint": 253,
+    "participants_with_complete_episodes": 16,
+    "maximum_complete_episodes_from_one_participant": 157
+  },
+  "historical_baseline_reproduced": true,
+  "historical_baseline": {
+    "complete_episodes": 260,
+    "episodes_detected": 155,
+    "episode_sensitivity": 0.5961538461538461,
+    "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+    "wrist_ecg_observed_seconds": 7500.0,
+    "wrist_non_af_seconds": 6872.005999999994,
+    "wrist_false_alerts": 45,
+    "false_alerts_per_observed_wrist_hour": 21.6,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 155,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "retrospective_variants": {
+    "quality": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 165,
+        "episode_sensitivity": 0.6346153846153846,
+        "median_delay_seconds_in_detected_episodes": 26.55600000001141,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 53,
+        "false_alerts_per_observed_wrist_hour": 25.44,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 165,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 28,
+          "lost": 18,
+          "detected_by_both": 137,
+          "detected_by_neither": 77,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 26.55600000001141,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 26,
+          "shared_earlier": 33,
+          "shared_unchanged": 78
+        },
+        "false_starts": {
+          "baseline": 45,
+          "candidate": 53,
+          "shared_exact": 29,
+          "baseline_only_exact": 16,
+          "candidate_only_exact": 24
+        }
+      },
+      "sensitivity_change": 0.038461538461538436,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false
+    },
+    "quality_interactions": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 168,
+        "episode_sensitivity": 0.6461538461538462,
+        "median_delay_seconds_in_detected_episodes": 27.726999999998952,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 48,
+        "false_alerts_per_observed_wrist_hour": 23.04,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 168,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 32,
+          "lost": 19,
+          "detected_by_both": 136,
+          "detected_by_neither": 73,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 27.726999999998952,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 31,
+          "shared_earlier": 32,
+          "shared_unchanged": 73
+        },
+        "false_starts": {
+          "baseline": 45,
+          "candidate": 48,
+          "shared_exact": 28,
+          "baseline_only_exact": 17,
+          "candidate_only_exact": 20
+        }
+      },
+      "sensitivity_change": 0.050000000000000044,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false
+    }
+  },
+  "source_receipts_sha256": {
+    "protocol_lock": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+    "independent_lock": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+    "independent_coverage_report": "3d36659b2fedf826d9c0a0952d5e70b77cb7b697ae1a04e96571b91bbbca66d7",
+    "independent_seal": "b83422bc540cb36dce95d0e429ebe2db37555d2762e79db9fcccfdefbda48c88",
+    "historical_results": "0af4f089923cc446f207ba9cc459432faabcf28821571cb11e0ad1d5757ef122",
+    "data_preflight": "184d05d85d0e3c8b7546add7ce78f4f356ec7b90ccd4ad0109684604982bf25e"
+  },
+  "development_variant_lock_sha256": "5dc5eddca865828f89aeaf262b98fce6b5b702ae8e29f5542f22c0051e494759"
+}

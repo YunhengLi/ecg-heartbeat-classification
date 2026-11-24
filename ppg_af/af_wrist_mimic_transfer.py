@@ -35,8 +35,10 @@ DIRECT = "direct_ppg"
 INTERVAL_SUPPORT_COLUMN = PPG_FEATURE_NAMES.index("valid_interval_fraction")
 
 
-def _source_features(directory):
+def _load_source(directory, *, with_waveforms=False):
+    """Apply the shared MIMIC eligibility rule and optionally retain its inputs."""
     features, labels, subjects = [], [], []
+    waveforms = [] if with_waveforms else None
     inventory = {str(label): Counter() for label in (0, 1)}
     samples = WINDOW_SECONDS * SOURCE_RATE
     records = _read_records(directory)
@@ -56,11 +58,19 @@ def _source_features(directory):
                 features.append(values)
                 labels.append(label)
                 subjects.append(subject)
+                if waveforms is not None:
+                    waveforms.append(converted)
         if len(features) == before:
             raise ValueError("Every source participant needs at least one eligible PPG feature window")
         counts["participants_with_features"] += 1
         counts["feature_windows"] += len(features) - before
-    return np.asarray(features), np.asarray(labels), np.asarray(subjects), inventory
+    return (np.asarray(features), np.asarray(labels), np.asarray(subjects), inventory,
+            np.stack(waveforms) if waveforms is not None else None)
+
+
+def _source_features(directory):
+    features, labels, subjects, inventory, _ = _load_source(directory)
+    return features, labels, subjects, inventory
 
 
 def _fit_source(matrix, labels, subjects):

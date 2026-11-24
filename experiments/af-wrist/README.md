@@ -83,7 +83,11 @@ The [chronological pulse study](sequence-study.md) compares ordered 10-second PP
 
 The [PPG quality study](quality-study.md) tests whether rhythm features are more useful when the classifier accounts for signal quality. The [split-sensitivity check](quality-stability.md) repeats the same model comparison across five development partitions.
 
+The [uncertainty study](quality-uncertainty.md) estimates paired participant-level intervals for that fixed development comparison. The [quality retrospective replay](quality-retrospective-study.md) compares two frozen quality models on the previously audited 25-person cohort.
+
 The [ICU transfer study](mimic-transfer-study.md) tests frozen source scores and feature fusion on the original wrist development folds.
+
+The [source CNN study](mimic-cnn-study.md) trains a small neural model on the same source PPG windows and compares frozen transfer on the wrist clock.
 
 The [onset-aware calibration study](onset-calibration.md) tests whether counting verified pre-onset false starts during cutoff selection changes held-out alerts.
 

@@ -1,0 +1,66 @@
+{
+  "scope": "Descriptive participant-cluster bootstrap of two fixed development replays",
+  "original_fit_seed": 2026,
+  "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "quality_receipt_sha256": "fc6433c72ab7258a79f3d674d35616bb4c1c7cd6964329f426e175dfd49f8719",
+  "refits_inside_bootstrap": 0,
+  "independent_predictions": 0,
+  "paired_bootstrap_replicates": 10000,
+  "bootstrap_seed": 20261124,
+  "clusters_sampled_per_draw": 10,
+  "support": {
+    "complete_episodes": 17,
+    "participants_with_complete_episodes": 4,
+    "largest_participant_episode_count": 13,
+    "wrist_ecg_observed_seconds": 2790,
+    "participants_with_wrist_ecg_exposure": 10
+  },
+  "fixed_replays": {
+    "baseline": {
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 6,
+      "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "quality_interactions": {
+      "complete_episodes": 17,
+      "episodes_detected": 14,
+      "episode_sensitivity": 0.8235294117647058,
+      "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 4,
+      "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 14,
+      "possible_non_af_alert_timestamps": 0
+    }
+  },
+  "quality_minus_original_sensitivity_percentage_points": {
+    "point_difference": 11.764705882352942,
+    "finite_replicates": 9942,
+    "omitted_zero_denominator": 58,
+    "percentile_95_interval": [
+      0.0,
+      15.0
+    ]
+  },
+  "quality_minus_original_false_starts_per_observed_wrist_hour": {
+    "point_difference": -2.5806451612903225,
+    "finite_replicates": 10000,
+    "omitted_zero_denominator": 0,
+    "percentile_95_interval": [
+      -8.0,
+      0.0
+    ]
+  }
+}
