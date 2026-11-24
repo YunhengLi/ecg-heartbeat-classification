@@ -151,13 +151,15 @@ def _reuse_fold_models(grid, lock, quality, original):
     return classifiers
 
 
-def _person_runs(person, archive, model, cutoff, family):
+def _person_runs(person, archive, model, cutoff, family, *, transform=None):
     starts, validity, episodes, matrices, ppg_available = archive
     if not len(starts):
         return []
     output = []
-    for start, valid, values, availability in zip(starts, validity, matrices[family], ppg_available, strict=True):
+    for index, (start, valid, values, availability) in enumerate(zip(starts, validity, matrices[family], ppg_available, strict=True)):
         probability = _predict(values, np.isfinite(values).all(axis=1), model)
+        if transform is not None:
+            probability = transform(probability, index)
         decision = np.where(np.isfinite(probability), probability >= cutoff, -1).astype(np.int8)
         preroll = len(decision) - len(valid)
         run = AFRun(float(start), STRIDE_SECONDS, episodes, decision[preroll:], valid, availability[preroll:], person)

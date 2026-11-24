@@ -1,0 +1,180 @@
+{
+  "scope": "Retrospective causal confirmation on the already reviewed wrist cohort",
+  "quality_boundary": 0.4,
+  "fixed_original_model_and_cutoff": true,
+  "historical_episodes_and_monitoring": {
+    "baseline": {
+      "complete_episodes": 260,
+      "episodes_detected": 155,
+      "episode_sensitivity": 0.5961538461538461,
+      "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 45,
+      "false_alerts_per_observed_wrist_hour": 21.6,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 155,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "conditional_confirmation": {
+      "summary": {
+        "complete_episodes": 260,
+        "episodes_detected": 151,
+        "episode_sensitivity": 0.5807692307692308,
+        "median_delay_seconds_in_detected_episodes": 29.265999999945052,
+        "wrist_ecg_observed_seconds": 7500.0,
+        "wrist_non_af_seconds": 6872.005999999994,
+        "wrist_false_alerts": 39,
+        "false_alerts_per_observed_wrist_hour": 18.72,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 151,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 260,
+          "gained": 6,
+          "lost": 10,
+          "detected_by_both": 145,
+          "detected_by_neither": 99,
+          "baseline_median_delay_s": 22.286000000021886,
+          "candidate_median_delay_s": 29.265999999945052,
+          "median_delay_change_s_for_shared": 0.0,
+          "shared_delayed": 68,
+          "shared_earlier": 2,
+          "shared_unchanged": 75
+        },
+        "false_starts": {
+          "baseline": 45,
+          "candidate": 39,
+          "shared_exact": 21,
+          "baseline_only_exact": 24,
+          "candidate_only_exact": 18
+        }
+      },
+      "sensitivity_change": -0.01538461538461533,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 260,
+        "supported_episodes": 184,
+        "excluded_insufficient_ecg_coverage": 17,
+        "excluded_prior_af": 59,
+        "pre_onset_starts": {
+          "baseline": 42,
+          "candidate": 39,
+          "shared_exact": 19,
+          "baseline_only_exact": 23,
+          "candidate_only_exact": 20
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 41,
+          "candidate": 39,
+          "gained": 6,
+          "lost": 8,
+          "both": 33,
+          "neither": 137
+        }
+      }
+    },
+    "paired_participant_uncertainty": {
+      "resamples": 10000,
+      "seed": 2026,
+      "participants_with_complete_episodes": 16,
+      "false_starts_per_ecg_observed_wrist_hour_change": {
+        "point": -2.88,
+        "percentile_95": [
+          -5.28,
+          -0.96
+        ],
+        "valid_paired_draws": 10000
+      },
+      "sensitivity_change": {
+        "point": -0.015384615384615385,
+        "percentile_95": [
+          -0.027942205232608507,
+          0.0273972602739726
+        ],
+        "valid_paired_draws": 10000
+      }
+    },
+    "lost_scoreable_decisions": 127
+  },
+  "additional_monitoring": {
+    "baseline": {
+      "complete_episodes": 0,
+      "episodes_detected": 0,
+      "episode_sensitivity": null,
+      "median_delay_seconds_in_detected_episodes": null,
+      "wrist_ecg_observed_seconds": 14490.0,
+      "wrist_non_af_seconds": 11475.032000000007,
+      "wrist_false_alerts": 44,
+      "false_alerts_per_observed_wrist_hour": 10.93167701863354,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 0,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "conditional_confirmation": {
+      "complete_episodes": 0,
+      "episodes_detected": 0,
+      "episode_sensitivity": null,
+      "median_delay_seconds_in_detected_episodes": null,
+      "wrist_ecg_observed_seconds": 14490.0,
+      "wrist_non_af_seconds": 11475.032000000007,
+      "wrist_false_alerts": 41,
+      "false_alerts_per_observed_wrist_hour": 10.186335403726709,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 0,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "plan_receipt": {
+      "scope": "previously scored 25-person roster, disjoint new times",
+      "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+      "block_seconds": 300,
+      "predecessor_seconds": 90,
+      "scheduled_blocks": 50,
+      "scheduled_seconds": 15000,
+      "participants_with_planned_blocks": 25
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 0,
+        "gained": 0,
+        "lost": 0,
+        "detected_by_both": 0,
+        "detected_by_neither": 0,
+        "baseline_median_delay_s": null,
+        "candidate_median_delay_s": null,
+        "median_delay_change_s_for_shared": null,
+        "shared_delayed": 0,
+        "shared_earlier": 0,
+        "shared_unchanged": 0
+      },
+      "false_starts": {
+        "baseline": 44,
+        "candidate": 41,
+        "shared_exact": 24,
+        "baseline_only_exact": 20,
+        "candidate_only_exact": 17
+      }
+    },
+    "paired_participant_uncertainty": {
+      "resamples": 10000,
+      "seed": 2026,
+      "participants_with_complete_episodes": 0,
+      "false_starts_per_ecg_observed_wrist_hour_change": {
+        "point": -0.7453416149068323,
+        "percentile_95": [
+          -1.9726365403212933,
+          0.511000709723208
+        ],
+        "valid_paired_draws": 10000
+      }
+    },
+    "lost_scoreable_decisions": 0
+  }
+}
