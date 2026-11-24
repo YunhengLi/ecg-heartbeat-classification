@@ -101,6 +101,8 @@ The [measured ECG context study](measured-ecg-context.md) and [pulse-template co
 
 The [native transition study](transition-native-study.md) verifies an additional donor's pre-onset and early-AF input pair and repeats the original onset training comparison.
 
+The [dedicated onset classifier](onset-head-study.md) trains early AF as a separate start-detection task and compares it on two original participant splits.
+
 The [lower-quality non-AF study](low-quality-training-study.md) compares alternative training windows on the same participant and time-bin assignments.
 
 The [native wrist waveform study](waveform-study.md) compares external and locally fitted reconstruction on held-out participants and isolates the release's timing assumption.
