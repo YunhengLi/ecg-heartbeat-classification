@@ -16,11 +16,10 @@ from sklearn.preprocessing import StandardScaler
 from .af_galaxy_quality import (
     DOI, GALAXY_RATE, LARGE_ERROR, PARTICIPANTS, SENSORS, aligned_windows, clock, from_archive, optical_metrics, uniform,
 )
-from .af_wrist_exercise import HEART_RATE_BAND_HZ, motion_weighted_spectrum
 from .af_wrist_features import PPG_RATE, PTT_SUBJECTS
 from .af_wrist_holdout import _write_json
+from .af_wrist_motion_quality import optical_motion_features
 from .af_wrist_smoke import fit_ptt_calibration
-from .features import ppg_features
 
 
 AXES = ("x", "y", "z")
@@ -46,18 +45,6 @@ def motion_window(stream, rate, start):
     return resample_poly(np.column_stack(axes), PPG_RATE, rate, axis=0, padtype="line")
 
 
-def sensor_features(pulse, motion):
-    ppg, quality = ppg_features(pulse, PPG_RATE)
-    frequencies, raw, retained = motion_weighted_spectrum(pulse, motion)
-    support = (frequencies >= HEART_RATE_BAND_HZ[0]) & (frequencies <= HEART_RATE_BAND_HZ[1])
-    total = raw[support].sum()
-    residual = float(retained[support].sum() / total) if total > 0 else 0.0
-    magnitude = np.linalg.norm(motion, axis=1)
-    center = np.median(magnitude)
-    motion_variation = np.median(np.abs(magnitude - center)) / max(center, np.finfo(float).eps)
-    return quality, ppg[-1], residual, np.log1p(100 * motion_variation)
-
-
 def matched_inputs(path, acceleration_path, template):
     coverage = Counter()
     participants, features, labels = [], [], []
@@ -78,7 +65,8 @@ def matched_inputs(path, acceleration_path, template):
                 if any(result is None for result in errors):
                     continue
                 participants.append(person)
-                features.append([sensor_features(pulse, movement) for pulse, movement in zip(pulse_values, movement_values, strict=True)])
+                features.append([optical_motion_features(pulse, movement)
+                                 for pulse, movement in zip(pulse_values, movement_values, strict=True)])
                 labels.append([result[1] >= LARGE_ERROR for result in errors])
             print(f"Checked matched windows for {len(set(participants))} participants", flush=True)
     return np.asarray(participants), np.asarray(features), np.asarray(labels), coverage

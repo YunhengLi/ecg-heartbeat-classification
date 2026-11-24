@@ -17,6 +17,7 @@ from .af_wrist_quality_study import _compare_with_pre_onset, build_quality_matri
 from .af_wrist_template_study import DEFAULT_C, _replay, fit_template, verify_fit_support
 from .af_wrist_train import load_features
 from .af_wrist_vote_study import STRIDE_SECONDS
+from .features import ppg_features
 
 
 ACCELERATION_RATE = 50
@@ -31,6 +32,19 @@ def residual_pulse_power(pulse, acceleration):
     keep = (frequencies >= HEART_RATE_BAND_HZ[0]) & (frequencies <= HEART_RATE_BAND_HZ[1])
     total = power[keep].sum()
     return float(np.clip(weighted[keep].sum() / total, 0, 1)) if total > 0 else 0.0
+
+
+def optical_motion_features(pulse, motion):
+    """Summarize signal and motion already aligned on the common PPG grid."""
+    optical, quality = ppg_features(pulse, PPG_RATE)
+    frequencies, raw, retained = motion_weighted_spectrum(pulse, motion)
+    support = (frequencies >= HEART_RATE_BAND_HZ[0]) & (frequencies <= HEART_RATE_BAND_HZ[1])
+    total = raw[support].sum()
+    residual = float(retained[support].sum() / total) if total > 0 else 0.0
+    magnitude = np.linalg.norm(motion, axis=1)
+    center = np.median(magnitude)
+    motion_variation = np.median(np.abs(magnitude - center)) / max(center, np.finfo(float).eps)
+    return quality, optical[-1], residual, np.log1p(100 * motion_variation)
 
 
 def verified_motion_rows(raw_file, feature_file, sidecar_file, lock_digest, *, stride):
