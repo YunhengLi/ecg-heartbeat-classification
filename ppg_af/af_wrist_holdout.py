@@ -13,7 +13,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
 from .af_events import evaluate_af
-from .af_wrist_features import ROUTES, WINDOW_SECONDS
+from .af_wrist_features import FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION, ROUTES, WINDOW_SECONDS
 from .af_wrist_operating import compare_operating_points, score_decisions, score_operating_point, select_operating_point
 from .af_wrist_train import (
     _compare_window_points, _score_window_comparison, _stable_operating_point, _timeline_runs, load_features,
@@ -98,6 +98,7 @@ def freeze(table, subjects, timelines, *, calibration_subjects, test_roster):
             "model": model,
             "episode_calibration": select_operating_point(
                 monitor, episode_runs=episodes, target_sensitivity=TARGET_SENSITIVITY,
+                max_thresholds=max(3, int(calibration_rows.sum()) + 1),
             ),
             "window_calibration": _stable_operating_point(
                 labels[calibration_rows], scores[calibration_rows], TARGET_SENSITIVITY,
@@ -105,6 +106,7 @@ def freeze(table, subjects, timelines, *, calibration_subjects, test_roster):
         }
     return {
         "lock_version": LOCK_VERSION,
+        FEATURE_VERSION_KEY: table.get(FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION),
         "monitor_kind": MONITOR_KIND,
         "window_seconds": WINDOW_SECONDS,
         "target_sensitivity": TARGET_SENSITIVITY,
@@ -125,6 +127,9 @@ def evaluate(lock, table, subjects, timelines):
             or lock["monitor_kind"] != MONITOR_KIND or set(lock["routes"]) != set(ROUTES)
             or lock["target_sensitivity"] != TARGET_SENSITIVITY or lock["sensitivity_tolerance"] != SENSITIVITY_TOLERANCE):
         raise ValueError("Unrecognized frozen AF protocol")
+    feature_version = table.get(FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION)
+    if lock.get(FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION) != feature_version:
+        raise ValueError("Test RDDM feature version must match the frozen models")
     fit = _subject_ids(lock["fit_subjects"])
     calibration = _subject_ids(lock["calibration_subjects"])
     roster = _subject_ids(lock["test_roster"])
@@ -164,6 +169,7 @@ def evaluate(lock, table, subjects, timelines):
     monitor = table["run_kind"] == MONITOR_KIND
     return {
         "fit_participants": len(fit),
+        FEATURE_VERSION_KEY: feature_version,
         "calibration_participants": len(calibration),
         "planned_test_participants": len(roster),
         "test_participants": len(found),

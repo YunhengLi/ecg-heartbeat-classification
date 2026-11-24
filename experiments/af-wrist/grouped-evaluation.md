@@ -51,6 +51,8 @@ Direct PPG and the template were within four percentage points of each other in 
 
 ## Reproduce
 
+The recorded results on this page use the archive-seeded implementation at [the original benchmark revision](https://github.com/YunhengLi/ecg-heartbeat-classification/tree/3db03a9164f2e242458cdf1ba04170ccd4731330). See the [window-seeded experiment](window-seeded-evaluation.md) for the current wrist inference path.
+
 Install `requirements-af-wrist.txt` and follow the [RDDM setup](../rddm/README.md) to obtain the pinned upstream model, weights, and PTT records. Use the public record file prefixes listed in the [recorded results](grouped-results.json) to reproduce this subset. The same commands accept the full paired v6 cohort. Stage one archive per participant. Keep the inputs and feature caches outside Git.
 
 ```powershell

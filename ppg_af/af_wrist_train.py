@@ -11,7 +11,7 @@ from sklearn.metrics import average_precision_score, roc_auc_score
 
 from .af_events import AFRun
 from .af_wrist_cv import train_oof
-from .af_wrist_features import ROUTES, WINDOW_SECONDS
+from .af_wrist_features import FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION, ROUTES, WINDOW_SECONDS, read_feature_version
 from .af_wrist_operating import AFScoredRun, compare_operating_points, score_decisions, select_operating_point
 
 
@@ -29,11 +29,16 @@ def load_features(directory):
     columns = {name: [] for name in fields}
     subjects, timelines = [], []
     seen = set()
+    feature_version = None
     offset = 0
     for path in sorted(directory.glob("*.npz")):
         if path.name.endswith(".partial.npz"):
             continue
         with np.load(path, allow_pickle=False) as source:
+            version = read_feature_version(source)
+            if feature_version is not None and feature_version != version:
+                raise ValueError(f"RDDM feature versions are mixed in {directory}")
+            feature_version = version
             subject = str(source["subject_id"].item())
             if subject in seen:
                 raise ValueError(f"A participant has more than one feature archive in {directory}")
@@ -58,6 +63,7 @@ def load_features(directory):
     if not subjects:
         raise ValueError("The feature directory contains no complete participant files")
     table = {name: np.concatenate(values) for name, values in columns.items()}
+    table[FEATURE_VERSION_KEY] = feature_version
     return table, np.asarray(subjects), timelines
 
 
@@ -175,6 +181,7 @@ def evaluate(table, subjects, timelines, *, folds, inner_folds, seed, target, to
     monitor_rows = table["run_kind"] == monitor_kind
     return {
         "dataset": "AFPPGECG v6 (10.5281/zenodo.23921320)",
+        FEATURE_VERSION_KEY: table.get(FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION),
         "participants": len(np.unique(subjects)),
         "participants_with_eligible_af": len(np.unique(subjects[train_eligible & (labels == 1)])),
         "participants_with_eligible_non_af": len(np.unique(subjects[train_eligible & (labels == 0)])),

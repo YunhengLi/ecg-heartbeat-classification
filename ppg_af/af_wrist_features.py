@@ -2,6 +2,7 @@
 
 import argparse
 from pathlib import Path
+from zipfile import BadZipFile
 
 import numpy as np
 
@@ -13,6 +14,9 @@ ROUTES = ("direct_ppg", "pulse_template", "rddm")
 PTT_SUBJECTS = 22
 WINDOW_SECONDS = 30
 PPG_RATE = 100
+FEATURE_VERSION_KEY = "rddm_feature_version"
+LEGACY_FEATURE_VERSION = "archive-seed-v1"
+RDDM_FEATURE_VERSION = "window-seed-v1"
 _INTERVAL_SUPPORT = ECG_FEATURE_NAMES.index("valid_interval_fraction")
 _COHORT_FIELDS = ("subject_id", "start_s", "run_id", "run_kind", "stable_label", "reference_valid",
                   "af_intervals_s", "sync_method")
@@ -23,9 +27,18 @@ def _store_if_supported(matrix, index, features):
         matrix[index] = features
 
 
+def read_feature_version(archive):
+    if FEATURE_VERSION_KEY not in archive:
+        return LEGACY_FEATURE_VERSION
+    version = str(archive[FEATURE_VERSION_KEY].item())
+    if version not in (LEGACY_FEATURE_VERSION, RDDM_FEATURE_VERSION):
+        raise ValueError(f"Unknown RDDM feature version: {version}")
+    return version
+
+
 def extract_features(ppg_with_context, template, delay, models, *, device, batch_size):
     """Use one 30-second input for every route and abstain without usable intervals."""
-    from .rddm import generate_author_ecg
+    from .rddm_window import generate_window_seeded_ecg
 
     pulses = np.asarray(ppg_with_context, dtype=float)
     if pulses.ndim != 2 or pulses.shape[1] != (WINDOW_SECONDS + 2) * PPG_RATE:
@@ -46,7 +59,7 @@ def extract_features(ppg_with_context, template, delay, models, *, device, batch
     # in the window, so a decision at its end does not use future measurements.
     pad = 2 * PPG_RATE
     model_input = np.pad(core[rows], ((0, 0), (pad, 0)), mode="reflect")
-    estimates, _, _ = generate_author_ecg(model_input, PPG_RATE, models, batch_size, device)
+    estimates = generate_window_seeded_ecg(model_input, PPG_RATE, models, batch_size=batch_size, device=device)
     for index, pulse, forecast in zip(rows, model_input, estimates, strict=True):
         direct, quality[index] = ppg_features(core[index], PPG_RATE)
         corrected, _ = correct_timing(pulse, forecast, delay, PPG_RATE)
@@ -68,9 +81,20 @@ def _archive_features(source, destination, template, delay, models, *, device, b
             archive["ppg"], template, delay, models, device=device, batch_size=batch_size,
         )
     temporary = destination.with_suffix(".partial.npz")
-    np.savez_compressed(temporary, **metadata, **matrices, ppg_available=available, quality=quality)
+    np.savez_compressed(temporary, **metadata, **matrices, ppg_available=available, quality=quality,
+                        **{FEATURE_VERSION_KEY: RDDM_FEATURE_VERSION})
     temporary.replace(destination)
     print(f"Cached {len(quality)} windows from {source.stem}", flush=True)
+
+
+def _current_cache(source, destination):
+    if not destination.exists() or destination.stat().st_mtime_ns < source.stat().st_mtime_ns:
+        return False
+    try:
+        with np.load(destination, allow_pickle=False) as archive:
+            return read_feature_version(archive) == RDDM_FEATURE_VERSION
+    except (OSError, ValueError, EOFError, BadZipFile):
+        return False
 
 
 def main():
@@ -78,7 +102,8 @@ def main():
     for name in ("cohort", "output", "ptt-dir", "upstream", "weights"):
         parser.add_argument(f"--{name}", type=Path, required=True)
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
-    parser.add_argument("--batch-size", type=int, default=8)
+    parser.add_argument("--batch-size", type=int, default=8,
+                        help="Number of wrist windows to prepare at once. Each window has its own model call.")
     parser.add_argument("--threads", type=int, default=6)
     parser.add_argument("--overwrite", action="store_true")
     args = parser.parse_args()
@@ -88,8 +113,7 @@ def main():
     sources = sorted(path for path in args.cohort.glob("*.npz") if not path.name.endswith(".partial.npz"))
     if not sources:
         parser.error("The cohort directory contains no complete subject archives")
-    pending = [path for path in sources if args.overwrite or not (args.output / path.name).exists()
-               or (args.output / path.name).stat().st_mtime_ns < path.stat().st_mtime_ns]
+    pending = [path for path in sources if args.overwrite or not _current_cache(path, args.output / path.name)]
     if not pending:
         print("Current features already exist for all staged subjects")
         return

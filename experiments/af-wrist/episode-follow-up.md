@@ -43,6 +43,8 @@ The author runner initializes its random seed once per input archive and draws d
 
 ## Run the replay and independent test
 
+The recorded holdout on this page uses archive-seeded features from [the original follow-up revision](https://github.com/YunhengLi/ecg-heartbeat-classification/tree/6c797f7e28aaba8588c7aa96d853181766d7006b). The current wrist implementation uses the [window-seeded protocol](window-seeded-evaluation.md).
+
 First use the [original staging and feature extraction commands](grouped-evaluation.md#reproduce) to prepare the development archives. Preserve the private model lock separately from the recordings and the results.
 
 ```powershell

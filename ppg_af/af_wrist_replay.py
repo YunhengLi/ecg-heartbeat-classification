@@ -9,7 +9,7 @@ import numpy as np
 
 from .af_events import evaluate_af
 from .af_wrist_cv import train_oof
-from .af_wrist_features import PPG_RATE, ROUTES, WINDOW_SECONDS
+from .af_wrist_features import FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION, PPG_RATE, ROUTES, WINDOW_SECONDS
 from .af_wrist_train import _timeline_runs, load_features
 
 
@@ -126,6 +126,8 @@ def replay(features_dir, report, waveforms_dir=None):
     if actual_subjects != expected_subjects:
         raise ValueError("Feature cohort must match the recorded prior participants exactly")
     table, subjects, timelines = load_features(features_dir)
+    if table[FEATURE_VERSION_KEY] != report.get(FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION):
+        raise ValueError("Feature version must match the recorded AF report")
     constant = None if waveforms_dir is None else flat_raw_windows(features_dir, waveforms_dir, expected_subjects)
     labels = table["stable_label"]
     availability = {route: np.isfinite(table[route]).all(axis=1) for route in ROUTES}
