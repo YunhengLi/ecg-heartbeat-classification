@@ -1,0 +1,141 @@
+{
+  "scope": "Nested participant-held-out development evaluation",
+  "development_participants": 10,
+  "outer_folds": 5,
+  "decision_stride_seconds": 10,
+  "feature_window_seconds": 30,
+  "target_episode_sensitivity": 0.8,
+  "sensitivity_tolerance": 0.1,
+  "baseline": {
+    "complete_episodes": 17,
+    "episodes_detected": 12,
+    "episode_sensitivity": 0.7058823529411765,
+    "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+    "wrist_ecg_observed_seconds": 2790.0,
+    "wrist_non_af_seconds": 2040.0,
+    "wrist_false_alerts": 6,
+    "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 12,
+    "possible_non_af_alert_timestamps": 0,
+    "inner_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  },
+  "recent_feature": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 9,
+      "episode_sensitivity": 0.5294117647058824,
+      "median_delay_seconds_in_detected_episodes": 23.529999999998836,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 6,
+      "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 9,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 0,
+        "lost": 3,
+        "detected_by_both": 9,
+        "detected_by_neither": 5,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 23.529999999998836,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 0,
+        "shared_earlier": 0,
+        "shared_unchanged": 9
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 6,
+        "shared_exact": 4,
+        "baseline_only_exact": 2,
+        "candidate_only_exact": 2
+      }
+    },
+    "sensitivity_change": -0.17647058823529416,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "input_support": {
+      "classifier_fit": {
+        "shared_rows": 114,
+        "recent_interval_supported": 112,
+        "full_window_fallback": 2
+      },
+      "evaluation": {
+        "shared_rows": 513,
+        "recent_interval_supported": 507,
+        "full_window_fallback": 6
+      },
+      "preceding_history": {
+        "shared_rows": 175,
+        "recent_interval_supported": 171,
+        "full_window_fallback": 4
+      }
+    },
+    "met_target_without_extra_false_starts": false,
+    "inner_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  },
+  "nested_regularization": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 13,
+      "episode_sensitivity": 0.7647058823529411,
+      "median_delay_seconds_in_detected_episodes": 24.713999999978114,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 6,
+      "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 13,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 2,
+        "detected_by_both": 10,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 24.713999999978114,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 1,
+        "shared_earlier": 4,
+        "shared_unchanged": 5
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 6,
+        "shared_exact": 3,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 3
+      }
+    },
+    "sensitivity_change": 0.05882352941176461,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "candidate_C": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "selected_outer_folds_by_C": {
+      "1.0": 2,
+      "10.0": 3
+    },
+    "inner_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  }
+}

@@ -1,6 +1,7 @@
 """Fit comparable AF classifiers and calibrate them without held-out subjects."""
 
 from collections.abc import Callable, Mapping
+from math import isfinite
 from operator import index
 
 import numpy as np
@@ -33,13 +34,13 @@ def _both_classes(label_values):
     return bool(np.any(label_values == 0) and np.any(label_values == 1))
 
 
-def _fit_and_predict(features, labels, train_rows, score_rows):
+def _fit_and_predict(features, labels, train_rows, score_rows, *, regularization):
     predictions = np.full(len(score_rows), np.nan)
     available = np.isfinite(features[score_rows]).all(axis=1)
     if len(train_rows) and np.any(available):
         classifier = make_pipeline(
             StandardScaler(),
-            LogisticRegression(class_weight="balanced", max_iter=1000),
+            LogisticRegression(C=regularization, class_weight="balanced", max_iter=1000),
         )
         classifier.fit(features[train_rows], labels[train_rows])
         predictions[available] = classifier.predict_proba(features[score_rows[available]])[:, 1]
@@ -65,7 +66,7 @@ def _nested_folds(train_rows, fit_labels, subjects, masks, max_splits, seed):
 
 def train_oof(
     features: Mapping[str, np.ndarray], labels, subjects, *, n_splits=5, inner_splits=3,
-    seed=2026, train_eligible=None, calibration_selector: Callable | None = None,
+    seed=2026, train_eligible=None, calibration_selector: Callable | None = None, regularization=1.0,
 ) -> dict:
     """Fit one logistic model per route on the same outer participant folds.
 
@@ -79,7 +80,10 @@ def train_oof(
     was produced on an inner held-out participant. Return a dictionary with
     ``threshold`` and any calibration diagnostics. A missing threshold produces
     unavailable decisions, with the raw held-out scores still returned.
+    ``regularization`` is the positive logistic regression C in every fit.
     """
+    if not isfinite(regularization) or regularization <= 0:
+        raise ValueError("Logistic regression C must be positive and finite")
     labels = np.asarray(labels)
     subjects = np.asarray(subjects, dtype=str)
     if (labels.ndim != 1 or not len(labels) or not np.isin(labels, (-1, 0, 1)).all()
@@ -121,7 +125,8 @@ def train_oof(
             if not _both_classes(labels[fit]):
                 option["status"] = "insufficient_training_labels"
             else:
-                history["scores"][test] = _fit_and_predict(matrix, labels, fit, test)
+                history["scores"][test] = _fit_and_predict(matrix, labels, fit, test,
+                                                           regularization=regularization)
                 if calibration_selector is not None:
                     option["status"] = "insufficient_calibration_training_labels"
                 if route in supported:
@@ -129,7 +134,9 @@ def train_oof(
                     for inner_fold in range(inner_count):
                         inner_fit = training[(inner != inner_fold) & masks[route][training]]
                         inner_test = inner == inner_fold
-                        calibration[inner_test] = _fit_and_predict(matrix, labels, inner_fit, training[inner_test])
+                        calibration[inner_test] = _fit_and_predict(
+                            matrix, labels, inner_fit, training[inner_test], regularization=regularization,
+                        )
                     option = calibration_selector(calibration, training.copy())
                     threshold = option["threshold"]
                     if threshold is not None:
