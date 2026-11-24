@@ -1,0 +1,163 @@
+{
+  "scope": "Descriptive paired participant-cluster bootstrap of frozen retrospective wrist replays",
+  "retrospective_participants": 25,
+  "resamples": 10000,
+  "seed": 20261124,
+  "reconciled_headlines": {
+    "baseline": {
+      "complete_episodes": 260,
+      "episodes_detected": 155,
+      "episode_sensitivity": 0.5961538461538461,
+      "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 45,
+      "false_alerts_per_observed_wrist_hour": 21.6,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 155,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "quality": {
+      "complete_episodes": 260,
+      "episodes_detected": 165,
+      "episode_sensitivity": 0.6346153846153846,
+      "median_delay_seconds_in_detected_episodes": 26.55600000001141,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 53,
+      "false_alerts_per_observed_wrist_hour": 25.44,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 165,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "quality_interactions": {
+      "complete_episodes": 260,
+      "episodes_detected": 168,
+      "episode_sensitivity": 0.6461538461538462,
+      "median_delay_seconds_in_detected_episodes": 27.726999999998952,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 48,
+      "false_alerts_per_observed_wrist_hour": 23.04,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 168,
+      "possible_non_af_alert_timestamps": 0
+    }
+  },
+  "participant_recall": {
+    "baseline": {
+      "macro_recall_16": 0.5565167300317648,
+      "largest_episode_contributor": {
+        "detected": 107,
+        "complete": 157
+      },
+      "other_15_participants_with_complete_episodes": {
+        "detected": 48,
+        "complete": 103,
+        "macro_recall": 0.5481826012058572
+      }
+    },
+    "quality": {
+      "macro_recall_16": 0.5074824820191247,
+      "largest_episode_contributor": {
+        "detected": 109,
+        "complete": 157
+      },
+      "other_15_participants_with_complete_episodes": {
+        "detected": 56,
+        "complete": 103,
+        "macro_recall": 0.4950301464254953
+      }
+    },
+    "quality_interactions": {
+      "macro_recall_16": 0.5118429471354038,
+      "largest_episode_contributor": {
+        "detected": 109,
+        "complete": 157
+      },
+      "other_15_participants_with_complete_episodes": {
+        "detected": 59,
+        "complete": 103,
+        "macro_recall": 0.4996813092161929
+      }
+    }
+  },
+  "paired_differences_versus_historical": {
+    "quality": {
+      "sensitivity_difference": {
+        "point": 0.038461538461538464,
+        "percentile_95": [
+          -0.04718104222821203,
+          0.13829787234042554
+        ],
+        "valid_paired_draws": 10000
+      },
+      "false_starts_per_observed_wrist_hour_difference": {
+        "point": 3.84,
+        "percentile_95": [
+          -1.92,
+          10.56
+        ],
+        "valid_paired_draws": 10000
+      },
+      "participant_macro_sensitivity_difference": -0.049034248012640114,
+      "participants_with_complete_episodes_by_detection_change": {
+        "increased": 5,
+        "decreased": 3,
+        "unchanged": 8
+      },
+      "paired_counts_by_contribution_stratum": {
+        "largest": {
+          "gained": 15,
+          "lost": 13
+        },
+        "others": {
+          "gained": 13,
+          "lost": 5
+        }
+      },
+      "largest_fraction_of_net_detection_gain": 0.2,
+      "largest_fraction_of_gross_gains": 0.5357142857142857
+    },
+    "quality_interactions": {
+      "sensitivity_difference": {
+        "point": 0.05,
+        "percentile_95": [
+          -0.04718104222821203,
+          0.18310127943231908
+        ],
+        "valid_paired_draws": 10000
+      },
+      "false_starts_per_observed_wrist_hour_difference": {
+        "point": 1.44,
+        "percentile_95": [
+          -4.32,
+          6.72
+        ],
+        "valid_paired_draws": 10000
+      },
+      "participant_macro_sensitivity_difference": -0.044673782896361036,
+      "participants_with_complete_episodes_by_detection_change": {
+        "increased": 5,
+        "decreased": 3,
+        "unchanged": 8
+      },
+      "paired_counts_by_contribution_stratum": {
+        "largest": {
+          "gained": 16,
+          "lost": 14
+        },
+        "others": {
+          "gained": 16,
+          "lost": 5
+        }
+      },
+      "largest_fraction_of_net_detection_gain": 0.15384615384615385,
+      "largest_fraction_of_gross_gains": 0.5
+    }
+  },
+  "retrospective_results_sha256": "81a6af20f98bceccce288ad4002d0634edaa850576739cd1b7bc29350ffa4cd7"
+}

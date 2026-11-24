@@ -1,0 +1,352 @@
+{
+  "scope": "Development-only quality-model participant influence for 107 added stable windows",
+  "independent_predictions": 0,
+  "trials": [
+    {
+      "seed": 2026,
+      "original_summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 14,
+        "episode_sensitivity": 0.8235294117647058,
+        "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 14,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "expanded_summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 11,
+        "episode_sensitivity": 0.6470588235294118,
+        "median_delay_seconds_in_detected_episodes": 21.18599999998696,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 1,
+        "false_alerts_per_observed_wrist_hour": 1.2903225806451613,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 11,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "original_participant_contributions": {
+        "participants_with_complete_af": 4,
+        "complete_episode_counts_sorted": [
+          13,
+          2,
+          1,
+          1
+        ],
+        "participant_macro_episode_recall": 0.7115384615384616,
+        "participant_recall_range": [
+          0.0,
+          1.0
+        ],
+        "participant_counts_by_detected_episode_count": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "11": 1
+        },
+        "participants_with_any_detection": 3,
+        "participants_with_zero_detection": 1,
+        "participants_with_wrist_false_start": 2,
+        "largest_one_two_contributions_to_wrist_false_starts": [
+          3,
+          4
+        ],
+        "strata": {
+          "largest_episode_contributor": {
+            "participants": 1,
+            "complete_episodes": 13,
+            "detections": 11,
+            "wrist_false_starts": 3
+          },
+          "two_largest_episode_contributors": {
+            "participants": 2,
+            "complete_episodes": 15,
+            "detections": 13,
+            "wrist_false_starts": 4
+          },
+          "other_episode_contributors": {
+            "participants": 3,
+            "complete_episodes": 4,
+            "detections": 3,
+            "wrist_false_starts": 1
+          },
+          "participants_without_complete_af": {
+            "participants": 6,
+            "complete_episodes": 0,
+            "detections": 0,
+            "wrist_false_starts": 0
+          }
+        }
+      },
+      "expanded_participant_contributions": {
+        "participants_with_complete_af": 4,
+        "complete_episode_counts_sorted": [
+          13,
+          2,
+          1,
+          1
+        ],
+        "participant_macro_episode_recall": 0.6538461538461539,
+        "participant_recall_range": [
+          0.0,
+          1.0
+        ],
+        "participant_counts_by_detected_episode_count": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "8": 1
+        },
+        "participants_with_any_detection": 3,
+        "participants_with_zero_detection": 1,
+        "participants_with_wrist_false_start": 1,
+        "largest_one_two_contributions_to_wrist_false_starts": [
+          1,
+          1
+        ],
+        "strata": {
+          "largest_episode_contributor": {
+            "participants": 1,
+            "complete_episodes": 13,
+            "detections": 8,
+            "wrist_false_starts": 0
+          },
+          "two_largest_episode_contributors": {
+            "participants": 2,
+            "complete_episodes": 15,
+            "detections": 10,
+            "wrist_false_starts": 1
+          },
+          "other_episode_contributors": {
+            "participants": 3,
+            "complete_episodes": 4,
+            "detections": 3,
+            "wrist_false_starts": 1
+          },
+          "participants_without_complete_af": {
+            "participants": 6,
+            "complete_episodes": 0,
+            "detections": 0,
+            "wrist_false_starts": 0
+          }
+        }
+      },
+      "paired_episode_changes_by_stratum": {
+        "largest_episode_contributor": {
+          "participants": 1,
+          "complete_episodes": 13,
+          "original_detections": 11,
+          "expanded_detections": 8,
+          "gained": 1,
+          "lost": 4
+        },
+        "remaining_episode_contributors": {
+          "participants": 3,
+          "complete_episodes": 4,
+          "original_detections": 3,
+          "expanded_detections": 3,
+          "gained": 0,
+          "lost": 0
+        }
+      },
+      "participant_changes": {
+        "participants_with_detection_decrease": 1,
+        "participants_with_detection_increase": 0,
+        "participants_with_detection_unchanged": 3,
+        "participant_change_in_detected_episode_count_range": [
+          -3,
+          0
+        ],
+        "detection_count_change_total": -3,
+        "detection_count_change_largest_episode_contributor": -3,
+        "detection_count_change_two_largest_episode_contributors": -3,
+        "detection_count_change_other_episode_contributors": 0,
+        "participant_macro_recall_change": -0.057692307692307696,
+        "participants_with_wrist_false_start_decrease": 1,
+        "participants_with_wrist_false_start_increase": 0,
+        "participants_with_wrist_false_start_unchanged": 9,
+        "wrist_false_start_change_total": -3,
+        "wrist_false_start_change_largest_episode_contributor": -3
+      }
+    },
+    {
+      "seed": 2030,
+      "original_summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 1,
+        "episode_sensitivity": 0.058823529411764705,
+        "median_delay_seconds_in_detected_episodes": 23.529999999998836,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 0,
+        "false_alerts_per_observed_wrist_hour": 0.0,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 1,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "expanded_summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 12,
+        "episode_sensitivity": 0.7058823529411765,
+        "median_delay_seconds_in_detected_episodes": 23.95799999999872,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 2,
+        "false_alerts_per_observed_wrist_hour": 2.5806451612903225,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 12,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "original_participant_contributions": {
+        "participants_with_complete_af": 4,
+        "complete_episode_counts_sorted": [
+          13,
+          2,
+          1,
+          1
+        ],
+        "participant_macro_episode_recall": 0.25,
+        "participant_recall_range": [
+          0.0,
+          1.0
+        ],
+        "participant_counts_by_detected_episode_count": {
+          "0": 3,
+          "1": 1
+        },
+        "participants_with_any_detection": 1,
+        "participants_with_zero_detection": 3,
+        "participants_with_wrist_false_start": 0,
+        "largest_one_two_contributions_to_wrist_false_starts": [
+          0,
+          0
+        ],
+        "strata": {
+          "largest_episode_contributor": {
+            "participants": 1,
+            "complete_episodes": 13,
+            "detections": 0,
+            "wrist_false_starts": 0
+          },
+          "two_largest_episode_contributors": {
+            "participants": 2,
+            "complete_episodes": 15,
+            "detections": 0,
+            "wrist_false_starts": 0
+          },
+          "other_episode_contributors": {
+            "participants": 3,
+            "complete_episodes": 4,
+            "detections": 1,
+            "wrist_false_starts": 0
+          },
+          "participants_without_complete_af": {
+            "participants": 6,
+            "complete_episodes": 0,
+            "detections": 0,
+            "wrist_false_starts": 0
+          }
+        }
+      },
+      "expanded_participant_contributions": {
+        "participants_with_complete_af": 4,
+        "complete_episode_counts_sorted": [
+          13,
+          2,
+          1,
+          1
+        ],
+        "participant_macro_episode_recall": 0.6730769230769231,
+        "participant_recall_range": [
+          0.0,
+          1.0
+        ],
+        "participant_counts_by_detected_episode_count": {
+          "0": 1,
+          "1": 1,
+          "2": 1,
+          "9": 1
+        },
+        "participants_with_any_detection": 3,
+        "participants_with_zero_detection": 1,
+        "participants_with_wrist_false_start": 2,
+        "largest_one_two_contributions_to_wrist_false_starts": [
+          1,
+          2
+        ],
+        "strata": {
+          "largest_episode_contributor": {
+            "participants": 1,
+            "complete_episodes": 13,
+            "detections": 9,
+            "wrist_false_starts": 1
+          },
+          "two_largest_episode_contributors": {
+            "participants": 2,
+            "complete_episodes": 15,
+            "detections": 11,
+            "wrist_false_starts": 2
+          },
+          "other_episode_contributors": {
+            "participants": 3,
+            "complete_episodes": 4,
+            "detections": 3,
+            "wrist_false_starts": 1
+          },
+          "participants_without_complete_af": {
+            "participants": 6,
+            "complete_episodes": 0,
+            "detections": 0,
+            "wrist_false_starts": 0
+          }
+        }
+      },
+      "paired_episode_changes_by_stratum": {
+        "largest_episode_contributor": {
+          "participants": 1,
+          "complete_episodes": 13,
+          "original_detections": 0,
+          "expanded_detections": 9,
+          "gained": 9,
+          "lost": 0
+        },
+        "remaining_episode_contributors": {
+          "participants": 3,
+          "complete_episodes": 4,
+          "original_detections": 1,
+          "expanded_detections": 3,
+          "gained": 2,
+          "lost": 0
+        }
+      },
+      "participant_changes": {
+        "participants_with_detection_decrease": 0,
+        "participants_with_detection_increase": 2,
+        "participants_with_detection_unchanged": 2,
+        "participant_change_in_detected_episode_count_range": [
+          0,
+          9
+        ],
+        "detection_count_change_total": 11,
+        "detection_count_change_largest_episode_contributor": 9,
+        "detection_count_change_two_largest_episode_contributors": 11,
+        "detection_count_change_other_episode_contributors": 2,
+        "participant_macro_recall_change": 0.4230769230769231,
+        "participants_with_wrist_false_start_decrease": 0,
+        "participants_with_wrist_false_start_increase": 2,
+        "participants_with_wrist_false_start_unchanged": 8,
+        "wrist_false_start_change_total": 2,
+        "wrist_false_start_change_largest_episode_contributor": 1
+      }
+    }
+  ]
+}

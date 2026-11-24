@@ -85,6 +85,8 @@ The [PPG quality study](quality-study.md) tests whether rhythm features are more
 
 The [uncertainty study](quality-uncertainty.md) estimates paired participant-level intervals for that fixed development comparison. The [quality retrospective replay](quality-retrospective-study.md) compares two frozen quality models on the previously audited 25-person cohort.
 
+The [retrospective uncertainty study](quality-retrospective-uncertainty-study.md) compares participant-average sensitivity and paired changes in pooled sensitivity and false starts.
+
 The [ICU transfer study](mimic-transfer-study.md) tests frozen source scores and feature fusion on the original wrist development folds.
 
 The [source CNN study](mimic-cnn-study.md) trains a small neural model on the same source PPG windows and compares frozen transfer on the wrist clock.
@@ -106,6 +108,8 @@ The [native wrist waveform study](waveform-study.md) compares external and local
 The [fold-local template study](local-template-study.md) tests whether fitting the wrist waveform inside each training fold improves AF alerts.
 
 The [ECG annotation transfer study](afdb-transfer-study.md) tests a frozen external rhythm model on measured and PPG-derived ECG timing features.
+
+The [sampling stress study](sampling-stress.md) evaluates a synthetic 50 Hz bandwidth change with the original model cutoffs. The [extra episode replay](extra-episode-study.md) verifies a short new development event without changing the benchmark.
 
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
