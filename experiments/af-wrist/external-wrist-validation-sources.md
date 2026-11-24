@@ -14,4 +14,6 @@ For Pulsewatch, a small permitted fixture would establish the participant and se
 
 The 30-second pipeline needs native waveforms and rates, participant and session linkage, an ECG–PPG clock map, reference-valid and unknown periods, ECG-adjudicated AF onset and offset, and the native PPG history preceding each evaluation block. Rhythm-blind monitoring time supplies the false-start denominator. A fixture can verify these fields and timing on a few spans before the model is frozen for independent scoring.
 
-MIMIC PERform AF supplies paired ICU waveforms with whole-record rhythm labels. It supports the [separate reconstruction benchmark](../rddm/mimic-perform-waveform.md). The source review identified candidate data but obtained no new wrist waveforms.
+MIMIC PERform AF supplies paired ICU waveforms with whole-record rhythm labels. It supports the [separate reconstruction benchmark](../rddm/mimic-perform-waveform.md).
+
+Two public datasets cover separate parts of the project. [PhysioNet Wrist PPG During Exercise](https://physionet.org/content/wrist/1.0.0/) supplies wrist motion and manually marked ECG R peaks for the [exercise stress test](exercise-stress-study.md). VitalDB supplies surgical plethysmography and ECG beat rhythm labels, with AF and flutter combined. The [VitalDB preflight](vitaldb-preflight.md) verifies the native clock for a labeled-window source study. A fresh wrist AF event validation still requires a source with wrist PPG and adjudicated episode boundaries.

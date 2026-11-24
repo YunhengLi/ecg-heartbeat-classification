@@ -1,0 +1,96 @@
+{
+  "source": "https://physionet.org/content/vitaldb-arrhythmia/1.0.0/",
+  "track_api": "https://api.vitaldb.net/",
+  "annotation_release_sha256": "d896fcc1420723d66649d0cf172c446e0185cc0913774326a66955882165d56a",
+  "track_listing_sha256": "6bfda7ac524f2f219673b893e7d62e526c45e8f2daa02c47fc4442e613efd0bd",
+  "source_waveform_rate_hz": 500,
+  "reference_maximum_beat_gap_seconds": 2.0,
+  "peak_agreement_tolerance_seconds": 0.15,
+  "window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "source_support": {
+    "annotated_cases": 482,
+    "annotated_participants": 473,
+    "annotated_af_or_flutter_cases": 111,
+    "paired_catalog_cases": 429,
+    "paired_catalog_participants": 422,
+    "paired_catalog_af_or_flutter_cases": 105,
+    "paired_catalog_af_or_flutter_participants": 102,
+    "source_af_label": "AFIB/AFL",
+    "rhythm_labels_in_paired_catalog": [
+      "AFIB/AFL",
+      "AVB",
+      "N",
+      "Noise",
+      "Patterned Atrial Ectopy",
+      "Patterned Ventricular Ectopy",
+      "SND",
+      "SVTA",
+      "Unclassifiable",
+      "VT",
+      "WAP/MAT"
+    ],
+    "candidate_clean_windows_by_label": {
+      "N": 17912,
+      "Patterned Ventricular Ectopy": 626,
+      "SVTA": 172,
+      "AFIB/AFL": 8721,
+      "Patterned Atrial Ectopy": 522,
+      "WAP/MAT": 559,
+      "SND": 1275,
+      "AVB": 220
+    },
+    "cases_with_candidate_clean_windows_by_label": {
+      "N": 312,
+      "Patterned Ventricular Ectopy": 36,
+      "SVTA": 6,
+      "AFIB/AFL": 102,
+      "Patterned Atrial Ectopy": 31,
+      "WAP/MAT": 17,
+      "SND": 43,
+      "AVB": 8
+    }
+  },
+  "paired_waveform_pilot": {
+    "participants": 6,
+    "cases": 6,
+    "case_counts_by_stratum": {
+      "af_flutter_and_sinus": 2,
+      "af_flutter_without_sinus": 2,
+      "ectopy_and_sinus_without_af_flutter": 2
+    },
+    "native": {
+      "annotation_stable_windows": 371,
+      "finite_paired_windows": 371,
+      "finite_paired_windows_by_label": {
+        "N": 176,
+        "AFIB/AFL": 146,
+        "SND": 10,
+        "Patterned Ventricular Ectopy": 39
+      },
+      "reference_peaks_checked": 4129,
+      "reference_peaks_with_nearby_waveform_peak": 4128,
+      "case_peak_agreement_min": 0.9986301369863013,
+      "case_peak_agreement_median": 1.0
+    },
+    "legacy_csv": {
+      "annotation_stable_windows": 371,
+      "finite_paired_windows": 371,
+      "finite_paired_windows_by_label": {
+        "N": 176,
+        "AFIB/AFL": 146,
+        "SND": 10,
+        "Patterned Ventricular Ectopy": 39
+      },
+      "reference_peaks_checked": 4129,
+      "reference_peaks_with_nearby_waveform_peak": 1447,
+      "case_peak_agreement_min": 0.0,
+      "case_peak_agreement_median": 0.1266425442772805
+    },
+    "native_minus_legacy_first_ecg_seconds": {
+      "minimum": 0.12959121704101584,
+      "maximum": 0.8698576812744139,
+      "median": 0.49902925872802745
+    }
+  }
+}

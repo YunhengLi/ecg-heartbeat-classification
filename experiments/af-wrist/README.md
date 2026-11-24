@@ -115,6 +115,8 @@ The [sampling stress study](sampling-stress.md) evaluates a synthetic 50 Hz band
 
 The [wrist exercise stress study](exercise-stress-study.md) compares heart-rate error, the native PPG quality score, and frozen alert behavior with an independent device and published ECG R peaks.
 
+The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
