@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 from sklearn.metrics import average_precision_score, roc_auc_score
 
-from .af_events import AFRun
+from .af_events import AFRun, confirm_alerts
 from .af_wrist_cv import train_oof
 from .af_wrist_features import FEATURE_VERSION_KEY, LEGACY_FEATURE_VERSION, ROUTES, WINDOW_SECONDS, read_feature_version
 from .af_wrist_operating import AFScoredRun, compare_operating_points, score_decisions, select_operating_point
@@ -143,7 +143,8 @@ def _compare_window_points(points, *, target, tolerance):
     }
 
 
-def evaluate(table, subjects, timelines, *, folds, inner_folds, seed, target, tolerance, monitor_kind="monitor"):
+def evaluate(table, subjects, timelines, *, folds, inner_folds, seed, target, tolerance, monitor_kind="monitor",
+             confirmation_windows=1, exhaustive_thresholds=False):
     labels = table["stable_label"]
     availability = {name: np.isfinite(table[name]).all(axis=1) for name in ROUTES}
     shared = np.logical_and.reduce(list(availability.values()))
@@ -155,7 +156,9 @@ def evaluate(table, subjects, timelines, *, folds, inner_folds, seed, target, to
         on_original_grid[rows] = scores
         monitor, episodes = _timeline_runs(timelines, set(subjects[rows]), on_original_grid, table,
                                            scored=True, monitor_kind=monitor_kind)
-        return {**select_operating_point(monitor, episode_runs=episodes, target_sensitivity=target),
+        cutoff_limit = max(3, len(rows) + 1) if exhaustive_thresholds else 101
+        return {**select_operating_point(monitor, episode_runs=episodes, target_sensitivity=target,
+                                        max_thresholds=cutoff_limit, confirmation_windows=confirmation_windows),
                 "window_calibration": _stable_operating_point(labels[rows], scores, target)}
 
     training = train_oof(features, labels, subjects, n_splits=folds, inner_splits=inner_folds,
@@ -164,11 +167,12 @@ def evaluate(table, subjects, timelines, *, folds, inner_folds, seed, target, to
     for name, route in training["routes"].items():
         monitor, episodes = _timeline_runs(timelines, set(subjects), route["decisions"], table,
                                            scored=False, monitor_kind=monitor_kind)
-        test_metrics[name] = score_decisions(monitor, episode_runs=episodes)
+        test_metrics[name] = score_decisions(confirm_alerts(monitor, confirmation_windows),
+                                            episode_runs=confirm_alerts(episodes, confirmation_windows))
         window_metrics[name], decisions = _score_window_comparison(route, training["fold_assignment"], labels)
         window_monitor, _ = _timeline_runs(timelines, set(subjects), decisions, table,
                                             scored=False, monitor_kind=monitor_kind)
-        window_calibrated_alerts[name] = score_decisions(window_monitor)["burden_metrics"]
+        window_calibrated_alerts[name] = score_decisions(confirm_alerts(window_monitor, confirmation_windows))["burden_metrics"]
         calibration[name] = route["folds"]
     target_met = {name: all(fold["operating_point"]["status"] == "target_met" for fold in history)
                   for name, history in calibration.items()}

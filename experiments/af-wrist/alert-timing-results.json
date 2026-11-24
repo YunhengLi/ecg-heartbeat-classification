@@ -1,0 +1,407 @@
+{
+  "scope": "Development-only comparison with unchanged ECG event boundaries",
+  "rddm_feature_version": "window-seed-v1",
+  "development_participants": 10,
+  "fixed_split_fit_participants": 5,
+  "fixed_split_calibration_participants": 5,
+  "target_episode_sensitivity": 0.8,
+  "confirmation_windows": [
+    1,
+    2
+  ],
+  "fixed_thresholds": {
+    "direct_ppg": {
+      "1": {
+        "threshold": 0.3870824374833335,
+        "complete_episodes": 17,
+        "episodes_detected": 9,
+        "episode_sensitivity": 0.5294117647058824,
+        "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 9.6
+      },
+      "2": {
+        "threshold": 0.3870824374833335,
+        "complete_episodes": 17,
+        "episodes_detected": 9,
+        "episode_sensitivity": 0.5294117647058824,
+        "median_delay_seconds_in_detected_episodes": 15.679999999993015,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 3,
+        "false_alerts_per_observed_wrist_hour": 7.2
+      }
+    },
+    "pulse_template": {
+      "1": {
+        "threshold": 0.4159220411387071,
+        "complete_episodes": 17,
+        "episodes_detected": 11,
+        "episode_sensitivity": 0.6470588235294118,
+        "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 9.6
+      },
+      "2": {
+        "threshold": 0.4159220411387071,
+        "complete_episodes": 17,
+        "episodes_detected": 8,
+        "episode_sensitivity": 0.47058823529411764,
+        "median_delay_seconds_in_detected_episodes": 40.28500000000349,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 3,
+        "false_alerts_per_observed_wrist_hour": 7.2
+      }
+    },
+    "rddm": {
+      "1": {
+        "threshold": 0.6150866802688544,
+        "complete_episodes": 17,
+        "episodes_detected": 10,
+        "episode_sensitivity": 0.5882352941176471,
+        "median_delay_seconds_in_detected_episodes": 25.90799999999581,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 9,
+        "false_alerts_per_observed_wrist_hour": 21.6
+      },
+      "2": {
+        "threshold": 0.6150866802688544,
+        "complete_episodes": 17,
+        "episodes_detected": 2,
+        "episode_sensitivity": 0.11764705882352941,
+        "median_delay_seconds_in_detected_episodes": 14.549999999988358,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 2,
+        "false_alerts_per_observed_wrist_hour": 4.8
+      }
+    }
+  },
+  "recalibrated_thresholds": {
+    "direct_ppg": {
+      "1": {
+        "threshold": 0.3870824374833335,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 9,
+        "episode_sensitivity": 0.5294117647058824,
+        "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 9.6
+      },
+      "2": {
+        "threshold": 0.0600333151511441,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 13,
+        "episode_sensitivity": 0.7647058823529411,
+        "median_delay_seconds_in_detected_episodes": 11.185999999986961,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 3,
+        "false_alerts_per_observed_wrist_hour": 7.2
+      }
+    },
+    "pulse_template": {
+      "1": {
+        "threshold": 0.4159220411387071,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 11,
+        "episode_sensitivity": 0.6470588235294118,
+        "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 9.6
+      },
+      "2": {
+        "threshold": 0.04418503452970971,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 13,
+        "episode_sensitivity": 0.7647058823529411,
+        "median_delay_seconds_in_detected_episodes": 11.185999999986961,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 3,
+        "false_alerts_per_observed_wrist_hour": 7.2
+      }
+    },
+    "rddm": {
+      "1": {
+        "threshold": 0.6150866802688544,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 10,
+        "episode_sensitivity": 0.5882352941176471,
+        "median_delay_seconds_in_detected_episodes": 25.90799999999581,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 9,
+        "false_alerts_per_observed_wrist_hour": 21.6
+      },
+      "2": {
+        "threshold": 0.2653397067554807,
+        "status": "target_not_met",
+        "threshold_candidates": 137,
+        "complete_episodes": 17,
+        "episodes_detected": 13,
+        "episode_sensitivity": 0.7647058823529411,
+        "median_delay_seconds_in_detected_episodes": 10.701999999990221,
+        "wrist_ecg_observed_seconds": 1500.0,
+        "wrist_non_af_seconds": 1200.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 9.6
+      }
+    }
+  },
+  "nested_development_cv": {
+    "outer_folds": 5,
+    "max_inner_folds": 3,
+    "seed": 2026,
+    "rules": {
+      "1": {
+        "operating_point_status": "held_out_sensitivities_differ",
+        "routes": {
+          "direct_ppg": {
+            "complete_episodes": 17,
+            "episodes_detected": 9,
+            "episode_sensitivity": 0.5294117647058824,
+            "median_delay_seconds_in_detected_episodes": 33.529999999998836,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 6,
+            "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+            "outer_folds_with_inner_threshold_at_target": 0
+          },
+          "pulse_template": {
+            "complete_episodes": 17,
+            "episodes_detected": 10,
+            "episode_sensitivity": 0.5882352941176471,
+            "median_delay_seconds_in_detected_episodes": 37.57499999998254,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 7,
+            "false_alerts_per_observed_wrist_hour": 9.03225806451613,
+            "outer_folds_with_inner_threshold_at_target": 0
+          },
+          "rddm": {
+            "complete_episodes": 17,
+            "episodes_detected": 3,
+            "episode_sensitivity": 0.17647058823529413,
+            "median_delay_seconds_in_detected_episodes": 84.3859999999986,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 9,
+            "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+            "outer_folds_with_inner_threshold_at_target": 0
+          }
+        }
+      },
+      "2": {
+        "operating_point_status": "held_out_sensitivities_differ",
+        "routes": {
+          "direct_ppg": {
+            "complete_episodes": 17,
+            "episodes_detected": 12,
+            "episode_sensitivity": 0.7058823529411765,
+            "median_delay_seconds_in_detected_episodes": 14.464000000007218,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 3,
+            "false_alerts_per_observed_wrist_hour": 3.870967741935484,
+            "outer_folds_with_inner_threshold_at_target": 1
+          },
+          "pulse_template": {
+            "complete_episodes": 17,
+            "episodes_detected": 10,
+            "episode_sensitivity": 0.5882352941176471,
+            "median_delay_seconds_in_detected_episodes": 10.943999999988591,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 2,
+            "false_alerts_per_observed_wrist_hour": 2.5806451612903225,
+            "outer_folds_with_inner_threshold_at_target": 1
+          },
+          "rddm": {
+            "complete_episodes": 17,
+            "episodes_detected": 13,
+            "episode_sensitivity": 0.7647058823529411,
+            "median_delay_seconds_in_detected_episodes": 10.701999999990221,
+            "wrist_ecg_observed_seconds": 2790.0,
+            "wrist_non_af_seconds": 2040.0,
+            "wrist_false_alerts": 7,
+            "false_alerts_per_observed_wrist_hour": 9.03225806451613,
+            "outer_folds_with_inner_threshold_at_target": 1
+          }
+        }
+      }
+    }
+  },
+  "original_lock_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "early_alert_audit": {
+    "scope": "Fixed-seed development calibration only",
+    "aggregate": {
+      "route_early_carryover_counts": {
+        "direct_ppg": 5,
+        "pulse_template": 3,
+        "rddm": 1
+      },
+      "route_subject_counts": {
+        "direct_ppg": 2,
+        "pulse_template": 2,
+        "rddm": 1
+      },
+      "unique_reference_episodes": 6,
+      "unique_subjects": 2,
+      "route_combinations_per_episode": {
+        "rddm": 1,
+        "direct_ppg+pulse_template": 3,
+        "direct_ppg": 2
+      },
+      "lead_seconds": [
+        11.011999999987893,
+        27.17200000002049
+      ],
+      "stable_ecg_labels": {
+        "0": 4,
+        "-1": 3,
+        "1": 2
+      },
+      "reference_valid": 9,
+      "native_ecg_all_finite": 9,
+      "af_overlap_early_window_seconds": [
+        0.0,
+        30.0
+      ],
+      "trigger_window_af_composition": {
+        "zero_af_overlap": 4,
+        "partial_prior_af_overlap": 3,
+        "whole_window_prior_af": 2
+      },
+      "trigger_endpoint_in_prior_af": 4,
+      "first_available_endpoint_in_this_contiguous_block": 7,
+      "ppg_finite_and_nonflat": 9,
+      "ppg_heuristic_quality": [
+        0.2009928330769476,
+        0.4354730275891886,
+        0.5699950197983585
+      ],
+      "sync_method_counts": {
+        "beat": 9
+      },
+      "trigger_run_kind_counts": {
+        "enriched_episode": 9
+      }
+    },
+    "blind_monitoring_false_alerts_at_block_start": {
+      "direct_ppg": {
+        "false_alert_starts": 4,
+        "first_available_block_endpoint": 2
+      },
+      "pulse_template": {
+        "false_alert_starts": 4,
+        "first_available_block_endpoint": 2
+      },
+      "rddm": {
+        "false_alert_starts": 9,
+        "first_available_block_endpoint": 1
+      }
+    }
+  },
+  "preceding_90_second_audit": {
+    "scope": "Cache-only ECG/PPG extension before staged development blocks",
+    "availability": {
+      "1_windows_before_candidate": 7,
+      "1_windows_before_recovered": 7,
+      "2_windows_before_candidate": 7,
+      "2_windows_before_recovered": 7,
+      "3_windows_before_candidate": 7,
+      "3_windows_before_recovered": 7
+    },
+    "fixed_threshold_predecessors": {
+      "counts_by_route_episode": {
+        "positive predecessor": 5,
+        "negative predecessor": 2
+      },
+      "counts_by_route_predecessor": {
+        "positive predecessor": 5,
+        "negative predecessor": 2
+      },
+      "grouped_by_trigger_ecg_overlap": {
+        "zero_af_overlap": {
+          "positive predecessor": 4
+        },
+        "prior_af_overlap": {
+          "negative predecessor": 2,
+          "positive predecessor": 1
+        }
+      },
+      "consecutive_positive_windows_before_trigger": {
+        "3": 2,
+        "0": 2,
+        "2": 1,
+        "1": 2
+      },
+      "device": "cuda"
+    }
+  },
+  "calibration_paired_episode_changes": {
+    "direct_ppg": {
+      "two_windows_frozen_vs_immediate": {
+        "gained": 5,
+        "lost": 5,
+        "detected_by_both": 4,
+        "paired_median_delay_change_seconds": 30.0
+      },
+      "two_windows_retuned_vs_immediate": {
+        "gained": 5,
+        "lost": 1,
+        "detected_by_both": 8,
+        "paired_median_delay_change_seconds": 0.0
+      }
+    },
+    "pulse_template": {
+      "two_windows_frozen_vs_immediate": {
+        "gained": 3,
+        "lost": 6,
+        "detected_by_both": 5,
+        "paired_median_delay_change_seconds": 30.0
+      },
+      "two_windows_retuned_vs_immediate": {
+        "gained": 3,
+        "lost": 1,
+        "detected_by_both": 10,
+        "paired_median_delay_change_seconds": 0.0
+      }
+    },
+    "rddm": {
+      "two_windows_frozen_vs_immediate": {
+        "gained": 1,
+        "lost": 9,
+        "detected_by_both": 1,
+        "paired_median_delay_change_seconds": -60.0
+      },
+      "two_windows_retuned_vs_immediate": {
+        "gained": 5,
+        "lost": 2,
+        "detected_by_both": 8,
+        "paired_median_delay_change_seconds": -30.0
+      }
+    }
+  }
+}

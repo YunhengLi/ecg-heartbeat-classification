@@ -5,7 +5,7 @@ import math
 
 import numpy as np
 
-from .af_events import AFRun, _grid, _intervals, _union, evaluate_af
+from .af_events import AFRun, _grid, _intervals, _union, confirm_alerts, evaluate_af
 
 
 _NO_ALERT_THRESHOLD = float(np.nextafter(1.0, np.inf))
@@ -108,16 +108,22 @@ def score_decisions(representative_runs, *, episode_runs=None, allow_daily_rate=
     )
 
 
-def score_operating_point(representative_runs, threshold, *, episode_runs=None, allow_daily_rate=False):
+def _at_threshold(runs, threshold, confirmation_windows):
+    return confirm_alerts((run.decisions(threshold) for run in runs), confirmation_windows)
+
+
+def score_operating_point(representative_runs, threshold, *, episode_runs=None, allow_daily_rate=False,
+                          confirmation_windows=1):
     """Apply a frozen threshold and report episode sensitivity and alert burden."""
     if not math.isfinite(threshold) or not 0 <= threshold <= _NO_ALERT_THRESHOLD:
         raise ValueError("Threshold must be in [0, 1] or the finite no-alert threshold")
-    representative = (run.decisions(threshold) for run in representative_runs)
-    episodes = None if episode_runs is None else (run.decisions(threshold) for run in episode_runs)
+    representative = _at_threshold(representative_runs, threshold, confirmation_windows)
+    episodes = None if episode_runs is None else _at_threshold(episode_runs, threshold, confirmation_windows)
     return score_decisions(representative, episode_runs=episodes, allow_daily_rate=allow_daily_rate)
 
 
-def select_operating_point(representative_runs, *, episode_runs=None, target_sensitivity=0.8, max_thresholds=101):
+def select_operating_point(representative_runs, *, episode_runs=None, target_sensitivity=0.8, max_thresholds=101,
+                           confirmation_windows=1):
     """Select the lowest validation alert burden among thresholds meeting the target.
 
     Search every unique validation probability on small samples. When there
@@ -131,8 +137,8 @@ def select_operating_point(representative_runs, *, episode_runs=None, target_sen
         raise ValueError("max_thresholds must be an integer of at least three")
     representative = tuple(representative_runs)
     episodes = None if episode_runs is None else tuple(episode_runs)
-    no_alert_representative = tuple(run.decisions(_NO_ALERT_THRESHOLD) for run in representative)
-    no_alert_episodes = None if episodes is None else tuple(run.decisions(_NO_ALERT_THRESHOLD) for run in episodes)
+    no_alert_representative = _at_threshold(representative, _NO_ALERT_THRESHOLD, confirmation_windows)
+    no_alert_episodes = None if episodes is None else _at_threshold(episodes, _NO_ALERT_THRESHOLD, confirmation_windows)
     non_af_seconds = _remaining_non_af_time(no_alert_representative)
     analyzable_non_af_seconds = _remaining_non_af_time(no_alert_representative, analyzable_only=True)
 
@@ -161,8 +167,8 @@ def select_operating_point(representative_runs, *, episode_runs=None, target_sen
     best = None
     for threshold in np.r_[candidates, _NO_ALERT_THRESHOLD]:
         metrics = evaluate(
-            tuple(run.decisions(threshold) for run in representative),
-            None if episodes is None else tuple(run.decisions(threshold) for run in episodes),
+            _at_threshold(representative, threshold, confirmation_windows),
+            None if episodes is None else _at_threshold(episodes, threshold, confirmation_windows),
         )
         sensitivity = metrics["episode_metrics"]["complete_episode_recall"]
         false_alerts = metrics["burden_metrics"]["false_alert_starts"]

@@ -2,7 +2,8 @@
 
 from collections import defaultdict
 from collections.abc import Iterable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
+from operator import index
 
 import numpy as np
 
@@ -74,6 +75,41 @@ def _grid(run):
     if np.any(~ppg & (decisions >= 0)):
         raise ValueError("PPG gaps must have unavailable decisions (-1)")
     return edges, decisions, reference, ppg
+
+
+def confirm_alerts(runs: Iterable[AFRun], consecutive_windows: int = 1) -> tuple[AFRun, ...]:
+    """Keep a positive streak inactive until its required windows have ended."""
+    required = index(consecutive_windows)
+    if required < 1:
+        raise ValueError("Confirmation requires at least one positive window")
+    original = tuple(runs)
+    if required == 1:
+        return original
+
+    by_subject = defaultdict(list)
+    for position, run in enumerate(original):
+        key = ("subject", run.subject_id) if run.subject_id is not None else ("run", position)
+        by_subject[key].append(position)
+    confirmed = list(original)
+    for positions in by_subject.values():
+        count, previous_end = 0, -np.inf
+        for position in sorted(positions, key=lambda item: original[item].start_s):
+            run = original[position]
+            edges, decisions, _, _ = _grid(run)
+            if edges[0] < previous_end - _TIME_EPSILON_S:
+                raise ValueError("Runs for the same subject must not overlap")
+            if abs(edges[0] - previous_end) > _TIME_EPSILON_S:
+                count = 0
+            output = decisions.astype(np.int8, copy=True)
+            for row, decision in enumerate(decisions):
+                if decision == 1:
+                    count += 1
+                    output[row] = count >= required
+                else:
+                    count = 0
+            confirmed[position] = replace(run, decisions=output)
+            previous_end = edges[-1]
+    return tuple(confirmed)
 
 
 def _event_at_decision(times, episodes):
