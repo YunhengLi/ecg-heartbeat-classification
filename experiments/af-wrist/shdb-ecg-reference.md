@@ -34,6 +34,27 @@ On the same folds, choose the first available decision within 20 seconds of each
 
 Training with early positives shortened the median delay among the events it detected. It also lowered total sensitivity and increased false starts across the same exposure. [Onset results](shdb-onset-results.json)
 
+## Calibrate duration and alerts separately
+
+Reuse the same five held-out groups, stable training examples and 10-second ECG scores from the original episode comparison. A decision becomes available at the end of its input window and applies to the following ten seconds. The first bin of each recording has no state. Measure exact AF overlap within bins and exclude time with no verifiable ECG rhythm. Keep the same threshold candidates and select one using the original alert objective and another using time sensitivity minus the non-AF false-positive time fraction on calibration participants. [State duration code](../../ppg_af/af_state.py) · [Threshold comparison](../../ppg_af/af_shdb_state_calibration.py)
+
+| Calibration objective | AF time detected | Non-AF time positive | New alerts during complete AF | False starts per ECG hour | Median detected delay |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Original episode target | 46.0% | 3.17% | 443/767 | 4.04 | 14.0 s |
+| Balanced causal state | 90.5% | 16.20% | 431/767 | 13.30 | 9.0 s |
+
+Both use 2,329.14 ECG-observed hours and 99.92% scoreable causal state coverage. The state-based objective covered more annotated AF time and detected more short episodes, 130 versus 88 of 309. It detected fewer episodes overall and produced more false starts. The reference AF fraction was 19.57% of scoreable time. Positive state occupied 11.56% of time at the original cutoff and 30.77% at the state-balanced cutoff. [Threshold results](shdb-state-results.json)
+
+For a separate estimate of time in AF, average the model's probability across each participant's scoreable time. Fit a logistic map of the original log odds and a monotone isotonic map on the same separate calibration participants. Exact AF overlap supplies the target fraction for each bin. Use the duration-weighted Brier score to judge probability error for individual seconds. Keep episode cutoff comparisons separate. [Probability calibration code](../../ppg_af/af_shdb_state_probability.py)
+
+| Probability estimate | Brier score | Estimated AF time | Median absolute participant error |
+| --- | ---: | ---: | ---: |
+| Original score | 0.0922 | 27.41% | 8.42 points |
+| Logistic calibration | 0.0785 | 19.50% | 7.08 points |
+| Isotonic calibration | 0.0795 | 19.65% | 7.22 points |
+
+The observed AF time was 19.57% across 8,378,150 scoreable seconds. The logistic map brought pooled estimated duration close to this value and reduced median participant error. Individual error remains substantial. The improvement uses measured ECG intervals and separate calibration participants. It provides a directly measured reference for a future wrist probability calibration comparison. [Probability results](shdb-state-probability-results.json)
+
 ## Reproduce
 
 ```bash
@@ -48,3 +69,5 @@ python -m ppg_af.af_shdb_alerts --annotations-dir "$PRIVATE_SHDB/annotations" \
 Install the wrist requirements, `requests`, and `wfdb==4.3.1`. The inputs are R peaks detected on the measured Holter ECG. The reference helps isolate the alert design and input timing. [Source verification](../../ppg_af/af_shdb_stage.py) · [Clock and interval features](../../ppg_af/af_shdb_ecg.py) · [Grouped fit and scoring](../../ppg_af/af_shdb_alerts.py)
 
 Run `ppg_af.af_shdb_onset` with the same `--annotations-dir`, `--feature-dir`, and a new `--output` to reproduce the matched onset training comparison.
+
+Run `ppg_af.af_shdb_state_calibration` with the same annotation and feature directories, `--alert-results experiments/af-wrist/shdb-alert-results.json`, and a new `--output` to compare the cutoff objectives. Run `ppg_af.af_shdb_state_probability` with the same two directories and a new `--output` to compare the probability maps.

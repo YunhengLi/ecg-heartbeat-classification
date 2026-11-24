@@ -1,0 +1,28 @@
+{
+  "scope": "Calibrate 10-second causal ECG AF-duration probabilities without changing alert cutoffs",
+  "scoreable_seconds": 8378150,
+  "participants": 93,
+  "results": {
+    "uncalibrated": {
+      "mean_brier_score_by_duration": 0.09221988912312278,
+      "actual_af_time_fraction": 0.19566736272327423,
+      "estimated_af_time_fraction": 0.274144564647256,
+      "mean_absolute_participant_burden_error": 0.13532894333430548,
+      "median_absolute_participant_burden_error": 0.08418913599378904
+    },
+    "logit_calibrated": {
+      "mean_brier_score_by_duration": 0.07853843054584361,
+      "actual_af_time_fraction": 0.19566736272327423,
+      "estimated_af_time_fraction": 0.1949620867321305,
+      "mean_absolute_participant_burden_error": 0.12054309517451177,
+      "median_absolute_participant_burden_error": 0.07076396937345986
+    },
+    "isotonic_calibrated": {
+      "mean_brier_score_by_duration": 0.07953820002593219,
+      "actual_af_time_fraction": 0.19566736272327423,
+      "estimated_af_time_fraction": 0.19654490526094465,
+      "mean_absolute_participant_burden_error": 0.12015464914871028,
+      "median_absolute_participant_burden_error": 0.07220270808917655
+    }
+  }
+}

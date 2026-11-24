@@ -159,6 +159,10 @@ The [independent validation plan](prospective-validation-plan.md) defines a froz
 
 The [GalaxyPPG study](galaxy-quality-study.md) checks the original PPG quality boundary against measured ECG interval errors on a Galaxy Watch and Empatica E4. The [pulse amplitude study](pulse-amplitude-study.md) adds wearable pulse prominence and its association with the preceding interval on the original AF folds.
 
+The [half-hour monitoring study](half-hour-monitor-study.md) compares the two frozen alert policies on new wear times and adds causal rhythm-state duration metrics. The [GalaxyPPG motion study](galaxy-motion-quality-study.md) learns interval reliability from measured accelerometry on held-out people, including device transfer.
+
+The [Holter state study](shdb-ecg-reference.md#calibrate-duration-and-alerts-separately) keeps the same measured ECG scores and compares episode thresholds, time-state thresholds and calibrated probabilities for estimating AF time.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.

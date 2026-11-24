@@ -1,0 +1,139 @@
+{
+  "scope": "Compare choosing cutoffs for causal AF time state and new episode alerts on identical measured ECG scores",
+  "participants": 93,
+  "recordings": 98,
+  "folds": [
+    {
+      "participants_fit_calibrate_and_held": [
+        55,
+        19,
+        19
+      ],
+      "thresholds_compared": 41,
+      "episode_target_status": "target_not_met",
+      "episode_cutoff_state_balanced_accuracy": 0.644590021636813,
+      "state_cutoff_state_balanced_accuracy": 0.9473369307917868
+    },
+    {
+      "participants_fit_calibrate_and_held": [
+        55,
+        19,
+        19
+      ],
+      "thresholds_compared": 41,
+      "episode_target_status": "target_met",
+      "episode_cutoff_state_balanced_accuracy": 0.6425305771836525,
+      "state_cutoff_state_balanced_accuracy": 0.8479479607823033
+    },
+    {
+      "participants_fit_calibrate_and_held": [
+        55,
+        19,
+        19
+      ],
+      "thresholds_compared": 41,
+      "episode_target_status": "target_met",
+      "episode_cutoff_state_balanced_accuracy": 0.7326153043201309,
+      "state_cutoff_state_balanced_accuracy": 0.8892484334698381
+    },
+    {
+      "participants_fit_calibrate_and_held": [
+        56,
+        19,
+        18
+      ],
+      "thresholds_compared": 41,
+      "episode_target_status": "target_not_met",
+      "episode_cutoff_state_balanced_accuracy": 0.7726309297895768,
+      "state_cutoff_state_balanced_accuracy": 0.8395988922877822
+    },
+    {
+      "participants_fit_calibrate_and_held": [
+        56,
+        19,
+        18
+      ],
+      "thresholds_compared": 41,
+      "episode_target_status": "target_not_met",
+      "episode_cutoff_state_balanced_accuracy": 0.7216490352554805,
+      "state_cutoff_state_balanced_accuracy": 0.8687395193636966
+    }
+  ],
+  "input_seconds": 10,
+  "results": {
+    "episode_target": {
+      "alerts": {
+        "complete_episodes": 767,
+        "episodes_detected": 443,
+        "episode_sensitivity": 0.5775749674054759,
+        "false_starts": 9403,
+        "ecg_observed_hours": 2329.136111111111,
+        "false_starts_per_ecg_hour": 4.037119151235139,
+        "median_delay_seconds": 14.049999999999272,
+        "duration_strata": {
+          "under_30_seconds": {
+            "complete_episodes": 309,
+            "detected": 88
+          },
+          "at_least_30_seconds": {
+            "complete_episodes": 458,
+            "detected": 355
+          }
+        }
+      },
+      "causal_state": {
+        "participants_or_independent_runs": 93,
+        "participants_with_ecg_af_time": 72,
+        "ecg_observed_seconds": 8384890.0,
+        "ecg_af_seconds": 1641092.915,
+        "scoreable_seconds": 8378150.0,
+        "af_seconds_with_state": 1639330.5150000001,
+        "af_seconds_with_positive_state": 754432.9299999999,
+        "non_af_seconds_with_positive_state": 214067.07000000018,
+        "scoreable_coverage": 0.9991961731161649,
+        "af_time_sensitivity": 0.45971372071885397,
+        "non_af_time_false_positive_rate": 0.03174281006706776,
+        "af_fraction_on_scoreable_time": 0.19566736272327426,
+        "predicted_af_fraction_on_scoreable_time": 0.11559831227657659,
+        "median_participant_absolute_af_fraction_error": 0.025410120845921598
+      }
+    },
+    "causal_state_balanced": {
+      "alerts": {
+        "complete_episodes": 767,
+        "episodes_detected": 431,
+        "episode_sensitivity": 0.5619295958279009,
+        "false_starts": 30987,
+        "ecg_observed_hours": 2329.136111111111,
+        "false_starts_per_ecg_hour": 13.304074352794133,
+        "median_delay_seconds": 8.975000000000364,
+        "duration_strata": {
+          "under_30_seconds": {
+            "complete_episodes": 309,
+            "detected": 130
+          },
+          "at_least_30_seconds": {
+            "complete_episodes": 458,
+            "detected": 301
+          }
+        }
+      },
+      "causal_state": {
+        "participants_or_independent_runs": 93,
+        "participants_with_ecg_af_time": 72,
+        "ecg_observed_seconds": 8384890.0,
+        "ecg_af_seconds": 1641092.915,
+        "scoreable_seconds": 8378150.0,
+        "af_seconds_with_state": 1639330.5150000001,
+        "af_seconds_with_positive_state": 1485765.2399999995,
+        "non_af_seconds_with_positive_state": 1092474.7599999995,
+        "scoreable_coverage": 0.9991961731161649,
+        "af_time_sensitivity": 0.9053510781868188,
+        "non_af_time_false_positive_rate": 0.16199697977715763,
+        "af_fraction_on_scoreable_time": 0.19566736272327426,
+        "predicted_af_fraction_on_scoreable_time": 0.3077338075828195,
+        "median_participant_absolute_af_fraction_error": 0.050606669765280284
+      }
+    }
+  }
+}

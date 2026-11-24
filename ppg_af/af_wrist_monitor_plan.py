@@ -26,17 +26,17 @@ def exclusion_intervals(person, paths, supplement):
     return np.asarray(spans).reshape(-1, 2)
 
 
-def choose_monitor_blocks(segments, ecg_seconds, excluded, seed, *, blocks_per_person=BLOCKS_PER_PERSON):
+def choose_monitor_blocks(segments, ecg_seconds, excluded, seed, *, blocks_per_person=BLOCKS_PER_PERSON, block_seconds=BLOCK_S):
     """Draw uniform starts with disjoint preceding inputs and monitoring time."""
     index_by_start = {}
     for segment in segments:
         earliest = max(0, segment.start_time) + EARLIER_S + CONTEXT_S
-        latest = min(segment.stop_time, ecg_seconds) - BLOCK_S - CONTEXT_S
+        latest = min(segment.stop_time, ecg_seconds) - block_seconds - CONTEXT_S
         first = int(np.ceil(earliest / WINDOW_SECONDS)) * WINDOW_SECONDS
         last = int(np.floor(latest / WINDOW_SECONDS)) * WINDOW_SECONDS
         index_by_start.update((start, segment.index) for start in range(first, last + 1, WINDOW_SECONDS))
     starts = np.asarray(sorted(index_by_start), dtype=int)
-    support = np.column_stack((starts - EARLIER_S - CONTEXT_S, starts + BLOCK_S + CONTEXT_S))
+    support = np.column_stack((starts - EARLIER_S - CONTEXT_S, starts + block_seconds + CONTEXT_S))
     overlapping = (support[:, 0, None] < excluded[None, :, 1]) & (support[:, 1, None] > excluded[None, :, 0])
     eligible = ~overlapping.any(axis=1)
     random = np.random.default_rng(seed)
@@ -47,7 +47,7 @@ def choose_monitor_blocks(segments, ecg_seconds, excluded, seed, *, blocks_per_p
             break
         choice = int(random.choice(available))
         start = int(starts[choice])
-        picks.append({"input_support_s": support[choice].tolist(), "evaluation_s": [start, start + BLOCK_S],
+        picks.append({"input_support_s": support[choice].tolist(), "evaluation_s": [start, start + block_seconds],
                       "native_wrist_segment": index_by_start[start]})
         eligible &= (support[:, 0] >= support[choice, 1]) | (support[:, 1] <= support[choice, 0])
     return sorted(picks, key=lambda row: row["evaluation_s"][0])

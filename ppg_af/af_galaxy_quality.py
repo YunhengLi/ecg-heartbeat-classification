@@ -86,11 +86,11 @@ def optical_metrics(signal, reference, template):
     return metrics
 
 
-def measure(archive, participant, template, coverage):
+def aligned_windows(archive, participant, coverage):
     prefix = f"Dataset/{participant}/"
     if not all(prefix + name in archive.namelist() for name in MEMBERS):
         coverage["participants_missing_one_or_more_members"] += 1
-        return []
+        return
     event, ecg_path, e4_path, galaxy_path = (prefix + name for name in MEMBERS)
     rows = list(windows(from_archive(archive, event, ("timestamp", "session", "status"))))
     polar = clock(from_archive(archive, ecg_path, ("phoneTimestamp", "ecg")), "phoneTimestamp", "ecg", 1e-3,
@@ -98,7 +98,6 @@ def measure(archive, participant, template, coverage):
     e4 = clock(from_archive(archive, e4_path, ("timestamp", "value")), "timestamp", "value", 1e-6)
     galaxy = clock(from_archive(archive, galaxy_path, ("timestamp", "ppg")), "timestamp", "ppg", 1e-3, polarity=-1)
     coverage["participants_with_all_members"] += 1
-    result = []
     for activity, start in rows:
         coverage["scheduled_windows"] += 1
         ecg = uniform(polar, start, POLAR_RATE, POLAR_RATE)
@@ -118,6 +117,12 @@ def measure(archive, participant, template, coverage):
             pulses[SENSORS[1]] = resample_poly(e4_values, PPG_RATE, E4_RATE, padtype="line")
             limited = resample_poly(e4_values, GALAXY_RATE, E4_RATE, padtype="line")
             pulses[SENSORS[2]] = resample_poly(limited, PPG_RATE, GALAXY_RATE, padtype="line")
+        yield activity, start, reference, pulses
+
+
+def measure(archive, participant, template, coverage):
+    result = []
+    for activity, _, reference, pulses in aligned_windows(archive, participant, coverage):
         signals = {f"{name}_{method}": metrics for name, values in pulses.items()
                    for method, metrics in optical_metrics(values, reference, template).items()}
         coverage.update(signals.keys())

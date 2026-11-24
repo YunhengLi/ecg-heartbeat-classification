@@ -35,7 +35,7 @@ FAMILIES = ("baseline", "quality_interactions")
 BOOTSTRAP_REPETITIONS = 10_000
 
 
-def read_plan(path, lock_path, *, retrospective=False):
+def read_plan(path, lock_path, *, retrospective=False, block_seconds=BLOCK_S):
     raw, lock_bytes = path.read_bytes(), lock_path.read_bytes()
     plan, lock = json.loads(raw), json.loads(lock_bytes)
     receipt, schedule = plan["plan_receipt"], plan["private_schedule"]
@@ -44,7 +44,7 @@ def read_plan(path, lock_path, *, retrospective=False):
     people = reserved if retrospective else development
     if (fit & calibration or development & reserved or len(development) != 10 or len(reserved) != 25 or set(schedule) != people
             or receipt["source_protocol_sha256"] != sha256(lock_bytes).hexdigest()
-            or receipt["block_seconds"] != BLOCK_S or receipt["predecessor_seconds"] != EARLIER_S):
+            or receipt["block_seconds"] != block_seconds or receipt["predecessor_seconds"] != EARLIER_S):
         raise ValueError("The new monitoring plan must use the original development protocol")
     if sum(len(blocks) for blocks in schedule.values()) != receipt["scheduled_blocks"]:
         raise ValueError("Scheduled monitoring counts must match the frozen plan")
@@ -53,20 +53,22 @@ def read_plan(path, lock_path, *, retrospective=False):
         for block in blocks:
             start, stop = block["evaluation_s"]
             support = (start - EARLIER_S - CONTEXT_S, stop + CONTEXT_S)
-            if (start % WINDOW_SECONDS or stop - start != BLOCK_S or support[0] < previous_end
+            if (start % WINDOW_SECONDS or stop - start != block_seconds or support[0] < previous_end
                     or tuple(block["input_support_s"]) != support):
                 raise ValueError("New monitored time and its preceding signal must be disjoint and fixed")
             previous_end = support[1]
     return schedule, receipt, sha256(raw).hexdigest()
 
 
-def stage_person(ecg_source, wrist_source, person, blocks, plan_digest, output):
+def stage_person(ecg_source, wrist_source, person, blocks, plan_digest, output, *, block_seconds=BLOCK_S):
     with load_subject(ecg_source, wrist_source, subject_id=person, include_acceleration=False) as subject:
         episodes = subject.annotated_af_episodes()
         reference = subject.reference_rhythm_intervals()
         raw_pulse, valid_reference, starts, episode_support = [], [], [], []
         for block in blocks:
             start, stop = block["evaluation_s"]
+            if stop - start != block_seconds:
+                raise ValueError("Native input duration differs from the frozen monitoring plan")
             outer_start, outer_stop = block["input_support_s"]
             segment = subject.segments[block["native_wrist_segment"]]
             clip = subject.read_segment(segment.index, outer_start - segment.start_time, outer_stop - segment.start_time)
@@ -89,20 +91,22 @@ def stage_person(ecg_source, wrist_source, person, blocks, plan_digest, output):
     output.mkdir(parents=True, exist_ok=True)
     target = output / f"{person}.npz"
     tmp = target.with_suffix(".partial.npz")
-    per_block_rows = (BLOCK_S + EARLIER_S - WINDOW_SECONDS) // STRIDE_SECONDS + 1
+    per_block_rows = (block_seconds + EARLIER_S - WINDOW_SECONDS) // STRIDE_SECONDS + 1
     np.savez_compressed(tmp, raw_ppg=np.asarray(raw_pulse).reshape(-1, per_block_rows, WINDOW_SECONDS * PPG_RATE),
-                        reference_valid=np.asarray(valid_reference, dtype=bool).reshape(-1, BLOCK_S // STRIDE_SECONDS),
+                        reference_valid=np.asarray(valid_reference, dtype=bool).reshape(-1, block_seconds // STRIDE_SECONDS),
                         start_s=np.asarray(starts, dtype=int), af_intervals_s=np.concatenate(episode_support)
                         if episode_support else np.empty((0, 2)), subject_id=person, plan_sha256=plan_digest)
     tmp.replace(target)
 
 
-def _archive_features(path, person, scheduled, digest, template, *, families=FAMILIES):
+def _archive_features(path, person, scheduled, digest, template, *, families=FAMILIES, block_seconds=BLOCK_S):
     with np.load(path, allow_pickle=False) as raw:
         pulse, valid, starts, episodes = (raw[key] for key in ("raw_ppg", "reference_valid", "start_s", "af_intervals_s"))
         if (raw["subject_id"].item() != person or raw["plan_sha256"].item() != digest
                 or starts.tolist() != [row["evaluation_s"][0] for row in scheduled]
-                or valid.shape != (len(starts), BLOCK_S // STRIDE_SECONDS)):
+                or valid.shape != (len(starts), block_seconds // STRIDE_SECONDS)
+                or pulse.shape != (len(starts), (block_seconds + EARLIER_S - WINDOW_SECONDS) // STRIDE_SECONDS + 1,
+                                   WINDOW_SECONDS * PPG_RATE)):
             raise ValueError("Staged monitoring must match the original blind plan")
     if not len(starts):
         return starts, valid, episodes, {}, np.empty((0, 0), dtype=bool)
@@ -168,9 +172,10 @@ def _person_runs(person, archive, model, cutoff, family, *, transform=None):
     return output
 
 
-def _cluster_uncertainty(baseline, candidate, people):
+def _cluster_uncertainty(baseline, candidate, people, *, allow_score_coverage_change=False):
     before, after = (_participant_counts(replay, people) for replay in (baseline, candidate))
-    if not np.array_equal(before[:, [1, 3, 4]], after[:, [1, 3, 4]]):
+    support = [1, 3] if allow_score_coverage_change else [1, 3, 4]
+    if not np.array_equal(before[:, support], after[:, support]):
         raise ValueError("Paired supplemental models must use identical reference support")
     rng = np.random.default_rng(SEED)
     draws = rng.integers(len(people), size=(BOOTSTRAP_REPETITIONS, len(people)))

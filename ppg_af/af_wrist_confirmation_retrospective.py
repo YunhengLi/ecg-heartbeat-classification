@@ -10,7 +10,7 @@ from .af_wrist_data_preflight import _SCOPES, _cohort_archives, _verify_seal
 from .af_wrist_exercise import BASELINE_SHA, PROTOCOL_SHA
 from .af_wrist_features import PPG_RATE, PTT_SUBJECTS
 from .af_wrist_holdout import _predict, _subject_ids, _write_json
-from .af_wrist_monitor_extension import _archive_features, _cluster_uncertainty, _person_runs
+from .af_wrist_monitor_extension import BLOCK_S, _archive_features, _cluster_uncertainty, _person_runs
 from .af_wrist_operating import score_decisions
 from .af_wrist_quality_confirmation import QUALITY_CUTOFF, confirm_scores, preceding_rows
 from .af_wrist_quality_retrospective import _HISTORICAL_RESULTS_SHA256, _PREFLIGHT_SHA256, _read_pinned
@@ -50,15 +50,13 @@ def historical_replay(args, protocol, model_lock):
             "lost_scoreable_decisions": int(np.sum(np.isfinite(scores) & ~np.isfinite(filtered)))}
 
 
-def additional_replay(args, protocol, model_lock):
-    schedule, receipt, digest = verify_schedule(args.plan, args.lock, args.prior_inputs)
-    previous = _read_pinned(args.monitoring_results, RECENT_RESULTS_SHA, public=True)
-    model, _, _, _ = _locked_model(model_lock, protocol)
-    _, template = fit_ptt_calibration(args.ptt_dir, PPG_RATE, subject_count=PTT_SUBJECTS)
+def replay_on_schedule(schedule, digest, cache, template, model, *, block_seconds=BLOCK_S):
     baseline_runs, candidate_runs = [], []
     for person, blocks in schedule.items():
-        archive = _archive_features(args.monitoring_cache / f"{person}.npz", person, blocks, digest, template,
-                                    families=("baseline", "quality"))
+        if not blocks:
+            continue
+        archive = _archive_features(cache / f"{person}.npz", person, blocks, digest, template,
+                                    families=("baseline", "quality"), block_seconds=block_seconds)
         quality = archive[3]["quality"][:, :, -1]
 
         def transform(scores, index):
@@ -73,14 +71,22 @@ def additional_replay(args, protocol, model_lock):
                              "episode_blocks_with_unknown_cutoff_state": 0})
         return totals, runs, runs
 
-    baseline, candidate = map(replay, (baseline_runs, candidate_runs))
+    return replay(baseline_runs), replay(candidate_runs)
+
+
+def additional_replay(args, protocol, model_lock):
+    schedule, receipt, digest = verify_schedule(args.plan, args.lock, args.prior_inputs)
+    previous = _read_pinned(args.monitoring_results, RECENT_RESULTS_SHA, public=True)
+    model, _, _, _ = _locked_model(model_lock, protocol)
+    _, template = fit_ptt_calibration(args.ptt_dir, PPG_RATE, subject_count=PTT_SUBJECTS)
+    baseline, candidate = replay_on_schedule(schedule, digest, args.monitoring_cache, template, model)
     if digest != previous["plan_sha256"] or baseline[0] != previous["baseline"]:
         raise ValueError("The 250-minute frozen plain baseline must reproduce exactly")
     paired = compare_alert_runs(baseline[1], candidate[1], baseline[2], candidate[2])
     return {"baseline": baseline[0], "conditional_confirmation": candidate[0], "plan_receipt": receipt,
             "paired_changes": paired, "paired_participant_uncertainty": _cluster_uncertainty(baseline, candidate, list(schedule)),
             "lost_scoreable_decisions": sum(int(np.sum((before.decisions >= 0) & (after.decisions < 0)))
-                                             for before, after in zip(baseline_runs, candidate_runs, strict=True))}
+                                             for before, after in zip(baseline[1], candidate[1], strict=True))}
 
 
 if __name__ == "__main__":
