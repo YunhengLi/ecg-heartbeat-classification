@@ -28,7 +28,7 @@ LABELED_BEATS = {"N", "S", "V", "P"}
 MAX_REFERENCE_GAP_S = 2.0
 PEAK_TOLERANCE_S = 0.15
 PILOT_GROUPS = ("af_flutter_and_sinus", "af_flutter_without_sinus", "ectopy_and_sinus_without_af_flutter")
-CASES_PER_GROUP = 2
+CASES_PER_GROUP = (2, 2, 2)
 
 
 def read_release(directory):
@@ -101,7 +101,9 @@ def decision_windows(spans):
             yield end, label
 
 
-def plan_cases(directory, track_path):
+def plan_cases(directory, track_path, *, cases_per_group=CASES_PER_GROUP, nonoverlapping_only=False):
+    if len(cases_per_group) != len(PILOT_GROUPS) or any(count < 1 for count in cases_per_group):
+        raise ValueError("The cohort needs a positive size for each source stratum")
     roster = read_release(directory)
     tracks = read_tracks(track_path)
     paired = {case for case in roster if set(tracks[case]) == set(TRACKS)}
@@ -114,12 +116,15 @@ def plan_cases(directory, track_path):
         if case not in paired:
             continue
         labels.update(rhythms)
-        counts = Counter(label for _, label in decision_windows(spans))
+        decision_rows = list(decision_windows(spans))
+        counts = Counter(label for _, label in decision_rows)
         windows.update(counts)
         for label in counts:
             per_label_cases[label].add(case)
         if AF_OR_FLUTTER in rhythms:
             af_flutter_patients.add(participant)
+        if nonoverlapping_only:
+            counts = Counter(label for end, label in decision_rows if end % WINDOW_SECONDS == 0)
         if AF_OR_FLUTTER in counts and "N" in counts:
             groups[PILOT_GROUPS[0]].append(case)
         elif AF_OR_FLUTTER in counts:
@@ -129,7 +134,7 @@ def plan_cases(directory, track_path):
 
     seen_participants = set()
     pilot = []
-    for group in PILOT_GROUPS:
+    for group, group_size in zip(PILOT_GROUPS, cases_per_group, strict=True):
         selection = sorted(groups[group], key=lambda case: sha256(f"wrist-af-vitaldb-2026:{case}".encode()).digest())
         selected = []
         for case in selection:
@@ -138,9 +143,9 @@ def plan_cases(directory, track_path):
                 continue
             seen_participants.add(participant)
             selected.append({"case_id": case, "stratum": group, "tracks": tracks[case]})
-            if len(selected) == CASES_PER_GROUP:
+            if len(selected) == group_size:
                 break
-        if len(selected) != CASES_PER_GROUP:
+        if len(selected) != group_size:
             raise ValueError(f"The input-only pilot cannot fill stratum {group}")
         pilot.extend(selected)
     support = {"annotated_cases": len(roster), "annotated_participants": len(set(roster.values())),

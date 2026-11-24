@@ -5,10 +5,30 @@ import unittest
 import numpy as np
 
 from ppg_af.af_events import AFRun, evaluate_af
-from ppg_af.af_wrist_history import apply_alert_history
+from ppg_af.af_wrist_history import apply_alert_history, apply_negative_rearm
 
 
 class AlertHistoryTests(unittest.TestCase):
+    def test_rearm_preserves_predictions_and_suppresses_restart_after_one_negative(self):
+        decisions = np.array([1, 0, 1, 0, 0, 1, -1, 1])
+        run = AFRun(0, 10, np.empty((0, 2)), decisions)
+
+        (result,), unknown = apply_negative_rearm((run,), prior_decisions=lambda _: (-1,))
+
+        self.assertEqual(unknown, 0)
+        np.testing.assert_equal(result.decisions, decisions)
+        np.testing.assert_equal(result.alert_start_status, [1, 0, 0, 0, 0, 1, 0, 1])
+
+    def test_rearm_preserves_ambiguous_history_and_carries_adjacent_state(self):
+        first = AFRun(0, 10, np.empty((0, 2)), np.array([1, 0]), subject_id="x")
+        second = AFRun(20, 10, np.empty((0, 2)), np.array([1]), subject_id="x")
+
+        (first_result, second_result), unknown = apply_negative_rearm((first, second), prior_decisions=lambda _: (None, 0))
+
+        self.assertEqual(unknown, 1)
+        np.testing.assert_equal(first_result.alert_start_status, [-1, 0])
+        np.testing.assert_equal(second_result.alert_start_status, [0])
+
     def test_already_active_alert_does_not_restart_inside_evaluation(self):
         run = AFRun(0, 30, np.array([[80, 150]]), np.array([1, 0, 1, 1, 0]))
         (warm,), unknown = apply_alert_history(

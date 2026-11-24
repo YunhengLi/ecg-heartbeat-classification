@@ -8,6 +8,7 @@ from pathlib import Path
 
 import numpy as np
 from scipy.signal import resample_poly
+from sklearn.feature_selection import VarianceThreshold
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
 from sklearn.pipeline import make_pipeline
@@ -73,10 +74,13 @@ def _source_features(directory):
     return features, labels, subjects, inventory
 
 
-def _fit_source(matrix, labels, subjects):
+def _fit_source(matrix, labels, subjects, *, drop_constant_features=False):
     n_subjects = len(np.unique(subjects))
     weights = _within_rhythm_participant_weights(labels, subjects) * (n_subjects / len(labels))
-    model = make_pipeline(StandardScaler(), LogisticRegression(C=SOURCE_C, max_iter=1000))
+    steps = [StandardScaler(), LogisticRegression(C=SOURCE_C, max_iter=1000)]
+    if drop_constant_features:
+        steps.insert(0, VarianceThreshold())
+    model = make_pipeline(*steps)
     model.fit(matrix, labels, standardscaler__sample_weight=weights, logisticregression__sample_weight=weights)
     return model
 
@@ -162,7 +166,7 @@ def _replay_candidate(grid, scores, assignments, points, baseline_cutoffs, *, ma
     return _held_out_replay(grid, scores, cutoffs, _IMMEDIATE), dict(statuses)
 
 
-def evaluate(grid, lock, prior, source_model):
+def evaluate(grid, lock, prior, source_model, *, source_name="mimic"):
     baseline_fit = fit_nested_grid(grid, lock, 1)
     assignments = baseline_fit["fold_assignment"]
     baselines, baseline_cutoffs = {}, {}
@@ -193,8 +197,8 @@ def evaluate(grid, lock, prior, source_model):
     fusion_points = [fold["operating_point"] for fold in fusion["folds"]]
     report = {"wrist_direct_baseline": baselines[DIRECT][0], "wrist_template_baseline": baselines[ROUTE][0]}
     linked = (
-        ("frozen_mimic_direct", frozen_probabilities, source_points, DIRECT),
-        ("wrist_template_plus_frozen_mimic", fusion["scores"], fusion_points, ROUTE),
+        (f"frozen_{source_name}_direct", frozen_probabilities, source_points, DIRECT),
+        (f"wrist_template_plus_frozen_{source_name}", fusion["scores"], fusion_points, ROUTE),
     )
     for name, scores, points, primary_baseline in linked:
         for matched in (False, True):
