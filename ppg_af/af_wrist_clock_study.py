@@ -121,8 +121,8 @@ def predecessor_decisions(grid, decisions):
     return history
 
 
-def scoring_policy(grid, probabilities, people, replay):
-    """Build a cutoff evaluator and collect calibration scores, including history."""
+def scoring_policy(grid, probabilities, people, replay, *, alert_diagnostics=None):
+    """Collect calibration scores and optionally audit each cutoff's replayed runs."""
     monitored, episodes = scoring_runs(grid, probabilities, people)
 
     coverage = tuple(run.decisions(2.0) for run in monitored)
@@ -139,6 +139,8 @@ def scoring_policy(grid, probabilities, people, replay):
                                                     prior_decisions=history)
         result = _evaluate_scopes(monitor_decisions, episode_decisions, allow_daily_rate=False,
                                   non_af_seconds=non_af, analyzable_non_af_seconds=analyzable_non_af)
+        if alert_diagnostics is not None:
+            result["alert_diagnostics"] = alert_diagnostics(monitor_decisions, episode_decisions)
         return {**result, "monitor_blocks_with_unknown_cutoff_state": monitor_unknown,
                 "episode_blocks_with_unknown_cutoff_state": episode_unknown}
 

@@ -24,7 +24,8 @@ DEFAULT_C = 1.0
 CANDIDATE_C = (0.1, DEFAULT_C, 10.0)
 
 
-def fit_template(grid, matrix, lock, regularization, *, participant_weighting=False, supplemental_fit_labels=None):
+def fit_template(grid, matrix, lock, regularization, *, participant_weighting=False, supplemental_fit_labels=None,
+                 seed=2026):
     shared = _shared_features(grid.table)
     if not np.isfinite(matrix[shared]).all():
         raise ValueError("Template variants must retain every originally scoreable row")
@@ -39,9 +40,24 @@ def fit_template(grid, matrix, lock, regularization, *, participant_weighting=Fa
                                        max_thresholds=max(3, len(pool) + 1))
 
     return train_oof({ROUTE: features}, grid.table["stable_label"], grid.subjects, n_splits=5, inner_splits=3,
-                     seed=2026, train_eligible=fit_rows, calibration_selector=calibrate,
+                     seed=seed, train_eligible=fit_rows, calibration_selector=calibrate,
                      regularization=regularization, participant_weighting=participant_weighting,
                      supplemental_fit_labels=supplemental_fit_labels)
+
+
+def verify_fit_support(baseline, candidate):
+    """Ensure a feature variant preserves the original nested fit and score footprint."""
+    if not np.array_equal(baseline["fold_assignment"], candidate["fold_assignment"]):
+        raise ValueError("The candidate changed an outer participant fold")
+    original, augmented = (item["routes"][ROUTE] for item in (baseline, candidate))
+    if (not np.array_equal(np.isfinite(original["scores"]), np.isfinite(augmented["scores"]))
+            or not np.array_equal(original["decisions"] >= 0, augmented["decisions"] >= 0)):
+        raise ValueError("The candidate changed held-out score or alert availability")
+    fields = ("fold", "train_subjects", "test_subjects", "inner_splits", "fit_af_windows",
+              "fit_non_af_windows", "held_out_finite_scores")
+    for before, after in zip(original["folds"], augmented["folds"], strict=True):
+        if any(before[key] != after[key] for key in fields):
+            raise ValueError("The candidate changed the original fold's training support")
 
 
 def rank_calibration(option, regularization):

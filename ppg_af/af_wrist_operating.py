@@ -148,8 +148,8 @@ def select_operating_point(representative_runs, *, episode_runs=None, target_sen
                                    target_sensitivity=target_sensitivity, max_thresholds=max_thresholds)
 
 
-def select_scored_threshold(probabilities, evaluate, *, target_sensitivity=0.8, max_thresholds=101):
-    """Choose an operating point from probabilities and a causal alert replay."""
+def select_scored_threshold(probabilities, evaluate, *, target_sensitivity=0.8, max_thresholds=101, burden_rank=None):
+    """Choose an operating point with wrist false starts or a supplied burden ranking."""
     if not math.isfinite(target_sensitivity) or not 0 <= target_sensitivity <= 1:
         raise ValueError("Target sensitivity must be in [0, 1]")
     if not isinstance(max_thresholds, int) or max_thresholds < 3:
@@ -177,10 +177,10 @@ def select_scored_threshold(probabilities, evaluate, *, target_sensitivity=0.8, 
     for threshold in np.r_[candidates, _NO_ALERT_THRESHOLD]:
         metrics = baseline if threshold == _NO_ALERT_THRESHOLD else evaluate(threshold)
         sensitivity = metrics["episode_metrics"]["complete_episode_recall"]
-        false_alerts = metrics["burden_metrics"]["false_alert_starts"]
+        burden = metrics["burden_metrics"]["false_alert_starts"] if burden_rank is None else burden_rank(metrics)
         met_target = sensitivity >= target_sensitivity
         # Within the target use minimum false alerts, then higher sensitivity.
-        key = (0, false_alerts, -sensitivity, -threshold) if met_target else (1, -sensitivity, false_alerts, -threshold)
+        key = (0, burden, -sensitivity, -threshold) if met_target else (1, -sensitivity, burden, -threshold)
         if best is None or key < best[0]:
             best = (key, float(threshold), metrics)
     key, threshold, metrics = best

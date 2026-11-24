@@ -12,25 +12,11 @@ from .af_wrist_features import FEATURE_VERSION_KEY, WINDOW_SECONDS
 from .af_wrist_holdout import _subject_ids, _write_json
 from .af_wrist_sequence_features import build_sequence_features
 from .af_wrist_template_study import (
-    CANDIDATE_C, DEFAULT_C, ROUTE, _calibration_status, _replay, fit_template, select_regularization,
+    CANDIDATE_C, DEFAULT_C, ROUTE, _calibration_status, _replay, fit_template, select_regularization, verify_fit_support,
 )
 from .af_wrist_train import load_features
 from .af_wrist_transition_metrics import compare_pre_onset_alert_runs
 from .af_wrist_vote_study import STRIDE_SECONDS, _compare, _held_out_replay, _IMMEDIATE
-
-
-def _verify_fit_support(baseline, candidate):
-    if not np.array_equal(baseline["fold_assignment"], candidate["fold_assignment"]):
-        raise ValueError("Temporal context changed an outer participant fold")
-    original, augmented = (item["routes"][ROUTE] for item in (baseline, candidate))
-    if (not np.array_equal(np.isfinite(original["scores"]), np.isfinite(augmented["scores"]))
-            or not np.array_equal(original["decisions"] >= 0, augmented["decisions"] >= 0)):
-        raise ValueError("Temporal context changed held-out score or alert availability")
-    fields = ("fold", "train_subjects", "test_subjects", "inner_splits", "fit_af_windows",
-              "fit_non_af_windows", "held_out_finite_scores")
-    for before, after in zip(original["folds"], augmented["folds"], strict=True):
-        if any(before[key] != after[key] for key in fields):
-            raise ValueError("Temporal context changed the original fold's training support")
 
 
 def _comparison(baseline, candidate, lock):
@@ -44,7 +30,7 @@ def _choose_regularization(grid, matrix, lock, default_fit):
         if value == DEFAULT_C:
             continue
         fitted = fit_template(grid, matrix, lock, value)
-        _verify_fit_support(default_fit, fitted)
+        verify_fit_support(default_fit, fitted)
         fits[value] = fitted
     scores, cutoffs, selected, status = select_regularization(fits)
     replay = _held_out_replay(grid, scores, cutoffs, _IMMEDIATE)
@@ -68,7 +54,7 @@ def evaluate_sequence(grid, lock, previous, chronological, unordered, support):
     for name, context in (("order_invariant", unordered), ("chronological", chronological)):
         matrix = np.column_stack((original_matrix, context))
         fitted = fit_template(grid, matrix, lock, DEFAULT_C)
-        _verify_fit_support(baseline_fit, fitted)
+        verify_fit_support(baseline_fit, fitted)
         replay = _replay(grid, fitted)
         candidates[name] = {**_comparison(baseline, replay, lock),
                             "inner_calibration_status_counts": _calibration_status(fitted)}

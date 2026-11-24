@@ -1,0 +1,492 @@
+{
+  "scope": "Patient-held-out offline PPG-to-ECG pilot with detector-derived ECG peak targets",
+  "source_doi": "10.5281/zenodo.15906524",
+  "source_md5": {
+    "mimic_perform_af_data.mat": "38adc07e4420226a0edfe9769a23284f",
+    "mimic_perform_non_af_data.mat": "d1c4f93442a3b4c9cb95718ca0a57013"
+  },
+  "sample_rate_hz": 125,
+  "window_seconds": 12,
+  "window_step_seconds": 60,
+  "first_center_seconds": 30,
+  "trim_seconds_per_edge": 1,
+  "beat_match_tolerance_ms": 100,
+  "scheduled_windows": 700,
+  "excluded_windows": {
+    "nonfinite": 24,
+    "flat": 0
+  },
+  "eligible_windows": 676,
+  "settings": {
+    "epochs": 8,
+    "patience": 3,
+    "batch_size": 32,
+    "channels": 8,
+    "peak_weight": 0.0,
+    "qrs_weight_by_model": {
+      "tcn_waveform": 0.0,
+      "tcn_qrs_weighted": 4.0
+    },
+    "qrs_radius_samples": 4,
+    "convolution_future_context_samples": 64,
+    "threads": 2,
+    "torch_version": "2.10.0+cpu",
+    "folds": 5,
+    "seed": 2026
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "training_patients": 22,
+      "training_af_patients": 12,
+      "training_windows": 419,
+      "validation_patients": 6,
+      "validation_af_patients": 3,
+      "validation_windows": 119,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 138,
+      "models": {
+        "tcn_waveform": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 8,
+          "selected_training_waveform_loss": 0.10055920417418447,
+          "validation_waveform_loss_by_epoch": [
+            0.08321871179115779,
+            0.08266981706984453,
+            0.08106930591113996,
+            0.07957434608090685,
+            0.07963961079688572,
+            0.07948306325479809,
+            0.08022817605198967,
+            0.0792551171257725
+          ]
+        },
+        "tcn_qrs_weighted": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 8,
+          "selected_training_waveform_loss": 0.20270170156998946,
+          "validation_waveform_loss_by_epoch": [
+            0.19341057006347256,
+            0.1892059582269874,
+            0.1888653530000021,
+            0.18694313355892803,
+            0.18674015877037237,
+            0.18704491845627064,
+            0.18774082413035376,
+            0.1864893360834094
+          ]
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "training_patients": 22,
+      "training_af_patients": 12,
+      "training_windows": 421,
+      "validation_patients": 6,
+      "validation_af_patients": 3,
+      "validation_windows": 115,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 140,
+      "models": {
+        "tcn_waveform": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 8,
+          "selected_training_waveform_loss": 0.07815051789249179,
+          "validation_waveform_loss_by_epoch": [
+            0.10514084676596765,
+            0.10103753885701214,
+            0.09953536068566596,
+            0.09960945391476661,
+            0.09939835691409717,
+            0.09940854929777618,
+            0.09937667856350615,
+            0.09933132423558515
+          ]
+        },
+        "tcn_qrs_weighted": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 8,
+          "selected_training_waveform_loss": 0.17959492680608924,
+          "validation_waveform_loss_by_epoch": [
+            0.20205746784989223,
+            0.19341419023638204,
+            0.19345420140438582,
+            0.19355539761903465,
+            0.19339405814913893,
+            0.1934366036341766,
+            0.19335336237535922,
+            0.19334051007127384
+          ]
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "training_patients": 22,
+      "training_af_patients": 12,
+      "training_windows": 433,
+      "validation_patients": 6,
+      "validation_af_patients": 3,
+      "validation_windows": 118,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 125,
+      "models": {
+        "tcn_waveform": {
+          "parameters": 1746,
+          "epochs_completed": 7,
+          "selected_epoch": 4,
+          "selected_training_waveform_loss": 0.09322353576709883,
+          "validation_waveform_loss_by_epoch": [
+            0.10624588434183828,
+            0.09858557411808738,
+            0.10028465539798698,
+            0.09844230270706195,
+            0.09865830539213832,
+            0.09873609754439193,
+            0.09855849253846798
+          ]
+        },
+        "tcn_qrs_weighted": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 7,
+          "selected_training_waveform_loss": 0.1962330873769212,
+          "validation_waveform_loss_by_epoch": [
+            0.20961720243497078,
+            0.20496846623555504,
+            0.20451219448755262,
+            0.2042133188727017,
+            0.20416111359840836,
+            0.2042283587239024,
+            0.20397583186109203,
+            0.20408494944260674
+          ]
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "training_patients": 22,
+      "training_af_patients": 12,
+      "training_windows": 422,
+      "validation_patients": 6,
+      "validation_af_patients": 3,
+      "validation_windows": 115,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 139,
+      "models": {
+        "tcn_waveform": {
+          "parameters": 1746,
+          "epochs_completed": 8,
+          "selected_epoch": 5,
+          "selected_training_waveform_loss": 0.09857256755475971,
+          "validation_waveform_loss_by_epoch": [
+            0.09341064174602294,
+            0.0922333030589468,
+            0.09040734224226375,
+            0.09064549462909194,
+            0.09022935540190455,
+            0.09024105645023926,
+            0.09035162068029852,
+            0.09028369208708328
+          ]
+        },
+        "tcn_qrs_weighted": {
+          "parameters": 1746,
+          "epochs_completed": 7,
+          "selected_epoch": 4,
+          "selected_training_waveform_loss": 0.20178851843369083,
+          "validation_waveform_loss_by_epoch": [
+            0.20338624850047302,
+            0.19495690551768943,
+            0.19575886973776443,
+            0.19466384994828234,
+            0.1950064393286393,
+            0.19487366351540417,
+            0.19504492703964166
+          ]
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "training_patients": 22,
+      "training_af_patients": 13,
+      "training_windows": 422,
+      "validation_patients": 6,
+      "validation_af_patients": 3,
+      "validation_windows": 120,
+      "test_patients": 7,
+      "test_af_patients": 3,
+      "test_windows": 134,
+      "models": {
+        "tcn_waveform": {
+          "parameters": 1746,
+          "epochs_completed": 5,
+          "selected_epoch": 2,
+          "selected_training_waveform_loss": 0.08835489800344223,
+          "validation_waveform_loss_by_epoch": [
+            0.09486846775540574,
+            0.09388718971126397,
+            0.0940336043911147,
+            0.0940277099609375,
+            0.09411798297374195
+          ]
+        },
+        "tcn_qrs_weighted": {
+          "parameters": 1746,
+          "epochs_completed": 6,
+          "selected_epoch": 3,
+          "selected_training_waveform_loss": 0.18918643406617935,
+          "validation_waveform_loss_by_epoch": [
+            0.2038387961083183,
+            0.20260538139058068,
+            0.20174378548084773,
+            0.20212538082328993,
+            0.2019911737614935,
+            0.20184481946055685
+          ]
+        }
+      }
+    }
+  ],
+  "overall": {
+    "patients": 35,
+    "windows": 676,
+    "common_support_fraction": 0.998108875739645,
+    "zero_waveform_relative_mae": 0.15134468807783827,
+    "models": {
+      "delay_ridge": {
+        "relative_mae": 0.15603819367998406,
+        "median_pearson_r": 0.14219408369872338,
+        "correlation_windows": 676,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 4894,
+          "matched_peaks": 1972,
+          "precision": 0.40294237842255826,
+          "recall": 0.1976347965524153,
+          "f1": 0.26519634211941906,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 403,
+          "median_abs_rr_error_ms": 32.0
+        }
+      },
+      "pulse_template": {
+        "relative_mae": 0.1854297669893688,
+        "median_pearson_r": -0.026250444629338787,
+        "correlation_windows": 676,
+        "own_support_fraction": 0.998108875739645,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 9873,
+          "matched_peaks": 4425,
+          "precision": 0.4481920388939532,
+          "recall": 0.44347564642212867,
+          "f1": 0.44582136920054405,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 2723,
+          "median_abs_rr_error_ms": 8.0
+        }
+      },
+      "tcn_waveform": {
+        "relative_mae": 0.1529577081457277,
+        "median_pearson_r": -0.009723924317440647,
+        "correlation_windows": 676,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 5191,
+          "matched_peaks": 1888,
+          "precision": 0.3637064149489501,
+          "recall": 0.18921627580677491,
+          "f1": 0.2489287362383809,
+          "median_abs_timing_error_ms": 56.0,
+          "matched_consecutive_intervals": 907,
+          "median_abs_rr_error_ms": 8.0
+        }
+      },
+      "tcn_qrs_weighted": {
+        "relative_mae": 0.15521442971915458,
+        "median_pearson_r": -0.04553293592674104,
+        "correlation_windows": 676,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 4631,
+          "matched_peaks": 1493,
+          "precision": 0.3223925717987476,
+          "recall": 0.14962918420525156,
+          "f1": 0.2043945513039907,
+          "median_abs_timing_error_ms": 64.0,
+          "matched_consecutive_intervals": 655,
+          "median_abs_rr_error_ms": 8.0
+        }
+      }
+    }
+  },
+  "by_record_status": {
+    "af": {
+      "patients": 19,
+      "windows": 371,
+      "common_support_fraction": 0.9985078167115903,
+      "zero_waveform_relative_mae": 0.14299098753027695,
+      "models": {
+        "delay_ridge": {
+          "relative_mae": 0.1531656901213839,
+          "median_pearson_r": 0.04755211218894374,
+          "correlation_windows": 371,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 3116,
+            "matched_peaks": 1318,
+            "precision": 0.42297817715019254,
+            "recall": 0.22728056561476118,
+            "f1": 0.29568143578238926,
+            "median_abs_timing_error_ms": 40.0,
+            "matched_consecutive_intervals": 311,
+            "median_abs_rr_error_ms": 40.0
+          }
+        },
+        "pulse_template": {
+          "relative_mae": 0.18184380452896737,
+          "median_pearson_r": -0.02308547228087176,
+          "correlation_windows": 371,
+          "own_support_fraction": 0.9985078167115903,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 5674,
+            "matched_peaks": 2211,
+            "precision": 0.38967218893197036,
+            "recall": 0.3812726332126229,
+            "f1": 0.3854266538830297,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 964,
+            "median_abs_rr_error_ms": 48.0
+          }
+        },
+        "tcn_waveform": {
+          "relative_mae": 0.14430393621650117,
+          "median_pearson_r": 0.018304214539347274,
+          "correlation_windows": 371,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 2812,
+            "matched_peaks": 1046,
+            "precision": 0.37197724039829305,
+            "recall": 0.18037592688394552,
+            "f1": 0.24294507025897108,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 311,
+            "median_abs_rr_error_ms": 48.0
+          }
+        },
+        "tcn_qrs_weighted": {
+          "relative_mae": 0.14738003699497657,
+          "median_pearson_r": -0.017074100891563856,
+          "correlation_windows": 371,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 2493,
+            "matched_peaks": 864,
+            "precision": 0.34657039711191334,
+            "recall": 0.14899120538023797,
+            "f1": 0.20839363241678727,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 235,
+            "median_abs_rr_error_ms": 48.0
+          }
+        }
+      }
+    },
+    "non_af": {
+      "patients": 16,
+      "windows": 305,
+      "common_support_fraction": 0.997623606557377,
+      "zero_waveform_relative_mae": 0.1615060746455276,
+      "models": {
+        "delay_ridge": {
+          "relative_mae": 0.15953228817257642,
+          "median_pearson_r": 0.19436864788137592,
+          "correlation_windows": 305,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 1778,
+            "matched_peaks": 654,
+            "precision": 0.3678290213723285,
+            "recall": 0.15649676956209618,
+            "f1": 0.2195736108779587,
+            "median_abs_timing_error_ms": 64.0,
+            "matched_consecutive_intervals": 92,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "pulse_template": {
+          "relative_mae": 0.18979170821169317,
+          "median_pearson_r": -0.03404142635072085,
+          "correlation_windows": 305,
+          "own_support_fraction": 0.997623606557377,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 4199,
+            "matched_peaks": 2214,
+            "precision": 0.5272683972374375,
+            "recall": 0.529791816223977,
+            "f1": 0.528527094772022,
+            "median_abs_timing_error_ms": 40.0,
+            "matched_consecutive_intervals": 1759,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "tcn_waveform": {
+          "relative_mae": 0.16348409957439344,
+          "median_pearson_r": -0.04264838331252325,
+          "correlation_windows": 305,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 2379,
+            "matched_peaks": 842,
+            "precision": 0.3539302227826818,
+            "recall": 0.20148360851878439,
+            "f1": 0.25678560536749007,
+            "median_abs_timing_error_ms": 64.0,
+            "matched_consecutive_intervals": 596,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "tcn_qrs_weighted": {
+          "relative_mae": 0.16474413365577775,
+          "median_pearson_r": -0.07721337243936341,
+          "correlation_windows": 305,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 2138,
+            "matched_peaks": 629,
+            "precision": 0.29420018709073903,
+            "recall": 0.150514477147643,
+            "f1": 0.19914516384359665,
+            "median_abs_timing_error_ms": 72.0,
+            "matched_consecutive_intervals": 420,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      }
+    }
+  }
+}
