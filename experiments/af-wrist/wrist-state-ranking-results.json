@@ -1,0 +1,83 @@
+{
+  "scope": "Within-person forward-time ranking on the previously scored 25-person wrist roster",
+  "retrospective_results_sha256": "81a6af20f98bceccce288ad4002d0634edaa850576739cd1b7bc29350ffa4cd7",
+  "decision_stride_seconds": 10,
+  "scopes": {
+    "wear_monitoring": {
+      "participants": 25,
+      "participants_with_both_rhythm_states": 1,
+      "forward_scoreable_seconds": 7250,
+      "forward_AF_seconds": 607.994000000006,
+      "routes": {
+        "baseline": {
+          "pooled_duration_auc": 0.602976336827586,
+          "participant_macro_duration_auc": 0.14848506820892943,
+          "median_participant_duration_auc": 0.14848506820892943
+        },
+        "quality": {
+          "pooled_duration_auc": 0.6771863695496525,
+          "participant_macro_duration_auc": 0.12668700315056486,
+          "median_participant_duration_auc": 0.12668700315056486
+        },
+        "quality_interactions": {
+          "pooled_duration_auc": 0.6622964349142662,
+          "participant_macro_duration_auc": 0.08915528342789705,
+          "median_participant_duration_auc": 0.08915528342789705
+        }
+      },
+      "paired_participant_differences_from_baseline": {
+        "quality": {
+          "mean_auc_change": -0.02179806505836457,
+          "participants_with_improvement": 0,
+          "percentile_95": null
+        },
+        "quality_interactions": {
+          "mean_auc_change": -0.059329784781032374,
+          "participants_with_improvement": 0,
+          "percentile_95": null
+        }
+      }
+    },
+    "all_scored_times_including_AF_enriched": {
+      "participants": 25,
+      "participants_with_both_rhythm_states": 16,
+      "forward_scoreable_seconds": 51660,
+      "forward_AF_seconds": 29322.19199999999,
+      "routes": {
+        "baseline": {
+          "pooled_duration_auc": 0.5887853050920414,
+          "participant_macro_duration_auc": 0.5816702632054103,
+          "median_participant_duration_auc": 0.5708544753244755
+        },
+        "quality": {
+          "pooled_duration_auc": 0.591372290585548,
+          "participant_macro_duration_auc": 0.5984986829990578,
+          "median_participant_duration_auc": 0.5848254419093266
+        },
+        "quality_interactions": {
+          "pooled_duration_auc": 0.5799974754515431,
+          "participant_macro_duration_auc": 0.5761558490826602,
+          "median_participant_duration_auc": 0.571733936613278
+        }
+      },
+      "paired_participant_differences_from_baseline": {
+        "quality": {
+          "mean_auc_change": 0.01682841979364752,
+          "participants_with_improvement": 7,
+          "percentile_95": [
+            -0.06167308858239103,
+            0.13190024717417137
+          ]
+        },
+        "quality_interactions": {
+          "mean_auc_change": -0.0055144141227502115,
+          "participants_with_improvement": 6,
+          "percentile_95": [
+            -0.0860146507639465,
+            0.10251827646780838
+          ]
+        }
+      }
+    }
+  }
+}

@@ -21,7 +21,7 @@ from .af_wrist_vote_study import _IMMEDIATE, _held_out_replay
 _RETROSPECTIVE_SHA256 = "81a6af20f98bceccce288ad4002d0634edaa850576739cd1b7bc29350ffa4cd7"
 
 
-def _verified_replays(protocol, lock, frozen, coverage, report, directories, seal):
+def _verified_score_inputs(protocol, lock, frozen, coverage, report, directories, seal):
     expected_people = _subject_ids(protocol["test_roster"])
     _verify_seal(_cohort_archives(directories, expected_people), seal,
                  report["source_receipts_sha256"]["independent_lock"], coverage)
@@ -39,16 +39,21 @@ def _verified_replays(protocol, lock, frozen, coverage, report, directories, sea
         raise ValueError("Use the original sealed retrospective roster, score support and reference coverage")
 
     matrices = _quality_matrices(grid, directories)
+    return grid, matrices, {"baseline": baseline, **frozen["models"]}, available, sorted(roster)
+
+
+def _verified_replays(protocol, lock, frozen, coverage, report, directories, seal):
+    grid, matrices, models, available, people = _verified_score_inputs(protocol, lock, frozen, coverage, report, directories, seal)
     expected = {"baseline": report["historical_baseline"],
                 **{name: report["retrospective_variants"][name]["summary"] for name in VARIANTS}}
     replays = {}
-    for name, option in {"baseline": baseline, **frozen["models"]}.items():
+    for name, option in models.items():
         scores = _predict(matrices[name], available, option["model"])
         if not np.array_equal(np.isfinite(scores), available):
             raise ValueError("The frozen models must retain the original shared score gate")
         replays[name] = _held_out_replay(grid, scores, np.full(len(scores), option["cutoff"]), _IMMEDIATE)
         _match_coverage(replays[name][0], expected[name])
-    return replays, sorted(roster)
+    return replays, people
 
 
 def _participant_counts(replay, people):
@@ -159,6 +164,18 @@ def summarize_uncertainty(replays, people):
     }
 
 
+def _read_retrospective_inputs(args):
+    retro = _read_pinned(args.retro_results, _RETROSPECTIVE_SHA256, public=True)
+    pins = _read_pinned(args.data_preflight, _PREFLIGHT_SHA256, public=True)["sha256"]
+    protocol = _read_pinned(args.protocol_lock, pins["protocol_lock"])
+    lock = _read_pinned(args.historical_model_lock, pins["independent_lock"])
+    frozen = _read_pinned(args.variant_lock, retro["development_variant_lock_sha256"])
+    coverage = _read_pinned(args.coverage_report, pins["independent_coverage_report"], public=True)
+    seal = _read_pinned(args.sealed_inputs / "sealed-input-proof.json", pins["independent_seal"])
+    directories = {scope: args.sealed_inputs / scope for scope in _SCOPES}
+    return protocol, lock, frozen, coverage, retro, directories, seal
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("retro-results", "protocol-lock", "data-preflight", "variant-lock", "historical-model-lock",
@@ -168,15 +185,7 @@ def main():
     try:
         if args.output.exists():
             raise ValueError("Use a new output path")
-        retro = _read_pinned(args.retro_results, _RETROSPECTIVE_SHA256, public=True)
-        pins = _read_pinned(args.data_preflight, _PREFLIGHT_SHA256, public=True)["sha256"]
-        protocol = _read_pinned(args.protocol_lock, pins["protocol_lock"])
-        lock = _read_pinned(args.historical_model_lock, pins["independent_lock"])
-        frozen = _read_pinned(args.variant_lock, retro["development_variant_lock_sha256"])
-        coverage = _read_pinned(args.coverage_report, pins["independent_coverage_report"], public=True)
-        seal = _read_pinned(args.sealed_inputs / "sealed-input-proof.json", pins["independent_seal"])
-        directories = {scope: args.sealed_inputs / scope for scope in _SCOPES}
-        report = summarize_uncertainty(*_verified_replays(protocol, lock, frozen, coverage, retro, directories, seal))
+        report = summarize_uncertainty(*_verified_replays(*_read_retrospective_inputs(args)))
         report["retrospective_results_sha256"] = _RETROSPECTIVE_SHA256
         _write_json(args.output, report)
     except (AssertionError, KeyError, OSError, TypeError, ValueError) as error:
