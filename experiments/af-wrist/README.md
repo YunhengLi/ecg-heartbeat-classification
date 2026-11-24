@@ -51,6 +51,8 @@ python -m ppg_af.af_wrist_smoke --ecg data/NNN_ECG.mat --ppg data/NNN_PPG.mat --
 
 ## Comparison on held-out participants
 
+The [development research summary](research-summary.md) compares the major completed studies and links to their code, results and reproduction commands.
+
 See [participant-held-out methods and reproduction commands](grouped-evaluation.md) for the training pipeline.
 
 The [episode follow-up](episode-follow-up.md) traces the three pilot misses and defines the independent test on unused participants.
@@ -96,6 +98,8 @@ The [native transition study](transition-native-study.md) verifies an additional
 The [lower-quality non-AF study](low-quality-training-study.md) compares alternative training windows on the same participant and time-bin assignments.
 
 The [native wrist waveform study](waveform-study.md) compares external and locally fitted reconstruction on held-out participants and isolates the release's timing assumption.
+
+The [fold-local template study](local-template-study.md) tests whether fitting the wrist waveform inside each training fold improves AF alerts.
 
 The [ECG annotation transfer study](afdb-transfer-study.md) tests a frozen external rhythm model on measured and PPG-derived ECG timing features.
 

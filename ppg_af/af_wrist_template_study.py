@@ -25,7 +25,7 @@ CANDIDATE_C = (0.1, DEFAULT_C, 10.0)
 
 
 def fit_template(grid, matrix, lock, regularization, *, participant_weighting=False, supplemental_fit_labels=None,
-                 seed=2026):
+                 seed=2026, fold_feature_transform=None):
     shared = _shared_features(grid.table)
     if not np.isfinite(matrix[shared]).all():
         raise ValueError("Template variants must retain every originally scoreable row")
@@ -42,7 +42,7 @@ def fit_template(grid, matrix, lock, regularization, *, participant_weighting=Fa
     return train_oof({ROUTE: features}, grid.table["stable_label"], grid.subjects, n_splits=5, inner_splits=3,
                      seed=seed, train_eligible=fit_rows, calibration_selector=calibrate,
                      regularization=regularization, participant_weighting=participant_weighting,
-                     supplemental_fit_labels=supplemental_fit_labels)
+                     supplemental_fit_labels=supplemental_fit_labels, fold_feature_transform=fold_feature_transform)
 
 
 def verify_fit_support(baseline, candidate):

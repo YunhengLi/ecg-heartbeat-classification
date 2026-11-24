@@ -84,7 +84,7 @@ def _nested_folds(train_rows, fit_labels, subjects, masks, max_splits, seed):
 def train_oof(
     features: Mapping[str, np.ndarray], labels, subjects, *, n_splits=5, inner_splits=3,
     seed=2026, train_eligible=None, calibration_selector: Callable | None = None, regularization=1.0,
-    participant_weighting=False, supplemental_fit_labels=None,
+    participant_weighting=False, supplemental_fit_labels=None, fold_feature_transform: Callable | None = None,
 ) -> dict:
     """Fit one logistic model per route on the same outer participant folds.
 
@@ -104,6 +104,10 @@ def train_oof(
     Optional ``supplemental_fit_labels`` add labels on previously unlabeled
     rows for fitting. Split assignments and split support use the original
     labels. Supplemental rows can fit a model only within its training group.
+    Optional ``fold_feature_transform(matrix, fit_rows, score_rows)`` returns
+    an aligned matrix for one fit or inner calibration fit. It receives the
+    original read-only route matrix and the exact selected row indices. It
+    must preserve which fitting and scoring rows have finite features.
     """
     if not isfinite(regularization) or regularization <= 0:
         raise ValueError("Logistic regression C must be positive and finite")
@@ -137,6 +141,19 @@ def train_oof(
         fitting_labels = np.where(supplemental >= 0, supplemental, fit_labels).astype(int)
         fitting_masks = {route: mask | ((supplemental >= 0) & np.isfinite(matrices[route]).all(axis=1))
                          for route, mask in masks.items()}
+
+    def predict(matrix, train_rows, score_rows):
+        if fold_feature_transform is not None:
+            original = matrix.view()
+            original.flags.writeable = False
+            rows = np.r_[train_rows, score_rows]
+            transformed = np.asarray(fold_feature_transform(original, train_rows.copy(), score_rows.copy()), dtype=float)
+            if (transformed.shape != matrix.shape
+                    or not np.array_equal(np.isfinite(transformed[rows]).all(axis=1), np.isfinite(matrix[rows]).all(axis=1))):
+                raise ValueError("Fold feature transforms must preserve matrix shape and finite fit and score rows")
+            matrix = transformed
+        return _fit_and_predict(matrix, fitting_labels, train_rows, score_rows, **fit_options)
+
     n_splits, inner_splits = index(n_splits), index(inner_splits)
     if inner_splits < 2:
         raise ValueError("At least two inner folds are needed for grouped calibration")
@@ -161,7 +178,7 @@ def train_oof(
             if not _both_classes(fit_labels[baseline_fit]):
                 option["status"] = "insufficient_training_labels"
             else:
-                history["scores"][test] = _fit_and_predict(matrix, fitting_labels, fit, test, **fit_options)
+                history["scores"][test] = predict(matrix, fit, test)
                 if calibration_selector is not None:
                     option["status"] = "insufficient_calibration_training_labels"
                 if route in supported:
@@ -169,9 +186,7 @@ def train_oof(
                     for inner_fold in range(inner_count):
                         inner_fit = training[(inner != inner_fold) & fitting_masks[route][training]]
                         inner_test = inner == inner_fold
-                        calibration[inner_test] = _fit_and_predict(
-                            matrix, fitting_labels, inner_fit, training[inner_test], **fit_options,
-                        )
+                        calibration[inner_test] = predict(matrix, inner_fit, training[inner_test])
                     option = calibration_selector(calibration, training.copy())
                     threshold = option["threshold"]
                     if threshold is not None:
