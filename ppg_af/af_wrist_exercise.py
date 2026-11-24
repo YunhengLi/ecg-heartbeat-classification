@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 import numpy as np
-from scipy.signal import resample_poly
+from scipy.signal import csd, resample_poly, welch
 
 from .af_events import AFRun
 from .af_wrist_features import FEATURE_VERSION_KEY, PPG_RATE, PTT_SUBJECTS, WINDOW_SECONDS
@@ -33,6 +33,7 @@ LARGE_ERROR_BPM = 10.0
 MOTION_CHANNELS = tuple(f"wrist_{sensor}_{axis}" for sensor in ("gyro", "low_noise_accelerometer") for axis in "xyz")
 MOTION_LAG_SECONDS = (-0.25, -0.125, 0.0, 0.125, 0.25)
 MOTION_RIDGE = 0.10
+HEART_RATE_BAND_HZ = (0.75, 3.5)
 
 
 def verify_release(directory):
@@ -88,6 +89,21 @@ def remove_linear_motion(pulse, motion):
     return pulse - matrix @ weights
 
 
+def spectral_heart_rate(pulse, motion):
+    """Compare the PPG spectral peak with a motion-coherence-weighted peak."""
+    settings = {"fs": PPG_RATE, "nperseg": 8 * PPG_RATE, "nfft": 64 * PPG_RATE, "axis": 0}
+    frequencies, pulse_power = welch(pulse, **settings)
+    _, motion_power = welch(motion, **settings)
+    _, cross_power = csd(pulse[:, None], motion, **settings)
+    denominator = pulse_power[:, None] * motion_power
+    coherence = np.divide(np.abs(cross_power) ** 2, denominator, out=np.zeros_like(motion_power), where=denominator > 0)
+    penalty = np.max(np.clip(coherence, 0.0, 1.0), axis=1)
+    band = (frequencies >= HEART_RATE_BAND_HZ[0]) & (frequencies <= HEART_RATE_BAND_HZ[1])
+    bpm = 60 * frequencies[band]
+    spectra = (pulse_power[band], (pulse_power * (1 - penalty))[band])
+    return tuple(float(bpm[np.argmax(power)]) if np.max(power) > 0 else np.nan for power in spectra)
+
+
 def _replay(scores, cutoff):
     decisions = np.where(np.isfinite(scores), scores >= cutoff, -1).astype(np.int8)
     grid_start = WINDOW_SECONDS - STRIDE_SECONDS
@@ -96,7 +112,7 @@ def _replay(scores, cutoff):
     return decisions, replayed.alert_start_status
 
 
-def evaluate_record(directory, name, template, models):
+def evaluate_record(directory, name, template, models, *, spectral_followup=False):
     import wfdb
 
     from .af_wrist_sampling_stress import _extract
@@ -126,6 +142,7 @@ def evaluate_record(directory, name, template, models):
     quality = np.full(len(ends), np.nan)
     direct_hr = np.full(len(ends), np.nan)
     filtered_hr = np.full(len(ends), np.nan)
+    spectral = np.full((len(ends), 2), np.nan)
     if np.any(supported):
         extracted = _extract(cores[supported], template)
         template_features[supported] = extracted["baseline"]
@@ -138,6 +155,8 @@ def evaluate_record(directory, name, template, models):
             if np.isfinite(motion).all():
                 filtered, _ = ppg_features(remove_linear_motion(cores[row], motion), PPG_RATE)
                 filtered_hr[row] = _bpm(filtered[None, :]).item()
+                if spectral_followup:
+                    spectral[row] = spectral_heart_rate(cores[row], motion)
     template_hr = _bpm(template_features)
     starts = (ends - WINDOW_SECONDS) * SOURCE_RATE
     stops = ends * SOURCE_RATE
@@ -153,10 +172,30 @@ def evaluate_record(directory, name, template, models):
     alerts = {route: _replay(_predict(matrices[route], scoreable, locked["model"]), locked["cutoff"])
               for route, locked in models.items()}
     person, activity = name.split("_", 1)
-    return {"person": person, "activity": activity, "raw_seconds": len(ecg) / SOURCE_RATE,
-            "supported": supported, "quality": quality, "reference_hr": reference_hr,
-            "heart_rate": {"direct_ppg": direct_hr, "template_ecg": template_hr, "measured_ecg": ecg_hr},
-            "motion_filtered_hr": filtered_hr, "alerts": alerts}
+    result = {"person": person, "activity": activity, "raw_seconds": len(ecg) / SOURCE_RATE,
+              "supported": supported, "quality": quality, "reference_hr": reference_hr,
+              "heart_rate": {"direct_ppg": direct_hr, "template_ecg": template_hr, "measured_ecg": ecg_hr},
+              "motion_filtered_hr": filtered_hr, "alerts": alerts}
+    if spectral_followup:
+        result["spectral_heart_rate"] = spectral
+    return result
+
+
+def _spectral_summary(records, reference, quality, direct_hr):
+    estimates = np.column_stack((direct_hr, np.concatenate([record["spectral_heart_rate"] for record in records])))
+    paired = np.isfinite(reference) & np.isfinite(estimates).all(axis=1)
+    if not paired.any():
+        raise ValueError("The spectral comparison requires paired windows")
+    absolute_error = np.abs(estimates[paired] - reference[paired, None])
+    high_quality = quality[paired] >= HIGH_QUALITY
+    pooled = {}
+    routes = ("direct_ppg_intervals", "ppg_spectral_peak", "ppg_peak_weighted_by_motion_coherence")
+    for index, route in enumerate(routes):
+        error = absolute_error[:, index]
+        pooled[route] = {"paired_mean_absolute_error_bpm": float(np.mean(error)),
+                         "paired_median_absolute_error_bpm": float(np.median(error)),
+                         "paired_high_quality_large_errors": int(np.sum(high_quality & (error > LARGE_ERROR_BPM)))}
+    return {"paired_windows": int(paired.sum()), "paired_high_quality_windows": int(high_quality.sum()), "routes": pooled}
 
 
 def summarize(records):
@@ -194,17 +233,21 @@ def summarize(records):
                      "after_mae_bpm": float(np.mean(filtered_error)) if len(filtered_error) else None,
                      "error_decreased_windows": int(np.sum(filtered_error < original_error)),
                      "error_increased_windows": int(np.sum(filtered_error > original_error))}
-    return {"participants": len({record["person"] for record in records}), "records": len(records),
-            "source_ecg_seconds": sum(record["raw_seconds"] for record in records), "decision_clock_seconds": duration,
-            "scheduled_windows": len(reference), "ppg_supported_windows": sum(int(record["supported"].sum()) for record in records),
-            "paired_heart_rate_windows": int(paired.sum()), "paired_high_quality_windows": int(high_quality.sum()),
-            "heart_rate": error, "motion_filter": motion_detail, "notifications": notifications}
+    result = {"participants": len({record["person"] for record in records}), "records": len(records),
+              "source_ecg_seconds": sum(record["raw_seconds"] for record in records), "decision_clock_seconds": duration,
+              "scheduled_windows": len(reference), "ppg_supported_windows": sum(int(record["supported"].sum()) for record in records),
+              "paired_heart_rate_windows": int(paired.sum()), "paired_high_quality_windows": int(high_quality.sum()),
+              "heart_rate": error, "motion_filter": motion_detail, "notifications": notifications}
+    if "spectral_heart_rate" in records[0]:
+        result["spectral_followup"] = _spectral_summary(records, reference, quality, estimates["direct_ppg"])
+    return result
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for arg in ("exercise-dir", "ptt-dir", "protocol-lock", "baseline-lock", "variants-lock", "output"):
         parser.add_argument(f"--{arg}", type=Path, required=True)
+    parser.add_argument("--spectral-followup", action="store_true")
     args = parser.parse_args()
     try:
         from .af_wrist_smoke import fit_ptt_calibration
@@ -220,7 +263,8 @@ def main():
         if any(not np.isfinite(model["cutoff"]) or not 0 <= model["cutoff"] <= _NO_ALERT_THRESHOLD for model in models.values()):
             raise ValueError("All frozen notification thresholds must be valid")
         _, template = fit_ptt_calibration(args.ptt_dir, PPG_RATE, subject_count=PTT_SUBJECTS)
-        records = [evaluate_record(args.exercise_dir, name, template, models) for name in names]
+        records = [evaluate_record(args.exercise_dir, name, template, models, spectral_followup=args.spectral_followup)
+                   for name in names]
         _write_json(args.output, {"scope": "Independent device/activity heart-rate and notification stress test",
                                   "source": SOURCE, "source_manifest_sha256": RELEASE_SHA,
                                   "baseline_model_lock_sha256": BASELINE_SHA, "quality_model_lock_sha256": VARIANTS_SHA,

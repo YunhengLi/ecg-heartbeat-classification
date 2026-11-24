@@ -33,6 +33,20 @@ Measured ECG had a 0.47 bpm median absolute error over paired windows. Its mean 
 
 The historical classifier stayed positive on every scoreable decision, so it produced fewer starts even with a larger positive fraction. Every definite historical start followed an unavailable window. The absence of ECG rhythm intervals prevents estimating AF sensitivity or false alerts per monitored hour on this source. Windows overlap and several activities came from the same participants, so the results are descriptive. [Aggregate output](exercise-stress-results.json)
 
+## Compare spectral heart-rate estimates
+
+After the linear subtraction result, we tested a fixed alternative on the same data. Estimate the PPG spectrum and its coherence with the six motion axes using overlapping eight-second segments within each trailing window. Search from 0.75 to 3.5 Hz. The motion-weighted score multiplies PPG power by one minus the highest squared coherence with any axis at that frequency. The formula does not fit to the reference ECG. This follow-up uses the same eight participants and 591 paired windows across all four activities. [Frequency coherence](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.coherence.html)
+
+| Activity | Direct PPG interval MAE | PPG spectrum peak MAE | Motion-weighted spectrum peak MAE |
+| --- | ---: | ---: | ---: |
+| All | 25.62 | 41.51 | 19.07 |
+| Walk | 40.16 | 46.33 | 22.77 |
+| Run | 33.40 | 48.09 | 30.67 |
+| Low-resistance bike | 15.37 | 29.38 | 14.10 |
+| High-resistance bike | 9.04 | 43.51 | 8.14 |
+
+The motion-weighted estimator gave a 3.57 bpm median error instead of the direct interval estimator's 18.20 bpm. Among the same 465 high-quality windows, large errors dropped from 326 to 185. Mean error remained high for walking and running, and the spectrum yields an average frequency without a beat timeline. [Spectral results](exercise-spectral-results.json)
+
 ## Reproduce
 
 Use the published exercise release unpacked into `EXERCISE`, the original PTT template data in `PTT`, and the private frozen wrist locks from the [quality retrospective study](quality-retrospective-study.md) in `RAW`. Install `wfdb` alongside `requirements-af-wrist.txt` for this runner.
@@ -46,3 +60,5 @@ python -m ppg_af.af_wrist_exercise --exercise-dir "$EXERCISE" --ptt-dir "$PTT" \
 ```
 
 [`clocked_window` and `remove_linear_motion`](../../ppg_af/af_wrist_exercise.py) define the trailing window and the single motion experiment. Only aggregate results are exported.
+
+Add `--spectral-followup` and use a fresh output path to run [`spectral_heart_rate`](../../ppg_af/af_wrist_exercise.py).

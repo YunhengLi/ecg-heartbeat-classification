@@ -4,7 +4,7 @@ import unittest
 
 import numpy as np
 
-from ppg_af.af_wrist_exercise import SOURCE_RATE, clocked_window, remove_linear_motion
+from ppg_af.af_wrist_exercise import SOURCE_RATE, clocked_window, remove_linear_motion, spectral_heart_rate
 from ppg_af.af_wrist_features import PPG_RATE, WINDOW_SECONDS
 
 
@@ -38,3 +38,14 @@ class WristExerciseTests(unittest.TestCase):
         np.testing.assert_array_equal(remove_linear_motion(clean, np.zeros_like(motion)), clean)
         filtered = remove_linear_motion(contaminated, motion)
         self.assertLess(np.mean((filtered - clean) ** 2), 0.1 * np.mean((contaminated - clean) ** 2))
+
+    def test_coherence_weights_the_measured_motion_frequency(self):
+        times = np.arange(WINDOW_SECONDS * PPG_RATE) / PPG_RATE
+        pulse = np.sin(2 * np.pi * 1.5 * times)
+        artifact = np.sin(2 * np.pi * 2.5 * times)
+        motion = np.column_stack((artifact, np.zeros((len(times), 5))))
+
+        plain, weighted = spectral_heart_rate(pulse + 2 * artifact, motion)
+
+        self.assertAlmostEqual(plain, 150, delta=1)
+        self.assertAlmostEqual(weighted, 90, delta=1)

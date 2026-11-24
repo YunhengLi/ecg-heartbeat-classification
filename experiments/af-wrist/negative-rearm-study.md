@@ -19,6 +19,10 @@ Replay the plain template and the quality-interaction model on the same ten peop
 
 The candidate saved one false start at the cost of one true detection for the original plain model. With quality interactions it saved two false starts and lost two detections, a sensitivity decrease of 11.8 percentage points. No rearmed model reached 80% sensitivity. These development findings support retaining the immediate policy as the comparison baseline. [Aggregate results](negative-rearm-results.json)
 
+## Recalibrate inside the training groups
+
+After the fixed-cutoff test, reuse the same inner held-out model scores and search candidate cutoffs under the new alert policy. One rule seeks the 80% episode-sensitivity target. The other first restricts the cutoff to within ten percentage points of immediate-policy sensitivity on the same training groups and then minimizes false starts. When the matching range has no eligible cutoff, choose the closest sensitivity. Both recalibrated rules reproduced every outer detection and wrist false-start count in the preceding table. All 20 inner target searches fell short of 80%. Neither threshold search recovered the two detections lost by the original quality model. [Recalibration results](negative-rearm-calibration-results.json)
+
 ## Reproduce
 
 Use the original local wrist development archives in `RAW`.
@@ -35,3 +39,5 @@ python -m ppg_af.af_wrist_negative_rearm --development-raw "$RAW/cohort-seeded-d
 ```
 
 [`compare_rearming`](../../ppg_af/af_wrist_negative_rearm.py) checks fixed scores, cutoffs, and paired alert changes.
+
+To reproduce recalibration, add `--recalibrate` and choose a fresh output path.
