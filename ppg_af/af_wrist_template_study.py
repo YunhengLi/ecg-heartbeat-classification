@@ -24,7 +24,7 @@ DEFAULT_C = 1.0
 CANDIDATE_C = (0.1, DEFAULT_C, 10.0)
 
 
-def fit_template(grid, matrix, lock, regularization):
+def fit_template(grid, matrix, lock, regularization, *, participant_weighting=False):
     shared = _shared_features(grid.table)
     if not np.isfinite(matrix[shared]).all():
         raise ValueError("Template variants must retain every originally scoreable row")
@@ -40,7 +40,7 @@ def fit_template(grid, matrix, lock, regularization):
 
     return train_oof({ROUTE: features}, grid.table["stable_label"], grid.subjects, n_splits=5, inner_splits=3,
                      seed=2026, train_eligible=fit_rows, calibration_selector=calibrate,
-                     regularization=regularization)
+                     regularization=regularization, participant_weighting=participant_weighting)
 
 
 def rank_calibration(option, regularization):

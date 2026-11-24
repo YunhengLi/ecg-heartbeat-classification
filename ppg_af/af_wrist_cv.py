@@ -34,15 +34,32 @@ def _both_classes(label_values):
     return bool(np.any(label_values == 0) and np.any(label_values == 1))
 
 
-def _fit_and_predict(features, labels, train_rows, score_rows, *, regularization):
+def _within_rhythm_participant_weights(labels, subjects):
+    """Give equal total weight to each participant within a training rhythm."""
+    weights = np.empty(len(labels), dtype=float)
+    for label in (0, 1):
+        rows = labels == label
+        _, indices, counts = np.unique(subjects[rows], return_inverse=True, return_counts=True)
+        weights[rows] = len(labels) / (2 * len(counts) * counts[indices])
+    return weights
+
+
+def _fit_and_predict(features, labels, train_rows, score_rows, *, regularization, weighted_subjects=None):
     predictions = np.full(len(score_rows), np.nan)
     available = np.isfinite(features[score_rows]).all(axis=1)
     if len(train_rows) and np.any(available):
+        class_weight = "balanced" if weighted_subjects is None else None
         classifier = make_pipeline(
             StandardScaler(),
-            LogisticRegression(C=regularization, class_weight="balanced", max_iter=1000),
+            LogisticRegression(C=regularization, class_weight=class_weight, max_iter=1000),
         )
-        classifier.fit(features[train_rows], labels[train_rows])
+        training_labels = labels[train_rows]
+        fit_options = {}
+        if weighted_subjects is not None:
+            fit_options["logisticregression__sample_weight"] = _within_rhythm_participant_weights(
+                training_labels, weighted_subjects[train_rows],
+            )
+        classifier.fit(features[train_rows], training_labels, **fit_options)
         predictions[available] = classifier.predict_proba(features[score_rows[available]])[:, 1]
     return predictions
 
@@ -67,6 +84,7 @@ def _nested_folds(train_rows, fit_labels, subjects, masks, max_splits, seed):
 def train_oof(
     features: Mapping[str, np.ndarray], labels, subjects, *, n_splits=5, inner_splits=3,
     seed=2026, train_eligible=None, calibration_selector: Callable | None = None, regularization=1.0,
+    participant_weighting=False,
 ) -> dict:
     """Fit one logistic model per route on the same outer participant folds.
 
@@ -81,6 +99,8 @@ def train_oof(
     ``threshold`` and any calibration diagnostics. A missing threshold produces
     unavailable decisions, with the raw held-out scores still returned.
     ``regularization`` is the positive logistic regression C in every fit.
+    With ``participant_weighting``, the logistic fit balances participant
+    contributions within each rhythm using that fit's training rows only.
     """
     if not isfinite(regularization) or regularization <= 0:
         raise ValueError("Logistic regression C must be positive and finite")
@@ -90,6 +110,9 @@ def train_oof(
             or subjects.shape != labels.shape or np.any(subjects == "")):
         raise ValueError("Expected aligned participant IDs and labels in {-1, 0, 1}")
     labels = labels.astype(int)
+    fit_options = {"regularization": regularization}
+    if participant_weighting:
+        fit_options["weighted_subjects"] = subjects
     if train_eligible is not None:
         train_eligible = np.asarray(train_eligible)
         if train_eligible.shape != labels.shape or train_eligible.dtype != bool:
@@ -125,8 +148,7 @@ def train_oof(
             if not _both_classes(labels[fit]):
                 option["status"] = "insufficient_training_labels"
             else:
-                history["scores"][test] = _fit_and_predict(matrix, labels, fit, test,
-                                                           regularization=regularization)
+                history["scores"][test] = _fit_and_predict(matrix, labels, fit, test, **fit_options)
                 if calibration_selector is not None:
                     option["status"] = "insufficient_calibration_training_labels"
                 if route in supported:
@@ -135,7 +157,7 @@ def train_oof(
                         inner_fit = training[(inner != inner_fold) & masks[route][training]]
                         inner_test = inner == inner_fold
                         calibration[inner_test] = _fit_and_predict(
-                            matrix, labels, inner_fit, training[inner_test], regularization=regularization,
+                            matrix, labels, inner_fit, training[inner_test], **fit_options,
                         )
                     option = calibration_selector(calibration, training.copy())
                     threshold = option["threshold"]

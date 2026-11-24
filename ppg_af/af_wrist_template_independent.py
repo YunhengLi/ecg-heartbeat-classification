@@ -167,8 +167,8 @@ def _participant_uncertainty(reference, wrist, people):
     }
 
 
-def evaluate_independent(lock, protocol, independent_features, stride_raw, stride_features, coverage):
-    """Audit eligibility before applying a single frozen classifier and cutoff."""
+def load_independent_inputs(lock, protocol, independent_features, stride_raw, stride_features, coverage):
+    """Load the immutable feature grid and verify its independent reference coverage."""
     model, roster, fit_count, calibration_count = _locked_model(lock, protocol)
     originals = _archives(independent_features)
     coverage_support = _audited_stride(originals, stride_raw, stride_features, coverage, roster, lock[FEATURE_VERSION_KEY])
@@ -182,6 +182,16 @@ def evaluate_independent(lock, protocol, independent_features, stride_raw, strid
     available = np.zeros(len(grid.subjects), dtype=bool)
     shared = _shared_features(grid.table)
     available[replay_rows] = shared[replay_rows]
+    return grid, model, available, coverage_support, roster, fit_count, calibration_count
+
+
+def evaluate_independent(lock, protocol, independent_features, stride_raw, stride_features, coverage):
+    """Audit eligibility before applying a single frozen classifier and cutoff."""
+    grid, model, available, coverage_support, roster, fit_count, calibration_count = load_independent_inputs(
+        lock, protocol, independent_features, stride_raw, stride_features, coverage,
+    )
+    people = set(grid.subjects)
+    scored_rows = np.concatenate([block.rows for block in grid.timelines])
     evaluation_scores = int(available[scored_rows].sum())
 
     # An all-positive eligibility probe measures opportunity before any model inference.
