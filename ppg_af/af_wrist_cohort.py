@@ -2,6 +2,7 @@
 
 import argparse
 from hashlib import sha256
+import json
 from pathlib import Path
 
 import numpy as np
@@ -52,6 +53,11 @@ def wear_monitor_runs(subject, random, existing, width):
     start = int(random.choice(sorted(choices)))
     return [("monitor-wear-0", "monitor_wear", start, start + width)]
 
+def _monitoring_schedule(subject, random, monitor_count, monitor_seconds, wear_seconds):
+    runs = list(monitor_runs(subject, random, monitor_count, monitor_seconds))
+    return runs + wear_monitor_runs(subject, random, runs, wear_seconds)
+
+
 def episode_runs(subject, random, episodes, reference, existing, count, max_seconds):
     choices = []
     for onset, offset in episodes:
@@ -72,6 +78,23 @@ def episode_runs(subject, random, episodes, reference, existing, count, max_seco
         if not overlaps(start, stop, chosen):
             chosen.append((f"episode-{len(chosen)}", "enriched_episode", start, stop))
     return chosen
+
+def survey_subject(subject, *, monitor_count=1, monitor_seconds=150, wear_seconds=300, max_episode_run_seconds=480):
+    """Check annotation and timestamp support without reading waveform samples."""
+    if (monitor_count < 1 or monitor_seconds < WINDOW or monitor_seconds % WINDOW
+            or wear_seconds < 0 or wear_seconds % WINDOW or max_episode_run_seconds < WINDOW):
+        raise ValueError("Invalid monitoring counts or run durations")
+    reference = subject.reference_rhythm_intervals()
+    episodes = subject.annotated_af_episodes()
+    random = rng_for(subject.subject_id)
+    runs = _monitoring_schedule(subject, random, monitor_count, monitor_seconds, wear_seconds)
+    candidates = episode_runs(subject, random, episodes, reference, runs, len(episodes), max_episode_run_seconds)
+    return {
+        "annotated_af_episodes": len(episodes),
+        "wrist_monitoring_block_possible": any(kind == "monitor_wear" for _, kind, _, _ in runs),
+        "timestamp_episode_candidates": len(candidates),
+    }
+
 
 def fit_runs(subject, random, reference, existing, count):
     choices = {0: [], 1: []}
@@ -140,8 +163,7 @@ def stage_subject(
     reference = subject.reference_rhythm_intervals()
     episodes = subject.annotated_af_episodes()
     random = rng_for(subject.subject_id)
-    runs = list(monitor_runs(subject, random, monitor_count, monitor_seconds))
-    runs += wear_monitor_runs(subject, random, runs, wear_seconds)
+    runs = _monitoring_schedule(subject, random, monitor_count, monitor_seconds, wear_seconds)
     runs += episode_runs(subject, random, episodes, reference, runs, episode_count, max_episode_run_seconds)
     runs += fit_runs(subject, random, reference, runs, fit_per_class)
     rows = build_rows(subject, runs, reference)
@@ -178,9 +200,18 @@ def main():
     parser.add_argument("--fit-per-class", type=int, default=2)
     parser.add_argument("--episode-count", type=int, default=1)
     parser.add_argument("--max-episode-run-seconds", type=int, default=270)
+    parser.add_argument("--survey-only", action="store_true", help="Write candidate counts as JSON using annotations and timestamps")
     args = parser.parse_args()
     try:
         with load_subject(args.ecg, args.ppg, include_acceleration=False) as subject:
+            if args.survey_only:
+                support = survey_subject(
+                    subject, monitor_count=args.monitor_count, monitor_seconds=args.monitor_seconds,
+                    wear_seconds=args.wear_seconds, max_episode_run_seconds=args.max_episode_run_seconds,
+                )
+                args.output.parent.mkdir(parents=True, exist_ok=True)
+                args.output.write_text(json.dumps(support, indent=2) + "\n", encoding="utf-8")
+                return
             summary = stage_subject(
                 subject, args.output, monitor_count=args.monitor_count, monitor_seconds=args.monitor_seconds,
                 fit_per_class=args.fit_per_class, episode_count=args.episode_count,
