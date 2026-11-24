@@ -1,4 +1,4 @@
-"""Stage state-only wrist PPG before the locked development evaluation runs."""
+"""Stage state-only wrist PPG before the locked evaluation runs."""
 
 import argparse
 import json
@@ -95,7 +95,7 @@ def stage_subject(source, destination, ecg, ppg):
     return len(rows), int(usable.sum())
 
 
-def _development_ids(lock):
+def _locked_ids(lock, *, independent=False):
     groups = [lock.get(key) for key in ("fit_subjects", "calibration_subjects", "test_roster")]
     if lock.get("window_seconds") != WINDOW or any(
         not isinstance(group, list) or not group or any(
@@ -106,32 +106,34 @@ def _development_ids(lock):
     fit, calibration, test = map(set, groups)
     if fit & calibration or (fit | calibration) & test:
         raise ValueError("The fit, calibration, and test rosters must be disjoint")
-    return fit | calibration
+    return test if independent else fit | calibration
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("cohort", "mat-dir", "lock", "output"):
         parser.add_argument(f"--{name}", required=True, type=Path)
+    parser.add_argument("--independent", action="store_true", help="Stage only the decoded independent roster members")
     args = parser.parse_args()
-    members = _development_ids(json.loads(args.lock.read_text(encoding="utf-8")))
+    members = _locked_ids(json.loads(args.lock.read_text(encoding="utf-8")), independent=args.independent)
     sources = {path.stem: path for path in args.cohort.glob("*.npz") if not path.name.endswith(".partial.npz")}
-    if set(sources) != members:
-        parser.error("The cohort must contain exactly the locked fit and calibration participants")
+    found = set(sources)
+    if not found <= members or not found or (not args.independent and found != members):
+        parser.error("The cohort must match the selected participant roster")
     if args.output.resolve() in {args.cohort.resolve(), args.mat_dir.resolve()}:
         parser.error("Use a separate directory for the staged history")
     if any(not (args.mat_dir / f"{subject}_{signal}.mat").is_file()
-           for subject in members for signal in ("ECG", "PPG")):
-        parser.error("The MAT directory must contain both native files for each development participant")
+           for subject in found for signal in ("ECG", "PPG")):
+        parser.error("The MAT directory must contain both native files for each staged participant")
 
     args.output.mkdir(parents=True, exist_ok=True)
     totals = [
         stage_subject(sources[subject], args.output / f"{subject}.npz", args.mat_dir / f"{subject}_ECG.mat",
                       args.mat_dir / f"{subject}_PPG.mat")
-        for subject in sorted(members)
+        for subject in sorted(found)
     ]
     rows, usable = map(sum, zip(*totals, strict=True))
-    print(f"Staged {rows} state-only windows for {len(members)} development participants, {usable} with usable raw PPG")
+    print(f"Staged {rows} state-only windows for {len(found)} participants, {usable} with usable raw PPG")
 
 
 if __name__ == "__main__":

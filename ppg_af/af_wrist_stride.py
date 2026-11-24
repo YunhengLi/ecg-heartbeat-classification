@@ -1,4 +1,4 @@
-"""Build a cache-only 10-second alert grid over the frozen development blocks."""
+"""Build a cache-only 10-second alert grid over the frozen evaluation blocks."""
 
 import argparse
 from collections import Counter
@@ -175,15 +175,17 @@ def feature_rows(data, baseline, preroll, calibration, *, batch_size, device):
     }
 
 
-def development_sources(cohort, preroll, lock_path):
+def locked_sources(cohort, preroll, lock_path, *, independent=False):
     lock = json.loads(lock_path.read_bytes())
     fit, calibration, test = (set(lock[key]) for key in ("fit_subjects", "calibration_subjects", "test_roster"))
     development = fit | calibration
     sources = sorted(path for path in cohort.glob("*.npz") if not path.name.endswith(".partial.npz"))
     history = {path.stem for path in preroll.glob("*.npz") if not path.name.endswith(".partial.npz")}
+    found = {path.stem for path in sources}
+    matches = found <= test if independent else found == development
     if (not fit or not calibration or fit & calibration or development & test
-            or development != {path.stem for path in sources} or history != development):
-        raise ValueError("Expected exactly the frozen development subjects in both input directories")
+            or not found or not matches or history != found):
+        raise ValueError("Original input and history must match the selected participant roster")
     return sources
 
 
@@ -202,7 +204,7 @@ def _load_calibration(args):
 
 
 def _build(args):
-    sources = development_sources(args.cohort, args.preroll, args.lock)
+    sources = locked_sources(args.cohort, args.preroll, args.lock, independent=args.independent)
     calibration = _load_calibration(args) if args.feature_output is not None else None
     totals = Counter()
     for path in sources:
@@ -232,6 +234,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ("cohort", "preroll", "lock", "output"):
         parser.add_argument(f"--{name}", type=Path, required=True)
+    parser.add_argument("--independent", action="store_true", help="Stage only the decoded independent roster members")
     parser.add_argument("--feature-output", type=Path, help="Also generate the three AF feature routes")
     for name in ("cohort-features", "preroll-features", "ptt-dir", "upstream", "weights"):
         parser.add_argument(f"--{name}", type=Path, help="Required with --feature-output")
