@@ -26,7 +26,7 @@ def exclusion_intervals(person, paths, supplement):
     return np.asarray(spans).reshape(-1, 2)
 
 
-def choose_monitor_blocks(segments, ecg_seconds, excluded, seed):
+def choose_monitor_blocks(segments, ecg_seconds, excluded, seed, *, blocks_per_person=BLOCKS_PER_PERSON):
     """Draw uniform starts with disjoint preceding inputs and monitoring time."""
     index_by_start = {}
     for segment in segments:
@@ -41,7 +41,7 @@ def choose_monitor_blocks(segments, ecg_seconds, excluded, seed):
     eligible = ~overlapping.any(axis=1)
     random = np.random.default_rng(seed)
     picks = []
-    for _ in range(BLOCKS_PER_PERSON):
+    for _ in range(blocks_per_person):
         available = np.flatnonzero(eligible)
         if not len(available):
             break

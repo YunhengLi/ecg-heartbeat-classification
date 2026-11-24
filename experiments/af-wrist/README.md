@@ -121,6 +121,8 @@ The [beat-timing study](beat-cnn-study.md) fits a compact neural network for ECG
 
 The [native neural beat study](native-neural-beat-study.md) compares the source-frozen neural beat features with the original AF classifier and evaluates wrist-specific fine-tuning on held-out native ECG pairs.
 
+The [raw PPG CNN study](raw-cnn-study.md) compares a direct waveform AF classifier and template classifier trained on the same expanded wrist data.
+
 The [native motion study](motion-af-study.md) audits the original accelerometer clock and compares AF alerts and reconstruction before and after motion processing.
 
 The [ambient-light study](ambient-light-study.md) tests whether a second native optical measurement improves AF alerting under the original evaluation protocol.
@@ -128,6 +130,8 @@ The [ambient-light study](ambient-light-study.md) tests whether a second native 
 The [longer wrist monitoring study](monitor-extension-study.md) compares the two frozen template classifiers over additional times selected from the original development participants using only wear clocks.
 
 The [hard-negative study](hard-negative-study.md) tests whether the most irregular non-AF inputs from the additional development monitoring improve held-out alerts. The [direct PPG fusion study](direct-fusion-study.md) adds pulse spectrum to the template and quality features under the same folds.
+
+The [retrospective monitoring extension](retrospective-monitor-study.md) compares four frozen models over newly sampled monitoring time from 25 previously compared participants excluded from all fits.
 
 The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography. The [source transfer study](vitaldb-transfer-study.md) compares sinus and ectopy training negatives on the same source and wrist participant splits.
 

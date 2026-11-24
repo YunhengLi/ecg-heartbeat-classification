@@ -85,6 +85,7 @@ def train_oof(
     features: Mapping[str, np.ndarray], labels, subjects, *, n_splits=5, inner_splits=3,
     seed=2026, train_eligible=None, calibration_selector: Callable | None = None, regularization=1.0,
     participant_weighting=False, supplemental_fit_labels=None, fold_feature_transform: Callable | None = None,
+    fold_predictor: Callable | None = None,
 ) -> dict:
     """Fit one logistic model per route on the same outer participant folds.
 
@@ -108,6 +109,9 @@ def train_oof(
     an aligned matrix for one fit or inner calibration fit. It receives the
     original read-only route matrix and the exact selected row indices. It
     must preserve which fitting and scoring rows have finite features.
+    Optional ``fold_predictor(train_features, train_labels, score_features)``
+    replaces logistic regression. It receives only training labels and finite
+    input rows, and returns one AF probability per score row.
     """
     if not isfinite(regularization) or regularization <= 0:
         raise ValueError("Logistic regression C must be positive and finite")
@@ -152,6 +156,15 @@ def train_oof(
                     or not np.array_equal(np.isfinite(transformed[rows]).all(axis=1), np.isfinite(matrix[rows]).all(axis=1))):
                 raise ValueError("Fold feature transforms must preserve matrix shape and finite fit and score rows")
             matrix = transformed
+        if fold_predictor is not None:
+            available = np.isfinite(matrix[score_rows]).all(axis=1)
+            predictions = np.full(len(score_rows), np.nan)
+            if available.any():
+                selected = np.asarray(fold_predictor(matrix[train_rows], fitting_labels[train_rows], matrix[score_rows[available]]))
+                if selected.shape != (int(available.sum()),) or not np.isfinite(selected).all() or np.any((selected < 0) | (selected > 1)):
+                    raise ValueError("A custom fold predictor must return finite probabilities on every supported score row")
+                predictions[available] = selected
+            return predictions
         return _fit_and_predict(matrix, fitting_labels, train_rows, score_rows, **fit_options)
 
     n_splits, inner_splits = index(n_splits), index(inner_splits)

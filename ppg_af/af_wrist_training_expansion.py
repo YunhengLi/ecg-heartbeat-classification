@@ -99,7 +99,7 @@ def _support(people, labels, value):
     return {"windows": sum(counts), "participants": len(counts), "top_two_participants_windows": sum(counts[:2])}
 
 
-def _fit_expanded(grid, original_matrix, extra_matrix, extra_people, extra_labels, lock, seed):
+def _fit_expanded(grid, original_matrix, extra_matrix, extra_people, extra_labels, lock, seed, *, fold_predictor=None):
     shared = _shared_features(grid.table)
     labels = grid.table["stable_label"]
     n = len(labels)
@@ -122,6 +122,7 @@ def _fit_expanded(grid, original_matrix, extra_matrix, extra_people, extra_label
         n_splits=5, inner_splits=3, seed=seed, train_eligible=np.r_[original_fit, np.zeros(extra, dtype=bool)],
         calibration_selector=calibrate, regularization=DEFAULT_C,
         supplemental_fit_labels=np.r_[np.full(n, -1), extra_labels],
+        fold_predictor=fold_predictor,
     )
     assigned = fitted["fold_assignment"]
     route = fitted["routes"][ROUTE]

@@ -43,6 +43,26 @@ class FoldFeatureTransformTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "preserve matrix shape and finite fit and score rows"):
             train_oof({"template": matrix}, labels, people, fold_feature_transform=change_availability, **options)
 
+    def test_custom_predictor_gets_only_fitting_labels_and_disjoint_scoring_inputs(self):
+        people = np.repeat(np.array(list("abcdef")), 3)
+        labels = np.tile([0, 1, -1], 6)
+        row_numbers = np.arange(len(people), dtype=float)[:, None]
+        row_numbers[labels < 0] = np.nan
+        calls = []
+
+        def predictor(training, training_labels, scoring):
+            trained = training[:, 0].astype(int)
+            held = scoring[:, 0].astype(int)
+            self.assertTrue(set(people[trained]).isdisjoint(people[held]))
+            np.testing.assert_array_equal(training_labels, labels[trained])
+            calls.append(len(np.unique(people[trained])))
+            return np.full(len(held), 0.4)
+
+        fitted = train_oof({"raw": row_numbers}, labels, people, n_splits=3, inner_splits=2, fold_predictor=predictor,
+                           calibration_selector=lambda scores, rows: {"threshold": 0.5, "status": "fixed"})
+        self.assertCountEqual(calls, [4, 4, 4, 2, 2, 2, 2, 2, 2])
+        np.testing.assert_array_equal(fitted["routes"]["raw"]["scores"], np.where(labels >= 0, 0.4, np.nan))
+
 
 if __name__ == "__main__":
     unittest.main()

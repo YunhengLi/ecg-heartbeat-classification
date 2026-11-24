@@ -10,6 +10,7 @@ import numpy as np
 from .af_events import AFRun
 from .af_wrist_clock_study import _summarize
 from .af_wrist_cohort import core_label
+from .af_wrist_direct_fusion import SPECTRAL_ROUTE
 from .af_wrist_failure_study import fold_arrays
 from .af_wrist_features import PPG_RATE, PTT_SUBJECTS, WINDOW_SECONDS
 from .af_wrist_holdout import _fit_model, _predict, _shared_features, _subject_ids, _write_json
@@ -23,6 +24,7 @@ from .af_wrist_template_study import DEFAULT_C, ROUTE, _replay, fit_template
 from .af_wrist_vote_study import _IMMEDIATE, STRIDE_SECONDS
 from .af_wrist_vote_compare import compare_alert_runs
 from .afppgecg import ECG_FS, load_subject
+from .features import ECG_FEATURE_NAMES, PPG_FEATURE_NAMES, ppg_features
 
 
 BLOCK_S = 300
@@ -33,13 +35,14 @@ FAMILIES = ("baseline", "quality_interactions")
 BOOTSTRAP_REPETITIONS = 10_000
 
 
-def read_plan(path, lock_path):
+def read_plan(path, lock_path, *, retrospective=False):
     raw, lock_bytes = path.read_bytes(), lock_path.read_bytes()
     plan, lock = json.loads(raw), json.loads(lock_bytes)
     receipt, schedule = plan["plan_receipt"], plan["private_schedule"]
     fit, calibration, reserved = (_subject_ids(lock[key]) for key in ("fit_subjects", "calibration_subjects", "test_roster"))
-    people = fit | calibration
-    if (fit & calibration or people & reserved or len(people) != 10 or set(schedule) != people
+    development = fit | calibration
+    people = reserved if retrospective else development
+    if (fit & calibration or development & reserved or len(development) != 10 or len(reserved) != 25 or set(schedule) != people
             or receipt["source_protocol_sha256"] != sha256(lock_bytes).hexdigest()
             or receipt["block_seconds"] != BLOCK_S or receipt["predecessor_seconds"] != EARLIER_S):
         raise ValueError("The new monitoring plan must use the original development protocol")
@@ -94,7 +97,7 @@ def stage_person(ecg_source, wrist_source, person, blocks, plan_digest, output):
     tmp.replace(target)
 
 
-def _archive_features(path, person, scheduled, digest, template):
+def _archive_features(path, person, scheduled, digest, template, *, families=FAMILIES):
     with np.load(path, allow_pickle=False) as raw:
         pulse, valid, starts, episodes = (raw[key] for key in ("raw_ppg", "reference_valid", "start_s", "af_intervals_s"))
         if (raw["subject_id"].item() != person or raw["plan_sha256"].item() != digest
@@ -107,9 +110,14 @@ def _archive_features(path, person, scheduled, digest, template):
     available = np.isfinite(flat[:, -STRIDE_SECONDS * PPG_RATE:]).all(axis=1).reshape(pulse.shape[:2])
     eligible = np.isfinite(flat).all(axis=1) & (np.ptp(flat, axis=1) > 0)
     learned = _extract(flat[eligible], template)
+    if "quality" in families:
+        learned["quality"] = learned["quality_interactions"][:, :len(ECG_FEATURE_NAMES) + 1]
+    if SPECTRAL_ROUTE in families:
+        direct = np.asarray([ppg_features(pulse, PPG_RATE)[0] for pulse in flat[eligible]]).reshape(-1, len(PPG_FEATURE_NAMES))
+        learned[SPECTRAL_ROUTE] = np.column_stack((learned["quality_interactions"], direct[:, len(ECG_FEATURE_NAMES):]))
     matrices = {}
     for model, values in learned.items():
-        if model not in FAMILIES:
+        if model not in families:
             continue
         aligned = np.full((len(flat), values.shape[1]), np.nan)
         aligned[eligible] = values
