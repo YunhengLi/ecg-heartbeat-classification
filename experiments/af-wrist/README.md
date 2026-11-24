@@ -121,6 +121,8 @@ The [native motion study](motion-af-study.md) audits the original accelerometer 
 
 The [ambient-light study](ambient-light-study.md) tests whether a second native optical measurement improves AF alerting under the original evaluation protocol.
 
+The [longer wrist monitoring study](monitor-extension-study.md) compares the two frozen template classifiers over additional times selected from the original development participants using only wear clocks.
+
 The [VitalDB preflight](vitaldb-preflight.md) verifies the source's labeled-window support and the original case clock for paired surgical ECG and plethysmography. The [source transfer study](vitaldb-transfer-study.md) compares sinus and ectopy training negatives on the same source and wrist participant splits.
 
 The [negative rearming study](negative-rearm-study.md) checks whether allowing a new alert after two consecutive negative decisions changes held-out detections and false starts at fixed cutoffs.
