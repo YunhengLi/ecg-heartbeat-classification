@@ -42,7 +42,10 @@ def _archives(path, person, *, finer):
         return end, raw["reference_valid"], raw["run_kind"]
 
 
-def measured_features(grid, source, source_dir, cache_dir, parent, stride):
+def measured_features(grid, source, source_dir, cache_dir, parent, stride, *, feature_window_seconds=WINDOW_SECONDS):
+    """Extract measured ECG features ending at each original decision time."""
+    if not np.isfinite(feature_window_seconds) or feature_window_seconds <= 0:
+        raise ValueError("The measured ECG window must have a finite positive duration")
     shared = _shared_features(grid.table)
     output = np.full_like(grid.table[ROUTE], np.nan)
     people = np.unique(grid.subjects)
@@ -64,8 +67,9 @@ def measured_features(grid, source, source_dir, cache_dir, parent, stride):
                         or not np.array_equal(grid.table["run_kind"][rows], kind)):
                     raise ValueError("ECG feature rows do not align with the shared wrist clock")
                 for relative in np.flatnonzero(shared[rows]):
-                    lo, hi = _sample_bounds(end[relative] - WINDOW_SECONDS, end[relative], 0.0, ECG_FS, voltage.size)
-                    if hi - lo != WINDOW_SECONDS * ECG_FS:
+                    stop = end[relative]
+                    lo, hi = _sample_bounds(stop - feature_window_seconds, stop, 0.0, ECG_FS, voltage.size)
+                    if hi - lo != feature_window_seconds * ECG_FS:
                         status["outside_ecg_record"] += 1
                         continue
                     try:

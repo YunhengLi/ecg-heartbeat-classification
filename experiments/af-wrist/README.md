@@ -89,6 +89,10 @@ The [stable training expansion](training-expansion.md) adds verified local ECGâ€
 
 The [measured ECG study](measured-ecg-control.md) compares stable-window discrimination and new-alert detection on the same development clock.
 
+The [measured ECG context study](measured-ecg-context.md) and [pulse-template context study](template-context.md) hold the decision clock fixed while comparing 10- and 30-second inputs in each route.
+
+The [native transition study](transition-native-study.md) verifies an additional donor's pre-onset and early-AF input pair and repeats the original onset training comparison.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
