@@ -84,7 +84,7 @@ def _nested_folds(train_rows, fit_labels, subjects, masks, max_splits, seed):
 def train_oof(
     features: Mapping[str, np.ndarray], labels, subjects, *, n_splits=5, inner_splits=3,
     seed=2026, train_eligible=None, calibration_selector: Callable | None = None, regularization=1.0,
-    participant_weighting=False,
+    participant_weighting=False, supplemental_fit_labels=None,
 ) -> dict:
     """Fit one logistic model per route on the same outer participant folds.
 
@@ -101,6 +101,9 @@ def train_oof(
     ``regularization`` is the positive logistic regression C in every fit.
     With ``participant_weighting``, the logistic fit balances participant
     contributions within each rhythm using that fit's training rows only.
+    Optional ``supplemental_fit_labels`` add labels on previously unlabeled
+    rows for fitting. Split assignments and split support use the original
+    labels. Supplemental rows can fit a model only within its training group.
     """
     if not isfinite(regularization) or regularization <= 0:
         raise ValueError("Logistic regression C must be positive and finite")
@@ -125,6 +128,15 @@ def train_oof(
     if not matrices or any(x.ndim != 2 or x.shape[0] != len(labels) or not x.shape[1] for x in matrices.values()):
         raise ValueError("Each route needs a feature matrix aligned to the labeled rows")
     masks = {route: (fit_labels >= 0) & np.isfinite(x).all(axis=1) for route, x in matrices.items()}
+    fitting_labels, fitting_masks = fit_labels, masks
+    if supplemental_fit_labels is not None:
+        supplemental = np.asarray(supplemental_fit_labels)
+        if (supplemental.shape != labels.shape or not np.isin(supplemental, (-1, 0, 1)).all()
+                or np.any((supplemental >= 0) & (labels >= 0))):
+            raise ValueError("Supplemental labels must align to previously unlabeled training rows")
+        fitting_labels = np.where(supplemental >= 0, supplemental, fit_labels).astype(int)
+        fitting_masks = {route: mask | ((supplemental >= 0) & np.isfinite(matrices[route]).all(axis=1))
+                         for route, mask in masks.items()}
     n_splits, inner_splits = index(n_splits), index(inner_splits)
     if inner_splits < 2:
         raise ValueError("At least two inner folds are needed for grouped calibration")
@@ -143,21 +155,22 @@ def train_oof(
             )
         for route, matrix in matrices.items():
             history = routes[route]
-            fit = training[masks[route][training]]
+            baseline_fit = training[masks[route][training]]
+            fit = training[fitting_masks[route][training]]
             option = {"threshold": None, "status": "not_calibrated"}
-            if not _both_classes(labels[fit]):
+            if not _both_classes(fit_labels[baseline_fit]):
                 option["status"] = "insufficient_training_labels"
             else:
-                history["scores"][test] = _fit_and_predict(matrix, labels, fit, test, **fit_options)
+                history["scores"][test] = _fit_and_predict(matrix, fitting_labels, fit, test, **fit_options)
                 if calibration_selector is not None:
                     option["status"] = "insufficient_calibration_training_labels"
                 if route in supported:
                     calibration = np.full(len(training), np.nan)
                     for inner_fold in range(inner_count):
-                        inner_fit = training[(inner != inner_fold) & masks[route][training]]
+                        inner_fit = training[(inner != inner_fold) & fitting_masks[route][training]]
                         inner_test = inner == inner_fold
                         calibration[inner_test] = _fit_and_predict(
-                            matrix, labels, inner_fit, training[inner_test], **fit_options,
+                            matrix, fitting_labels, inner_fit, training[inner_test], **fit_options,
                         )
                     option = calibration_selector(calibration, training.copy())
                     threshold = option["threshold"]
@@ -172,8 +185,8 @@ def train_oof(
                 "train_subjects": len(np.unique(subjects[training])),
                 "test_subjects": len(np.unique(subjects[test])),
                 "inner_splits": inner_count if route in supported else 0,
-                "fit_af_windows": int(np.sum(labels[fit] == 1)),
-                "fit_non_af_windows": int(np.sum(labels[fit] == 0)),
+                "fit_af_windows": int(np.sum(fitting_labels[fit] == 1)),
+                "fit_non_af_windows": int(np.sum(fitting_labels[fit] == 0)),
                 "held_out_finite_scores": int(np.isfinite(history["scores"][test]).sum()),
                 "operating_point": option,
             })

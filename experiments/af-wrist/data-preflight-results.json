@@ -1,0 +1,216 @@
+{
+  "scope": "Data and reference preflight for the locked wrist AF experiment",
+  "classifier_predictions_generated": 0,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "monitor_kind": "monitor_wear",
+  "rddm_feature_version": "window-seed-v1",
+  "source_inventory": {
+    "doi": "10.5281/zenodo.23921320",
+    "ecg_recordings": 39,
+    "ppg_recordings": 35,
+    "paired_recordings": 35,
+    "ecg_only_recordings": 4,
+    "paired_recordings_assigned_to_locked_cohorts": 35
+  },
+  "sha256": {
+    "source_inventory": "f23e0440140112fd5ac8046694c940f0aaba1d98ecf415191ac5031ca86ce4a0",
+    "protocol_lock": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+    "independent_lock": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+    "clock_results": "6e20d816c368af0930a89b2e42751597308453f3dd9a203cd6c292faa926f95e",
+    "independent_coverage_report": "3d36659b2fedf826d9c0a0952d5e70b77cb7b697ae1a04e96571b91bbbca66d7",
+    "independent_seal": "b83422bc540cb36dce95d0e429ebe2db37555d2762e79db9fcccfdefbda48c88"
+  },
+  "development": {
+    "participants": 10,
+    "fit_participants": 5,
+    "calibration_participants": 5,
+    "evaluation_blocks_by_kind": {
+      "enriched_episode": 14,
+      "monitor": 10,
+      "monitor_wear": 10
+    },
+    "original_30_second_grid": {
+      "decision_stride_seconds": 30,
+      "complete_reference_episodes": 17,
+      "partial_reference_episodes": 10,
+      "complete_reference_episodes_in_wrist_monitoring": 0,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 16,
+      "reference_observed_seconds": 6720,
+      "monitoring_observed_seconds": 2790,
+      "monitoring_observed_non_af_seconds": 2040.0,
+      "monitoring_raw_input_opportunity_seconds": 2250,
+      "monitoring_raw_input_opportunity_non_af_seconds": 1500.0,
+      "prehistory_input_states": {},
+      "last_prehistory_input_states_by_block": {},
+      "evaluation_input_states": {
+        "available": 171,
+        "unavailable": 64
+      },
+      "monitoring_blocks": 10,
+      "evaluation_blocks": 34
+    },
+    "ten_second_grid": {
+      "decision_stride_seconds": 10,
+      "complete_reference_episodes": 17,
+      "partial_reference_episodes": 10,
+      "complete_reference_episodes_in_wrist_monitoring": 0,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 16,
+      "reference_observed_seconds": 6720,
+      "monitoring_observed_seconds": 2790,
+      "monitoring_observed_non_af_seconds": 2040.0,
+      "monitoring_raw_input_opportunity_seconds": 2250,
+      "monitoring_raw_input_opportunity_non_af_seconds": 1500.0,
+      "prehistory_input_states": {
+        "available": 175,
+        "unavailable": 63
+      },
+      "last_prehistory_input_states_by_block": {
+        "available": 25,
+        "unavailable": 9
+      },
+      "evaluation_input_states": {
+        "available": 513,
+        "unavailable": 192
+      },
+      "monitoring_blocks": 10,
+      "evaluation_blocks": 34
+    },
+    "scopes": {
+      "all_evaluation": {
+        "decision_cells": 705,
+        "current_ppg_present_cells": 608,
+        "shared_feature_cells": 513,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 513,
+          "pulse_template": 513,
+          "rddm": 513
+        }
+      },
+      "wrist_monitoring": {
+        "decision_cells": 300,
+        "current_ppg_present_cells": 293,
+        "shared_feature_cells": 240,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 240,
+          "pulse_template": 240,
+          "rddm": 240
+        }
+      },
+      "predecessor_history": {
+        "decision_cells": 238,
+        "current_ppg_present_cells": 194,
+        "shared_feature_cells": 175,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 175,
+          "pulse_template": 175,
+          "rddm": 175
+        }
+      }
+    },
+    "complete_reference_episodes_with_shared_feature_endpoint": 16,
+    "monitoring_shared_feature_seconds": 2250.0,
+    "monitoring_shared_feature_non_af_seconds": 1500.0,
+    "participants_with_shared_feature_endpoint": 8,
+    "original_feature_supported_stable_fit_cells": {
+      "af": 34,
+      "non_af": 80
+    }
+  },
+  "independent": {
+    "participants": 25,
+    "evaluation_blocks_by_kind": {
+      "enriched_episode": 225,
+      "monitor_wear": 25
+    },
+    "sealed_archive_sha256_by_scope": {
+      "parent-raw": "d8c58f85eb84761c3beb67dc0623167e1ca09a401b9f7dac63a13bfbd9a89800",
+      "parent-features": "8df5b9b528429bcd3cebfba15549e6e60bdccaac876549ea7dd713fc340de2aa",
+      "preroll": "54b020679c807b250fa840a7cadebbd4e38c5546112d7674e00e450cc1e24e3e",
+      "stride-raw": "5ad7cede0c865f3821d288320de0830f275029d847c7dee38cf190ef4aedcde9",
+      "stride-features": "bf5344fe5308b938e728be9c9364c20746c81c64899936c7a4be3a14171b571a"
+    },
+    "original_30_second_grid": {
+      "decision_stride_seconds": 30,
+      "complete_reference_episodes": 260,
+      "partial_reference_episodes": 82,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 236,
+      "reference_observed_seconds": 54510,
+      "monitoring_observed_seconds": 7500,
+      "monitoring_observed_non_af_seconds": 6872.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 7500,
+      "monitoring_raw_input_opportunity_non_af_seconds": 6872.005999999994,
+      "prehistory_input_states": {},
+      "last_prehistory_input_states_by_block": {},
+      "evaluation_input_states": {
+        "available": 1809,
+        "unavailable": 12
+      },
+      "monitoring_blocks": 25,
+      "evaluation_blocks": 250
+    },
+    "ten_second_grid": {
+      "decision_stride_seconds": 10,
+      "complete_reference_episodes": 260,
+      "partial_reference_episodes": 82,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 253,
+      "reference_observed_seconds": 54510,
+      "monitoring_observed_seconds": 7500,
+      "monitoring_observed_non_af_seconds": 6872.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 7500,
+      "monitoring_raw_input_opportunity_non_af_seconds": 6872.005999999994,
+      "prehistory_input_states": {
+        "available": 1723,
+        "unavailable": 27
+      },
+      "last_prehistory_input_states_by_block": {
+        "available": 247,
+        "unavailable": 3
+      },
+      "evaluation_input_states": {
+        "available": 5425,
+        "unavailable": 38
+      },
+      "monitoring_blocks": 25,
+      "evaluation_blocks": 250
+    },
+    "scopes": {
+      "all_evaluation": {
+        "decision_cells": 5463,
+        "current_ppg_present_cells": 5463,
+        "shared_feature_cells": 5424,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 5424,
+          "pulse_template": 5425,
+          "rddm": 5425
+        }
+      },
+      "wrist_monitoring": {
+        "decision_cells": 750,
+        "current_ppg_present_cells": 750,
+        "shared_feature_cells": 750,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 750,
+          "pulse_template": 750,
+          "rddm": 750
+        }
+      },
+      "predecessor_history": {
+        "decision_cells": 1750,
+        "current_ppg_present_cells": 1739,
+        "shared_feature_cells": 1723,
+        "finite_feature_cells_by_route": {
+          "direct_ppg": 1723,
+          "pulse_template": 1723,
+          "rddm": 1723
+        }
+      }
+    },
+    "complete_reference_episodes_with_shared_feature_endpoint": 253,
+    "monitoring_shared_feature_seconds": 7500.0,
+    "monitoring_shared_feature_non_af_seconds": 6872.005999999994,
+    "participants_with_shared_feature_endpoint": 25
+  }
+}
