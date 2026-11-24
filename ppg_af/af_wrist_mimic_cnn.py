@@ -46,10 +46,12 @@ class PulseCNN(nn.Module):
         )
         self.classifier = nn.Linear(32, 1)
 
-    def forward(self, pulse):
+    def embedding(self, pulse):
         signal = self.features(pulse)
-        pooled = torch.cat((signal.mean(dim=-1), signal.var(dim=-1, unbiased=False)), dim=1)
-        return self.classifier(pooled).squeeze(-1)
+        return torch.cat((signal.mean(dim=-1), signal.var(dim=-1, unbiased=False)), dim=1)
+
+    def forward(self, pulse):
+        return self.classifier(self.embedding(pulse)).squeeze(-1)
 
 
 def _normalize(windows):

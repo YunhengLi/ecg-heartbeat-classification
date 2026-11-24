@@ -36,14 +36,17 @@ DIRECT = "direct_ppg"
 INTERVAL_SUPPORT_COLUMN = PPG_FEATURE_NAMES.index("valid_interval_fraction")
 
 
-def _load_source(directory, *, with_waveforms=False):
+def _load_source(directory, *, with_waveforms=False, with_reference=False):
     """Apply the shared MIMIC eligibility rule and optionally retain its inputs."""
+    if with_reference and not with_waveforms:
+        raise ValueError("Reference waveforms require their optical pairs")
     features, labels, subjects = [], [], []
     waveforms = [] if with_waveforms else None
+    references = [] if with_reference else None
     inventory = {str(label): Counter() for label in (0, 1)}
     samples = WINDOW_SECONDS * SOURCE_RATE
     records = _read_records(directory)
-    for subject, (pulse, _, label) in enumerate(records):
+    for subject, (pulse, reference, label) in enumerate(records):
         counts = inventory[str(label)]
         counts["participants"] += 1
         before = len(features)
@@ -61,12 +64,18 @@ def _load_source(directory, *, with_waveforms=False):
                 subjects.append(subject)
                 if waveforms is not None:
                     waveforms.append(converted)
+                if references is not None:
+                    ecg = reference[start:start + samples]
+                    references.append(resample_poly(ecg, PPG_RATE, SOURCE_RATE)
+                                      if np.isfinite(ecg).all() and np.ptp(ecg) > 0 else np.full_like(converted, np.nan))
         if len(features) == before:
             raise ValueError("Every source participant needs at least one eligible PPG feature window")
         counts["participants_with_features"] += 1
         counts["feature_windows"] += len(features) - before
-    return (np.asarray(features), np.asarray(labels), np.asarray(subjects), inventory,
-            np.stack(waveforms) if waveforms is not None else None)
+    raw = np.stack(waveforms) if waveforms is not None else None
+    if references is not None:
+        raw = raw, np.stack(references)
+    return np.asarray(features), np.asarray(labels), np.asarray(subjects), inventory, raw
 
 
 def _source_features(directory):

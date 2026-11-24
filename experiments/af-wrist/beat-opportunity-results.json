@@ -1,0 +1,268 @@
+{
+  "scope": "Reference-assisted optical beat opportunities, with no deployable ECG prediction",
+  "timing_tolerance_ms": 100.0,
+  "rotations_per_window": 32,
+  "trim_seconds": 1.0,
+  "assumed_release_delay_ms": 300,
+  "fixed_coarse_delay_ms": 190.0,
+  "comparisons": {
+    "all_pairs": {
+      "windows": 223,
+      "participants": 9,
+      "routes": {
+        "original_peaks": {
+          "reference_beats": 7549,
+          "optical_candidates": 6879,
+          "matched_beats": 4607,
+          "observed_candidate_recall": 0.6102795072194993,
+          "density_matched_rotation_recall": 0.2298897204927805,
+          "mean_within_participant_recall_advantage": 0.4057633202006634,
+          "participant_bootstrap_95_interval": [
+            0.20979628659353874,
+            0.5803675729809308
+          ]
+        },
+        "weak_peaks": {
+          "reference_beats": 7549,
+          "optical_candidates": 7688,
+          "matched_beats": 4883,
+          "observed_candidate_recall": 0.6468406411445224,
+          "density_matched_rotation_recall": 0.2586518081865148,
+          "mean_within_participant_recall_advantage": 0.4118598713025155,
+          "participant_bootstrap_95_interval": [
+            0.21172714657060177,
+            0.5862388600435042
+          ]
+        },
+        "weak_peaks_only_in_gaps": {
+          "reference_beats": 7549,
+          "optical_candidates": 7035,
+          "matched_beats": 4679,
+          "observed_candidate_recall": 0.6198171943303749,
+          "density_matched_rotation_recall": 0.2352132732812293,
+          "mean_within_participant_recall_advantage": 0.4090725094825722,
+          "participant_bootstrap_95_interval": [
+            0.21017411801000221,
+            0.5841815387461097
+          ]
+        },
+        "weak_peaks_and_troughs": {
+          "reference_beats": 7549,
+          "optical_candidates": 15347,
+          "matched_beats": 5495,
+          "observed_candidate_recall": 0.7279109815869652,
+          "density_matched_rotation_recall": 0.4720741157769241,
+          "mean_within_participant_recall_advantage": 0.297771275826731,
+          "participant_bootstrap_95_interval": [
+            0.15445614973634503,
+            0.44745768646655615
+          ]
+        }
+      }
+    },
+    "stable_AF": {
+      "windows": 77,
+      "participants": 7,
+      "routes": {
+        "original_peaks": {
+          "reference_beats": 3439,
+          "optical_candidates": 2771,
+          "matched_beats": 1917,
+          "observed_candidate_recall": 0.5574294853154987,
+          "density_matched_rotation_recall": 0.2591414655423088,
+          "mean_within_participant_recall_advantage": 0.34803278616050887,
+          "participant_bootstrap_95_interval": [
+            0.19046307853883998,
+            0.5137172007298124
+          ]
+        },
+        "weak_peaks": {
+          "reference_beats": 3439,
+          "optical_candidates": 3174,
+          "matched_beats": 2096,
+          "observed_candidate_recall": 0.6094794998546089,
+          "density_matched_rotation_recall": 0.2971884995638267,
+          "mean_within_participant_recall_advantage": 0.360318756093967,
+          "participant_bootstrap_95_interval": [
+            0.20744606363704685,
+            0.5206750611831489
+          ]
+        },
+        "weak_peaks_only_in_gaps": {
+          "reference_beats": 3439,
+          "optical_candidates": 2842,
+          "matched_beats": 1957,
+          "observed_candidate_recall": 0.569060773480663,
+          "density_matched_rotation_recall": 0.26580219540564115,
+          "mean_within_participant_recall_advantage": 0.3529412095669801,
+          "participant_bootstrap_95_interval": [
+            0.1957384740028663,
+            0.5181307936238627
+          ]
+        },
+        "weak_peaks_and_troughs": {
+          "reference_beats": 3439,
+          "optical_candidates": 6326,
+          "matched_beats": 2372,
+          "observed_candidate_recall": 0.6897353881942425,
+          "density_matched_rotation_recall": 0.5259432247746438,
+          "mean_within_participant_recall_advantage": 0.2088884994868441,
+          "participant_bootstrap_95_interval": [
+            0.10125829033527727,
+            0.3270601588681283
+          ]
+        }
+      }
+    },
+    "stable_non_AF": {
+      "windows": 146,
+      "participants": 9,
+      "routes": {
+        "original_peaks": {
+          "reference_beats": 4110,
+          "optical_candidates": 4108,
+          "matched_beats": 2690,
+          "observed_candidate_recall": 0.6545012165450121,
+          "density_matched_rotation_recall": 0.20541362530413626,
+          "mean_within_participant_recall_advantage": 0.4797006187472674,
+          "participant_bootstrap_95_interval": [
+            0.2700090197456808,
+            0.6509996549596286
+          ]
+        },
+        "weak_peaks": {
+          "reference_beats": 4110,
+          "optical_candidates": 4514,
+          "matched_beats": 2787,
+          "observed_candidate_recall": 0.6781021897810219,
+          "density_matched_rotation_recall": 0.22640663017031631,
+          "mean_within_participant_recall_advantage": 0.48119166232380856,
+          "participant_bootstrap_95_interval": [
+            0.26869015944532715,
+            0.6534314484859084
+          ]
+        },
+        "weak_peaks_only_in_gaps": {
+          "reference_beats": 4110,
+          "optical_candidates": 4193,
+          "matched_beats": 2722,
+          "observed_candidate_recall": 0.662287104622871,
+          "density_matched_rotation_recall": 0.20961830900243308,
+          "mean_within_participant_recall_advantage": 0.48306647290201277,
+          "participant_bootstrap_95_interval": [
+            0.2710476868863296,
+            0.6556360160481397
+          ]
+        },
+        "weak_peaks_and_troughs": {
+          "reference_beats": 4110,
+          "optical_candidates": 9021,
+          "matched_beats": 3123,
+          "observed_candidate_recall": 0.7598540145985402,
+          "density_matched_rotation_recall": 0.426999695863747,
+          "mean_within_participant_recall_advantage": 0.36412793499319585,
+          "participant_bootstrap_95_interval": [
+            0.2134823659106504,
+            0.502846175330811
+          ]
+        }
+      }
+    },
+    "beat_aligned_archive": {
+      "windows": 200,
+      "participants": 8,
+      "routes": {
+        "original_peaks": {
+          "reference_beats": 6918,
+          "optical_candidates": 5980,
+          "matched_beats": 4551,
+          "observed_candidate_recall": 0.6578490893321769,
+          "density_matched_rotation_recall": 0.22550773344897368,
+          "mean_within_participant_recall_advantage": 0.48933945903121917,
+          "participant_bootstrap_95_interval": [
+            0.35236806892641903,
+            0.6267337889233574
+          ]
+        },
+        "weak_peaks": {
+          "reference_beats": 6918,
+          "optical_candidates": 6632,
+          "matched_beats": 4803,
+          "observed_candidate_recall": 0.694275802254987,
+          "density_matched_rotation_recall": 0.2523037727666956,
+          "mean_within_participant_recall_advantage": 0.4981149565004557,
+          "participant_bootstrap_95_interval": [
+            0.3642092847578929,
+            0.6318974231928564
+          ]
+        },
+        "weak_peaks_only_in_gaps": {
+          "reference_beats": 6918,
+          "optical_candidates": 6097,
+          "matched_beats": 4619,
+          "observed_candidate_recall": 0.6676785198034114,
+          "density_matched_rotation_recall": 0.23019658860942468,
+          "mean_within_participant_recall_advantage": 0.4939378143626624,
+          "participant_bootstrap_95_interval": [
+            0.3567687652402186,
+            0.6311028413288579
+          ]
+        },
+        "weak_peaks_and_troughs": {
+          "reference_beats": 6918,
+          "optical_candidates": 13227,
+          "matched_beats": 5207,
+          "observed_candidate_recall": 0.7526741832899682,
+          "density_matched_rotation_recall": 0.4624485039028621,
+          "mean_within_participant_recall_advantage": 0.35594439046952486,
+          "participant_bootstrap_95_interval": [
+            0.23423677972071247,
+            0.4898801759961622
+          ]
+        }
+      }
+    },
+    "coarse_alignment": {
+      "windows": 23,
+      "participants": 2,
+      "routes": {
+        "original_peaks": {
+          "reference_beats": 631,
+          "optical_candidates": 899,
+          "matched_beats": 56,
+          "observed_candidate_recall": 0.08874801901743265,
+          "density_matched_rotation_recall": 0.277931854199683,
+          "mean_within_participant_recall_advantage": -0.2025700433532712,
+          "participant_bootstrap_95_interval": null
+        },
+        "weak_peaks": {
+          "reference_beats": 631,
+          "optical_candidates": 1056,
+          "matched_beats": 80,
+          "observed_candidate_recall": 0.12678288431061807,
+          "density_matched_rotation_recall": 0.3282488114104596,
+          "mean_within_participant_recall_advantage": -0.21112586648583484,
+          "participant_bootstrap_95_interval": null
+        },
+        "weak_peaks_only_in_gaps": {
+          "reference_beats": 631,
+          "optical_candidates": 938,
+          "matched_beats": 60,
+          "observed_candidate_recall": 0.09508716323296355,
+          "density_matched_rotation_recall": 0.2902139461172742,
+          "mean_within_participant_recall_advantage": -0.20664890225807947,
+          "participant_bootstrap_95_interval": null
+        },
+        "weak_peaks_and_troughs": {
+          "reference_beats": 631,
+          "optical_candidates": 2120,
+          "matched_beats": 288,
+          "observed_candidate_recall": 0.45641838351822506,
+          "density_matched_rotation_recall": 0.5776049920760697,
+          "mean_within_participant_recall_advantage": -0.21986933161774933,
+          "participant_bootstrap_95_interval": null
+        }
+      }
+    }
+  }
+}
