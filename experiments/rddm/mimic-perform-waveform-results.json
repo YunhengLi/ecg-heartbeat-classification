@@ -1,0 +1,183 @@
+{
+  "scope": "Patient-held-out offline waveform and detector-based beat-timing comparison",
+  "source_doi": "10.5281/zenodo.15906524",
+  "source_md5": {
+    "mimic_perform_af_data.mat": "38adc07e4420226a0edfe9769a23284f",
+    "mimic_perform_non_af_data.mat": "d1c4f93442a3b4c9cb95718ca0a57013"
+  },
+  "sample_rate_hz": 125,
+  "window_seconds": 12,
+  "window_step_seconds": 60,
+  "first_center_seconds": 30,
+  "trim_seconds_per_edge": 1,
+  "beat_match_tolerance_ms": 100,
+  "ridge_penalty": 0.01,
+  "folds": 5,
+  "seed": 2026,
+  "scheduled_windows": 700,
+  "excluded_windows": {
+    "nonfinite": 24,
+    "flat": 0
+  },
+  "eligible_windows": 676,
+  "fold_support": [
+    {
+      "train_patients": 28,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 138
+    },
+    {
+      "train_patients": 28,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 140
+    },
+    {
+      "train_patients": 28,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 125
+    },
+    {
+      "train_patients": 28,
+      "test_patients": 7,
+      "test_af_patients": 4,
+      "test_windows": 139
+    },
+    {
+      "train_patients": 28,
+      "test_patients": 7,
+      "test_af_patients": 3,
+      "test_windows": 134
+    }
+  ],
+  "overall": {
+    "patients": 35,
+    "windows": 676,
+    "common_support_fraction": 0.998108875739645,
+    "zero_waveform_relative_mae": 0.15134468807783827,
+    "models": {
+      "delay_ridge": {
+        "relative_mae": 0.15603819367998406,
+        "median_pearson_r": 0.14219408369872338,
+        "correlation_windows": 676,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 4894,
+          "matched_peaks": 1972,
+          "precision": 0.40294237842255826,
+          "recall": 0.1976347965524153,
+          "f1": 0.26519634211941906,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 403,
+          "median_abs_rr_error_ms": 32.0
+        }
+      },
+      "pulse_template": {
+        "relative_mae": 0.1854297669893688,
+        "median_pearson_r": -0.026250444629338787,
+        "correlation_windows": 676,
+        "own_support_fraction": 0.998108875739645,
+        "waveform_beats": {
+          "reference_peaks": 9978,
+          "predicted_peaks": 9873,
+          "matched_peaks": 4425,
+          "precision": 0.4481920388939532,
+          "recall": 0.44347564642212867,
+          "f1": 0.44582136920054405,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 2723,
+          "median_abs_rr_error_ms": 8.0
+        }
+      }
+    }
+  },
+  "by_record_status": {
+    "af": {
+      "patients": 19,
+      "windows": 371,
+      "common_support_fraction": 0.9985078167115903,
+      "zero_waveform_relative_mae": 0.14299098753027695,
+      "models": {
+        "delay_ridge": {
+          "relative_mae": 0.1531656901213839,
+          "median_pearson_r": 0.04755211218894374,
+          "correlation_windows": 371,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 3116,
+            "matched_peaks": 1318,
+            "precision": 0.42297817715019254,
+            "recall": 0.22728056561476118,
+            "f1": 0.29568143578238926,
+            "median_abs_timing_error_ms": 40.0,
+            "matched_consecutive_intervals": 311,
+            "median_abs_rr_error_ms": 40.0
+          }
+        },
+        "pulse_template": {
+          "relative_mae": 0.18184380452896737,
+          "median_pearson_r": -0.02308547228087176,
+          "correlation_windows": 371,
+          "own_support_fraction": 0.9985078167115903,
+          "waveform_beats": {
+            "reference_peaks": 5799,
+            "predicted_peaks": 5674,
+            "matched_peaks": 2211,
+            "precision": 0.38967218893197036,
+            "recall": 0.3812726332126229,
+            "f1": 0.3854266538830297,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 964,
+            "median_abs_rr_error_ms": 48.0
+          }
+        }
+      }
+    },
+    "non_af": {
+      "patients": 16,
+      "windows": 305,
+      "common_support_fraction": 0.997623606557377,
+      "zero_waveform_relative_mae": 0.1615060746455276,
+      "models": {
+        "delay_ridge": {
+          "relative_mae": 0.15953228817257642,
+          "median_pearson_r": 0.19436864788137592,
+          "correlation_windows": 305,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 1778,
+            "matched_peaks": 654,
+            "precision": 0.3678290213723285,
+            "recall": 0.15649676956209618,
+            "f1": 0.2195736108779587,
+            "median_abs_timing_error_ms": 64.0,
+            "matched_consecutive_intervals": 92,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "pulse_template": {
+          "relative_mae": 0.18979170821169317,
+          "median_pearson_r": -0.03404142635072085,
+          "correlation_windows": 305,
+          "own_support_fraction": 0.997623606557377,
+          "waveform_beats": {
+            "reference_peaks": 4179,
+            "predicted_peaks": 4199,
+            "matched_peaks": 2214,
+            "precision": 0.5272683972374375,
+            "recall": 0.529791816223977,
+            "f1": 0.528527094772022,
+            "median_abs_timing_error_ms": 40.0,
+            "matched_consecutive_intervals": 1759,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      }
+    }
+  }
+}

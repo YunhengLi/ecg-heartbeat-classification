@@ -77,6 +77,8 @@ The [transition training study](template-transition-training.md) tests added ECG
 
 The [data and evaluation foundation](data-evaluation-foundation.md) describes the paired inventory, split controls and score-free preflight.
 
+The [chronological pulse study](sequence-study.md) compares ordered 10-second PPG bins and a control with the same bins sorted by measured features.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.

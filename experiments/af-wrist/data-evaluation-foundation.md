@@ -30,6 +30,8 @@ The original development fitting pools contain 34 AF and 80 non-AF stable window
 
 Use the current development folds to test architecture or training changes with the same inputs and scoring policy. Set thresholds using training-fold participants. Establish external performance on a new paired cohort after locking the model and cutoff. Record person-level support as well as the number of windows and episodes. A participant can contribute multiple episodes, so uncertainty resampling uses whole participants.
 
+The [external wrist source review](external-wrist-validation-sources.md) documents candidate paired cohorts and which reference fields are needed to run the current episode endpoint.
+
 For waveform reconstruction, the [paired PTT benchmark](../rddm/README.md#2-run-the-external-ptt-benchmark) scores fixed-clock waveform correlation and R-peak matching against measured ECG on participant-held-out partitions. Score waveform fidelity and AF alert utility separately. The AFPPGECG beat-based synchronization method assumes a pulse delay, so absolute R-peak timing needs a reference with independent clock synchronization.
 
 The [MIMIC PERform AF v2.0 release](https://zenodo.org/records/15906524) supplies a separate ICU source with 35 paired ECG and PPG recordings, including 19 AF and 16 non-AF records. The two inspected MAT files matched the listed file checksums. They contain 125 Hz signals and a rhythm label for each record. The files can support a separate waveform or record-level experiment. An episode alert evaluation requires annotations for onset and offset. Check patient overlap with the RDDM training data before using a MIMIC-derived dataset for external validation of RDDM.

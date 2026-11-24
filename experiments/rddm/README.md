@@ -77,6 +77,8 @@ The reference CPU run covers 22 participants and 66 windows. RDDM used its relea
 
 The follow-up fits a PPG-only timing correction while keeping the author weights fixed. [Timing experiment and results](timing-study.md)
 
+A separate ICU comparison fits ridge and pulse-template reconstruction from scratch on patient-held-out paired ECG and PPG. It tests waveform and beat timing on recordings that include AF. [MIMIC PERform waveform benchmark](mimic-perform-waveform.md)
+
 ## 3. Evaluate the paper protocol with its test arrays
 
 The paper describes an 80/20 subject split across WESAD, DALIA, CAPNO, BIDMC, and MIMIC-AFib. The upstream loader expects prepared arrays. The public release reviewed here leaves the prepared arrays and exact participant lists unavailable, so exact table reproduction remains pending. [Author data loader](https://github.com/DebadityaQU/RDDM/blob/7d5348843c3985c211a23ae5105a2d9497d5156a/data.py) · [Author evaluation log](https://github.com/DebadityaQU/RDDM/blob/7d5348843c3985c211a23ae5105a2d9497d5156a/eval-logs/standard_eval_RDDM.out)
