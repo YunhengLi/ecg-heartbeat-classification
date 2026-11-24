@@ -21,6 +21,8 @@ class AFRun:
     on the grid as unavailable decisions and mark them in ``ppg_available``.
     ``reference_valid`` indicates windows with usable native ECG annotations.
     Supply a common subject ID when several runs share an ECG timeline.
+    ``alert_start_status`` can provide explicit starts from a causal state
+    replay. Values are 1 (definite), 0 (none), and -1 (possible, not certain).
     """
 
     start_s: float
@@ -30,6 +32,7 @@ class AFRun:
     reference_valid: np.ndarray | None = None
     ppg_available: np.ndarray | None = None
     subject_id: str | None = None
+    alert_start_status: np.ndarray | None = None
 
 
 def _intervals(values):
@@ -85,6 +88,8 @@ def confirm_alerts(runs: Iterable[AFRun], consecutive_windows: int = 1) -> tuple
     original = tuple(runs)
     if required == 1:
         return original
+    if any(run.alert_start_status is not None for run in original):
+        raise ValueError("Apply confirmation to raw decisions before annotating alert starts")
 
     by_subject = defaultdict(list)
     for position, run in enumerate(original):
@@ -132,10 +137,10 @@ def _coverage(episodes, covered):
     return whole, seen & ~whole
 
 
-def _evaluate_subject(runs, totals):
+def _evaluate_subject(runs, totals, report_uncertainty):
     episodes = _union(np.concatenate([_intervals(run.af_intervals_s) for run in runs]))
     previous_end, previous_positive = -np.inf, False
-    reference_spans, valid_start_times, positive_times = [], [], []
+    reference_spans, valid_start_times, positive_times, possible_start_times = [], [], [], []
     for run in sorted(runs, key=lambda item: item.start_s):
         edges, decisions, reference, ppg = _grid(run)
         if edges[0] < previous_end - _TIME_EPSILON_S:
@@ -145,6 +150,13 @@ def _evaluate_subject(runs, totals):
         positive = decisions == 1
         same_run = abs(edges[0] - previous_end) <= _TIME_EPSILON_S and previous_positive
         starts = positive & ~np.r_[same_run, positive[:-1]]
+        if run.alert_start_status is not None:
+            status = np.asarray(run.alert_start_status)
+            if (status.shape != decisions.shape or not np.isin(status, (-1, 0, 1)).all()
+                    or np.any((status == 1) & ~positive) or np.any((status == -1) & (decisions < 0))):
+                raise ValueError("Explicit alert starts must align with available decisions")
+            starts = status == 1
+            possible_start_times.append(edges[1:][(status == -1) & reference])
         valid_start_times.append(edges[1:][starts & reference])
         positive_times.append(edges[1:][positive & reference])
         previous_end, previous_positive = edges[-1], bool(positive[-1])
@@ -179,6 +191,14 @@ def _evaluate_subject(runs, totals):
     totals["partial_episodes_with_positive_decision"] += int((partial & any_positive).sum())
     totals["true_alert_starts"] += int(true_starts.sum())
     totals["false_alert_starts"] += int((~true_starts).sum())
+    if report_uncertainty:
+        possible_times = np.concatenate(possible_start_times) if possible_start_times else np.empty(0)
+        possible_events = _event_at_decision(possible_times, episodes)
+        could_detect = detected.copy()
+        could_detect[possible_events[possible_events >= 0]] = True
+        totals["ambiguous_ecg_valid_alert_start_timestamps"] += int(len(possible_times))
+        totals["ambiguous_non_af_alert_start_timestamps"] += int((possible_events < 0).sum())
+        totals["complete_episodes_with_definite_or_possible_alert"] += int((whole & could_detect).sum())
     return first_alert[whole & detected] - episodes[whole & detected, 0]
 
 
@@ -196,14 +216,16 @@ def evaluate_af(runs: Iterable[AFRun], *, representative: bool = False) -> dict:
         raise ValueError("representative must be a boolean")
     grouped = defaultdict(list)
     n_runs = 0
+    report_uncertainty = False
     for n_runs, run in enumerate(runs, start=1):
         key = ("subject", run.subject_id) if run.subject_id is not None else ("run", n_runs)
         grouped[key].append(run)
+        report_uncertainty |= run.alert_start_status is not None
     if not grouped:
         raise ValueError("At least one contiguous AF run is required")
 
     totals = defaultdict(int)
-    delays = np.concatenate([_evaluate_subject(group, totals) for group in grouped.values()])
+    delays = np.concatenate([_evaluate_subject(group, totals, report_uncertainty) for group in grouped.values()])
     known = totals["ecg_reference_seconds"]
     complete = totals["complete_reference_episodes"]
     return {

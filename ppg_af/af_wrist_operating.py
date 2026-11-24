@@ -131,45 +131,51 @@ def select_operating_point(representative_runs, *, episode_runs=None, target_sen
     values. Always check a no-alert policy. When none meets the target, keep
     the best achieved sensitivity and make that shortfall explicit.
     """
+    representative = tuple(representative_runs)
+    episodes = None if episode_runs is None else tuple(episode_runs)
+    no_alert_representative = _at_threshold(representative, _NO_ALERT_THRESHOLD, confirmation_windows)
+    non_af_seconds = _remaining_non_af_time(no_alert_representative)
+    analyzable_non_af_seconds = _remaining_non_af_time(no_alert_representative, analyzable_only=True)
+
+    def evaluate(threshold):
+        return _evaluate_scopes(_at_threshold(representative, threshold, confirmation_windows),
+                                None if episodes is None else _at_threshold(episodes, threshold, confirmation_windows),
+                                allow_daily_rate=False,
+                                non_af_seconds=non_af_seconds, analyzable_non_af_seconds=analyzable_non_af_seconds)
+
+    probabilities = [np.asarray(run.scores, dtype=float) for run in representative + (episodes or ())]
+    return select_scored_threshold(np.concatenate(probabilities) if probabilities else np.empty(0), evaluate,
+                                   target_sensitivity=target_sensitivity, max_thresholds=max_thresholds)
+
+
+def select_scored_threshold(probabilities, evaluate, *, target_sensitivity=0.8, max_thresholds=101):
+    """Choose an operating point from probabilities and a causal alert replay."""
     if not math.isfinite(target_sensitivity) or not 0 <= target_sensitivity <= 1:
         raise ValueError("Target sensitivity must be in [0, 1]")
     if not isinstance(max_thresholds, int) or max_thresholds < 3:
         raise ValueError("max_thresholds must be an integer of at least three")
-    representative = tuple(representative_runs)
-    episodes = None if episode_runs is None else tuple(episode_runs)
-    no_alert_representative = _at_threshold(representative, _NO_ALERT_THRESHOLD, confirmation_windows)
-    no_alert_episodes = None if episodes is None else _at_threshold(episodes, _NO_ALERT_THRESHOLD, confirmation_windows)
-    non_af_seconds = _remaining_non_af_time(no_alert_representative)
-    analyzable_non_af_seconds = _remaining_non_af_time(no_alert_representative, analyzable_only=True)
-
-    def evaluate(representative_decisions, episode_decisions):
-        return _evaluate_scopes(representative_decisions, episode_decisions, allow_daily_rate=False,
-                                non_af_seconds=non_af_seconds, analyzable_non_af_seconds=analyzable_non_af_seconds)
-
-    baseline = evaluate(no_alert_representative, no_alert_episodes)
+    baseline = evaluate(_NO_ALERT_THRESHOLD)
     episode_reference = baseline["episode_metrics"]
+    burden = baseline["burden_metrics"] or {}
     unmet_support = []
     if episode_reference is None or not episode_reference["complete_reference_episodes"]:
         unmet_support.append("no_complete_reference_episode")
-    if non_af_seconds <= 0:
+    if burden.get("ecg_non_af_seconds", 0) <= 0:
         unmet_support.append("no_representative_ecg_non_af_time")
-    elif analyzable_non_af_seconds <= 0:
+    elif burden.get("analyzable_non_af_seconds", 0) <= 0:
         unmet_support.append("no_scored_representative_non_af_time")
     if unmet_support:
         return {"status": "insufficient_reference", "threshold": None, "target_sensitivity": target_sensitivity,
                 "threshold_candidates": 0, "validation": baseline, "reasons": unmet_support}
 
-    pooled = np.concatenate([np.asarray(run.scores, dtype=float) for run in representative + (episodes or ())])
+    pooled = np.asarray(probabilities, dtype=float)
     candidates = np.unique(pooled[np.isfinite(pooled)])
     if len(candidates) >= max_thresholds:
         indices = np.linspace(0, len(candidates) - 1, max_thresholds - 1, dtype=int)
         candidates = candidates[indices]
     best = None
     for threshold in np.r_[candidates, _NO_ALERT_THRESHOLD]:
-        metrics = evaluate(
-            _at_threshold(representative, threshold, confirmation_windows),
-            None if episodes is None else _at_threshold(episodes, threshold, confirmation_windows),
-        )
+        metrics = baseline if threshold == _NO_ALERT_THRESHOLD else evaluate(threshold)
         sensitivity = metrics["episode_metrics"]["complete_episode_recall"]
         false_alerts = metrics["burden_metrics"]["false_alert_starts"]
         met_target = sensitivity >= target_sensitivity
