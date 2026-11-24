@@ -81,6 +81,8 @@ A separate ICU comparison fits ridge and pulse-template reconstruction from scra
 
 The [MIMIC PERform neural follow-up](mimic-perform-tcn.md) compares two small temporal CNNs on those same patient-held-out windows, including a loss that emphasizes measured ECG peak neighborhoods.
 
+The [cross-cohort timing study](mimic-perform-ptt-delay.md) isolates the effect of a locally fitted pulse-to-ECG delay when a template pools healthy PTT and ICU data.
+
 ## 3. Evaluate the paper protocol with its test arrays
 
 The paper describes an 80/20 subject split across WESAD, DALIA, CAPNO, BIDMC, and MIMIC-AFib. The upstream loader expects prepared arrays. The public release reviewed here leaves the prepared arrays and exact participant lists unavailable, so exact table reproduction remains pending. [Author data loader](https://github.com/DebadityaQU/RDDM/blob/7d5348843c3985c211a23ae5105a2d9497d5156a/data.py) · [Author evaluation log](https://github.com/DebadityaQU/RDDM/blob/7d5348843c3985c211a23ae5105a2d9497d5156a/eval-logs/standard_eval_RDDM.out)
