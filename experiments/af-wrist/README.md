@@ -113,6 +113,8 @@ The [ECG annotation transfer study](afdb-transfer-study.md) tests a frozen exter
 
 The [sampling stress study](sampling-stress.md) evaluates a synthetic 50 Hz bandwidth change with the original model cutoffs. The [extra episode replay](extra-episode-study.md) verifies a short new development event without changing the benchmark.
 
+The [wrist exercise stress study](exercise-stress-study.md) compares heart-rate error, the native PPG quality score, and frozen alert behavior with an independent device and published ECG R peaks.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
