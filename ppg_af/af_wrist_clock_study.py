@@ -96,9 +96,9 @@ def load_grid(base_table, subjects, timelines, raw_dir, feature_dir, *, seconds)
     return ScoringGrid(seconds, table, np.concatenate(people), tuple(blocks.values()), history_rows, np.concatenate(unknown))
 
 
-def _policy(grid, probabilities, people, confirmation_windows):
+def scoring_runs(grid, probabilities, people):
+    """Map row-aligned scores to the two existing evaluation scopes."""
     monitored, episodes = [], []
-    histories = {}
     for block in grid.timelines:
         if block.subject not in people:
             continue
@@ -108,7 +108,20 @@ def _policy(grid, probabilities, people, confirmation_windows):
         episodes.append(run)
         if block.kind == MONITOR_KIND:
             monitored.append(run)
-        histories[(block.subject, block.start)] = grid.history_rows[(block.subject, block.start)]
+    return tuple(monitored), tuple(episodes)
+
+
+def predecessor_decisions(grid, decisions):
+    """Look up chronological binary or unavailable decisions before a block."""
+    def history(run):
+        rows = grid.history_rows[(run.subject_id, run.start_s)]
+        return [None if grid.unknown_source[row] else int(decisions[row]) for row in rows]
+
+    return history
+
+
+def _policy(grid, probabilities, people, confirmation_windows):
+    monitored, episodes = scoring_runs(grid, probabilities, people)
 
     coverage = tuple(run.decisions(2.0) for run in monitored)
     non_af = _remaining_non_af_time(coverage)
@@ -116,10 +129,7 @@ def _policy(grid, probabilities, people, confirmation_windows):
 
     def evaluate(threshold):
         decisions = np.where(np.isfinite(probabilities), probabilities >= threshold, -1).astype(np.int8)
-
-        def history(run):
-            rows = histories[(run.subject_id, run.start_s)]
-            return [None if grid.unknown_source[row] else int(decisions[row]) for row in rows]
+        history = predecessor_decisions(grid, decisions)
 
         monitor_decisions, monitor_unknown = apply_alert_history(
             (run.decisions(threshold) for run in monitored), confirmation_windows=confirmation_windows,
@@ -134,7 +144,9 @@ def _policy(grid, probabilities, people, confirmation_windows):
         return {**result, "monitor_blocks_with_unknown_cutoff_state": monitor_unknown,
                 "episode_blocks_with_unknown_cutoff_state": episode_unknown}
 
-    pool = [run.scores for run in episodes] + [probabilities[rows] for rows in histories.values()]
+    pool = [run.scores for run in episodes] + [
+        probabilities[grid.history_rows[(run.subject_id, run.start_s)]] for run in episodes
+    ]
     return evaluate, np.concatenate(pool) if pool else np.empty(0)
 
 
@@ -146,6 +158,23 @@ def _summarize(metrics):
             "possible_non_af_alert_timestamps": metrics["burden_metrics"]["ambiguous_non_af_alert_start_timestamps"]}
 
 
+def fit_nested_grid(grid, lock, confirmation_windows):
+    """Fit and calibrate on the same participant folds as the clock comparison."""
+    shared = _shared_features(grid.table)
+    matrices = {name: np.where(shared[:, None], grid.table[name], np.nan) for name in ROUTES}
+    eligible = shared & (grid.table["run_kind"] != "enriched_episode")
+
+    def calibrate(scores, rows):
+        full = np.full(len(grid.subjects), np.nan)
+        full[rows] = scores
+        evaluate, pool = _policy(grid, full, set(grid.subjects[rows]), confirmation_windows)
+        return select_scored_threshold(pool, evaluate, target_sensitivity=lock["target_sensitivity"],
+                                       max_thresholds=max(3, len(pool) + 1))
+
+    return train_oof(matrices, grid.table["stable_label"], grid.subjects, n_splits=5, inner_splits=3,
+                     seed=2026, train_eligible=eligible, calibration_selector=calibrate)
+
+
 def compare_grid(grid, lock, previous):
     def rules(confirmation_windows):
         return 1 if confirmation_windows == 1 else WINDOW_SECONDS // grid.seconds + 1
@@ -153,8 +182,6 @@ def compare_grid(grid, lock, previous):
     calibration = set(lock["calibration_subjects"])
     shared = _shared_features(grid.table)
     in_calibration = np.isin(grid.subjects, sorted(calibration))
-    feature_matrices = {name: np.where(shared[:, None], grid.table[name], np.nan) for name in ROUTES}
-    eligible = shared & (grid.table["run_kind"] != "enriched_episode")
     fixed, recalibrated, grouped = {}, {}, {}
     for logical_rule in (1, 2):
         count = rules(logical_rule)
@@ -171,16 +198,7 @@ def compare_grid(grid, lock, previous):
                                         "threshold_candidates": selected["threshold_candidates"],
                                         **_summarize(selected["validation"])}
 
-        def calibrate(scores, rows):
-            full = np.full(len(grid.subjects), np.nan)
-            full[rows] = scores
-            evaluate, pool = _policy(grid, full, set(grid.subjects[rows]), count)
-            return select_scored_threshold(pool, evaluate, target_sensitivity=lock["target_sensitivity"],
-                                           max_thresholds=max(3, len(pool) + 1))
-
-        fitted = train_oof(feature_matrices, grid.table["stable_label"], grid.subjects,
-                           n_splits=5, inner_splits=3, seed=2026, train_eligible=eligible,
-                           calibration_selector=calibrate)
+        fitted = fit_nested_grid(grid, lock, count)
         grouped[label] = {}
         for name, route in fitted["routes"].items():
             # Test folds use their own threshold, including for the predecessor rows.

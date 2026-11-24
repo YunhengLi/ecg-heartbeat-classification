@@ -1,0 +1,392 @@
+{
+  "scope": "Nested development out-of-fold event audit",
+  "configurations": {
+    "30": {
+      "immediate": {
+        "direct_ppg": {
+          "complete_episodes": 17,
+          "detected": 7,
+          "missed_reasons": {
+            "already_active_at_onset": 9,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 9,
+          "misses_with_positive_raw_decision": 9,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": null,
+          "false_alerts": {
+            "starts": 4,
+            "one_positive_decision_followed_by_reset": 1,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 3,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 3,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.35403656536083494,
+            "median_ppg_quality_at_false_start": 0.4230551003745231,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        },
+        "pulse_template": {
+          "complete_episodes": 17,
+          "detected": 10,
+          "missed_reasons": {
+            "already_active_at_onset": 5,
+            "below_cutoff": 1,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 3,
+          "misses_with_positive_raw_decision": 3,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.012950989737808283,
+          "false_alerts": {
+            "starts": 6,
+            "one_positive_decision_followed_by_reset": 1,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 4,
+            "duration_censored_before_30_s": 2,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 5,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.10898529961929915,
+            "median_ppg_quality_at_false_start": 0.533622647608329,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        },
+        "rddm": {
+          "complete_episodes": 17,
+          "detected": 3,
+          "missed_reasons": {
+            "already_active_at_onset": 2,
+            "below_cutoff": 11,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 1,
+          "misses_with_positive_raw_decision": 1,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.20768077966202814,
+          "false_alerts": {
+            "starts": 9,
+            "one_positive_decision_followed_by_reset": 4,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 8,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 3,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.12290887009184359,
+            "median_ppg_quality_at_false_start": 0.49250758387248883,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        }
+      },
+      "confirm_30_s": {
+        "direct_ppg": {
+          "complete_episodes": 17,
+          "detected": 7,
+          "missed_reasons": {
+            "already_active_at_onset": 7,
+            "below_cutoff": 1,
+            "confirmation_not_reached": 1,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 4,
+          "misses_with_positive_raw_decision": 7,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.02178512823901424,
+          "false_alerts": {
+            "starts": 2,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 2,
+            "duration_censored_before_30_s": 0,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.1744604333182364,
+            "median_ppg_quality_at_false_start": 0.35561267181388967,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        },
+        "pulse_template": {
+          "complete_episodes": 17,
+          "detected": 0,
+          "missed_reasons": {
+            "already_active_at_onset": 13,
+            "below_cutoff": 1,
+            "confirmation_not_reached": 2,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 13,
+          "misses_with_positive_raw_decision": 15,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.030606722482767967,
+          "false_alerts": {
+            "starts": 1,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 1,
+            "duration_censored_before_30_s": 0,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.3382881180477736,
+            "median_ppg_quality_at_false_start": 0.15744892325783974,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        },
+        "rddm": {
+          "complete_episodes": 17,
+          "detected": 2,
+          "missed_reasons": {
+            "already_active_at_onset": 13,
+            "confirmation_not_reached": 1,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 13,
+          "misses_with_positive_raw_decision": 14,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": null,
+          "false_alerts": {
+            "starts": 7,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 6,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.12022924310005634,
+            "median_ppg_quality_at_false_start": 0.4175799531482135,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.607877934776069
+          },
+          "partial_episodes": 10
+        }
+      }
+    },
+    "10": {
+      "immediate": {
+        "direct_ppg": {
+          "complete_episodes": 17,
+          "detected": 7,
+          "missed_reasons": {
+            "already_active_at_onset": 9,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 9,
+          "misses_with_positive_raw_decision": 9,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": null,
+          "false_alerts": {
+            "starts": 4,
+            "one_positive_decision_followed_by_reset": 2,
+            "duration_below_30_s": 2,
+            "duration_at_least_30_s": 1,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 2,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.2759900885318413,
+            "median_ppg_quality_at_false_start": 0.3182846903668145,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        },
+        "pulse_template": {
+          "complete_episodes": 17,
+          "detected": 12,
+          "missed_reasons": {
+            "already_active_at_onset": 2,
+            "below_cutoff": 2,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 0,
+          "misses_with_positive_raw_decision": 0,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.07417591531738399,
+          "false_alerts": {
+            "starts": 6,
+            "one_positive_decision_followed_by_reset": 1,
+            "duration_below_30_s": 2,
+            "duration_at_least_30_s": 3,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 1,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.12924079541687872,
+            "median_ppg_quality_at_false_start": 0.4163471629538833,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        },
+        "rddm": {
+          "complete_episodes": 17,
+          "detected": 8,
+          "missed_reasons": {
+            "already_active_at_onset": 1,
+            "below_cutoff": 7,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 0,
+          "misses_with_positive_raw_decision": 0,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.2815102219252492,
+          "false_alerts": {
+            "starts": 20,
+            "one_positive_decision_followed_by_reset": 14,
+            "duration_below_30_s": 16,
+            "duration_at_least_30_s": 3,
+            "duration_censored_before_30_s": 1,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 14,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.15064630855870453,
+            "median_ppg_quality_at_false_start": 0.42836059210014066,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        }
+      },
+      "confirm_30_s": {
+        "direct_ppg": {
+          "complete_episodes": 17,
+          "detected": 7,
+          "missed_reasons": {
+            "already_active_at_onset": 7,
+            "below_cutoff": 1,
+            "confirmation_not_reached": 1,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 5,
+          "misses_with_positive_raw_decision": 8,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": -0.004652349938090605,
+          "false_alerts": {
+            "starts": 3,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 1,
+            "duration_at_least_30_s": 2,
+            "duration_censored_before_30_s": 0,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.468152328498566,
+            "median_ppg_quality_at_false_start": 0.49250758387248883,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        },
+        "pulse_template": {
+          "complete_episodes": 17,
+          "detected": 5,
+          "missed_reasons": {
+            "already_active_at_onset": 7,
+            "confirmation_not_reached": 4,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 6,
+          "misses_with_positive_raw_decision": 11,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": null,
+          "false_alerts": {
+            "starts": 3,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 0,
+            "duration_at_least_30_s": 3,
+            "duration_censored_before_30_s": 0,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.14135219756055417,
+            "median_ppg_quality_at_false_start": 0.5707235488402722,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        },
+        "rddm": {
+          "complete_episodes": 17,
+          "detected": 4,
+          "missed_reasons": {
+            "already_active_at_onset": 1,
+            "confirmation_not_reached": 11,
+            "no_score": 1
+          },
+          "misses_with_confirmed_state_during_af": 1,
+          "misses_with_positive_raw_decision": 12,
+          "misses_with_all_trailing_inputs_flat": 1,
+          "median_best_score_minus_cutoff_for_below_cutoff_misses": null,
+          "false_alerts": {
+            "starts": 6,
+            "one_positive_decision_followed_by_reset": 0,
+            "duration_below_30_s": 2,
+            "duration_at_least_30_s": 4,
+            "duration_censored_before_30_s": 0,
+            "with_reference_af_in_trailing_input": 0,
+            "within_30_s_before_annotated_af": 0,
+            "restart_within_30_s_after_negative": 0,
+            "restart_within_30_s_after_abstention": 0,
+            "median_score_minus_cutoff": 0.1563176489889779,
+            "median_ppg_quality_at_false_start": 0.2841003952399269,
+            "median_ppg_quality_at_scored_non_af_monitor_decisions": 0.5845012809079839
+          },
+          "partial_episodes": 10
+        }
+      }
+    }
+  },
+  "paired_analysis": {
+    "configurations": 12,
+    "unique_complete_episodes": 17,
+    "episode_configuration_observations": 204,
+    "false_alert_configuration_observations": 71,
+    "detected_at_least_once_by_route": {
+      "direct_ppg": 11,
+      "pulse_template": 14,
+      "rddm": 10
+    },
+    "episodes_by_number_of_configurations_that_detected_them": {
+      "0": 1,
+      "1": 1,
+      "2": 4,
+      "3": 1,
+      "4": 3,
+      "5": 1,
+      "6": 2,
+      "7": 2,
+      "8": 1,
+      "9": 1
+    },
+    "never_detected_episode_reason_observations": {
+      "no_score": 12
+    },
+    "episodes_with_all_trailing_decision_inputs_flat": 1,
+    "episodes_shorter_than_30_s": 3,
+    "episodes_with_a_scoreable_wholly_af_input_by_cadence": {
+      "30": 13,
+      "10": 13
+    },
+    "missed_episode_configuration_observations_by_reason": {
+      "already_active_at_onset": 76,
+      "below_cutoff": 24,
+      "confirmation_not_reached": 20,
+      "no_score": 12
+    }
+  }
+}
