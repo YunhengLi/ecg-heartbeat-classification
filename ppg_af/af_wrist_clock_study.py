@@ -2,6 +2,7 @@
 
 import argparse
 from dataclasses import dataclass, replace
+from functools import partial
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -120,7 +121,8 @@ def predecessor_decisions(grid, decisions):
     return history
 
 
-def _policy(grid, probabilities, people, confirmation_windows):
+def scoring_policy(grid, probabilities, people, replay):
+    """Build a cutoff evaluator and collect calibration scores, including history."""
     monitored, episodes = scoring_runs(grid, probabilities, people)
 
     coverage = tuple(run.decisions(2.0) for run in monitored)
@@ -131,14 +133,10 @@ def _policy(grid, probabilities, people, confirmation_windows):
         decisions = np.where(np.isfinite(probabilities), probabilities >= threshold, -1).astype(np.int8)
         history = predecessor_decisions(grid, decisions)
 
-        monitor_decisions, monitor_unknown = apply_alert_history(
-            (run.decisions(threshold) for run in monitored), confirmation_windows=confirmation_windows,
-            prior_decisions=history,
-        )
-        episode_decisions, episode_unknown = apply_alert_history(
-            (run.decisions(threshold) for run in episodes), confirmation_windows=confirmation_windows,
-            prior_decisions=history,
-        )
+        monitor_decisions, monitor_unknown = replay((run.decisions(threshold) for run in monitored),
+                                                    prior_decisions=history)
+        episode_decisions, episode_unknown = replay((run.decisions(threshold) for run in episodes),
+                                                    prior_decisions=history)
         result = _evaluate_scopes(monitor_decisions, episode_decisions, allow_daily_rate=False,
                                   non_af_seconds=non_af, analyzable_non_af_seconds=analyzable_non_af)
         return {**result, "monitor_blocks_with_unknown_cutoff_state": monitor_unknown,
@@ -148,6 +146,11 @@ def _policy(grid, probabilities, people, confirmation_windows):
         probabilities[grid.history_rows[(run.subject_id, run.start_s)]] for run in episodes
     ]
     return evaluate, np.concatenate(pool) if pool else np.empty(0)
+
+
+def _policy(grid, probabilities, people, confirmation_windows):
+    replay = partial(apply_alert_history, confirmation_windows=confirmation_windows)
+    return scoring_policy(grid, probabilities, people, replay)
 
 
 def _summarize(metrics):
