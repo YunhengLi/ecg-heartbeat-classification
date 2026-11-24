@@ -1,0 +1,355 @@
+{
+  "author_commit": "7d5348843c3985c211a23ae5105a2d9497d5156a",
+  "checkpoint_sha256": {
+    "rddm_main_network.pth": "e90490a9039cdf147be29404be94d4b04bfcccc3c0d94ee009bbe42f2c040eb9",
+    "rddm_condition_encoder_1.pth": "9f8ef5d758962030958674526d450b41bc188e27b1edf2c3fe5c1a4bfe067223",
+    "rddm_condition_encoder_2.pth": "3c7cbbc1585395381faf20489bd7d9091aafc9d3cbddde67e92cc3d050f6c3bd"
+  },
+  "device": "cpu",
+  "seed": 31,
+  "diffusion_steps": 10,
+  "author_model_sampling_hz": 128,
+  "author_window_seconds": 4,
+  "batch_size": 4,
+  "versions": {
+    "numpy": "2.5.3",
+    "neurokit2": "0.3.0",
+    "torch": "2.10.0+cpu"
+  },
+  "scope": "Author-checkpoint inference on external PTT PPG",
+  "dataset": "PhysioNet Pulse Transit Time PPG v1.1.0",
+  "selection": "One midpoint 12-second window per subject and activity",
+  "scoring_sample_rate_hz": 125,
+  "authors_filtered_target_rmse_on_ptt": 0.2144703703302751,
+  "author_inference_seconds": 103.378,
+  "overall": {
+    "subjects": 22,
+    "windows": 66,
+    "common_support_fraction": 1.0,
+    "models": {
+      "rddm_author_zero_shot": {
+        "median_pearson_r": 0.011205754138966038,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 940,
+          "predicted_peaks": 891,
+          "matched_peaks": 211,
+          "precision": 0.23681257014590348,
+          "recall": 0.22446808510638297,
+          "f1": 0.2304751501911524,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 82,
+          "median_abs_rr_error_ms": 40.0
+        }
+      },
+      "ridge_ptt": {
+        "median_pearson_r": 0.27758482288477326,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 940,
+          "predicted_peaks": 842,
+          "matched_peaks": 770,
+          "precision": 0.9144893111638955,
+          "recall": 0.8191489361702128,
+          "f1": 0.8641975308641975,
+          "median_abs_timing_error_ms": 16.0,
+          "matched_consecutive_intervals": 637,
+          "median_abs_rr_error_ms": 8.0
+        }
+      },
+      "pulse_template_ptt": {
+        "median_pearson_r": 0.16461261929021415,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 940,
+          "predicted_peaks": 965,
+          "matched_peaks": 847,
+          "precision": 0.877720207253886,
+          "recall": 0.9010638297872341,
+          "f1": 0.8892388451443569,
+          "median_abs_timing_error_ms": 16.0,
+          "matched_consecutive_intervals": 725,
+          "median_abs_rr_error_ms": 8.0
+        }
+      },
+      "qrs_cnn_ptt": {
+        "median_pearson_r": 0.1907756719185147,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 940,
+          "predicted_peaks": 535,
+          "matched_peaks": 284,
+          "precision": 0.5308411214953271,
+          "recall": 0.3021276595744681,
+          "f1": 0.38508474576271184,
+          "median_abs_timing_error_ms": 24.0,
+          "matched_consecutive_intervals": 211,
+          "median_abs_rr_error_ms": 8.0
+        }
+      }
+    },
+    "measured_ecg_detector": {
+      "reference_peaks": 940,
+      "predicted_peaks": 948,
+      "matched_peaks": 937,
+      "precision": 0.9883966244725738,
+      "recall": 0.9968085106382979,
+      "f1": 0.9925847457627118,
+      "median_abs_timing_error_ms": 0.0,
+      "matched_consecutive_intervals": 858,
+      "median_abs_rr_error_ms": 0.0
+    }
+  },
+  "by_activity": {
+    "run": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 1.0,
+      "models": {
+        "rddm_author_zero_shot": {
+          "median_pearson_r": 0.011449648932381113,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 334,
+            "predicted_peaks": 302,
+            "matched_peaks": 88,
+            "precision": 0.2913907284768212,
+            "recall": 0.2634730538922156,
+            "f1": 0.27672955974842767,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 38,
+            "median_abs_rr_error_ms": 40.0
+          }
+        },
+        "ridge_ptt": {
+          "median_pearson_r": 0.27758482288477326,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 334,
+            "predicted_peaks": 297,
+            "matched_peaks": 276,
+            "precision": 0.9292929292929293,
+            "recall": 0.8263473053892215,
+            "f1": 0.8748019017432647,
+            "median_abs_timing_error_ms": 24.0,
+            "matched_consecutive_intervals": 231,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.18078777941138907,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 334,
+            "predicted_peaks": 341,
+            "matched_peaks": 308,
+            "precision": 0.9032258064516129,
+            "recall": 0.9221556886227545,
+            "f1": 0.9125925925925926,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 275,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "qrs_cnn_ptt": {
+          "median_pearson_r": 0.12992386701666728,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 334,
+            "predicted_peaks": 174,
+            "matched_peaks": 102,
+            "precision": 0.5862068965517241,
+            "recall": 0.30538922155688625,
+            "f1": 0.4015748031496063,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 73,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 334,
+        "predicted_peaks": 340,
+        "matched_peaks": 333,
+        "precision": 0.9794117647058823,
+        "recall": 0.9970059880239521,
+        "f1": 0.9881305637982196,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 304,
+        "median_abs_rr_error_ms": 0.0
+      }
+    },
+    "sit": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 1.0,
+      "models": {
+        "rddm_author_zero_shot": {
+          "median_pearson_r": 0.012494801567045015,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 280,
+            "predicted_peaks": 304,
+            "matched_peaks": 59,
+            "precision": 0.19407894736842105,
+            "recall": 0.21071428571428572,
+            "f1": 0.20205479452054795,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 19,
+            "median_abs_rr_error_ms": 48.0
+          }
+        },
+        "ridge_ptt": {
+          "median_pearson_r": 0.42376781512958517,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 280,
+            "predicted_peaks": 268,
+            "matched_peaks": 251,
+            "precision": 0.9365671641791045,
+            "recall": 0.8964285714285715,
+            "f1": 0.916058394160584,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 216,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.3824185989044999,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 280,
+            "predicted_peaks": 286,
+            "matched_peaks": 278,
+            "precision": 0.972027972027972,
+            "recall": 0.9928571428571429,
+            "f1": 0.9823321554770318,
+            "median_abs_timing_error_ms": 8.0,
+            "matched_consecutive_intervals": 250,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "qrs_cnn_ptt": {
+          "median_pearson_r": 0.33906262299197953,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 280,
+            "predicted_peaks": 194,
+            "matched_peaks": 107,
+            "precision": 0.5515463917525774,
+            "recall": 0.3821428571428571,
+            "f1": 0.45147679324894513,
+            "median_abs_timing_error_ms": 24.0,
+            "matched_consecutive_intervals": 86,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 280,
+        "predicted_peaks": 278,
+        "matched_peaks": 278,
+        "precision": 1.0,
+        "recall": 0.9928571428571429,
+        "f1": 0.996415770609319,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 254,
+        "median_abs_rr_error_ms": 0.0
+      }
+    },
+    "walk": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 1.0,
+      "models": {
+        "rddm_author_zero_shot": {
+          "median_pearson_r": 0.007130367291527471,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 326,
+            "predicted_peaks": 285,
+            "matched_peaks": 64,
+            "precision": 0.22456140350877193,
+            "recall": 0.19631901840490798,
+            "f1": 0.20949263502454993,
+            "median_abs_timing_error_ms": 56.0,
+            "matched_consecutive_intervals": 25,
+            "median_abs_rr_error_ms": 48.0
+          }
+        },
+        "ridge_ptt": {
+          "median_pearson_r": 0.20271380784776316,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 326,
+            "predicted_peaks": 277,
+            "matched_peaks": 243,
+            "precision": 0.8772563176895307,
+            "recall": 0.745398773006135,
+            "f1": 0.8059701492537313,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 190,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.13444288883487993,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 326,
+            "predicted_peaks": 338,
+            "matched_peaks": 261,
+            "precision": 0.772189349112426,
+            "recall": 0.8006134969325154,
+            "f1": 0.786144578313253,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 200,
+            "median_abs_rr_error_ms": 8.0
+          }
+        },
+        "qrs_cnn_ptt": {
+          "median_pearson_r": 0.07086681494640973,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 326,
+            "predicted_peaks": 167,
+            "matched_peaks": 75,
+            "precision": 0.4491017964071856,
+            "recall": 0.23006134969325154,
+            "f1": 0.30425963488843816,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 52,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 326,
+        "predicted_peaks": 330,
+        "matched_peaks": 326,
+        "precision": 0.9878787878787879,
+        "recall": 1.0,
+        "f1": 0.9939024390243902,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 300,
+        "median_abs_rr_error_ms": 0.0
+      }
+    }
+  }
+}
