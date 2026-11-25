@@ -183,6 +183,8 @@ The [short-template historical study](short-retrospective-study.md) compares ten
 
 The [paired-source training study](paired-source-study.md) tests shared ECG and PPG representation training with a within-person shifted control. The [optical beat opportunity audit](beat-opportunity-study.md) compares candidate beat matching with a density-matched timing rotation.
 
+The [same-clock native ECG study](ecg-timing-replay-study.md) compares measured ECG QRS timing with PPG-derived timing across 260 complete historical episodes and 744 ECG-observed wrist minutes.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
