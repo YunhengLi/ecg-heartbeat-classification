@@ -1,0 +1,927 @@
+{
+  "scope": "Outcome-aware threshold diagnostic on previously scored participants",
+  "new_threshold_adopted": false,
+  "participants": 25,
+  "target_sensitivity": 0.8,
+  "false_start_cap_for_diagnostic": 210,
+  "routes": {
+    "original": {
+      "complete_episodes": 260,
+      "ecg_observed_wear_seconds": 59130.0,
+      "distinct_cutoff_candidates": 6222,
+      "episodes_with_any_definite_start_threshold": 241,
+      "at_locked_cutoff": {
+        "detected_complete_episodes": 155,
+        "sensitivity": 0.5961538461538461,
+        "false_starts": 253,
+        "false_starts_per_ecg_observed_hour": 15.403348554033485
+      },
+      "maximum_sensitivity": {
+        "detected_complete_episodes": 163,
+        "sensitivity": 0.6269230769230769,
+        "false_starts": 238,
+        "false_starts_per_ecg_observed_hour": 14.490106544901066
+      },
+      "maximum_sensitivity_within_false_start_cap": {
+        "detected_complete_episodes": 145,
+        "sensitivity": 0.5576923076923077,
+        "false_starts": 204,
+        "false_starts_per_ecg_observed_hour": 12.420091324200913
+      },
+      "least_burden_at_sensitivity_target": null,
+      "nondominated_tradeoffs": [
+        {
+          "detected_complete_episodes": 0,
+          "sensitivity": 0.0,
+          "false_starts": 0,
+          "false_starts_per_ecg_observed_hour": 0.0
+        },
+        {
+          "detected_complete_episodes": 3,
+          "sensitivity": 0.011538461538461539,
+          "false_starts": 1,
+          "false_starts_per_ecg_observed_hour": 0.060882800608828
+        },
+        {
+          "detected_complete_episodes": 4,
+          "sensitivity": 0.015384615384615385,
+          "false_starts": 2,
+          "false_starts_per_ecg_observed_hour": 0.121765601217656
+        },
+        {
+          "detected_complete_episodes": 5,
+          "sensitivity": 0.019230769230769232,
+          "false_starts": 10,
+          "false_starts_per_ecg_observed_hour": 0.60882800608828
+        },
+        {
+          "detected_complete_episodes": 6,
+          "sensitivity": 0.023076923076923078,
+          "false_starts": 11,
+          "false_starts_per_ecg_observed_hour": 0.669710806697108
+        },
+        {
+          "detected_complete_episodes": 11,
+          "sensitivity": 0.04230769230769231,
+          "false_starts": 13,
+          "false_starts_per_ecg_observed_hour": 0.791476407914764
+        },
+        {
+          "detected_complete_episodes": 18,
+          "sensitivity": 0.06923076923076923,
+          "false_starts": 16,
+          "false_starts_per_ecg_observed_hour": 0.974124809741248
+        },
+        {
+          "detected_complete_episodes": 20,
+          "sensitivity": 0.07692307692307693,
+          "false_starts": 17,
+          "false_starts_per_ecg_observed_hour": 1.035007610350076
+        },
+        {
+          "detected_complete_episodes": 21,
+          "sensitivity": 0.08076923076923077,
+          "false_starts": 19,
+          "false_starts_per_ecg_observed_hour": 1.156773211567732
+        },
+        {
+          "detected_complete_episodes": 24,
+          "sensitivity": 0.09230769230769231,
+          "false_starts": 21,
+          "false_starts_per_ecg_observed_hour": 1.278538812785388
+        },
+        {
+          "detected_complete_episodes": 26,
+          "sensitivity": 0.1,
+          "false_starts": 24,
+          "false_starts_per_ecg_observed_hour": 1.461187214611872
+        },
+        {
+          "detected_complete_episodes": 27,
+          "sensitivity": 0.10384615384615385,
+          "false_starts": 28,
+          "false_starts_per_ecg_observed_hour": 1.704718417047184
+        },
+        {
+          "detected_complete_episodes": 28,
+          "sensitivity": 0.1076923076923077,
+          "false_starts": 30,
+          "false_starts_per_ecg_observed_hour": 1.82648401826484
+        },
+        {
+          "detected_complete_episodes": 29,
+          "sensitivity": 0.11153846153846154,
+          "false_starts": 32,
+          "false_starts_per_ecg_observed_hour": 1.948249619482496
+        },
+        {
+          "detected_complete_episodes": 30,
+          "sensitivity": 0.11538461538461539,
+          "false_starts": 34,
+          "false_starts_per_ecg_observed_hour": 2.070015220700152
+        },
+        {
+          "detected_complete_episodes": 31,
+          "sensitivity": 0.11923076923076924,
+          "false_starts": 36,
+          "false_starts_per_ecg_observed_hour": 2.191780821917808
+        },
+        {
+          "detected_complete_episodes": 33,
+          "sensitivity": 0.12692307692307692,
+          "false_starts": 40,
+          "false_starts_per_ecg_observed_hour": 2.43531202435312
+        },
+        {
+          "detected_complete_episodes": 34,
+          "sensitivity": 0.13076923076923078,
+          "false_starts": 43,
+          "false_starts_per_ecg_observed_hour": 2.617960426179604
+        },
+        {
+          "detected_complete_episodes": 36,
+          "sensitivity": 0.13846153846153847,
+          "false_starts": 46,
+          "false_starts_per_ecg_observed_hour": 2.800608828006088
+        },
+        {
+          "detected_complete_episodes": 39,
+          "sensitivity": 0.15,
+          "false_starts": 47,
+          "false_starts_per_ecg_observed_hour": 2.861491628614916
+        },
+        {
+          "detected_complete_episodes": 40,
+          "sensitivity": 0.15384615384615385,
+          "false_starts": 49,
+          "false_starts_per_ecg_observed_hour": 2.983257229832572
+        },
+        {
+          "detected_complete_episodes": 49,
+          "sensitivity": 0.18846153846153846,
+          "false_starts": 51,
+          "false_starts_per_ecg_observed_hour": 3.105022831050228
+        },
+        {
+          "detected_complete_episodes": 51,
+          "sensitivity": 0.19615384615384615,
+          "false_starts": 52,
+          "false_starts_per_ecg_observed_hour": 3.165905631659056
+        },
+        {
+          "detected_complete_episodes": 53,
+          "sensitivity": 0.20384615384615384,
+          "false_starts": 53,
+          "false_starts_per_ecg_observed_hour": 3.226788432267884
+        },
+        {
+          "detected_complete_episodes": 55,
+          "sensitivity": 0.21153846153846154,
+          "false_starts": 57,
+          "false_starts_per_ecg_observed_hour": 3.470319634703196
+        },
+        {
+          "detected_complete_episodes": 61,
+          "sensitivity": 0.23461538461538461,
+          "false_starts": 58,
+          "false_starts_per_ecg_observed_hour": 3.531202435312024
+        },
+        {
+          "detected_complete_episodes": 62,
+          "sensitivity": 0.23846153846153847,
+          "false_starts": 59,
+          "false_starts_per_ecg_observed_hour": 3.592085235920852
+        },
+        {
+          "detected_complete_episodes": 64,
+          "sensitivity": 0.24615384615384617,
+          "false_starts": 60,
+          "false_starts_per_ecg_observed_hour": 3.65296803652968
+        },
+        {
+          "detected_complete_episodes": 69,
+          "sensitivity": 0.2653846153846154,
+          "false_starts": 61,
+          "false_starts_per_ecg_observed_hour": 3.713850837138508
+        },
+        {
+          "detected_complete_episodes": 72,
+          "sensitivity": 0.27692307692307694,
+          "false_starts": 64,
+          "false_starts_per_ecg_observed_hour": 3.896499238964992
+        },
+        {
+          "detected_complete_episodes": 73,
+          "sensitivity": 0.28076923076923077,
+          "false_starts": 65,
+          "false_starts_per_ecg_observed_hour": 3.95738203957382
+        },
+        {
+          "detected_complete_episodes": 74,
+          "sensitivity": 0.2846153846153846,
+          "false_starts": 75,
+          "false_starts_per_ecg_observed_hour": 4.566210045662101
+        },
+        {
+          "detected_complete_episodes": 76,
+          "sensitivity": 0.2923076923076923,
+          "false_starts": 77,
+          "false_starts_per_ecg_observed_hour": 4.687975646879757
+        },
+        {
+          "detected_complete_episodes": 77,
+          "sensitivity": 0.29615384615384616,
+          "false_starts": 82,
+          "false_starts_per_ecg_observed_hour": 4.992389649923896
+        },
+        {
+          "detected_complete_episodes": 78,
+          "sensitivity": 0.3,
+          "false_starts": 85,
+          "false_starts_per_ecg_observed_hour": 5.175038051750381
+        },
+        {
+          "detected_complete_episodes": 80,
+          "sensitivity": 0.3076923076923077,
+          "false_starts": 88,
+          "false_starts_per_ecg_observed_hour": 5.357686453576864
+        },
+        {
+          "detected_complete_episodes": 81,
+          "sensitivity": 0.31153846153846154,
+          "false_starts": 89,
+          "false_starts_per_ecg_observed_hour": 5.418569254185693
+        },
+        {
+          "detected_complete_episodes": 87,
+          "sensitivity": 0.3346153846153846,
+          "false_starts": 96,
+          "false_starts_per_ecg_observed_hour": 5.844748858447488
+        },
+        {
+          "detected_complete_episodes": 88,
+          "sensitivity": 0.3384615384615385,
+          "false_starts": 102,
+          "false_starts_per_ecg_observed_hour": 6.210045662100456
+        },
+        {
+          "detected_complete_episodes": 95,
+          "sensitivity": 0.36538461538461536,
+          "false_starts": 107,
+          "false_starts_per_ecg_observed_hour": 6.514459665144597
+        },
+        {
+          "detected_complete_episodes": 96,
+          "sensitivity": 0.36923076923076925,
+          "false_starts": 112,
+          "false_starts_per_ecg_observed_hour": 6.818873668188736
+        },
+        {
+          "detected_complete_episodes": 97,
+          "sensitivity": 0.3730769230769231,
+          "false_starts": 116,
+          "false_starts_per_ecg_observed_hour": 7.062404870624048
+        },
+        {
+          "detected_complete_episodes": 99,
+          "sensitivity": 0.38076923076923075,
+          "false_starts": 117,
+          "false_starts_per_ecg_observed_hour": 7.123287671232877
+        },
+        {
+          "detected_complete_episodes": 102,
+          "sensitivity": 0.3923076923076923,
+          "false_starts": 125,
+          "false_starts_per_ecg_observed_hour": 7.610350076103501
+        },
+        {
+          "detected_complete_episodes": 103,
+          "sensitivity": 0.39615384615384613,
+          "false_starts": 128,
+          "false_starts_per_ecg_observed_hour": 7.792998477929984
+        },
+        {
+          "detected_complete_episodes": 110,
+          "sensitivity": 0.4230769230769231,
+          "false_starts": 129,
+          "false_starts_per_ecg_observed_hour": 7.853881278538813
+        },
+        {
+          "detected_complete_episodes": 112,
+          "sensitivity": 0.4307692307692308,
+          "false_starts": 131,
+          "false_starts_per_ecg_observed_hour": 7.975646879756469
+        },
+        {
+          "detected_complete_episodes": 113,
+          "sensitivity": 0.4346153846153846,
+          "false_starts": 132,
+          "false_starts_per_ecg_observed_hour": 8.036529680365296
+        },
+        {
+          "detected_complete_episodes": 114,
+          "sensitivity": 0.43846153846153846,
+          "false_starts": 135,
+          "false_starts_per_ecg_observed_hour": 8.219178082191782
+        },
+        {
+          "detected_complete_episodes": 116,
+          "sensitivity": 0.4461538461538462,
+          "false_starts": 136,
+          "false_starts_per_ecg_observed_hour": 8.280060882800608
+        },
+        {
+          "detected_complete_episodes": 117,
+          "sensitivity": 0.45,
+          "false_starts": 140,
+          "false_starts_per_ecg_observed_hour": 8.52359208523592
+        },
+        {
+          "detected_complete_episodes": 120,
+          "sensitivity": 0.46153846153846156,
+          "false_starts": 149,
+          "false_starts_per_ecg_observed_hour": 9.071537290715373
+        },
+        {
+          "detected_complete_episodes": 122,
+          "sensitivity": 0.46923076923076923,
+          "false_starts": 151,
+          "false_starts_per_ecg_observed_hour": 9.19330289193303
+        },
+        {
+          "detected_complete_episodes": 124,
+          "sensitivity": 0.47692307692307695,
+          "false_starts": 153,
+          "false_starts_per_ecg_observed_hour": 9.315068493150685
+        },
+        {
+          "detected_complete_episodes": 127,
+          "sensitivity": 0.48846153846153845,
+          "false_starts": 154,
+          "false_starts_per_ecg_observed_hour": 9.375951293759513
+        },
+        {
+          "detected_complete_episodes": 129,
+          "sensitivity": 0.49615384615384617,
+          "false_starts": 157,
+          "false_starts_per_ecg_observed_hour": 9.558599695585997
+        },
+        {
+          "detected_complete_episodes": 132,
+          "sensitivity": 0.5076923076923077,
+          "false_starts": 171,
+          "false_starts_per_ecg_observed_hour": 10.41095890410959
+        },
+        {
+          "detected_complete_episodes": 134,
+          "sensitivity": 0.5153846153846153,
+          "false_starts": 173,
+          "false_starts_per_ecg_observed_hour": 10.532724505327245
+        },
+        {
+          "detected_complete_episodes": 138,
+          "sensitivity": 0.5307692307692308,
+          "false_starts": 176,
+          "false_starts_per_ecg_observed_hour": 10.715372907153728
+        },
+        {
+          "detected_complete_episodes": 142,
+          "sensitivity": 0.5461538461538461,
+          "false_starts": 196,
+          "false_starts_per_ecg_observed_hour": 11.933028919330289
+        },
+        {
+          "detected_complete_episodes": 143,
+          "sensitivity": 0.55,
+          "false_starts": 197,
+          "false_starts_per_ecg_observed_hour": 11.993911719939117
+        },
+        {
+          "detected_complete_episodes": 144,
+          "sensitivity": 0.5538461538461539,
+          "false_starts": 201,
+          "false_starts_per_ecg_observed_hour": 12.237442922374429
+        },
+        {
+          "detected_complete_episodes": 145,
+          "sensitivity": 0.5576923076923077,
+          "false_starts": 204,
+          "false_starts_per_ecg_observed_hour": 12.420091324200913
+        },
+        {
+          "detected_complete_episodes": 146,
+          "sensitivity": 0.5615384615384615,
+          "false_starts": 221,
+          "false_starts_per_ecg_observed_hour": 13.455098934550989
+        },
+        {
+          "detected_complete_episodes": 147,
+          "sensitivity": 0.5653846153846154,
+          "false_starts": 224,
+          "false_starts_per_ecg_observed_hour": 13.637747336377473
+        },
+        {
+          "detected_complete_episodes": 148,
+          "sensitivity": 0.5692307692307692,
+          "false_starts": 226,
+          "false_starts_per_ecg_observed_hour": 13.75951293759513
+        },
+        {
+          "detected_complete_episodes": 149,
+          "sensitivity": 0.573076923076923,
+          "false_starts": 228,
+          "false_starts_per_ecg_observed_hour": 13.881278538812785
+        },
+        {
+          "detected_complete_episodes": 162,
+          "sensitivity": 0.6230769230769231,
+          "false_starts": 237,
+          "false_starts_per_ecg_observed_hour": 14.429223744292237
+        },
+        {
+          "detected_complete_episodes": 163,
+          "sensitivity": 0.6269230769230769,
+          "false_starts": 238,
+          "false_starts_per_ecg_observed_hour": 14.490106544901066
+        }
+      ]
+    },
+    "quality_confirmation": {
+      "complete_episodes": 260,
+      "ecg_observed_wear_seconds": 59130.0,
+      "distinct_cutoff_candidates": 5252,
+      "episodes_with_any_definite_start_threshold": 239,
+      "at_locked_cutoff": {
+        "detected_complete_episodes": 151,
+        "sensitivity": 0.5807692307692308,
+        "false_starts": 210,
+        "false_starts_per_ecg_observed_hour": 12.785388127853881
+      },
+      "maximum_sensitivity": {
+        "detected_complete_episodes": 153,
+        "sensitivity": 0.5884615384615385,
+        "false_starts": 206,
+        "false_starts_per_ecg_observed_hour": 12.54185692541857
+      },
+      "maximum_sensitivity_within_false_start_cap": {
+        "detected_complete_episodes": 153,
+        "sensitivity": 0.5884615384615385,
+        "false_starts": 206,
+        "false_starts_per_ecg_observed_hour": 12.54185692541857
+      },
+      "least_burden_at_sensitivity_target": null,
+      "nondominated_tradeoffs": [
+        {
+          "detected_complete_episodes": 1,
+          "sensitivity": 0.0038461538461538464,
+          "false_starts": 0,
+          "false_starts_per_ecg_observed_hour": 0.0
+        },
+        {
+          "detected_complete_episodes": 2,
+          "sensitivity": 0.007692307692307693,
+          "false_starts": 1,
+          "false_starts_per_ecg_observed_hour": 0.060882800608828
+        },
+        {
+          "detected_complete_episodes": 5,
+          "sensitivity": 0.019230769230769232,
+          "false_starts": 7,
+          "false_starts_per_ecg_observed_hour": 0.426179604261796
+        },
+        {
+          "detected_complete_episodes": 6,
+          "sensitivity": 0.023076923076923078,
+          "false_starts": 9,
+          "false_starts_per_ecg_observed_hour": 0.547945205479452
+        },
+        {
+          "detected_complete_episodes": 7,
+          "sensitivity": 0.026923076923076925,
+          "false_starts": 10,
+          "false_starts_per_ecg_observed_hour": 0.60882800608828
+        },
+        {
+          "detected_complete_episodes": 12,
+          "sensitivity": 0.046153846153846156,
+          "false_starts": 12,
+          "false_starts_per_ecg_observed_hour": 0.730593607305936
+        },
+        {
+          "detected_complete_episodes": 19,
+          "sensitivity": 0.07307692307692308,
+          "false_starts": 15,
+          "false_starts_per_ecg_observed_hour": 0.91324200913242
+        },
+        {
+          "detected_complete_episodes": 22,
+          "sensitivity": 0.08461538461538462,
+          "false_starts": 16,
+          "false_starts_per_ecg_observed_hour": 0.974124809741248
+        },
+        {
+          "detected_complete_episodes": 23,
+          "sensitivity": 0.08846153846153847,
+          "false_starts": 18,
+          "false_starts_per_ecg_observed_hour": 1.095890410958904
+        },
+        {
+          "detected_complete_episodes": 25,
+          "sensitivity": 0.09615384615384616,
+          "false_starts": 20,
+          "false_starts_per_ecg_observed_hour": 1.21765601217656
+        },
+        {
+          "detected_complete_episodes": 26,
+          "sensitivity": 0.1,
+          "false_starts": 22,
+          "false_starts_per_ecg_observed_hour": 1.339421613394216
+        },
+        {
+          "detected_complete_episodes": 27,
+          "sensitivity": 0.10384615384615385,
+          "false_starts": 26,
+          "false_starts_per_ecg_observed_hour": 1.582952815829528
+        },
+        {
+          "detected_complete_episodes": 28,
+          "sensitivity": 0.1076923076923077,
+          "false_starts": 28,
+          "false_starts_per_ecg_observed_hour": 1.704718417047184
+        },
+        {
+          "detected_complete_episodes": 29,
+          "sensitivity": 0.11153846153846154,
+          "false_starts": 29,
+          "false_starts_per_ecg_observed_hour": 1.765601217656012
+        },
+        {
+          "detected_complete_episodes": 30,
+          "sensitivity": 0.11538461538461539,
+          "false_starts": 33,
+          "false_starts_per_ecg_observed_hour": 2.009132420091324
+        },
+        {
+          "detected_complete_episodes": 33,
+          "sensitivity": 0.12692307692307692,
+          "false_starts": 36,
+          "false_starts_per_ecg_observed_hour": 2.191780821917808
+        },
+        {
+          "detected_complete_episodes": 35,
+          "sensitivity": 0.1346153846153846,
+          "false_starts": 38,
+          "false_starts_per_ecg_observed_hour": 2.313546423135464
+        },
+        {
+          "detected_complete_episodes": 42,
+          "sensitivity": 0.16153846153846155,
+          "false_starts": 41,
+          "false_starts_per_ecg_observed_hour": 2.496194824961948
+        },
+        {
+          "detected_complete_episodes": 43,
+          "sensitivity": 0.16538461538461538,
+          "false_starts": 43,
+          "false_starts_per_ecg_observed_hour": 2.617960426179604
+        },
+        {
+          "detected_complete_episodes": 44,
+          "sensitivity": 0.16923076923076924,
+          "false_starts": 44,
+          "false_starts_per_ecg_observed_hour": 2.678843226788432
+        },
+        {
+          "detected_complete_episodes": 45,
+          "sensitivity": 0.17307692307692307,
+          "false_starts": 45,
+          "false_starts_per_ecg_observed_hour": 2.73972602739726
+        },
+        {
+          "detected_complete_episodes": 46,
+          "sensitivity": 0.17692307692307693,
+          "false_starts": 46,
+          "false_starts_per_ecg_observed_hour": 2.800608828006088
+        },
+        {
+          "detected_complete_episodes": 53,
+          "sensitivity": 0.20384615384615384,
+          "false_starts": 47,
+          "false_starts_per_ecg_observed_hour": 2.861491628614916
+        },
+        {
+          "detected_complete_episodes": 56,
+          "sensitivity": 0.2153846153846154,
+          "false_starts": 48,
+          "false_starts_per_ecg_observed_hour": 2.922374429223744
+        },
+        {
+          "detected_complete_episodes": 62,
+          "sensitivity": 0.23846153846153847,
+          "false_starts": 49,
+          "false_starts_per_ecg_observed_hour": 2.983257229832572
+        },
+        {
+          "detected_complete_episodes": 63,
+          "sensitivity": 0.2423076923076923,
+          "false_starts": 50,
+          "false_starts_per_ecg_observed_hour": 3.0441400304414
+        },
+        {
+          "detected_complete_episodes": 67,
+          "sensitivity": 0.25769230769230766,
+          "false_starts": 53,
+          "false_starts_per_ecg_observed_hour": 3.226788432267884
+        },
+        {
+          "detected_complete_episodes": 68,
+          "sensitivity": 0.26153846153846155,
+          "false_starts": 54,
+          "false_starts_per_ecg_observed_hour": 3.287671232876712
+        },
+        {
+          "detected_complete_episodes": 69,
+          "sensitivity": 0.2653846153846154,
+          "false_starts": 57,
+          "false_starts_per_ecg_observed_hour": 3.470319634703196
+        },
+        {
+          "detected_complete_episodes": 70,
+          "sensitivity": 0.2692307692307692,
+          "false_starts": 58,
+          "false_starts_per_ecg_observed_hour": 3.531202435312024
+        },
+        {
+          "detected_complete_episodes": 71,
+          "sensitivity": 0.27307692307692305,
+          "false_starts": 59,
+          "false_starts_per_ecg_observed_hour": 3.592085235920852
+        },
+        {
+          "detected_complete_episodes": 72,
+          "sensitivity": 0.27692307692307694,
+          "false_starts": 61,
+          "false_starts_per_ecg_observed_hour": 3.713850837138508
+        },
+        {
+          "detected_complete_episodes": 74,
+          "sensitivity": 0.2846153846153846,
+          "false_starts": 62,
+          "false_starts_per_ecg_observed_hour": 3.774733637747336
+        },
+        {
+          "detected_complete_episodes": 75,
+          "sensitivity": 0.28846153846153844,
+          "false_starts": 65,
+          "false_starts_per_ecg_observed_hour": 3.95738203957382
+        },
+        {
+          "detected_complete_episodes": 76,
+          "sensitivity": 0.2923076923076923,
+          "false_starts": 66,
+          "false_starts_per_ecg_observed_hour": 4.018264840182648
+        },
+        {
+          "detected_complete_episodes": 77,
+          "sensitivity": 0.29615384615384616,
+          "false_starts": 68,
+          "false_starts_per_ecg_observed_hour": 4.140030441400304
+        },
+        {
+          "detected_complete_episodes": 80,
+          "sensitivity": 0.3076923076923077,
+          "false_starts": 73,
+          "false_starts_per_ecg_observed_hour": 4.444444444444445
+        },
+        {
+          "detected_complete_episodes": 81,
+          "sensitivity": 0.31153846153846154,
+          "false_starts": 77,
+          "false_starts_per_ecg_observed_hour": 4.687975646879757
+        },
+        {
+          "detected_complete_episodes": 83,
+          "sensitivity": 0.3192307692307692,
+          "false_starts": 86,
+          "false_starts_per_ecg_observed_hour": 5.235920852359208
+        },
+        {
+          "detected_complete_episodes": 86,
+          "sensitivity": 0.33076923076923076,
+          "false_starts": 89,
+          "false_starts_per_ecg_observed_hour": 5.418569254185693
+        },
+        {
+          "detected_complete_episodes": 87,
+          "sensitivity": 0.3346153846153846,
+          "false_starts": 92,
+          "false_starts_per_ecg_observed_hour": 5.601217656012176
+        },
+        {
+          "detected_complete_episodes": 88,
+          "sensitivity": 0.3384615384615385,
+          "false_starts": 93,
+          "false_starts_per_ecg_observed_hour": 5.662100456621005
+        },
+        {
+          "detected_complete_episodes": 99,
+          "sensitivity": 0.38076923076923075,
+          "false_starts": 95,
+          "false_starts_per_ecg_observed_hour": 5.783866057838661
+        },
+        {
+          "detected_complete_episodes": 100,
+          "sensitivity": 0.38461538461538464,
+          "false_starts": 99,
+          "false_starts_per_ecg_observed_hour": 6.027397260273973
+        },
+        {
+          "detected_complete_episodes": 102,
+          "sensitivity": 0.3923076923076923,
+          "false_starts": 102,
+          "false_starts_per_ecg_observed_hour": 6.210045662100456
+        },
+        {
+          "detected_complete_episodes": 105,
+          "sensitivity": 0.40384615384615385,
+          "false_starts": 113,
+          "false_starts_per_ecg_observed_hour": 6.879756468797565
+        },
+        {
+          "detected_complete_episodes": 107,
+          "sensitivity": 0.4115384615384615,
+          "false_starts": 115,
+          "false_starts_per_ecg_observed_hour": 7.001522070015221
+        },
+        {
+          "detected_complete_episodes": 110,
+          "sensitivity": 0.4230769230769231,
+          "false_starts": 118,
+          "false_starts_per_ecg_observed_hour": 7.184170471841704
+        },
+        {
+          "detected_complete_episodes": 111,
+          "sensitivity": 0.4269230769230769,
+          "false_starts": 119,
+          "false_starts_per_ecg_observed_hour": 7.245053272450533
+        },
+        {
+          "detected_complete_episodes": 112,
+          "sensitivity": 0.4307692307692308,
+          "false_starts": 120,
+          "false_starts_per_ecg_observed_hour": 7.30593607305936
+        },
+        {
+          "detected_complete_episodes": 114,
+          "sensitivity": 0.43846153846153846,
+          "false_starts": 123,
+          "false_starts_per_ecg_observed_hour": 7.488584474885845
+        },
+        {
+          "detected_complete_episodes": 115,
+          "sensitivity": 0.4423076923076923,
+          "false_starts": 126,
+          "false_starts_per_ecg_observed_hour": 7.671232876712328
+        },
+        {
+          "detected_complete_episodes": 118,
+          "sensitivity": 0.45384615384615384,
+          "false_starts": 129,
+          "false_starts_per_ecg_observed_hour": 7.853881278538813
+        },
+        {
+          "detected_complete_episodes": 119,
+          "sensitivity": 0.4576923076923077,
+          "false_starts": 130,
+          "false_starts_per_ecg_observed_hour": 7.91476407914764
+        },
+        {
+          "detected_complete_episodes": 121,
+          "sensitivity": 0.4653846153846154,
+          "false_starts": 131,
+          "false_starts_per_ecg_observed_hour": 7.975646879756469
+        },
+        {
+          "detected_complete_episodes": 122,
+          "sensitivity": 0.46923076923076923,
+          "false_starts": 144,
+          "false_starts_per_ecg_observed_hour": 8.767123287671232
+        },
+        {
+          "detected_complete_episodes": 126,
+          "sensitivity": 0.4846153846153846,
+          "false_starts": 147,
+          "false_starts_per_ecg_observed_hour": 8.949771689497718
+        },
+        {
+          "detected_complete_episodes": 128,
+          "sensitivity": 0.49230769230769234,
+          "false_starts": 149,
+          "false_starts_per_ecg_observed_hour": 9.071537290715373
+        },
+        {
+          "detected_complete_episodes": 129,
+          "sensitivity": 0.49615384615384617,
+          "false_starts": 151,
+          "false_starts_per_ecg_observed_hour": 9.19330289193303
+        },
+        {
+          "detected_complete_episodes": 131,
+          "sensitivity": 0.5038461538461538,
+          "false_starts": 155,
+          "false_starts_per_ecg_observed_hour": 9.436834094368342
+        },
+        {
+          "detected_complete_episodes": 133,
+          "sensitivity": 0.5115384615384615,
+          "false_starts": 162,
+          "false_starts_per_ecg_observed_hour": 9.863013698630137
+        },
+        {
+          "detected_complete_episodes": 134,
+          "sensitivity": 0.5153846153846153,
+          "false_starts": 167,
+          "false_starts_per_ecg_observed_hour": 10.167427701674278
+        },
+        {
+          "detected_complete_episodes": 135,
+          "sensitivity": 0.5192307692307693,
+          "false_starts": 168,
+          "false_starts_per_ecg_observed_hour": 10.228310502283104
+        },
+        {
+          "detected_complete_episodes": 136,
+          "sensitivity": 0.5230769230769231,
+          "false_starts": 169,
+          "false_starts_per_ecg_observed_hour": 10.289193302891933
+        },
+        {
+          "detected_complete_episodes": 137,
+          "sensitivity": 0.5269230769230769,
+          "false_starts": 170,
+          "false_starts_per_ecg_observed_hour": 10.350076103500761
+        },
+        {
+          "detected_complete_episodes": 139,
+          "sensitivity": 0.5346153846153846,
+          "false_starts": 179,
+          "false_starts_per_ecg_observed_hour": 10.898021308980214
+        },
+        {
+          "detected_complete_episodes": 140,
+          "sensitivity": 0.5384615384615384,
+          "false_starts": 181,
+          "false_starts_per_ecg_observed_hour": 11.019786910197869
+        },
+        {
+          "detected_complete_episodes": 141,
+          "sensitivity": 0.5423076923076923,
+          "false_starts": 189,
+          "false_starts_per_ecg_observed_hour": 11.506849315068493
+        },
+        {
+          "detected_complete_episodes": 142,
+          "sensitivity": 0.5461538461538461,
+          "false_starts": 190,
+          "false_starts_per_ecg_observed_hour": 11.567732115677321
+        },
+        {
+          "detected_complete_episodes": 143,
+          "sensitivity": 0.55,
+          "false_starts": 197,
+          "false_starts_per_ecg_observed_hour": 11.993911719939117
+        },
+        {
+          "detected_complete_episodes": 144,
+          "sensitivity": 0.5538461538461539,
+          "false_starts": 198,
+          "false_starts_per_ecg_observed_hour": 12.054794520547945
+        },
+        {
+          "detected_complete_episodes": 145,
+          "sensitivity": 0.5576923076923077,
+          "false_starts": 202,
+          "false_starts_per_ecg_observed_hour": 12.298325722983257
+        },
+        {
+          "detected_complete_episodes": 151,
+          "sensitivity": 0.5807692307692308,
+          "false_starts": 203,
+          "false_starts_per_ecg_observed_hour": 12.359208523592086
+        },
+        {
+          "detected_complete_episodes": 152,
+          "sensitivity": 0.5846153846153846,
+          "false_starts": 205,
+          "false_starts_per_ecg_observed_hour": 12.480974124809741
+        },
+        {
+          "detected_complete_episodes": 153,
+          "sensitivity": 0.5884615384615385,
+          "false_starts": 206,
+          "false_starts_per_ecg_observed_hour": 12.54185692541857
+        }
+      ]
+    }
+  }
+}

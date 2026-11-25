@@ -191,6 +191,12 @@ The [miss audit and short-trigger study](short-rescue-study.md) attributes the f
 
 The [alert entry and release study](alert-state-study.md) compares new starts and sustained positive time using fixed scores, thresholds, and wear schedules.
 
+The [global cutoff diagnostic](cutoff-frontier-study.md) measures the attainable episode-detection and false-start tradeoff on the frozen score streams.
+
+The [optical beat error study](beat-error-decomposition-study.md) uses paired native ECG to isolate missing and extra peaks from errors in the timing of matched peaks.
+
+The [carried-alert origin study](preroll-provenance-study.md) uses earlier cached native signals to trace alert origins while preserving the original replay exposure.
+
 Use the same participant-level folds and candidate windows for all three PPG routes. Train each AF classifier on training participants, set its quality and decision thresholds using validation participants, and freeze those thresholds before opening the test predictions. Keep native ECG as a separate reference route. Report performance on shared eligible windows and report each route's coverage over ECG-annotated time.
 
 For the continuous test, retain PPG gaps on the ECG clock. Report complete-episode sensitivity, false alerts per ECG-observed day at comparable sensitivity, and coverage by PPG quality and motion. Show clipped episodes separately. Select the continuous test runs without conditioning inclusion on a known AF episode so the false-alert denominator reflects monitored time.
