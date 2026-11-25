@@ -41,7 +41,7 @@ def historical_inputs(args, protocol, model_lock):
     return grid, model, available, roster, quality, previous
 
 
-def historical_replay(args, protocol, model_lock, *, confirmation_steps=1):
+def historical_replays(args, protocol, model_lock, *, confirmation_steps=1):
     grid, model, available, roster, quality, previous = historical_inputs(args, protocol, model_lock)
     predecessor, active = preceding_rows(grid, steps=confirmation_steps)
     scores = _predict(grid.table[ROUTE], available, model["model"])
@@ -50,9 +50,15 @@ def historical_replay(args, protocol, model_lock, *, confirmation_steps=1):
     _match_coverage(baseline[0], previous["independent"])
     filtered = confirm_scores(scores, predecessor, active & (quality["quality"][:, -1] < QUALITY_CUTOFF))
     candidate = _held_out_replay(grid, filtered, cutoffs, _IMMEDIATE)
+    lost = int(np.sum(np.isfinite(scores) & ~np.isfinite(filtered)))
+    return baseline, candidate, sorted(roster), lost
+
+
+def historical_replay(args, protocol, model_lock, *, confirmation_steps=1):
+    baseline, candidate, people, lost = historical_replays(args, protocol, model_lock, confirmation_steps=confirmation_steps)
     return {"baseline": baseline[0], "conditional_confirmation": _compare_with_pre_onset(baseline, candidate, protocol),
-            "paired_participant_uncertainty": _cluster_uncertainty(baseline, candidate, sorted(roster)),
-            "lost_scoreable_decisions": int(np.sum(np.isfinite(scores) & ~np.isfinite(filtered)))}
+            "paired_participant_uncertainty": _cluster_uncertainty(baseline, candidate, people),
+            "lost_scoreable_decisions": lost}
 
 
 def replay_on_schedule(schedule, digest, cache, template, model, *, block_seconds=BLOCK_S, confirmation_steps=1):
