@@ -1,0 +1,649 @@
+{
+  "scope": "Development-only paired wrist PPG to ECG waveform benchmark",
+  "source_doi": "10.5281/zenodo.23921320",
+  "source_inventory_sha256": "f23e0440140112fd5ac8046694c940f0aaba1d98ecf415191ac5031ca86ce4a0",
+  "original_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "supplement_sha256": "85c57708e6f929ac91c1fd4d4b352130fb01a61f230faf68405e2da13544bd6a",
+  "private_paired_manifest_sha256": "3c5085b0e39130f72517de4ea877a93385345a20a5954f37186dc4541bdb9412",
+  "locked_participants": 10,
+  "paired_participants": 9,
+  "waveform_rate_hz": 100,
+  "reference_ecg_native_hz": 500,
+  "window_duration_seconds": 30,
+  "trim_seconds_each_edge": 1.0,
+  "beat_match_tolerance_ms": 100,
+  "ridge_penalty": 0.01,
+  "external_template_ptt_subjects": 22,
+  "fold_seed": 2026,
+  "signal_provenance": {
+    "original": {
+      "non_AF": 80,
+      "AF": 34
+    },
+    "supplemental": {
+      "non_AF": 66,
+      "AF": 43
+    }
+  },
+  "native_ppg_phase_ms_counts": {
+    "7.0": 14,
+    "5.0": 14,
+    "0.0": 192,
+    "9.0": 3
+  },
+  "verified_500Hz_qrs_annotations_in_windows": 8095,
+  "independent_waveforms_or_predictions": 0,
+  "network_requests": 0,
+  "overall": {
+    "participants": 9,
+    "windows": 223,
+    "trimmed_measured_samples": 624400,
+    "common_samples": 621689,
+    "common_samples_fraction": 0.9956582319026265,
+    "windows_with_common_support": 223,
+    "zero_waveform_normalized_mae": 0.21528748443851886,
+    "model_metrics": {
+      "external_ptt_template": {
+        "normalized_mae": 0.24763389952091178,
+        "median_waveform_correlation": 0.0009737585405738746,
+        "correlation_windows": 223,
+        "own_support_fraction": 0.9957126841768097,
+        "native_qrs_scores": {
+          "reference_peaks": 7501,
+          "predicted_peaks": 6867,
+          "matched_peaks": 1516,
+          "precision": 0.22076598223387214,
+          "recall": 0.20210638581522464,
+          "f1": 0.21102449888641425,
+          "median_abs_timing_error_ms": 70.00000000931323,
+          "matched_consecutive_intervals": 521,
+          "median_abs_rr_error_ms": 16.000000003841706
+        }
+      },
+      "local_held_out_template": {
+        "normalized_mae": 0.22249957430176157,
+        "median_waveform_correlation": 0.04244527707695881,
+        "correlation_windows": 223,
+        "own_support_fraction": 0.9956774503523382,
+        "native_qrs_scores": {
+          "reference_peaks": 7501,
+          "predicted_peaks": 6867,
+          "matched_peaks": 4752,
+          "precision": 0.6920052424639581,
+          "recall": 0.6335155312624984,
+          "f1": 0.6614699331848553,
+          "median_abs_timing_error_ms": 24.499999999768534,
+          "matched_consecutive_intervals": 3498,
+          "median_abs_rr_error_ms": 14.000000000814907
+        }
+      },
+      "local_held_out_ridge": {
+        "normalized_mae": 0.2206153639106313,
+        "median_waveform_correlation": 0.028173698311356653,
+        "correlation_windows": 223,
+        "own_support_fraction": 1.0,
+        "native_qrs_scores": {
+          "reference_peaks": 7501,
+          "predicted_peaks": 3913,
+          "matched_peaks": 2101,
+          "precision": 0.5369281880909788,
+          "recall": 0.2800959872017064,
+          "f1": 0.3681443840897144,
+          "median_abs_timing_error_ms": 47.99999998882413,
+          "matched_consecutive_intervals": 1008,
+          "median_abs_rr_error_ms": 18.000000004831236
+        }
+      }
+    }
+  },
+  "by_verified_rhythm": {
+    "AF": {
+      "participants": 7,
+      "windows": 77,
+      "trimmed_measured_samples": 215600,
+      "common_samples": 212889,
+      "common_samples_fraction": 0.9874257884972171,
+      "windows_with_common_support": 77,
+      "zero_waveform_normalized_mae": 0.22126697613347635,
+      "model_metrics": {
+        "external_ptt_template": {
+          "normalized_mae": 0.2607956496628044,
+          "median_waveform_correlation": 0.0006744650218280739,
+          "correlation_windows": 77,
+          "own_support_fraction": 0.9875834879406308,
+          "native_qrs_scores": {
+            "reference_peaks": 3391,
+            "predicted_peaks": 2766,
+            "matched_peaks": 752,
+            "precision": 0.27187274041937814,
+            "recall": 0.2217634915953996,
+            "f1": 0.24427480916030533,
+            "median_abs_timing_error_ms": 68.00000001268927,
+            "matched_consecutive_intervals": 173,
+            "median_abs_rr_error_ms": 39.999999990686774
+          }
+        },
+        "local_held_out_template": {
+          "normalized_mae": 0.23380062165084278,
+          "median_waveform_correlation": 0.0121441319193266,
+          "correlation_windows": 77,
+          "own_support_fraction": 0.9874814471243043,
+          "native_qrs_scores": {
+            "reference_peaks": 3391,
+            "predicted_peaks": 2762,
+            "matched_peaks": 1915,
+            "precision": 0.6933381607530775,
+            "recall": 0.5647301680920083,
+            "f1": 0.6224605883308955,
+            "median_abs_timing_error_ms": 27.999999998137355,
+            "matched_consecutive_intervals": 1198,
+            "median_abs_rr_error_ms": 27.999999979510903
+          }
+        },
+        "local_held_out_ridge": {
+          "normalized_mae": 0.23304394496055955,
+          "median_waveform_correlation": -0.00386873510988254,
+          "correlation_windows": 77,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 3391,
+            "predicted_peaks": 1132,
+            "matched_peaks": 574,
+            "precision": 0.5070671378091873,
+            "recall": 0.16927160129755234,
+            "f1": 0.2538138403714349,
+            "median_abs_timing_error_ms": 43.99999999819556,
+            "matched_consecutive_intervals": 146,
+            "median_abs_rr_error_ms": 44.999999973224476
+          }
+        }
+      }
+    },
+    "non_AF": {
+      "participants": 9,
+      "windows": 146,
+      "trimmed_measured_samples": 408800,
+      "common_samples": 408800,
+      "common_samples_fraction": 1.0,
+      "windows_with_common_support": 146,
+      "zero_waveform_normalized_mae": 0.21213391690076724,
+      "model_metrics": {
+        "external_ptt_template": {
+          "normalized_mae": 0.24069242855566705,
+          "median_waveform_correlation": 0.0013582430675778089,
+          "correlation_windows": 146,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 4101,
+            "matched_peaks": 764,
+            "precision": 0.18629602535966838,
+            "recall": 0.18588807785888078,
+            "f1": 0.18609182803556204,
+            "median_abs_timing_error_ms": 72.0000000015716,
+            "matched_consecutive_intervals": 348,
+            "median_abs_rr_error_ms": 10.000000009604264
+          }
+        },
+        "local_held_out_template": {
+          "normalized_mae": 0.21653943289162975,
+          "median_waveform_correlation": 0.1171347586658672,
+          "correlation_windows": 146,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 4105,
+            "matched_peaks": 2837,
+            "precision": 0.6911084043848965,
+            "recall": 0.6902676399026764,
+            "f1": 0.690687766281193,
+            "median_abs_timing_error_ms": 23.999999975785613,
+            "matched_consecutive_intervals": 2300,
+            "median_abs_rr_error_ms": 10.000000023283064
+          }
+        },
+        "local_held_out_ridge": {
+          "normalized_mae": 0.21406056431580608,
+          "median_waveform_correlation": 0.05115766967764159,
+          "correlation_windows": 146,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 2781,
+            "matched_peaks": 1527,
+            "precision": 0.5490830636461704,
+            "recall": 0.3715328467153285,
+            "f1": 0.44318676534610363,
+            "median_abs_timing_error_ms": 49.99999997438863,
+            "matched_consecutive_intervals": 862,
+            "median_abs_rr_error_ms": 16.000000004423782
+          }
+        }
+      }
+    }
+  },
+  "by_release_synchronization": {
+    "beat": {
+      "participants": 8,
+      "windows": 200,
+      "trimmed_measured_samples": 560000,
+      "common_samples": 557289,
+      "common_samples_fraction": 0.9951589285714286,
+      "windows_with_common_support": 200,
+      "zero_waveform_normalized_mae": 0.21276246729558404,
+      "model_metrics": {
+        "external_ptt_template": {
+          "normalized_mae": 0.243905192700067,
+          "median_waveform_correlation": 0.0016118729490333804,
+          "correlation_windows": 200,
+          "own_support_fraction": 0.9952196428571428,
+          "native_qrs_scores": {
+            "reference_peaks": 6870,
+            "predicted_peaks": 5968,
+            "matched_peaks": 1460,
+            "precision": 0.24463806970509383,
+            "recall": 0.21251819505094613,
+            "f1": 0.22744975852936594,
+            "median_abs_timing_error_ms": 71.9999999832362,
+            "matched_consecutive_intervals": 521,
+            "median_abs_rr_error_ms": 16.000000003841706
+          }
+        },
+        "local_held_out_template": {
+          "normalized_mae": 0.21925621792936667,
+          "median_waveform_correlation": 0.06873553421836648,
+          "correlation_windows": 200,
+          "own_support_fraction": 0.9951803571428571,
+          "native_qrs_scores": {
+            "reference_peaks": 6870,
+            "predicted_peaks": 5971,
+            "matched_peaks": 4539,
+            "precision": 0.7601741751800368,
+            "recall": 0.6606986899563319,
+            "f1": 0.7069542870492952,
+            "median_abs_timing_error_ms": 24.000000002561137,
+            "matched_consecutive_intervals": 3414,
+            "median_abs_rr_error_ms": 14.000000002415618
+          }
+        },
+        "local_held_out_ridge": {
+          "normalized_mae": 0.21864128429812843,
+          "median_waveform_correlation": 0.04108433026887847,
+          "correlation_windows": 200,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 6870,
+            "predicted_peaks": 3470,
+            "matched_peaks": 1967,
+            "precision": 0.5668587896253602,
+            "recall": 0.2863173216885007,
+            "f1": 0.3804642166344294,
+            "median_abs_timing_error_ms": 46.00000000122236,
+            "matched_consecutive_intervals": 969,
+            "median_abs_rr_error_ms": 18.00000004004687
+          }
+        }
+      }
+    },
+    "coarse": {
+      "participants": 2,
+      "windows": 23,
+      "trimmed_measured_samples": 64400,
+      "common_samples": 64400,
+      "common_samples_fraction": 1.0,
+      "windows_with_common_support": 23,
+      "zero_waveform_normalized_mae": 0.23724415524664752,
+      "model_metrics": {
+        "external_ptt_template": {
+          "normalized_mae": 0.28005743709347514,
+          "median_waveform_correlation": -0.02187973831889285,
+          "correlation_windows": 23,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 631,
+            "predicted_peaks": 899,
+            "matched_peaks": 56,
+            "precision": 0.06229143492769744,
+            "recall": 0.08874801901743265,
+            "f1": 0.07320261437908497,
+            "median_abs_timing_error_ms": 55.99999998463318,
+            "matched_consecutive_intervals": 0,
+            "median_abs_rr_error_ms": null
+          }
+        },
+        "local_held_out_template": {
+          "normalized_mae": 0.250702673192152,
+          "median_waveform_correlation": -0.013018427072435414,
+          "correlation_windows": 23,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 631,
+            "predicted_peaks": 896,
+            "matched_peaks": 213,
+            "precision": 0.23772321428571427,
+            "recall": 0.3375594294770206,
+            "f1": 0.27897838899803534,
+            "median_abs_timing_error_ms": 40.000000002328306,
+            "matched_consecutive_intervals": 84,
+            "median_abs_rr_error_ms": 10.000000009895302
+          }
+        },
+        "local_held_out_ridge": {
+          "normalized_mae": 0.23778127358456932,
+          "median_waveform_correlation": -0.08543837260984118,
+          "correlation_windows": 23,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 631,
+            "predicted_peaks": 443,
+            "matched_peaks": 134,
+            "precision": 0.30248306997742663,
+            "recall": 0.21236133122028525,
+            "f1": 0.24953445065176907,
+            "median_abs_timing_error_ms": 76.99999999837019,
+            "matched_consecutive_intervals": 39,
+            "median_abs_rr_error_ms": 10.00000000698492
+          }
+        }
+      }
+    }
+  },
+  "fold_support": [
+    {
+      "fold": 0,
+      "locked_train_participants": 8,
+      "locked_test_participants": 2,
+      "paired_train_participants": 7,
+      "paired_test_participants": 2,
+      "paired_test_windows": 58,
+      "paired_test_af_windows": 25,
+      "local_template_delay_ms": 300.0
+    },
+    {
+      "fold": 1,
+      "locked_train_participants": 8,
+      "locked_test_participants": 2,
+      "paired_train_participants": 7,
+      "paired_test_participants": 2,
+      "paired_test_windows": 57,
+      "paired_test_af_windows": 22,
+      "local_template_delay_ms": 300.0
+    },
+    {
+      "fold": 2,
+      "locked_train_participants": 8,
+      "locked_test_participants": 2,
+      "paired_train_participants": 7,
+      "paired_test_participants": 2,
+      "paired_test_windows": 50,
+      "paired_test_af_windows": 5,
+      "local_template_delay_ms": 290.0
+    },
+    {
+      "fold": 3,
+      "locked_train_participants": 8,
+      "locked_test_participants": 2,
+      "paired_train_participants": 7,
+      "paired_test_participants": 2,
+      "paired_test_windows": 28,
+      "paired_test_af_windows": 15,
+      "local_template_delay_ms": 310.0
+    },
+    {
+      "fold": 4,
+      "locked_train_participants": 8,
+      "locked_test_participants": 2,
+      "paired_train_participants": 8,
+      "paired_test_participants": 1,
+      "paired_test_windows": 30,
+      "paired_test_af_windows": 10,
+      "local_template_delay_ms": 300.0
+    }
+  ],
+  "external_template_delay_ms": 190.0,
+  "archive_clock_timing_diagnostic": {
+    "fixed_delay_ms_for_beat_synchronization": 300,
+    "coarse_uses_original_ptt_delay": true,
+    "delay_selected_using_held_out_ecg": false,
+    "all_four_models_share_sample_support": true,
+    "overall": {
+      "participants": 9,
+      "windows": 223,
+      "trimmed_measured_samples": 624400,
+      "common_samples": 621688,
+      "common_samples_fraction": 0.9956566303651505,
+      "windows_with_common_support": 223,
+      "zero_waveform_normalized_mae": 0.21528811283746596,
+      "model_metrics": {
+        "external_ptt_template": {
+          "normalized_mae": 0.24763443957561582,
+          "median_waveform_correlation": 0.0009737585405738746,
+          "correlation_windows": 223,
+          "own_support_fraction": 0.9957126841768097,
+          "native_qrs_scores": {
+            "reference_peaks": 7501,
+            "predicted_peaks": 6867,
+            "matched_peaks": 1516,
+            "precision": 0.22076598223387214,
+            "recall": 0.20210638581522464,
+            "f1": 0.21102449888641425,
+            "median_abs_timing_error_ms": 70.00000000931323,
+            "matched_consecutive_intervals": 521,
+            "median_abs_rr_error_ms": 16.000000003841706
+          }
+        },
+        "local_held_out_template": {
+          "normalized_mae": 0.22250001546980835,
+          "median_waveform_correlation": 0.04244527707695881,
+          "correlation_windows": 223,
+          "own_support_fraction": 0.9956774503523382,
+          "native_qrs_scores": {
+            "reference_peaks": 7501,
+            "predicted_peaks": 6867,
+            "matched_peaks": 4752,
+            "precision": 0.6920052424639581,
+            "recall": 0.6335155312624984,
+            "f1": 0.6614699331848553,
+            "median_abs_timing_error_ms": 24.499999999768534,
+            "matched_consecutive_intervals": 3498,
+            "median_abs_rr_error_ms": 14.000000000814907
+          }
+        },
+        "local_held_out_ridge": {
+          "normalized_mae": 0.22061597965611487,
+          "median_waveform_correlation": 0.028173698311356653,
+          "correlation_windows": 223,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 7501,
+            "predicted_peaks": 3913,
+            "matched_peaks": 2101,
+            "precision": 0.5369281880909788,
+            "recall": 0.2800959872017064,
+            "f1": 0.3681443840897144,
+            "median_abs_timing_error_ms": 47.99999998882413,
+            "matched_consecutive_intervals": 1008,
+            "median_abs_rr_error_ms": 18.000000004831236
+          }
+        },
+        "external_ptt_shape_with_archive_beat_delay": {
+          "normalized_mae": 0.24727903444207017,
+          "median_waveform_correlation": -0.014178832378111317,
+          "correlation_windows": 223,
+          "own_support_fraction": 0.9956774503523382,
+          "native_qrs_scores": {
+            "reference_peaks": 7501,
+            "predicted_peaks": 6873,
+            "matched_peaks": 4603,
+            "precision": 0.6697221009748291,
+            "recall": 0.6136515131315825,
+            "f1": 0.6404619451787951,
+            "median_abs_timing_error_ms": 25.999999995692633,
+            "matched_consecutive_intervals": 3419,
+            "median_abs_rr_error_ms": 14.000000002270099
+          }
+        }
+      }
+    },
+    "by_release_synchronization": {
+      "beat": {
+        "participants": 8,
+        "windows": 200,
+        "trimmed_measured_samples": 560000,
+        "common_samples": 557288,
+        "common_samples_fraction": 0.9951571428571429,
+        "windows_with_common_support": 200,
+        "zero_waveform_normalized_mae": 0.2127631679604101,
+        "model_metrics": {
+          "external_ptt_template": {
+            "normalized_mae": 0.243905794861062,
+            "median_waveform_correlation": 0.0016118729490333804,
+            "correlation_windows": 200,
+            "own_support_fraction": 0.9952196428571428,
+            "native_qrs_scores": {
+              "reference_peaks": 6870,
+              "predicted_peaks": 5968,
+              "matched_peaks": 1460,
+              "precision": 0.24463806970509383,
+              "recall": 0.21251819505094613,
+              "f1": 0.22744975852936594,
+              "median_abs_timing_error_ms": 71.9999999832362,
+              "matched_consecutive_intervals": 521,
+              "median_abs_rr_error_ms": 16.000000003841706
+            }
+          },
+          "local_held_out_template": {
+            "normalized_mae": 0.21925670983173884,
+            "median_waveform_correlation": 0.06873553421836648,
+            "correlation_windows": 200,
+            "own_support_fraction": 0.9951803571428571,
+            "native_qrs_scores": {
+              "reference_peaks": 6870,
+              "predicted_peaks": 5971,
+              "matched_peaks": 4539,
+              "precision": 0.7601741751800368,
+              "recall": 0.6606986899563319,
+              "f1": 0.7069542870492952,
+              "median_abs_timing_error_ms": 24.000000002561137,
+              "matched_consecutive_intervals": 3414,
+              "median_abs_rr_error_ms": 14.000000002415618
+            }
+          },
+          "local_held_out_ridge": {
+            "normalized_mae": 0.2186419708543426,
+            "median_waveform_correlation": 0.04108433026887847,
+            "correlation_windows": 200,
+            "own_support_fraction": 1.0,
+            "native_qrs_scores": {
+              "reference_peaks": 6870,
+              "predicted_peaks": 3470,
+              "matched_peaks": 1967,
+              "precision": 0.5668587896253602,
+              "recall": 0.2863173216885007,
+              "f1": 0.3804642166344294,
+              "median_abs_timing_error_ms": 46.00000000122236,
+              "matched_consecutive_intervals": 969,
+              "median_abs_rr_error_ms": 18.00000004004687
+            }
+          },
+          "external_ptt_shape_with_archive_beat_delay": {
+            "normalized_mae": 0.24350951813715863,
+            "median_waveform_correlation": -0.012453602240174857,
+            "correlation_windows": 200,
+            "own_support_fraction": 0.9951803571428571,
+            "native_qrs_scores": {
+              "reference_peaks": 6870,
+              "predicted_peaks": 5974,
+              "matched_peaks": 4547,
+              "precision": 0.7611315701372615,
+              "recall": 0.661863173216885,
+              "f1": 0.7080348800996574,
+              "median_abs_timing_error_ms": 25.99999998928979,
+              "matched_consecutive_intervals": 3419,
+              "median_abs_rr_error_ms": 14.000000002270099
+            }
+          }
+        }
+      },
+      "coarse": {
+        "participants": 2,
+        "windows": 23,
+        "trimmed_measured_samples": 64400,
+        "common_samples": 64400,
+        "common_samples_fraction": 1.0,
+        "windows_with_common_support": 23,
+        "zero_waveform_normalized_mae": 0.23724415524664752,
+        "model_metrics": {
+          "external_ptt_template": {
+            "normalized_mae": 0.28005743709347514,
+            "median_waveform_correlation": -0.02187973831889285,
+            "correlation_windows": 23,
+            "own_support_fraction": 1.0,
+            "native_qrs_scores": {
+              "reference_peaks": 631,
+              "predicted_peaks": 899,
+              "matched_peaks": 56,
+              "precision": 0.06229143492769744,
+              "recall": 0.08874801901743265,
+              "f1": 0.07320261437908497,
+              "median_abs_timing_error_ms": 55.99999998463318,
+              "matched_consecutive_intervals": 0,
+              "median_abs_rr_error_ms": null
+            }
+          },
+          "local_held_out_template": {
+            "normalized_mae": 0.250702673192152,
+            "median_waveform_correlation": -0.013018427072435414,
+            "correlation_windows": 23,
+            "own_support_fraction": 1.0,
+            "native_qrs_scores": {
+              "reference_peaks": 631,
+              "predicted_peaks": 896,
+              "matched_peaks": 213,
+              "precision": 0.23772321428571427,
+              "recall": 0.3375594294770206,
+              "f1": 0.27897838899803534,
+              "median_abs_timing_error_ms": 40.000000002328306,
+              "matched_consecutive_intervals": 84,
+              "median_abs_rr_error_ms": 10.000000009895302
+            }
+          },
+          "local_held_out_ridge": {
+            "normalized_mae": 0.23778127358456932,
+            "median_waveform_correlation": -0.08543837260984118,
+            "correlation_windows": 23,
+            "own_support_fraction": 1.0,
+            "native_qrs_scores": {
+              "reference_peaks": 631,
+              "predicted_peaks": 443,
+              "matched_peaks": 134,
+              "precision": 0.30248306997742663,
+              "recall": 0.21236133122028525,
+              "f1": 0.24953445065176907,
+              "median_abs_timing_error_ms": 76.99999999837019,
+              "matched_consecutive_intervals": 39,
+              "median_abs_rr_error_ms": 10.00000000698492
+            }
+          },
+          "external_ptt_shape_with_archive_beat_delay": {
+            "normalized_mae": 0.28005743709347514,
+            "median_waveform_correlation": -0.02187973831889285,
+            "correlation_windows": 23,
+            "own_support_fraction": 1.0,
+            "native_qrs_scores": {
+              "reference_peaks": 631,
+              "predicted_peaks": 899,
+              "matched_peaks": 56,
+              "precision": 0.06229143492769744,
+              "recall": 0.08874801901743265,
+              "f1": 0.07320261437908497,
+              "median_abs_timing_error_ms": 55.99999998463318,
+              "matched_consecutive_intervals": 0,
+              "median_abs_rr_error_ms": null
+            }
+          }
+        }
+      }
+    }
+  }
+}

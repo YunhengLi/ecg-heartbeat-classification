@@ -1,0 +1,95 @@
+{
+  "scope": "Exploratory fold-local wrist waveform template for AF event detection",
+  "external_PTT_template": {
+    "complete_episodes": 17,
+    "episodes_detected": 12,
+    "episode_sensitivity": 0.7058823529411765,
+    "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+    "wrist_ecg_observed_seconds": 2790.0,
+    "wrist_non_af_seconds": 2040.0,
+    "wrist_false_alerts": 6,
+    "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 12,
+    "possible_non_af_alert_timestamps": 0,
+    "inner_calibration": {
+      "target_not_met": 5
+    }
+  },
+  "fold_local_wrist_template": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 11,
+      "episode_sensitivity": 0.6470588235294118,
+      "median_delay_seconds_in_detected_episodes": 24.713999999978114,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 7,
+      "false_alerts_per_observed_wrist_hour": 9.03225806451613,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 11,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 4,
+        "detected_by_both": 8,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 24.713999999978114,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 0,
+        "shared_earlier": 2,
+        "shared_unchanged": 6
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 7,
+        "shared_exact": 3,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 4
+      }
+    },
+    "sensitivity_change": -0.05882352941176472,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 5,
+        "shared_exact": 2,
+        "baseline_only_exact": 1,
+        "candidate_only_exact": 3
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 5,
+        "gained": 3,
+        "lost": 1,
+        "both": 2,
+        "neither": 4
+      }
+    },
+    "inner_calibration": {
+      "target_not_met": 5
+    }
+  },
+  "feature_generation_counts": {
+    "model_fits": 20,
+    "local_feature_rows": 5766,
+    "external_template_fallback_rows": 7
+  },
+  "native_paired_bundle_sha256": "3c5085b0e39130f72517de4ea877a93385345a20a5954f37186dc4541bdb9412",
+  "waveform_receipt_sha256": "6614bdd228487550234ee0ca09a39332987b4d76f97f1e94ad1ca59876470b76",
+  "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "development_participants": 10,
+  "independent_predictions": 0
+}

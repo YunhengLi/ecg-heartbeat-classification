@@ -1,0 +1,62 @@
+{
+  "scope": "Frozen GalaxyPPG quality models on an independently collected Shimmer exercise dataset",
+  "training_participants": 23,
+  "training_windows_per_device": 618,
+  "test_records": 19,
+  "test_participants": 8,
+  "test_scheduled_windows": 632,
+  "test_common_windows": 591,
+  "test_large_irregularity_errors": 591,
+  "irregularity_error_threshold": 0.2,
+  "test_irregularity_error_min_median_max": [
+    0.2355367100672917,
+    1.104864654964925,
+    2.0836809505341036
+  ],
+  "comparisons": {
+    "quality_heuristic": {
+      "pooled_ROC_AUC": null,
+      "average_precision": null,
+      "mean_within_participant_ROC_AUC": null,
+      "participants_with_both_error_classes": 0,
+      "exploratory_pooled_continuous_error_spearman": 0.4115128205724437,
+      "exploratory_mean_within_participant_continuous_error_spearman": 0.021370032743729922
+    },
+    "galaxy_25hz": {
+      "optical_quality_and_entropy": {
+        "pooled_ROC_AUC": null,
+        "average_precision": null,
+        "mean_within_participant_ROC_AUC": null,
+        "participants_with_both_error_classes": 0,
+        "exploratory_pooled_continuous_error_spearman": -0.10005679558936034,
+        "exploratory_mean_within_participant_continuous_error_spearman": -0.07879117523638625
+      },
+      "optical_and_acceleration": {
+        "pooled_ROC_AUC": null,
+        "average_precision": null,
+        "mean_within_participant_ROC_AUC": null,
+        "participants_with_both_error_classes": 0,
+        "exploratory_pooled_continuous_error_spearman": -0.1577689041532283,
+        "exploratory_mean_within_participant_continuous_error_spearman": -0.11391356106606867
+      }
+    },
+    "e4_64hz": {
+      "optical_quality_and_entropy": {
+        "pooled_ROC_AUC": null,
+        "average_precision": null,
+        "mean_within_participant_ROC_AUC": null,
+        "participants_with_both_error_classes": 0,
+        "exploratory_pooled_continuous_error_spearman": 0.055879302687355685,
+        "exploratory_mean_within_participant_continuous_error_spearman": 0.005873157699097117
+      },
+      "optical_and_acceleration": {
+        "pooled_ROC_AUC": null,
+        "average_precision": null,
+        "mean_within_participant_ROC_AUC": null,
+        "participants_with_both_error_classes": 0,
+        "exploratory_pooled_continuous_error_spearman": -0.18232075963083447,
+        "exploratory_mean_within_participant_continuous_error_spearman": -0.1023718637822329
+      }
+    }
+  }
+}

@@ -1,0 +1,330 @@
+{
+  "scope": "MIMIC PERform AF source training and nested wrist development evaluation",
+  "source_doi": "10.5281/zenodo.15906524",
+  "source_md5": {
+    "mimic_perform_af_data.mat": "38adc07e4420226a0edfe9769a23284f",
+    "mimic_perform_non_af_data.mat": "d1c4f93442a3b4c9cb95718ca0a57013"
+  },
+  "source_label_scope": "Record AF status inherited by nonoverlapping 30-second PPG windows",
+  "source_sampling_hz": 125,
+  "feature_sampling_hz": 100,
+  "source_logistic_C": 1.0,
+  "source_auc_folds": 5,
+  "grouped_source_record_auroc": 0.9506578947368421,
+  "source_class_inventory": {
+    "0": {
+      "participants": 16,
+      "all_windows": 640,
+      "participants_with_features": 16,
+      "feature_windows": 601
+    },
+    "1": {
+      "participants": 19,
+      "all_windows": 760,
+      "participants_with_features": 19,
+      "feature_windows": 741
+    }
+  },
+  "wrist_lock_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "wrist_development_participants": 10,
+  "wrist_independent_inference": false,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "max_inner_folds_for_wrist_model_fits": 3,
+  "target_episode_sensitivity": 0.8,
+  "sensitivity_tolerance": 0.1,
+  "outer_folds": 5,
+  "wrist_direct_baseline": {
+    "complete_episodes": 17,
+    "episodes_detected": 7,
+    "episode_sensitivity": 0.4117647058823529,
+    "median_delay_seconds_in_detected_episodes": 20.64000000001397,
+    "wrist_ecg_observed_seconds": 2790.0,
+    "wrist_non_af_seconds": 2040.0,
+    "wrist_false_alerts": 4,
+    "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 7,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "wrist_template_baseline": {
+    "complete_episodes": 17,
+    "episodes_detected": 12,
+    "episode_sensitivity": 0.7058823529411765,
+    "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+    "wrist_ecg_observed_seconds": 2790.0,
+    "wrist_non_af_seconds": 2040.0,
+    "wrist_false_alerts": 6,
+    "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 12,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "frozen_mimic_direct_80_percent_target": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 14,
+      "episode_sensitivity": 0.8235294117647058,
+      "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 9,
+      "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 14,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 8,
+        "lost": 1,
+        "detected_by_both": 6,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.64000000001397,
+        "candidate_median_delay_s": 22.89999999999418,
+        "median_delay_change_s_for_shared": 10.0,
+        "shared_delayed": 4,
+        "shared_earlier": 0,
+        "shared_unchanged": 2
+      },
+      "false_starts": {
+        "baseline": 4,
+        "candidate": 9,
+        "shared_exact": 1,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 8
+      }
+    },
+    "sensitivity_change": 0.4117647058823529,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "pre_onset": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 0,
+        "candidate": 4,
+        "shared_exact": 0,
+        "baseline_only_exact": 0,
+        "candidate_only_exact": 4
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 0,
+        "candidate": 4,
+        "gained": 4,
+        "lost": 0,
+        "both": 0,
+        "neither": 6
+      }
+    },
+    "reference_route": "direct_ppg",
+    "training_fold_calibration_status_counts": {
+      "target_not_met": 2,
+      "target_met": 3
+    }
+  },
+  "frozen_mimic_direct_matched_template_sensitivity": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 14,
+      "episode_sensitivity": 0.8235294117647058,
+      "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 10,
+      "false_alerts_per_observed_wrist_hour": 12.903225806451612,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 14,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 1,
+        "detected_by_both": 11,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 22.89999999999418,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 5,
+        "shared_earlier": 3,
+        "shared_unchanged": 3
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 10,
+        "shared_exact": 3,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 7
+      }
+    },
+    "sensitivity_change": 0.11764705882352933,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "pre_onset": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 4,
+        "shared_exact": 1,
+        "baseline_only_exact": 2,
+        "candidate_only_exact": 3
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 4,
+        "gained": 3,
+        "lost": 2,
+        "both": 1,
+        "neither": 4
+      }
+    },
+    "reference_route": "pulse_template",
+    "training_fold_calibration_status_counts": {
+      "within_tolerance": 5
+    }
+  },
+  "wrist_template_plus_frozen_mimic_80_percent_target": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 11,
+      "episode_sensitivity": 0.6470588235294118,
+      "median_delay_seconds_in_detected_episodes": 24.385999999998603,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 4,
+      "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 11,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 4,
+        "detected_by_both": 8,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 24.385999999998603,
+        "median_delay_change_s_for_shared": -5.0,
+        "shared_delayed": 3,
+        "shared_earlier": 4,
+        "shared_unchanged": 1
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 4,
+        "shared_exact": 3,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 1
+      }
+    },
+    "sensitivity_change": -0.05882352941176472,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "pre_onset": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 0,
+        "shared_exact": 0,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 0
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 0,
+        "gained": 0,
+        "lost": 3,
+        "both": 0,
+        "neither": 7
+      }
+    },
+    "reference_route": "pulse_template",
+    "training_fold_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  },
+  "wrist_template_plus_frozen_mimic_matched_template_sensitivity": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 11,
+      "episode_sensitivity": 0.6470588235294118,
+      "median_delay_seconds_in_detected_episodes": 24.385999999998603,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 4,
+      "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 11,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 4,
+        "detected_by_both": 8,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 24.385999999998603,
+        "median_delay_change_s_for_shared": -5.0,
+        "shared_delayed": 3,
+        "shared_earlier": 4,
+        "shared_unchanged": 1
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 4,
+        "shared_exact": 3,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 1
+      }
+    },
+    "sensitivity_change": -0.05882352941176472,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "pre_onset": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 0,
+        "shared_exact": 0,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 0
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 0,
+        "gained": 0,
+        "lost": 3,
+        "both": 0,
+        "neither": 7
+      }
+    },
+    "reference_route": "pulse_template",
+    "training_fold_calibration_status_counts": {
+      "within_tolerance": 5
+    }
+  }
+}

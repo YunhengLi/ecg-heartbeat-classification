@@ -1,0 +1,101 @@
+{
+  "scope": "Retrospective origin audit on the previously scored AFPPGECG v6 roster",
+  "decision_stride_seconds": 10,
+  "sealed_ppg_lookback_seconds": 90,
+  "maximum_native_lookback_seconds": 300,
+  "native_extension_support_by_block": {
+    "complete_native_pair": 19
+  },
+  "scoring_reference_exposure_added_seconds": 0,
+  "cached_rhythm_definition": "ECG annotation immediately before the preroll alert start",
+  "native_ECG_support_definition": "Finite nonflat native ECG and contiguous annotations over the preceding decision cell, for attribution only",
+  "frozen_replay": {
+    "baseline": {
+      "complete_episodes": 260,
+      "episodes_detected": 155,
+      "episode_sensitivity": 0.5961538461538461,
+      "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 45,
+      "false_alerts_per_observed_wrist_hour": 21.6,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 155,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "quality_confirmation": {
+      "complete_episodes": 260,
+      "episodes_detected": 151,
+      "episode_sensitivity": 0.5807692307692308,
+      "median_delay_seconds_in_detected_episodes": 29.265999999945052,
+      "wrist_ecg_observed_seconds": 7500.0,
+      "wrist_non_af_seconds": 6872.005999999994,
+      "wrist_false_alerts": 39,
+      "false_alerts_per_observed_wrist_hour": 18.72,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 151,
+      "possible_non_af_alert_timestamps": 0
+    }
+  },
+  "origin_attribution": {
+    "baseline": {
+      "native_extension": {
+        "origins": 9,
+        "after_negative": 9,
+        "cached_ECG_rhythm_non_AF": 5,
+        "native_ECG_and_annotations_cover_preceding_decision_cell": 9,
+        "cached_ECG_rhythm_AF": 4
+      },
+      "unresolved": {
+        "no_definite_start_in_bounded_native_history": 18
+      },
+      "sealed_preroll": {
+        "origins": 18,
+        "after_negative": 18,
+        "cached_ECG_rhythm_AF": 3,
+        "native_ECG_and_annotations_cover_preceding_decision_cell": 18,
+        "cached_ECG_rhythm_non_AF": 15
+      },
+      "counts": {
+        "previously_unknown": 45,
+        "resolved": 27,
+        "still_unknown": 18
+      }
+    },
+    "quality_confirmation": {
+      "native_extension": {
+        "origins": 9,
+        "after_negative": 9,
+        "cached_ECG_rhythm_non_AF": 5,
+        "native_ECG_and_annotations_cover_preceding_decision_cell": 9,
+        "cached_ECG_rhythm_AF": 4
+      },
+      "unresolved": {
+        "no_definite_start_in_bounded_native_history": 18
+      },
+      "sealed_preroll": {
+        "origins": 18,
+        "after_negative": 18,
+        "cached_ECG_rhythm_AF": 3,
+        "native_ECG_and_annotations_cover_preceding_decision_cell": 18,
+        "cached_ECG_rhythm_non_AF": 15
+      },
+      "counts": {
+        "previously_unknown": 45,
+        "resolved": 27,
+        "still_unknown": 18
+      }
+    }
+  },
+  "native_extension_support_by_attempt_seconds": {
+    "300": {
+      "complete_native_pair": 18,
+      "missing_native_bytes": 1
+    },
+    "180": {
+      "complete_native_pair": 1
+    }
+  }
+}

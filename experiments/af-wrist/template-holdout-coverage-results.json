@@ -1,0 +1,190 @@
+{
+  "scope": "Model-free coverage audit of the reserved independent cohort",
+  "source_release": "AFPPGECG v6",
+  "roster_members": 25,
+  "cache_survey": {
+    "participants_requested": 25,
+    "ECG_annotations_readable": 12,
+    "paired_wrist_clock_verified": 6,
+    "episode_eligibility_surveyed": 3,
+    "participants_with_timestamp_candidates": 2,
+    "timestamp_candidates": 17
+  },
+  "scheduled_waveform_recovery": {
+    "participants": 2,
+    "scheduled_episode_runs": 17,
+    "decoded_episode_runs": 17,
+    "complete_ecg_episode_runs": 16,
+    "complete_ecg_episode_runs_with_native_ppg_opportunity": 14,
+    "wrist_blocks": 2
+  },
+  "cache_before_waveform_recovery": {
+    "prespecified_roster_size": 25,
+    "decoded_roster_members": 2,
+    "roster_members_without_decoded_archives": 23,
+    "feature_window_seconds": 30,
+    "original_30_second_grid": {
+      "decision_stride_seconds": 30,
+      "complete_reference_episodes": 1,
+      "partial_reference_episodes": 0,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 0,
+      "reference_observed_seconds": 600,
+      "monitoring_observed_seconds": 600,
+      "monitoring_observed_non_af_seconds": 572.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 600,
+      "monitoring_raw_input_opportunity_non_af_seconds": 572.005999999994,
+      "prehistory_input_states": {},
+      "last_prehistory_input_states_by_block": {},
+      "evaluation_input_states": {
+        "available": 20
+      },
+      "monitoring_blocks": 2,
+      "evaluation_blocks": 2
+    },
+    "ten_second_grid": {
+      "decision_stride_seconds": 10,
+      "complete_reference_episodes": 1,
+      "partial_reference_episodes": 0,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 1,
+      "reference_observed_seconds": 600,
+      "monitoring_observed_seconds": 600,
+      "monitoring_observed_non_af_seconds": 572.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 600,
+      "monitoring_raw_input_opportunity_non_af_seconds": 572.005999999994,
+      "prehistory_input_states": {
+        "available": 14
+      },
+      "last_prehistory_input_states_by_block": {
+        "available": 2
+      },
+      "evaluation_input_states": {
+        "available": 60
+      },
+      "monitoring_blocks": 2,
+      "evaluation_blocks": 2
+    }
+  },
+  "after_waveform_recovery": {
+    "prespecified_roster_size": 25,
+    "decoded_roster_members": 2,
+    "roster_members_without_decoded_archives": 23,
+    "feature_window_seconds": 30,
+    "original_30_second_grid": {
+      "decision_stride_seconds": 30,
+      "complete_reference_episodes": 27,
+      "partial_reference_episodes": 17,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 17,
+      "reference_observed_seconds": 4530,
+      "monitoring_observed_seconds": 600,
+      "monitoring_observed_non_af_seconds": 572.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 600,
+      "monitoring_raw_input_opportunity_non_af_seconds": 572.005999999994,
+      "prehistory_input_states": {},
+      "last_prehistory_input_states_by_block": {},
+      "evaluation_input_states": {
+        "available": 141,
+        "unavailable": 12
+      },
+      "monitoring_blocks": 2,
+      "evaluation_blocks": 19
+    },
+    "ten_second_grid": {
+      "decision_stride_seconds": 10,
+      "complete_reference_episodes": 27,
+      "partial_reference_episodes": 17,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 24,
+      "reference_observed_seconds": 4530,
+      "monitoring_observed_seconds": 600,
+      "monitoring_observed_non_af_seconds": 572.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 600,
+      "monitoring_raw_input_opportunity_non_af_seconds": 572.005999999994,
+      "prehistory_input_states": {
+        "available": 119,
+        "unavailable": 14
+      },
+      "last_prehistory_input_states_by_block": {
+        "available": 17,
+        "unavailable": 2
+      },
+      "evaluation_input_states": {
+        "available": 423,
+        "unavailable": 36
+      },
+      "monitoring_blocks": 2,
+      "evaluation_blocks": 19
+    }
+  },
+  "independent_model_scores_generated": 0,
+  "source_metadata_followup": {
+    "participants_requested": 25,
+    "ECG_annotations_readable": 12,
+    "paired_wrist_clock_verified": 8,
+    "episode_eligibility_surveyed": 7,
+    "participants_with_timestamp_candidates": 6,
+    "timestamp_candidates": 29
+  },
+  "expanded_waveform_coverage": {
+    "prespecified_roster_size": 25,
+    "decoded_roster_members": 7,
+    "roster_members_without_decoded_archives": 18,
+    "feature_window_seconds": 30,
+    "original_30_second_grid": {
+      "decision_stride_seconds": 30,
+      "complete_reference_episodes": 42,
+      "partial_reference_episodes": 20,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 30,
+      "reference_observed_seconds": 8250,
+      "monitoring_observed_seconds": 2100,
+      "monitoring_observed_non_af_seconds": 2072.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 2100,
+      "monitoring_raw_input_opportunity_non_af_seconds": 2072.005999999994,
+      "prehistory_input_states": {},
+      "last_prehistory_input_states_by_block": {},
+      "evaluation_input_states": {
+        "available": 266,
+        "unavailable": 12
+      },
+      "monitoring_blocks": 7,
+      "evaluation_blocks": 36
+    },
+    "ten_second_grid": {
+      "decision_stride_seconds": 10,
+      "complete_reference_episodes": 42,
+      "partial_reference_episodes": 20,
+      "complete_reference_episodes_in_wrist_monitoring": 1,
+      "complete_reference_episodes_with_usable_raw_input_endpoint": 38,
+      "reference_observed_seconds": 8250,
+      "monitoring_observed_seconds": 2100,
+      "monitoring_observed_non_af_seconds": 2072.005999999994,
+      "monitoring_raw_input_opportunity_seconds": 2100,
+      "monitoring_raw_input_opportunity_non_af_seconds": 2072.005999999994,
+      "prehistory_input_states": {
+        "available": 231,
+        "unavailable": 21
+      },
+      "last_prehistory_input_states_by_block": {
+        "available": 33,
+        "unavailable": 3
+      },
+      "evaluation_input_states": {
+        "available": 796,
+        "unavailable": 38
+      },
+      "monitoring_blocks": 7,
+      "evaluation_blocks": 36
+    }
+  },
+  "expanded_waveform_recovery": {
+    "participants": 7,
+    "scheduled_episode_runs": 29,
+    "decoded_episode_runs": 29,
+    "complete_ecg_episode_runs": 28,
+    "complete_ecg_episode_runs_with_native_ppg_opportunity": 26,
+    "wrist_blocks": 7
+  }
+}

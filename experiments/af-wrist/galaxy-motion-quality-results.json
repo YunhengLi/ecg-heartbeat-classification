@@ -1,0 +1,71 @@
+{
+  "scope": "Grouped reliability ranking on two GalaxyPPG devices with native wrist motion",
+  "source_doi": "10.5281/zenodo.14635823",
+  "outer_participant_groups": 5,
+  "large_irregularity_error": 0.2,
+  "matched_windows": 618,
+  "participants": 23,
+  "coverage": {
+    "participants_missing_bilateral_acceleration": 1,
+    "participants_with_all_members": 23,
+    "scheduled_windows": 668,
+    "uniform_ecg_windows": 668,
+    "ecg_consensus_windows": 618
+  },
+  "comparisons": {
+    "galaxy_25hz": {
+      "n_large_errors": 569,
+      "quality_heuristic": {
+        "roc_auc": 0.48968831820953335,
+        "average_precision": 0.91524027042089
+      },
+      "same_device": {
+        "optical_quality_and_entropy": {
+          "roc_auc": 0.7558911086402927,
+          "average_precision": 0.9718405756618166
+        },
+        "optical_and_acceleration": {
+          "roc_auc": 0.7832574154442093,
+          "average_precision": 0.974735174662799
+        }
+      },
+      "other_device": {
+        "optical_quality_and_entropy": {
+          "roc_auc": 0.4998565331229152,
+          "average_precision": 0.9068158671791574
+        },
+        "optical_and_acceleration": {
+          "roc_auc": 0.5109034826584412,
+          "average_precision": 0.9118825881525544
+        }
+      }
+    },
+    "e4_64hz": {
+      "n_large_errors": 533,
+      "quality_heuristic": {
+        "roc_auc": 0.6990839863149763,
+        "average_precision": 0.9159030146061433
+      },
+      "same_device": {
+        "optical_quality_and_entropy": {
+          "roc_auc": 0.7659860942500827,
+          "average_precision": 0.9389182266642093
+        },
+        "optical_and_acceleration": {
+          "roc_auc": 0.8484714711400507,
+          "average_precision": 0.9678445132718784
+        }
+      },
+      "other_device": {
+        "optical_quality_and_entropy": {
+          "roc_auc": 0.8254497296104183,
+          "average_precision": 0.96992696613403
+        },
+        "optical_and_acceleration": {
+          "roc_auc": 0.8720229555236728,
+          "average_precision": 0.9791471096343584
+        }
+      }
+    }
+  }
+}

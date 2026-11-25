@@ -1,0 +1,156 @@
+{
+  "scope": "Compare order-dependent pulse features on fixed surgical AF-or-flutter and ectopy windows",
+  "eligible_reference_windows": {
+    "N": 248,
+    "AFIB/AFL": 377,
+    "Patterned Ventricular Ectopy": 21,
+    "Patterned Atrial Ectopy": 40
+  },
+  "participants_with_features": 30,
+  "comparisons": {
+    "original_features": {
+      "sinus": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 248
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9789444212913543,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.6200418966337325,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      },
+      "ectopy": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 213,
+          "Patterned Ventricular Ectopy": 16,
+          "Patterned Atrial Ectopy": 19
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9814011638777476,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.7355126107749846,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      }
+    },
+    "distribution_only": {
+      "sinus": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 248
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9848743652798362,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.7504909314793589,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      },
+      "ectopy": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 213,
+          "Patterned Ventricular Ectopy": 16,
+          "Patterned Atrial Ectopy": 19
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9865607396299877,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.8212691394230793,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      }
+    },
+    "observed_pulse_order": {
+      "sinus": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 248
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9669572870444978,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.5723067234992031,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      },
+      "ectopy": {
+        "fit_windows_by_reference_rhythm": {
+          "AFIB/AFL": 350,
+          "N": 213,
+          "Patterned Ventricular Ectopy": 16,
+          "Patterned Atrial Ectopy": 19
+        },
+        "positive_fit_participants": 18,
+        "negative_fit_participants": 18,
+        "grouped_af_or_flutter_vs_sinus": {
+          "participant_weighted_auc": 0.9774071959274246,
+          "positive_windows": 377,
+          "negative_windows": 248,
+          "positive_participants": 18,
+          "negative_participants": 18
+        },
+        "grouped_af_or_flutter_vs_ectopy": {
+          "participant_weighted_auc": 0.6974444194883682,
+          "positive_windows": 377,
+          "negative_windows": 61,
+          "positive_participants": 18,
+          "negative_participants": 12
+        }
+      }
+    }
+  }
+}

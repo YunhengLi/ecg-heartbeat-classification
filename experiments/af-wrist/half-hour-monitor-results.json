@@ -1,0 +1,115 @@
+{
+  "scope": "Fixed alert comparison on disjoint outcome-blind continuous time from previously scored people",
+  "quality_boundary": 0.4,
+  "plan_receipt": {
+    "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+    "previous_monitor_plan_sha256": "76cbec1ec4b862456665b92ec47fdf59d4b870e1fc893de0231c89562bbaae43",
+    "block_seconds": 1800,
+    "predecessor_seconds": 90,
+    "scheduled_blocks": 25,
+    "scheduled_seconds": 45000,
+    "participants_with_planned_blocks": 25
+  },
+  "plan_sha256": "db36a56c415d9a6e45479baf4256dc7e9c57ba3d7675ad475f2429a2e6e3d565",
+  "frozen_model_sha256": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+  "original": {
+    "complete_episodes": 0,
+    "episodes_detected": 0,
+    "episode_sensitivity": null,
+    "median_delay_seconds_in_detected_episodes": null,
+    "wrist_ecg_observed_seconds": 44640.0,
+    "wrist_non_af_seconds": 42840.0,
+    "wrist_false_alerts": 209,
+    "false_alerts_per_observed_wrist_hour": 16.85483870967742,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 0,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "conditional_confirmation": {
+    "complete_episodes": 0,
+    "episodes_detected": 0,
+    "episode_sensitivity": null,
+    "median_delay_seconds_in_detected_episodes": null,
+    "wrist_ecg_observed_seconds": 44640.0,
+    "wrist_non_af_seconds": 42840.0,
+    "wrist_false_alerts": 169,
+    "false_alerts_per_observed_wrist_hour": 13.629032258064516,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 0,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "paired_changes": {
+    "episodes": {
+      "complete": 0,
+      "gained": 0,
+      "lost": 0,
+      "detected_by_both": 0,
+      "detected_by_neither": 0,
+      "baseline_median_delay_s": null,
+      "candidate_median_delay_s": null,
+      "median_delay_change_s_for_shared": null,
+      "shared_delayed": 0,
+      "shared_earlier": 0,
+      "shared_unchanged": 0
+    },
+    "false_starts": {
+      "baseline": 209,
+      "candidate": 169,
+      "shared_exact": 80,
+      "baseline_only_exact": 129,
+      "candidate_only_exact": 89
+    }
+  },
+  "paired_participant_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 0,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": -3.225806451612903,
+      "percentile_95": [
+        -4.894684985823557,
+        -1.7690318927478375
+      ],
+      "valid_paired_draws": 10000
+    }
+  },
+  "forward_state_duration": {
+    "original": {
+      "participants_or_independent_runs": 25,
+      "participants_with_ecg_af_time": 1,
+      "ecg_observed_seconds": 44640.0,
+      "ecg_af_seconds": 1800.0,
+      "scoreable_seconds": 44140.0,
+      "af_seconds_with_state": 1790.0,
+      "af_seconds_with_positive_state": 840.0,
+      "non_af_seconds_with_positive_state": 13570.0,
+      "scoreable_coverage": 0.9887992831541219,
+      "af_time_sensitivity": 0.4666666666666667,
+      "non_af_time_false_positive_rate": 0.3167600373482726,
+      "af_fraction_on_scoreable_time": 0.04055278658812868,
+      "predicted_af_fraction_on_scoreable_time": 0.3264612596284549,
+      "median_participant_absolute_af_fraction_error": 0.15083798882681565
+    },
+    "conditional_confirmation": {
+      "participants_or_independent_runs": 25,
+      "participants_with_ecg_af_time": 1,
+      "ecg_observed_seconds": 44640.0,
+      "ecg_af_seconds": 1800.0,
+      "scoreable_seconds": 44090.0,
+      "af_seconds_with_state": 1790.0,
+      "af_seconds_with_positive_state": 720.0,
+      "non_af_seconds_with_positive_state": 12320.0,
+      "scoreable_coverage": 0.9876792114695341,
+      "af_time_sensitivity": 0.4,
+      "non_af_time_false_positive_rate": 0.2875816993464052,
+      "af_fraction_on_scoreable_time": 0.04059877523247902,
+      "predicted_af_fraction_on_scoreable_time": 0.29575867543660694,
+      "median_participant_absolute_af_fraction_error": 0.12849162011173185
+    }
+  },
+  "scheduled_decisions": 4500,
+  "scoreable_original": 4474,
+  "scoreable_conditional": 4469
+}

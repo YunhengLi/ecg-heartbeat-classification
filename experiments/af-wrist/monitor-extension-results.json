@@ -1,0 +1,96 @@
+{
+  "scope": "Supplemental wrist monitoring on new times from original development participants",
+  "plan_receipt": {
+    "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+    "block_seconds": 300,
+    "predecessor_seconds": 90,
+    "scheduled_blocks": 30,
+    "scheduled_seconds": 9000,
+    "participants_with_planned_blocks": 10,
+    "known_missing_blocks": {
+      "ecg": 0,
+      "ppg": 2
+    },
+    "intervals_with_uncached_index": {
+      "ecg": 30,
+      "ppg": 25
+    }
+  },
+  "plan_sha256": "4eaff4417dbb3e1ec0a0d5d80fd0ce844229877b111776efbbb7351cfe828a4d",
+  "frozen_source_seed": 2026,
+  "coverage": {
+    "scheduled_decisions": 900,
+    "observed_wrist_decisions": 883,
+    "scoreable_decisions": {
+      "baseline": 810,
+      "quality_interactions": 810
+    }
+  },
+  "baseline": {
+    "complete_episodes": 0,
+    "episodes_detected": 0,
+    "episode_sensitivity": null,
+    "median_delay_seconds_in_detected_episodes": null,
+    "wrist_ecg_observed_seconds": 8660.0,
+    "wrist_non_af_seconds": 7160.0,
+    "wrist_false_alerts": 27,
+    "false_alerts_per_observed_wrist_hour": 11.224018475750578,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 0,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "quality_interactions": {
+    "summary": {
+      "complete_episodes": 0,
+      "episodes_detected": 0,
+      "episode_sensitivity": null,
+      "median_delay_seconds_in_detected_episodes": null,
+      "wrist_ecg_observed_seconds": 8660.0,
+      "wrist_non_af_seconds": 7160.0,
+      "wrist_false_alerts": 35,
+      "false_alerts_per_observed_wrist_hour": 14.549653579676674,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 0,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "sensitivity_change": null,
+    "within_sensitivity_tolerance": null,
+    "paired_changes": {
+      "episodes": {
+        "complete": 0,
+        "gained": 0,
+        "lost": 0,
+        "detected_by_both": 0,
+        "detected_by_neither": 0,
+        "baseline_median_delay_s": null,
+        "candidate_median_delay_s": null,
+        "median_delay_change_s_for_shared": null,
+        "shared_delayed": 0,
+        "shared_earlier": 0,
+        "shared_unchanged": 0
+      },
+      "false_starts": {
+        "baseline": 27,
+        "candidate": 35,
+        "shared_exact": 16,
+        "baseline_only_exact": 11,
+        "candidate_only_exact": 19
+      }
+    }
+  },
+  "paired_participant_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 0,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": 3.325635103926097,
+      "percentile_95": [
+        0.8352668213457076,
+        5.598086124401914
+      ],
+      "valid_paired_draws": 10000
+    }
+  }
+}

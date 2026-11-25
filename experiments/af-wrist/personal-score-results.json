@@ -1,0 +1,187 @@
+{
+  "scope": "Label-blind causal AF log-odds centering after a common half-hour block warm-up",
+  "warmup_seconds": 300,
+  "minimum_scoreable_baseline_decisions": 20,
+  "shrinkage_weight": 0.5,
+  "fitting_wear_participants": 3,
+  "model_fitting_participants": 5,
+  "fitting_wear_rows": 141,
+  "fitting_wear_median_log_odds_center": 1.439858394448416,
+  "held_out_blocks_with_fixed_center": 25,
+  "held_out_rows_with_rolling_center": 3746,
+  "held_out_post_warmup_rows": 3750,
+  "fixed_offset_log_odds_quantiles_10_50_90": [
+    -2.9500410704231226,
+    -1.5102134563530107,
+    -0.0302706981906634
+  ],
+  "plan_sha256": "db36a56c415d9a6e45479baf4256dc7e9c57ba3d7675ad475f2429a2e6e3d565",
+  "results": {
+    "original": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 37140.0,
+        "wrist_non_af_seconds": 35640.0,
+        "wrist_false_alerts": 170,
+        "false_alerts_per_observed_wrist_hour": 16.478190630048466,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "forward_state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 37140.0,
+        "ecg_af_seconds": 1500.0,
+        "scoreable_seconds": 36710.0,
+        "af_seconds_with_state": 1490.0,
+        "af_seconds_with_positive_state": 720.0,
+        "non_af_seconds_with_positive_state": 11410.0,
+        "scoreable_coverage": 0.9884221863220247,
+        "af_time_sensitivity": 0.48,
+        "non_af_time_false_positive_rate": 0.3201459034792368,
+        "af_fraction_on_scoreable_time": 0.04058839553255244,
+        "predicted_af_fraction_on_scoreable_time": 0.33042767638245707,
+        "median_participant_absolute_af_fraction_error": 0.15436241610738255
+      }
+    },
+    "fixed_wearer_center": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 37140.0,
+        "wrist_non_af_seconds": 35640.0,
+        "wrist_false_alerts": 214,
+        "false_alerts_per_observed_wrist_hour": 20.74313408723748,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "forward_state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 37140.0,
+        "ecg_af_seconds": 1500.0,
+        "scoreable_seconds": 36710.0,
+        "af_seconds_with_state": 1490.0,
+        "af_seconds_with_positive_state": 1010.0,
+        "non_af_seconds_with_positive_state": 16530.0,
+        "scoreable_coverage": 0.9884221863220247,
+        "af_time_sensitivity": 0.6733333333333333,
+        "non_af_time_false_positive_rate": 0.46380471380471383,
+        "af_fraction_on_scoreable_time": 0.04058839553255244,
+        "predicted_af_fraction_on_scoreable_time": 0.47779896485971124,
+        "median_participant_absolute_af_fraction_error": 0.3959731543624161
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 0,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 0,
+          "detected_by_neither": 0,
+          "baseline_median_delay_s": null,
+          "candidate_median_delay_s": null,
+          "median_delay_change_s_for_shared": null,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 0
+        },
+        "false_starts": {
+          "baseline": 170,
+          "candidate": 214,
+          "shared_exact": 75,
+          "baseline_only_exact": 95,
+          "candidate_only_exact": 139
+        }
+      },
+      "paired_uncertainty": {
+        "resamples": 10000,
+        "seed": 2026,
+        "participants_with_complete_episodes": 0,
+        "false_starts_per_ecg_observed_wrist_hour_change": {
+          "point": 4.264943457189014,
+          "percentile_95": [
+            -0.9617953513224686,
+            9.448115872625344
+          ],
+          "valid_paired_draws": 10000
+        }
+      }
+    },
+    "rolling_wearer_center": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 37140.0,
+        "wrist_non_af_seconds": 35640.0,
+        "wrist_false_alerts": 234,
+        "false_alerts_per_observed_wrist_hour": 22.681744749596124,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "forward_state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 37140.0,
+        "ecg_af_seconds": 1500.0,
+        "scoreable_seconds": 36710.0,
+        "af_seconds_with_state": 1490.0,
+        "af_seconds_with_positive_state": 900.0,
+        "non_af_seconds_with_positive_state": 16840.0,
+        "scoreable_coverage": 0.9884221863220247,
+        "af_time_sensitivity": 0.6,
+        "non_af_time_false_positive_rate": 0.4725028058361392,
+        "af_fraction_on_scoreable_time": 0.04058839553255244,
+        "predicted_af_fraction_on_scoreable_time": 0.4832470716426042,
+        "median_participant_absolute_af_fraction_error": 0.4172661870503597
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 0,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 0,
+          "detected_by_neither": 0,
+          "baseline_median_delay_s": null,
+          "candidate_median_delay_s": null,
+          "median_delay_change_s_for_shared": null,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 0
+        },
+        "false_starts": {
+          "baseline": 170,
+          "candidate": 234,
+          "shared_exact": 84,
+          "baseline_only_exact": 86,
+          "candidate_only_exact": 150
+        }
+      },
+      "paired_uncertainty": {
+        "resamples": 10000,
+        "seed": 2026,
+        "participants_with_complete_episodes": 0,
+        "false_starts_per_ecg_observed_wrist_hour_change": {
+          "point": 6.203554119547658,
+          "percentile_95": [
+            0.9753388303897537,
+            11.516129032258064
+          ],
+          "valid_paired_draws": 10000
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "scope": "External dual-wavelength finger PPG timing benchmark during surgery",
+  "release_revision": "0bd11f9dd0fa8a9329ea113b388007d9c7ae7984",
+  "scheduled_windows": 160,
+  "participants_by_center": {
+    "A": 8,
+    "B": 8,
+    "C": 8,
+    "D": 8
+  },
+  "peak_agreement_ms": 80,
+  "coverage": {
+    "source_waveform_windows": 160,
+    "ecg_consensus_windows": 84,
+    "red": 84,
+    "red_two_filters": 84,
+    "infrared": 79,
+    "red_infrared_consensus": 61
+  },
+  "all": {
+    "participants": 21,
+    "paired_windows": 61,
+    "methods": {
+      "red": {
+        "median_absolute_irregularity_error": 0.16033233011658196,
+        "median_irregularity_bias": 0.005745036745344876,
+        "median_absolute_heart_rate_error_bpm": 0.31859534850785565,
+        "median_accepted_interval_fraction": 1.0
+      },
+      "infrared": {
+        "median_absolute_irregularity_error": 0.1871377681075147,
+        "median_irregularity_bias": 0.07341517800358288,
+        "median_absolute_heart_rate_error_bpm": 0.39339103068448367,
+        "median_accepted_interval_fraction": 1.0
+      },
+      "red_two_filters": {
+        "median_absolute_irregularity_error": 0.16033233011658196,
+        "median_irregularity_bias": 0.005132730670980627,
+        "median_absolute_heart_rate_error_bpm": 0.31859534850785565,
+        "median_accepted_interval_fraction": 1.0
+      },
+      "red_infrared_consensus": {
+        "median_absolute_irregularity_error": 0.15314534087939968,
+        "median_irregularity_bias": 0.004049351833739371,
+        "median_absolute_heart_rate_error_bpm": 0.3467105833405242,
+        "median_accepted_interval_fraction": 1.0
+      }
+    }
+  },
+  "by_center": {
+    "A": {
+      "participants": 6,
+      "paired_windows": 17,
+      "methods": {
+        "red": {
+          "median_absolute_irregularity_error": 0.03546678322958214,
+          "median_irregularity_bias": 0.004889113101122063,
+          "median_absolute_heart_rate_error_bpm": 0.21279614129664282,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "infrared": {
+          "median_absolute_irregularity_error": 0.07341517800358288,
+          "median_irregularity_bias": 0.04767811995549337,
+          "median_absolute_heart_rate_error_bpm": 0.3306240528998501,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_two_filters": {
+          "median_absolute_irregularity_error": 0.03546678322958214,
+          "median_irregularity_bias": 0.004889113101122063,
+          "median_absolute_heart_rate_error_bpm": 0.21279614129664282,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_infrared_consensus": {
+          "median_absolute_irregularity_error": 0.03967702538915041,
+          "median_irregularity_bias": 0.0008379807075495904,
+          "median_absolute_heart_rate_error_bpm": 0.2157031924072612,
+          "median_accepted_interval_fraction": 1.0
+        }
+      }
+    },
+    "B": {
+      "participants": 5,
+      "paired_windows": 14,
+      "methods": {
+        "red": {
+          "median_absolute_irregularity_error": 0.4835320166954005,
+          "median_irregularity_bias": 0.4835320166954005,
+          "median_absolute_heart_rate_error_bpm": 0.33883488624348956,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "infrared": {
+          "median_absolute_irregularity_error": 0.7877460148457365,
+          "median_irregularity_bias": 0.7877460148457365,
+          "median_absolute_heart_rate_error_bpm": 0.5778196979968833,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_two_filters": {
+          "median_absolute_irregularity_error": 0.4835320166954005,
+          "median_irregularity_bias": 0.4835320166954005,
+          "median_absolute_heart_rate_error_bpm": 0.33883488624348956,
+          "median_accepted_interval_fraction": 0.9137931034482758
+        },
+        "red_infrared_consensus": {
+          "median_absolute_irregularity_error": 0.25871116972730435,
+          "median_irregularity_bias": 0.2077070378898624,
+          "median_absolute_heart_rate_error_bpm": 0.33883488624348956,
+          "median_accepted_interval_fraction": 0.7804232804232805
+        }
+      }
+    },
+    "C": {
+      "participants": 5,
+      "paired_windows": 19,
+      "methods": {
+        "red": {
+          "median_absolute_irregularity_error": 0.13442486151637068,
+          "median_irregularity_bias": 0.0024790553130216927,
+          "median_absolute_heart_rate_error_bpm": 0.20652622883108762,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "infrared": {
+          "median_absolute_irregularity_error": 0.15565549888507943,
+          "median_irregularity_bias": 0.011493393194982039,
+          "median_absolute_heart_rate_error_bpm": 0.3417634996580574,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_two_filters": {
+          "median_absolute_irregularity_error": 0.13442486151637068,
+          "median_irregularity_bias": 0.0024790553130216927,
+          "median_absolute_heart_rate_error_bpm": 0.20652622883108762,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_infrared_consensus": {
+          "median_absolute_irregularity_error": 0.13442486151637068,
+          "median_irregularity_bias": 0.0024790553130216927,
+          "median_absolute_heart_rate_error_bpm": 0.3417634996580574,
+          "median_accepted_interval_fraction": 1.0
+        }
+      }
+    },
+    "D": {
+      "participants": 5,
+      "paired_windows": 11,
+      "methods": {
+        "red": {
+          "median_absolute_irregularity_error": 0.38850226041629987,
+          "median_irregularity_bias": 0.0016043561344045616,
+          "median_absolute_heart_rate_error_bpm": 0.6127555275655254,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "infrared": {
+          "median_absolute_irregularity_error": 0.3875523250062475,
+          "median_irregularity_bias": 0.0848716166366954,
+          "median_absolute_heart_rate_error_bpm": 0.6282283959236423,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_two_filters": {
+          "median_absolute_irregularity_error": 0.38850226041629987,
+          "median_irregularity_bias": 0.0016043561344045616,
+          "median_absolute_heart_rate_error_bpm": 0.6127555275655254,
+          "median_accepted_interval_fraction": 1.0
+        },
+        "red_infrared_consensus": {
+          "median_absolute_irregularity_error": 0.2345580564577304,
+          "median_irregularity_bias": -0.02941385702802435,
+          "median_absolute_heart_rate_error_bpm": 0.6127555275655254,
+          "median_accepted_interval_fraction": 1.0
+        }
+      }
+    }
+  },
+  "paired_dual_vs_red": {
+    "paired_median_absolute_error_change": 0.0,
+    "participant_resamples": 10000,
+    "paired_mean_absolute_error_change": -0.05592849531470125,
+    "paired_mean_95_percentile_interval": [
+      -0.12013401995718853,
+      -0.006979062935737724
+    ],
+    "windows_with_lower_error": 12,
+    "windows_with_higher_error": 11,
+    "windows_with_unchanged_error": 38
+  },
+  "exploratory_red_fallback": {
+    "participants": 23,
+    "paired_windows": 84,
+    "methods": {
+      "red": {
+        "median_absolute_irregularity_error": 0.2096191900135952,
+        "median_irregularity_bias": 0.02694990943348255,
+        "median_absolute_heart_rate_error_bpm": 0.3263820518646092,
+        "median_accepted_interval_fraction": 1.0
+      },
+      "dual_with_red_fallback": {
+        "median_absolute_irregularity_error": 0.17603669501691144,
+        "median_irregularity_bias": 0.009910367686768094,
+        "median_absolute_heart_rate_error_bpm": 0.35086308228997254,
+        "median_accepted_interval_fraction": 1.0
+      }
+    },
+    "paired_vs_red": {
+      "paired_median_absolute_error_change": 0.0,
+      "participant_resamples": 10000,
+      "paired_mean_absolute_error_change": -0.04061474064519971,
+      "paired_mean_95_percentile_interval": [
+        -0.08602053789941111,
+        -0.004730729070173585
+      ],
+      "windows_with_lower_error": 12,
+      "windows_with_higher_error": 11,
+      "windows_with_unchanged_error": 61
+    }
+  }
+}

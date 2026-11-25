@@ -1,0 +1,71 @@
+{
+  "scope": "Single frozen model on the audited independent cohort",
+  "rddm_feature_version": "window-seed-v1",
+  "route": "pulse_template",
+  "logistic_C": 1.0,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "alert_policy": "causal_immediate_with_predecessor_state",
+  "fit_participants": 5,
+  "calibration_participants": 5,
+  "planned_independent_participants": 25,
+  "evaluated_independent_participants": 25,
+  "participants_with_shared_feature_endpoint": 25,
+  "independent_participants_without_decoded_archives": 0,
+  "planned_independent_roster_complete": true,
+  "target_episode_sensitivity": 0.8,
+  "independent_sensitivity_target_met": false,
+  "calibration": {
+    "status": "target_not_met",
+    "complete_episodes": 17,
+    "episodes_detected": 12,
+    "episode_sensitivity": 0.7058823529411765,
+    "median_delay_seconds_in_detected_episodes": 10.626000000018394,
+    "wrist_ecg_observed_seconds": 1500.0,
+    "wrist_non_af_seconds": 1200.0,
+    "wrist_false_alerts": 5,
+    "false_alerts_per_observed_wrist_hour": 12.0
+  },
+  "independent": {
+    "complete_episodes": 260,
+    "episodes_detected": 155,
+    "episode_sensitivity": 0.5961538461538461,
+    "median_delay_seconds_in_detected_episodes": 22.286000000021886,
+    "wrist_ecg_observed_seconds": 7500.0,
+    "wrist_non_af_seconds": 6872.005999999994,
+    "wrist_false_alerts": 45,
+    "false_alerts_per_observed_wrist_hour": 21.6,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 155,
+    "possible_non_af_alert_timestamps": 0,
+    "scored_evaluation_cells": 5424,
+    "scored_predecessor_cells": 1723,
+    "partial_reference_episodes": 82,
+    "all_evaluation_ecg_observed_seconds": 54510,
+    "complete_episodes_with_usable_raw_ppg_endpoint": 253,
+    "complete_episodes_with_shared_feature_endpoint": 253,
+    "episode_sensitivity_support_ceiling": 0.9730769230769231,
+    "wrist_analyzable_seconds": 7500.0,
+    "wrist_analyzable_non_af_seconds": 6872.005999999994
+  },
+  "participant_cluster_uncertainty": {
+    "method": "Participant-cluster percentile bootstrap, 95%, descriptive",
+    "replicates": 10000,
+    "seed": 20261124,
+    "participants_with_complete_episodes": 16,
+    "participants_with_ecg_observed_wrist_time": 25,
+    "mean_episode_sensitivity_across_participants": 0.5565167300317648,
+    "maximum_complete_episodes_from_one_participant": 157,
+    "episode_sensitivity_interval": [
+      0.3614457831325301,
+      0.6666666666666666
+    ],
+    "false_alerts_per_observed_wrist_hour_interval": [
+      12.96,
+      30.72
+    ]
+  },
+  "model_lock_sha256": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+  "coverage_report_sha256": "3d36659b2fedf826d9c0a0952d5e70b77cb7b697ae1a04e96571b91bbbca66d7"
+}

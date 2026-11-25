@@ -1,0 +1,6 @@
+/.venv/
+/data/
+/runs/
+/rddm-upstream/
+/rddm-weights/
+__pycache__/

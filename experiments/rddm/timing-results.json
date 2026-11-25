@@ -1,0 +1,836 @@
+{
+  "author_commit": "7d5348843c3985c211a23ae5105a2d9497d5156a",
+  "checkpoint_sha256": {
+    "rddm_main_network.pth": "e90490a9039cdf147be29404be94d4b04bfcccc3c0d94ee009bbe42f2c040eb9",
+    "rddm_condition_encoder_1.pth": "9f8ef5d758962030958674526d450b41bc188e27b1edf2c3fe5c1a4bfe067223",
+    "rddm_condition_encoder_2.pth": "3c7cbbc1585395381faf20489bd7d9091aafc9d3cbddde67e92cc3d050f6c3bd"
+  },
+  "diffusion_steps": 10,
+  "rddm_seed": 31,
+  "fold_seed": 2026,
+  "batch_size": 4,
+  "threads": 6,
+  "device": "cpu",
+  "input_window_seconds": 12,
+  "generated_block_seconds": 4,
+  "sample_rate_hz": 125,
+  "max_shift_ms": 400,
+  "anchor_match_tolerance_ms": 50,
+  "scoring_outer_trim_ms": 1000,
+  "frozen_inference_seconds": 92.185,
+  "scope": "Exploratory phase-only timing correction with frozen RDDM on the previously evaluated PTT cohort",
+  "dataset": "PhysioNet Pulse Transit Time PPG v1.1.0",
+  "selection": "One midpoint 12-second window per subject and activity",
+  "folds": [
+    {
+      "fold": 1,
+      "train_subjects": 13,
+      "validation_subjects": 4,
+      "test_subjects": 5,
+      "pulse_delay_ms": 184.0,
+      "generated_blocks": 45,
+      "shifted_blocks": 44
+    },
+    {
+      "fold": 2,
+      "train_subjects": 13,
+      "validation_subjects": 4,
+      "test_subjects": 5,
+      "pulse_delay_ms": 184.0,
+      "generated_blocks": 45,
+      "shifted_blocks": 40
+    },
+    {
+      "fold": 3,
+      "train_subjects": 14,
+      "validation_subjects": 4,
+      "test_subjects": 4,
+      "pulse_delay_ms": 184.0,
+      "generated_blocks": 36,
+      "shifted_blocks": 33
+    },
+    {
+      "fold": 4,
+      "train_subjects": 14,
+      "validation_subjects": 4,
+      "test_subjects": 4,
+      "pulse_delay_ms": 184.0,
+      "generated_blocks": 36,
+      "shifted_blocks": 30
+    },
+    {
+      "fold": 5,
+      "train_subjects": 14,
+      "validation_subjects": 4,
+      "test_subjects": 4,
+      "pulse_delay_ms": 176.0,
+      "generated_blocks": 36,
+      "shifted_blocks": 30
+    }
+  ],
+  "shift_distribution": [
+    {
+      "shift_ms": -400,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -392,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -384,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -376,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -344,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -336,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -328,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -312,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -304,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -296,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -288,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -272,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -264,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -256,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -248,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -240,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -232,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -224,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -208,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -192,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -184,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -176,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -160,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -152,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -144,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -136,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -128,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -120,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -112,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -104,
+      "blocks": 4
+    },
+    {
+      "shift_ms": -88,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -80,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -72,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -64,
+      "blocks": 4
+    },
+    {
+      "shift_ms": -56,
+      "blocks": 2
+    },
+    {
+      "shift_ms": -48,
+      "blocks": 4
+    },
+    {
+      "shift_ms": -40,
+      "blocks": 3
+    },
+    {
+      "shift_ms": -24,
+      "blocks": 1
+    },
+    {
+      "shift_ms": -16,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 0,
+      "blocks": 21
+    },
+    {
+      "shift_ms": 8,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 16,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 24,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 32,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 48,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 56,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 64,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 72,
+      "blocks": 4
+    },
+    {
+      "shift_ms": 80,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 88,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 96,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 112,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 120,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 128,
+      "blocks": 5
+    },
+    {
+      "shift_ms": 136,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 144,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 152,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 160,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 168,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 176,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 184,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 192,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 200,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 208,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 216,
+      "blocks": 5
+    },
+    {
+      "shift_ms": 224,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 232,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 248,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 256,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 264,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 272,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 280,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 288,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 296,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 304,
+      "blocks": 4
+    },
+    {
+      "shift_ms": 312,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 320,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 328,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 352,
+      "blocks": 2
+    },
+    {
+      "shift_ms": 368,
+      "blocks": 3
+    },
+    {
+      "shift_ms": 392,
+      "blocks": 1
+    },
+    {
+      "shift_ms": 400,
+      "blocks": 3
+    }
+  ],
+  "original_full_support": {
+    "windows": 66,
+    "common_support_fraction": 1.0,
+    "models": {
+      "rddm_frozen": {
+        "median_pearson_r": 0.011205754138966038,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 940,
+          "predicted_peaks": 891,
+          "matched_peaks": 211,
+          "precision": 0.23681257014590348,
+          "recall": 0.22446808510638297,
+          "f1": 0.2304751501911524,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 82,
+          "median_abs_rr_error_ms": 40.0
+        }
+      }
+    },
+    "measured_ecg_detector": {
+      "reference_peaks": 940,
+      "predicted_peaks": 948,
+      "matched_peaks": 937,
+      "precision": 0.9883966244725738,
+      "recall": 0.9968085106382979,
+      "f1": 0.9925847457627118,
+      "median_abs_timing_error_ms": 0.0,
+      "matched_consecutive_intervals": 858,
+      "median_abs_rr_error_ms": 0.0
+    }
+  },
+  "original_error_diagnostic": {
+    "windows": 66,
+    "windows_with_scoring_support": 66,
+    "support_fraction": 1.0,
+    "timing_error_sign": "predicted minus annotated milliseconds",
+    "models": {
+      "rddm_frozen": {
+        "reference_peaks": 940,
+        "predicted_peaks": 891,
+        "mean_signed_peak_count_error_per_window": -0.7424242424242424,
+        "mean_absolute_peak_count_error_per_window": 2.1666666666666665,
+        "by_tolerance_ms": {
+          "100": {
+            "matched_peaks": 211,
+            "unmatched_reference_peaks": 729,
+            "unmatched_predicted_peaks": 680,
+            "f1": 0.2304751501911524,
+            "median_signed_error_ms": 24.0,
+            "median_absolute_error_ms": 48.0,
+            "early_pct": 36.018957345971565,
+            "exact_pct": 3.3175355450236967,
+            "late_pct": 60.66350710900474
+          },
+          "200": {
+            "matched_peaks": 486,
+            "unmatched_reference_peaks": 454,
+            "unmatched_predicted_peaks": 405,
+            "f1": 0.5308574549426542,
+            "median_signed_error_ms": 24.0,
+            "median_absolute_error_ms": 112.0,
+            "early_pct": 43.20987654320987,
+            "exact_pct": 1.440329218106996,
+            "late_pct": 55.349794238683124
+          }
+        }
+      }
+    }
+  },
+  "paired_comparison": {
+    "subjects": 22,
+    "windows": 66,
+    "common_support_fraction": 0.84,
+    "models": {
+      "rddm_frozen": {
+        "median_pearson_r": 0.00867166484907236,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 791,
+          "predicted_peaks": 748,
+          "matched_peaks": 169,
+          "precision": 0.22593582887700533,
+          "recall": 0.213653603034134,
+          "f1": 0.21962313190383365,
+          "median_abs_timing_error_ms": 48.0,
+          "matched_consecutive_intervals": 60,
+          "median_abs_rr_error_ms": 40.0
+        }
+      },
+      "rddm_timing_correction": {
+        "median_pearson_r": 0.030939528551994267,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 791,
+          "predicted_peaks": 761,
+          "matched_peaks": 472,
+          "precision": 0.6202365308804205,
+          "recall": 0.5967130214917825,
+          "f1": 0.6082474226804123,
+          "median_abs_timing_error_ms": 32.0,
+          "matched_consecutive_intervals": 259,
+          "median_abs_rr_error_ms": 32.0
+        }
+      },
+      "pulse_template_ptt": {
+        "median_pearson_r": 0.18515845119733104,
+        "correlation_windows": 66,
+        "own_support_fraction": 1.0,
+        "waveform_beats": {
+          "reference_peaks": 791,
+          "predicted_peaks": 814,
+          "matched_peaks": 708,
+          "precision": 0.8697788697788698,
+          "recall": 0.8950695322376738,
+          "f1": 0.8822429906542056,
+          "median_abs_timing_error_ms": 16.0,
+          "matched_consecutive_intervals": 488,
+          "median_abs_rr_error_ms": 8.0
+        }
+      }
+    },
+    "measured_ecg_detector": {
+      "reference_peaks": 791,
+      "predicted_peaks": 796,
+      "matched_peaks": 789,
+      "precision": 0.9912060301507538,
+      "recall": 0.9974715549936789,
+      "f1": 0.994328922495274,
+      "median_abs_timing_error_ms": 0.0,
+      "matched_consecutive_intervals": 585,
+      "median_abs_rr_error_ms": 0.0
+    }
+  },
+  "by_activity": {
+    "run": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 0.84,
+      "models": {
+        "rddm_frozen": {
+          "median_pearson_r": 0.003661292896918616,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 284,
+            "predicted_peaks": 260,
+            "matched_peaks": 74,
+            "precision": 0.2846153846153846,
+            "recall": 0.2605633802816901,
+            "f1": 0.27205882352941174,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 32,
+            "median_abs_rr_error_ms": 40.0
+          }
+        },
+        "rddm_timing_correction": {
+          "median_pearson_r": 0.009577348603381906,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 284,
+            "predicted_peaks": 260,
+            "matched_peaks": 183,
+            "precision": 0.7038461538461539,
+            "recall": 0.6443661971830986,
+            "f1": 0.6727941176470589,
+            "median_abs_timing_error_ms": 24.0,
+            "matched_consecutive_intervals": 110,
+            "median_abs_rr_error_ms": 32.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.1970440822299268,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 284,
+            "predicted_peaks": 291,
+            "matched_peaks": 262,
+            "precision": 0.9003436426116839,
+            "recall": 0.9225352112676056,
+            "f1": 0.9113043478260869,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 195,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 284,
+        "predicted_peaks": 287,
+        "matched_peaks": 283,
+        "precision": 0.9860627177700348,
+        "recall": 0.9964788732394366,
+        "f1": 0.9912434325744308,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 215,
+        "median_abs_rr_error_ms": 0.0
+      }
+    },
+    "sit": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 0.84,
+      "models": {
+        "rddm_frozen": {
+          "median_pearson_r": 0.015378263798375036,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 234,
+            "predicted_peaks": 254,
+            "matched_peaks": 46,
+            "precision": 0.18110236220472442,
+            "recall": 0.19658119658119658,
+            "f1": 0.1885245901639344,
+            "median_abs_timing_error_ms": 48.0,
+            "matched_consecutive_intervals": 13,
+            "median_abs_rr_error_ms": 48.0
+          }
+        },
+        "rddm_timing_correction": {
+          "median_pearson_r": 0.02039107545210698,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 234,
+            "predicted_peaks": 260,
+            "matched_peaks": 150,
+            "precision": 0.5769230769230769,
+            "recall": 0.6410256410256411,
+            "f1": 0.6072874493927125,
+            "median_abs_timing_error_ms": 24.0,
+            "matched_consecutive_intervals": 77,
+            "median_abs_rr_error_ms": 32.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.3897877649546254,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 234,
+            "predicted_peaks": 236,
+            "matched_peaks": 229,
+            "precision": 0.9703389830508474,
+            "recall": 0.9786324786324786,
+            "f1": 0.9744680851063829,
+            "median_abs_timing_error_ms": 8.0,
+            "matched_consecutive_intervals": 161,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 234,
+        "predicted_peaks": 233,
+        "matched_peaks": 233,
+        "precision": 1.0,
+        "recall": 0.9957264957264957,
+        "f1": 0.9978586723768736,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 166,
+        "median_abs_rr_error_ms": 0.0
+      }
+    },
+    "walk": {
+      "subjects": 22,
+      "windows": 22,
+      "common_support_fraction": 0.84,
+      "models": {
+        "rddm_frozen": {
+          "median_pearson_r": 0.007588411017853751,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 273,
+            "predicted_peaks": 234,
+            "matched_peaks": 49,
+            "precision": 0.2094017094017094,
+            "recall": 0.1794871794871795,
+            "f1": 0.1932938856015779,
+            "median_abs_timing_error_ms": 56.0,
+            "matched_consecutive_intervals": 15,
+            "median_abs_rr_error_ms": 56.0
+          }
+        },
+        "rddm_timing_correction": {
+          "median_pearson_r": 0.04028010713889271,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 273,
+            "predicted_peaks": 241,
+            "matched_peaks": 139,
+            "precision": 0.5767634854771784,
+            "recall": 0.5091575091575091,
+            "f1": 0.5408560311284046,
+            "median_abs_timing_error_ms": 32.0,
+            "matched_consecutive_intervals": 72,
+            "median_abs_rr_error_ms": 40.0
+          }
+        },
+        "pulse_template_ptt": {
+          "median_pearson_r": 0.1067698007840679,
+          "correlation_windows": 22,
+          "own_support_fraction": 1.0,
+          "waveform_beats": {
+            "reference_peaks": 273,
+            "predicted_peaks": 287,
+            "matched_peaks": 217,
+            "precision": 0.7560975609756098,
+            "recall": 0.7948717948717948,
+            "f1": 0.775,
+            "median_abs_timing_error_ms": 16.0,
+            "matched_consecutive_intervals": 132,
+            "median_abs_rr_error_ms": 8.0
+          }
+        }
+      },
+      "measured_ecg_detector": {
+        "reference_peaks": 273,
+        "predicted_peaks": 276,
+        "matched_peaks": 273,
+        "precision": 0.9891304347826086,
+        "recall": 1.0,
+        "f1": 0.994535519125683,
+        "median_abs_timing_error_ms": 0.0,
+        "matched_consecutive_intervals": 204,
+        "median_abs_rr_error_ms": 0.0
+      }
+    }
+  },
+  "paired_error_diagnostic": {
+    "windows": 66,
+    "windows_with_scoring_support": 66,
+    "support_fraction": 0.84,
+    "timing_error_sign": "predicted minus annotated milliseconds",
+    "models": {
+      "rddm_frozen": {
+        "reference_peaks": 791,
+        "predicted_peaks": 748,
+        "mean_signed_peak_count_error_per_window": -0.6515151515151515,
+        "mean_absolute_peak_count_error_per_window": 1.9242424242424243,
+        "by_tolerance_ms": {
+          "100": {
+            "matched_peaks": 169,
+            "unmatched_reference_peaks": 622,
+            "unmatched_predicted_peaks": 579,
+            "f1": 0.21962313190383365,
+            "median_signed_error_ms": 24.0,
+            "median_absolute_error_ms": 48.0,
+            "early_pct": 35.50295857988166,
+            "exact_pct": 2.9585798816568047,
+            "late_pct": 61.53846153846154
+          },
+          "200": {
+            "matched_peaks": 396,
+            "unmatched_reference_peaks": 395,
+            "unmatched_predicted_peaks": 352,
+            "f1": 0.5146198830409356,
+            "median_signed_error_ms": 24.0,
+            "median_absolute_error_ms": 112.0,
+            "early_pct": 43.93939393939394,
+            "exact_pct": 1.2626262626262625,
+            "late_pct": 54.7979797979798
+          }
+        }
+      },
+      "rddm_timing_correction": {
+        "reference_peaks": 791,
+        "predicted_peaks": 761,
+        "mean_signed_peak_count_error_per_window": -0.45454545454545453,
+        "mean_absolute_peak_count_error_per_window": 1.7272727272727273,
+        "by_tolerance_ms": {
+          "100": {
+            "matched_peaks": 472,
+            "unmatched_reference_peaks": 319,
+            "unmatched_predicted_peaks": 289,
+            "f1": 0.6082474226804123,
+            "median_signed_error_ms": 0.0,
+            "median_absolute_error_ms": 32.0,
+            "early_pct": 48.516949152542374,
+            "exact_pct": 8.050847457627118,
+            "late_pct": 43.43220338983051
+          },
+          "200": {
+            "matched_peaks": 599,
+            "unmatched_reference_peaks": 192,
+            "unmatched_predicted_peaks": 162,
+            "f1": 0.7719072164948454,
+            "median_signed_error_ms": -8.0,
+            "median_absolute_error_ms": 40.0,
+            "early_pct": 50.918196994991646,
+            "exact_pct": 6.3439065108514185,
+            "late_pct": 42.73789649415693
+          }
+        }
+      },
+      "pulse_template_ptt": {
+        "reference_peaks": 791,
+        "predicted_peaks": 814,
+        "mean_signed_peak_count_error_per_window": 0.3484848484848485,
+        "mean_absolute_peak_count_error_per_window": 0.803030303030303,
+        "by_tolerance_ms": {
+          "100": {
+            "matched_peaks": 708,
+            "unmatched_reference_peaks": 83,
+            "unmatched_predicted_peaks": 106,
+            "f1": 0.8822429906542056,
+            "median_signed_error_ms": 0.0,
+            "median_absolute_error_ms": 16.0,
+            "early_pct": 46.46892655367232,
+            "exact_pct": 15.254237288135593,
+            "late_pct": 38.27683615819209
+          },
+          "200": {
+            "matched_peaks": 735,
+            "unmatched_reference_peaks": 56,
+            "unmatched_predicted_peaks": 79,
+            "f1": 0.9158878504672897,
+            "median_signed_error_ms": 0.0,
+            "median_absolute_error_ms": 16.0,
+            "early_pct": 47.755102040816325,
+            "exact_pct": 14.69387755102041,
+            "late_pct": 37.55102040816327
+          }
+        }
+      }
+    }
+  }
+}

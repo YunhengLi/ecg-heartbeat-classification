@@ -1,0 +1,45 @@
+{
+  "scope": "Descriptive native ICU electrical and optical rhythm timing around annotated AF offsets",
+  "staging": {
+    "planned_boundaries": 16,
+    "scheduled_seconds_each": 240,
+    "plan_sha256": "1762af628615c703acd41f5fd667d008e9840a5ec2ae293178705f01b31beca0",
+    "status": {
+      "paired_channels_not_continuous": 6,
+      "outside_reviewed_clock": 7,
+      "both_waves_staged": 3
+    }
+  },
+  "records_with_common_before_and_after_signal": 3,
+  "coverage": {
+    "after_offset_ECG_consensus": 9,
+    "after_offset_matched": 9,
+    "after_offset_scheduled": 12,
+    "before_offset_ECG_consensus": 11,
+    "before_offset_matched": 11,
+    "before_offset_scheduled": 12
+  },
+  "wrist_model_sha256": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+  "matched_record_summary": {
+    "measured_ECG_irregularity": {
+      "median_before": 0.9503585961877554,
+      "median_after": 0.014019320423709885,
+      "records_with_higher_values_before": 2
+    },
+    "direct_PPG_irregularity": {
+      "median_before": 1.2711673202173435,
+      "median_after": 1.326950348376767,
+      "records_with_higher_values_before": 1
+    },
+    "template_irregularity": {
+      "median_before": 1.2711673202173435,
+      "median_after": 1.3339728909000625,
+      "records_with_higher_values_before": 2
+    },
+    "frozen_wrist_AF_score": {
+      "median_before": 0.8146453603886175,
+      "median_after": 0.771070636438591,
+      "records_with_higher_values_before": 2
+    }
+  }
+}

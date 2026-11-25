@@ -1,0 +1,706 @@
+{
+  "scope": "Verify a fixed lower wrist peak prominence against paired ECG and held-out AF alerts",
+  "prominence_relative_to_bandpassed_5th_to_95th_percentile_range": {
+    "original_detector": 0.18,
+    "half_prominence": 0.09
+  },
+  "long_gap_fractions_of_median_interval": [
+    1.5,
+    2.5
+  ],
+  "required_split_fractions_of_median_interval": [
+    0.6,
+    1.4
+  ],
+  "total_observed_peaks_inserted_in_long_gaps": 499,
+  "native_wrist_waveform_comparison": {
+    "beat_matching": {
+      "overall": {
+        "participants": 9,
+        "windows": 223,
+        "routes": {
+          "original_detector": {
+            "reference_peaks": 7549,
+            "predicted_peaks": 6879,
+            "matched_peaks": 4607,
+            "precision": 0.6697194359645298,
+            "recall": 0.6102795072194993,
+            "f1": 0.6386193512614361,
+            "median_abs_timing_error_ms": 25.999999995692633,
+            "matched_consecutive_intervals": 3419,
+            "median_abs_rr_error_ms": 14.000000002270099
+          },
+          "half_prominence": {
+            "reference_peaks": 7549,
+            "predicted_peaks": 7688,
+            "matched_peaks": 4883,
+            "precision": 0.6351456815816857,
+            "recall": 0.6468406411445224,
+            "f1": 0.6409398175493863,
+            "median_abs_timing_error_ms": 26.000000005587935,
+            "matched_consecutive_intervals": 3520,
+            "median_abs_rr_error_ms": 14.00000001071021
+          },
+          "weak_pulse_inside_long_gap": {
+            "reference_peaks": 7549,
+            "predicted_peaks": 7035,
+            "matched_peaks": 4679,
+            "precision": 0.6651030561478323,
+            "recall": 0.6198171943303749,
+            "f1": 0.6416620954470653,
+            "median_abs_timing_error_ms": 25.999999997438863,
+            "matched_consecutive_intervals": 3486,
+            "median_abs_rr_error_ms": 14.000000006053597
+          }
+        }
+      },
+      "by_synchronization": {
+        "beat": {
+          "participants": 8,
+          "windows": 200,
+          "routes": {
+            "original_detector": {
+              "reference_peaks": 6918,
+              "predicted_peaks": 5980,
+              "matched_peaks": 4551,
+              "precision": 0.7610367892976588,
+              "recall": 0.6578490893321769,
+              "f1": 0.7056908047759343,
+              "median_abs_timing_error_ms": 25.99999998928979,
+              "matched_consecutive_intervals": 3419,
+              "median_abs_rr_error_ms": 14.000000002270099
+            },
+            "half_prominence": {
+              "reference_peaks": 6918,
+              "predicted_peaks": 6632,
+              "matched_peaks": 4803,
+              "precision": 0.7242159227985525,
+              "recall": 0.694275802254987,
+              "f1": 0.708929889298893,
+              "median_abs_timing_error_ms": 26.000000002095476,
+              "matched_consecutive_intervals": 3520,
+              "median_abs_rr_error_ms": 14.00000001071021
+            },
+            "weak_pulse_inside_long_gap": {
+              "reference_peaks": 6918,
+              "predicted_peaks": 6097,
+              "matched_peaks": 4619,
+              "precision": 0.7575856978842054,
+              "recall": 0.6676785198034114,
+              "f1": 0.7097963887821744,
+              "median_abs_timing_error_ms": 25.999999991618097,
+              "matched_consecutive_intervals": 3486,
+              "median_abs_rr_error_ms": 14.000000006053597
+            }
+          }
+        },
+        "coarse": {
+          "participants": 2,
+          "windows": 23,
+          "routes": {
+            "original_detector": {
+              "reference_peaks": 631,
+              "predicted_peaks": 899,
+              "matched_peaks": 56,
+              "precision": 0.06229143492769744,
+              "recall": 0.08874801901743265,
+              "f1": 0.07320261437908497,
+              "median_abs_timing_error_ms": 55.99999998463318,
+              "matched_consecutive_intervals": 0,
+              "median_abs_rr_error_ms": null
+            },
+            "half_prominence": {
+              "reference_peaks": 631,
+              "predicted_peaks": 1056,
+              "matched_peaks": 80,
+              "precision": 0.07575757575757576,
+              "recall": 0.12678288431061807,
+              "f1": 0.0948429164196799,
+              "median_abs_timing_error_ms": 48.00000000541331,
+              "matched_consecutive_intervals": 0,
+              "median_abs_rr_error_ms": null
+            },
+            "weak_pulse_inside_long_gap": {
+              "reference_peaks": 631,
+              "predicted_peaks": 938,
+              "matched_peaks": 60,
+              "precision": 0.06396588486140725,
+              "recall": 0.09508716323296355,
+              "f1": 0.07648183556405354,
+              "median_abs_timing_error_ms": 55.99999998463318,
+              "matched_consecutive_intervals": 0,
+              "median_abs_rr_error_ms": null
+            }
+          }
+        }
+      },
+      "by_rhythm": {
+        "AF": {
+          "participants": 7,
+          "windows": 77,
+          "routes": {
+            "original_detector": {
+              "reference_peaks": 3439,
+              "predicted_peaks": 2771,
+              "matched_peaks": 1917,
+              "precision": 0.6918080115481775,
+              "recall": 0.5574294853154987,
+              "f1": 0.6173913043478261,
+              "median_abs_timing_error_ms": 24.999999974854745,
+              "matched_consecutive_intervals": 1192,
+              "median_abs_rr_error_ms": 26.00000001839362
+            },
+            "half_prominence": {
+              "reference_peaks": 3439,
+              "predicted_peaks": 3174,
+              "matched_peaks": 2096,
+              "precision": 0.6603654694391935,
+              "recall": 0.6094794998546089,
+              "f1": 0.6339029184938757,
+              "median_abs_timing_error_ms": 26.000000002095476,
+              "matched_consecutive_intervals": 1281,
+              "median_abs_rr_error_ms": 27.9999999969732
+            },
+            "weak_pulse_inside_long_gap": {
+              "reference_peaks": 3439,
+              "predicted_peaks": 2842,
+              "matched_peaks": 1957,
+              "precision": 0.6885995777621393,
+              "recall": 0.569060773480663,
+              "f1": 0.6231491800668684,
+              "median_abs_timing_error_ms": 24.999999993481197,
+              "matched_consecutive_intervals": 1220,
+              "median_abs_rr_error_ms": 27.999999983003363
+            }
+          }
+        },
+        "non_AF": {
+          "participants": 9,
+          "windows": 146,
+          "routes": {
+            "original_detector": {
+              "reference_peaks": 4110,
+              "predicted_peaks": 4108,
+              "matched_peaks": 2690,
+              "precision": 0.6548198636806232,
+              "recall": 0.6545012165450121,
+              "f1": 0.6546605013385252,
+              "median_abs_timing_error_ms": 26.00000000325963,
+              "matched_consecutive_intervals": 2227,
+              "median_abs_rr_error_ms": 10.000000027939677
+            },
+            "half_prominence": {
+              "reference_peaks": 4110,
+              "predicted_peaks": 4514,
+              "matched_peaks": 2787,
+              "precision": 0.6174124944616748,
+              "recall": 0.6781021897810219,
+              "f1": 0.6463358070500927,
+              "median_abs_timing_error_ms": 26.000000009080395,
+              "matched_consecutive_intervals": 2239,
+              "median_abs_rr_error_ms": 10.000000027939677
+            },
+            "weak_pulse_inside_long_gap": {
+              "reference_peaks": 4110,
+              "predicted_peaks": 4193,
+              "matched_peaks": 2722,
+              "precision": 0.6491772000953971,
+              "recall": 0.662287104622871,
+              "f1": 0.6556666265205348,
+              "median_abs_timing_error_ms": 26.00000000325963,
+              "matched_consecutive_intervals": 2266,
+              "median_abs_rr_error_ms": 10.000000048894435
+            }
+          }
+        }
+      }
+    },
+    "combined_interval_irregularity_error": {
+      "overall": {
+        "stable_windows": 223,
+        "matched_windows": 223,
+        "methods": {
+          "original_detector": {
+            "median_absolute_irregularity_error": 0.2738904277517239,
+            "median_irregularity_bias": 0.25219128285793446,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "half_prominence": {
+            "median_absolute_irregularity_error": 0.2809375308975142,
+            "median_irregularity_bias": 0.24169346825769783,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "weak_pulse_inside_long_gap": {
+            "median_absolute_irregularity_error": 0.24915083544264116,
+            "median_irregularity_bias": 0.22198164083698646,
+            "median_accepted_interval_fraction": 1.0
+          }
+        }
+      },
+      "stable_AF": {
+        "stable_windows": 77,
+        "matched_windows": 77,
+        "methods": {
+          "original_detector": {
+            "median_absolute_irregularity_error": 0.19917307979031706,
+            "median_irregularity_bias": 0.08807960951914384,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "half_prominence": {
+            "median_absolute_irregularity_error": 0.19174175023685525,
+            "median_irregularity_bias": 0.1375447432867123,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "weak_pulse_inside_long_gap": {
+            "median_absolute_irregularity_error": 0.19301077160836777,
+            "median_irregularity_bias": 0.08119180154450767,
+            "median_accepted_interval_fraction": 1.0
+          }
+        }
+      },
+      "stable_non_AF": {
+        "stable_windows": 146,
+        "matched_windows": 146,
+        "methods": {
+          "original_detector": {
+            "median_absolute_irregularity_error": 0.3699255213714798,
+            "median_irregularity_bias": 0.36663314542733894,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "half_prominence": {
+            "median_absolute_irregularity_error": 0.39591666395596015,
+            "median_irregularity_bias": 0.37773141193532556,
+            "median_accepted_interval_fraction": 1.0
+          },
+          "weak_pulse_inside_long_gap": {
+            "median_absolute_irregularity_error": 0.36337865508595674,
+            "median_irregularity_bias": 0.3592679759090307,
+            "median_accepted_interval_fraction": 1.0
+          }
+        }
+      }
+    },
+    "archive_delay_used_on_beat_aligned_rows_ms": 300,
+    "external_template_delay_used_on_coarse_rows_ms": 190.0
+  },
+  "alert_input_support": {
+    "original_detector": {
+      "supported": 881,
+      "template_fallback": 0
+    },
+    "half_prominence": {
+      "supported": 881,
+      "template_fallback": 0
+    },
+    "weak_pulse_inside_long_gap": {
+      "supported": 881,
+      "template_fallback": 0
+    }
+  },
+  "alert_comparisons": {
+    "2026": {
+      "quality_interactions": {
+        "complete_episodes": 17,
+        "episodes_detected": 14,
+        "episode_sensitivity": 0.8235294117647058,
+        "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 14,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "original_detector": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 12,
+          "episode_sensitivity": 0.7058823529411765,
+          "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 3,
+          "false_alerts_per_observed_wrist_hour": 3.870967741935484,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 12,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 0,
+            "lost": 2,
+            "detected_by_both": 12,
+            "detected_by_neither": 3,
+            "baseline_median_delay_s": 20.52400000000489,
+            "candidate_median_delay_s": 20.52400000000489,
+            "median_delay_change_s_for_shared": 0.0,
+            "shared_delayed": 1,
+            "shared_earlier": 0,
+            "shared_unchanged": 11
+          },
+          "false_starts": {
+            "baseline": 4,
+            "candidate": 3,
+            "shared_exact": 3,
+            "baseline_only_exact": 1,
+            "candidate_only_exact": 0
+          }
+        },
+        "sensitivity_change": -0.11764705882352933,
+        "within_sensitivity_tolerance": false,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 3,
+            "candidate": 3,
+            "shared_exact": 3,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 3,
+            "candidate": 3,
+            "gained": 0,
+            "lost": 0,
+            "both": 3,
+            "neither": 7
+          }
+        }
+      },
+      "half_prominence": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 12,
+          "episode_sensitivity": 0.7058823529411765,
+          "median_delay_seconds_in_detected_episodes": 20.65700000000652,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 4,
+          "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 12,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 1,
+            "lost": 3,
+            "detected_by_both": 11,
+            "detected_by_neither": 2,
+            "baseline_median_delay_s": 20.52400000000489,
+            "candidate_median_delay_s": 20.65700000000652,
+            "median_delay_change_s_for_shared": 0.0,
+            "shared_delayed": 2,
+            "shared_earlier": 1,
+            "shared_unchanged": 8
+          },
+          "false_starts": {
+            "baseline": 4,
+            "candidate": 4,
+            "shared_exact": 2,
+            "baseline_only_exact": 2,
+            "candidate_only_exact": 2
+          }
+        },
+        "sensitivity_change": -0.11764705882352933,
+        "within_sensitivity_tolerance": false,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 3,
+            "candidate": 3,
+            "shared_exact": 2,
+            "baseline_only_exact": 1,
+            "candidate_only_exact": 1
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 3,
+            "candidate": 3,
+            "gained": 1,
+            "lost": 1,
+            "both": 2,
+            "neither": 6
+          }
+        }
+      },
+      "weak_pulse_inside_long_gap": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 11,
+          "episode_sensitivity": 0.6470588235294118,
+          "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 3,
+          "false_alerts_per_observed_wrist_hour": 3.870967741935484,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 11,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 1,
+            "lost": 4,
+            "detected_by_both": 10,
+            "detected_by_neither": 2,
+            "baseline_median_delay_s": 20.52400000000489,
+            "candidate_median_delay_s": 20.612000000022817,
+            "median_delay_change_s_for_shared": 0.0,
+            "shared_delayed": 2,
+            "shared_earlier": 1,
+            "shared_unchanged": 7
+          },
+          "false_starts": {
+            "baseline": 4,
+            "candidate": 3,
+            "shared_exact": 3,
+            "baseline_only_exact": 1,
+            "candidate_only_exact": 0
+          }
+        },
+        "sensitivity_change": -0.17647058823529405,
+        "within_sensitivity_tolerance": false,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 3,
+            "candidate": 3,
+            "shared_exact": 2,
+            "baseline_only_exact": 1,
+            "candidate_only_exact": 1
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 3,
+            "candidate": 3,
+            "gained": 1,
+            "lost": 1,
+            "both": 2,
+            "neither": 6
+          }
+        }
+      }
+    },
+    "2030": {
+      "quality_interactions": {
+        "complete_episodes": 17,
+        "episodes_detected": 1,
+        "episode_sensitivity": 0.058823529411764705,
+        "median_delay_seconds_in_detected_episodes": 23.529999999998836,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 0,
+        "false_alerts_per_observed_wrist_hour": 0.0,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 1,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "original_detector": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 1,
+          "episode_sensitivity": 0.058823529411764705,
+          "median_delay_seconds_in_detected_episodes": 13.529999999998836,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 0,
+          "false_alerts_per_observed_wrist_hour": 0.0,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 1,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 0,
+            "lost": 0,
+            "detected_by_both": 1,
+            "detected_by_neither": 16,
+            "baseline_median_delay_s": 23.529999999998836,
+            "candidate_median_delay_s": 13.529999999998836,
+            "median_delay_change_s_for_shared": -10.0,
+            "shared_delayed": 0,
+            "shared_earlier": 1,
+            "shared_unchanged": 0
+          },
+          "false_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          }
+        },
+        "sensitivity_change": 0.0,
+        "within_sensitivity_tolerance": true,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 0,
+            "candidate": 0,
+            "gained": 0,
+            "lost": 0,
+            "both": 0,
+            "neither": 10
+          }
+        }
+      },
+      "half_prominence": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 1,
+          "episode_sensitivity": 0.058823529411764705,
+          "median_delay_seconds_in_detected_episodes": 23.529999999998836,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 0,
+          "false_alerts_per_observed_wrist_hour": 0.0,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 1,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 0,
+            "lost": 0,
+            "detected_by_both": 1,
+            "detected_by_neither": 16,
+            "baseline_median_delay_s": 23.529999999998836,
+            "candidate_median_delay_s": 23.529999999998836,
+            "median_delay_change_s_for_shared": 0.0,
+            "shared_delayed": 0,
+            "shared_earlier": 0,
+            "shared_unchanged": 1
+          },
+          "false_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          }
+        },
+        "sensitivity_change": 0.0,
+        "within_sensitivity_tolerance": true,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 0,
+            "candidate": 0,
+            "gained": 0,
+            "lost": 0,
+            "both": 0,
+            "neither": 10
+          }
+        }
+      },
+      "weak_pulse_inside_long_gap": {
+        "summary": {
+          "complete_episodes": 17,
+          "episodes_detected": 1,
+          "episode_sensitivity": 0.058823529411764705,
+          "median_delay_seconds_in_detected_episodes": 13.529999999998836,
+          "wrist_ecg_observed_seconds": 2790.0,
+          "wrist_non_af_seconds": 2040.0,
+          "wrist_false_alerts": 0,
+          "false_alerts_per_observed_wrist_hour": 0.0,
+          "monitor_blocks_with_unknown_cutoff_state": 0,
+          "episode_blocks_with_unknown_cutoff_state": 0,
+          "possibly_detected_episodes": 1,
+          "possible_non_af_alert_timestamps": 0
+        },
+        "paired_changes": {
+          "episodes": {
+            "complete": 17,
+            "gained": 0,
+            "lost": 0,
+            "detected_by_both": 1,
+            "detected_by_neither": 16,
+            "baseline_median_delay_s": 23.529999999998836,
+            "candidate_median_delay_s": 13.529999999998836,
+            "median_delay_change_s_for_shared": -10.0,
+            "shared_delayed": 0,
+            "shared_earlier": 1,
+            "shared_unchanged": 0
+          },
+          "false_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          }
+        },
+        "sensitivity_change": 0.0,
+        "within_sensitivity_tolerance": true,
+        "both_reach_sensitivity_target": false,
+        "pre_onset_comparison": {
+          "complete_episodes": 17,
+          "supported_episodes": 10,
+          "excluded_insufficient_ecg_coverage": 3,
+          "excluded_prior_af": 4,
+          "pre_onset_starts": {
+            "baseline": 0,
+            "candidate": 0,
+            "shared_exact": 0,
+            "baseline_only_exact": 0,
+            "candidate_only_exact": 0
+          },
+          "episodes_with_pre_onset_start": {
+            "baseline": 0,
+            "candidate": 0,
+            "gained": 0,
+            "lost": 0,
+            "both": 0,
+            "neither": 10
+          }
+        }
+      }
+    }
+  }
+}

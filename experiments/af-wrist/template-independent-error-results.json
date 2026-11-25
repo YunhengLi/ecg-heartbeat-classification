@@ -1,0 +1,125 @@
+{
+  "scope": "Post-hoc error audit of the fixed independent template ECG result",
+  "independent_participants": 25,
+  "complete_reference_episodes": 260,
+  "complete_episodes_detected": 155,
+  "partial_reference_episodes": 82,
+  "wrist_false_alerts": 45,
+  "miss_audit": {
+    "complete_episodes": 260,
+    "detected": 155,
+    "episode_sensitivity": 0.5961538461538461,
+    "missed": 105,
+    "misses_by_mechanism": {
+      "all_in_episode_scores_below_cutoff": 32,
+      "carried_alert_with_positive_in_episode": 66,
+      "no_score": 7
+    },
+    "scored_misses": 98,
+    "scored_misses_with_alert_active_at_onset": 69,
+    "below_cutoff_misses_with_alert_active_at_onset": 3,
+    "scored_misses_with_wholly_af_feature_window": 62,
+    "below_cutoff_misses_with_wholly_af_feature_window": 18,
+    "no_score_misses": {
+      "no_decision_endpoint": 5,
+      "decision_endpoints_but_all_inputs_flat": 2,
+      "alert_active_at_onset": 3
+    },
+    "below_cutoff_margin": {
+      "median_best_score_minus_cutoff": -0.30408720750758667,
+      "largest_best_score_minus_cutoff": -0.036960597141494356,
+      "within_0_01_of_cutoff": 0,
+      "within_0_05_of_cutoff": 3
+    },
+    "carried_alerts": {
+      "observed_origins": {
+        "ECG_AF": 1,
+        "ECG_non_AF": 19,
+        "ECG_unobserved": 1,
+        "already_active_at_start_of_replayed_segment": 45
+      },
+      "median_observed_start_lead_s": 13.349999999976717,
+      "median_first_positive_after_onset_s": 4.529000000009546
+    },
+    "scored_misses_followed_by_new_alert": {
+      "followup_window_s": 30,
+      "with_complete_ECG_non_AF_followup": 54,
+      "new_starts_during_complete_non_AF_followup": 8,
+      "median_new_start_delay_from_offset_s": 17.384000000012747
+    },
+    "participant_concentration": {
+      "participants_with_complete_episodes": 16,
+      "participants_with_missed_episodes": 11,
+      "maximum_complete_episodes_per_participant": 157,
+      "participants_tied_for_maximum": 1,
+      "maximum_episode_participant_group": {
+        "complete_episodes": 157,
+        "detected": 107,
+        "episode_sensitivity": 0.6815286624203821,
+        "missed": 50,
+        "misses_by_mechanism": {
+          "all_in_episode_scores_below_cutoff": 14,
+          "carried_alert_with_positive_in_episode": 35,
+          "no_score": 1
+        }
+      },
+      "all_other_participants_with_complete_episodes": {
+        "complete_episodes": 103,
+        "detected": 48,
+        "episode_sensitivity": 0.46601941747572817,
+        "missed": 55,
+        "misses_by_mechanism": {
+          "all_in_episode_scores_below_cutoff": 18,
+          "carried_alert_with_positive_in_episode": 31,
+          "no_score": 6
+        }
+      }
+    }
+  },
+  "false_alert_audit": {
+    "false_starts": 45,
+    "positive_streak": {
+      "one_positive_then_reset": 10,
+      "multiple_positives": 33,
+      "one_positive_then_boundary": 2
+    },
+    "duration": {
+      "under_30_seconds_observed": 20,
+      "at_least_30_seconds_observed": 22,
+      "censored_before_30_seconds": 3
+    },
+    "active_for_first_30_seconds_continuous_ECG_non_AF": 22,
+    "one_positive_reset_type": {
+      "negative": 10,
+      "unavailable": 0
+    },
+    "restart_within_30_seconds_after_reset": {
+      "negative": 24,
+      "unavailable": 0
+    },
+    "trailing_reference": {
+      "known_AF_overlap": 0,
+      "fully_observed_non_AF": 44,
+      "incomplete_reference": 1
+    },
+    "median_score_margin_at_false_start": 0.3300214414353074,
+    "median_score_margin_at_scored_non_af_wrist_decisions": -0.3508173287103602,
+    "median_raw_quality_at_false_start": 0.38160339412070193,
+    "median_raw_quality_at_scored_non_af_wrist_decisions": 0.4406339222814807,
+    "participants_with_false_starts": 15,
+    "participants_with_no_false_start": 10,
+    "false_starts_by_participant_count": {
+      "0": 10,
+      "1": 4,
+      "2": 2,
+      "3": 3,
+      "4": 3,
+      "5": 2,
+      "6": 1
+    },
+    "largest_false_start_count_from_one_participant": 6,
+    "top_three_participants_false_starts": 16,
+    "false_starts_from_largest_episode_contributor": 2
+  },
+  "published_result_sha256": "0af4f089923cc446f207ba9cc459432faabcf28821571cb11e0ad1d5757ef122"
+}

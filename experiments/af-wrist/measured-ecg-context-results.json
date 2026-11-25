@@ -1,0 +1,146 @@
+{
+  "scope": "Exploratory same-clock measured ECG feature-window comparison",
+  "development_participants": 10,
+  "seed": 2026,
+  "outer_folds": 5,
+  "logistic_C": 1.0,
+  "decision_stride_seconds": 10,
+  "support_on_original_shared_PPG_rows": {
+    "30": {
+      "scoreable_measured_ecg": 879,
+      "uncached_measured_ecg": 2
+    },
+    "10": {
+      "no_supported_measured_intervals": 1,
+      "scoreable_measured_ecg": 880
+    }
+  },
+  "common_footprint_unchanged_from_30s_reference": false,
+  "support_by_scope": {
+    "evaluation": {
+      "original_shared_PPG_rows": 513,
+      "ECG_30s": 513,
+      "ECG_10s": 512,
+      "both": 512
+    },
+    "preceding_history": {
+      "original_shared_PPG_rows": 175,
+      "ECG_30s": 173,
+      "ECG_10s": 175,
+      "both": 173
+    },
+    "stable_fitting": {
+      "original_shared_PPG_rows": 114,
+      "ECG_30s": 114,
+      "ECG_10s": 114,
+      "both": 114
+    }
+  },
+  "ECG_30s": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 3,
+      "episode_sensitivity": 0.17647058823529413,
+      "median_delay_seconds_in_detected_episodes": 13.529999999998836,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 0,
+      "false_alerts_per_observed_wrist_hour": 0.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 3,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "diagnostics": {
+      "pooled_held_out_stable_window_ROC_AUC": 0.9860294117647058,
+      "stable_AF_windows": 34,
+      "stable_non_AF_windows": 80,
+      "inner_calibration_status_counts": {
+        "target_not_met": 5
+      },
+      "positive_evaluation_decisions": 93,
+      "missed_episode_mechanisms": {
+        "below_cutoff": 13,
+        "no_score": 1
+      },
+      "already_active_misses_with_positive_in_episode": 0
+    }
+  },
+  "ECG_10s": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 9,
+      "episode_sensitivity": 0.5294117647058824,
+      "median_delay_seconds_in_detected_episodes": 20.64000000001397,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 0,
+      "false_alerts_per_observed_wrist_hour": 0.0,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 9,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 6,
+        "lost": 0,
+        "detected_by_both": 3,
+        "detected_by_neither": 8,
+        "baseline_median_delay_s": 13.529999999998836,
+        "candidate_median_delay_s": 20.64000000001397,
+        "median_delay_change_s_for_shared": -10.0,
+        "shared_delayed": 1,
+        "shared_earlier": 2,
+        "shared_unchanged": 0
+      },
+      "false_starts": {
+        "baseline": 0,
+        "candidate": 0,
+        "shared_exact": 0,
+        "baseline_only_exact": 0,
+        "candidate_only_exact": 0
+      }
+    },
+    "sensitivity_change": 0.3529411764705882,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 2,
+        "candidate": 3,
+        "shared_exact": 0,
+        "baseline_only_exact": 2,
+        "candidate_only_exact": 3
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 2,
+        "candidate": 3,
+        "gained": 2,
+        "lost": 1,
+        "both": 1,
+        "neither": 6
+      }
+    },
+    "diagnostics": {
+      "pooled_held_out_stable_window_ROC_AUC": 0.9849264705882352,
+      "stable_AF_windows": 34,
+      "stable_non_AF_windows": 80,
+      "inner_calibration_status_counts": {
+        "target_met": 1,
+        "target_not_met": 4
+      },
+      "positive_evaluation_decisions": 105,
+      "missed_episode_mechanisms": {
+        "below_cutoff": 7,
+        "no_score": 1
+      },
+      "already_active_misses_with_positive_in_episode": 0
+    }
+  }
+}

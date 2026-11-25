@@ -1,0 +1,33 @@
+{
+  "scope": "Annotated ECG beat and rhythm preflight for the SHDB-AF continuous reference",
+  "release_sha256": "a101475f41df8300493b9cba963499334fc5aa118c0b4c01503e7bf7621ac3c9",
+  "annotated_recordings": 98,
+  "participants": 93,
+  "native_annotation_rate_hz": 200,
+  "decision_stride_seconds": 10,
+  "feature_horizons_seconds": [
+    10,
+    30
+  ],
+  "rhythm_annotation_mark_counts": {
+    "(AFIB": 794,
+    "(N": 910,
+    "(AFL": 45,
+    "(NOD": 8,
+    "(AB": 3,
+    "(AT": 57,
+    "(PAT": 1
+  },
+  "clinical_record_totals": {
+    "unique_qrs_peaks": 10349722,
+    "duplicate_qrs_samples": 11,
+    "scheduled_windows": 838859,
+    "known_reference_windows": 838489,
+    "scored_common_windows": 838281,
+    "known_reference_scored_windows": 837911,
+    "complete_af_episodes": 767,
+    "complete_af_episodes_below_30_seconds": 309,
+    "stable_af_fit_candidates": 162179,
+    "stable_non_af_fit_candidates": 671879
+  }
+}

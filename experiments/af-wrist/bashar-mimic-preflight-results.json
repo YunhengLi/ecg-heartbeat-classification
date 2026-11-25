@@ -1,0 +1,19 @@
+{
+  "annotation_doi": "10.6084/m9.figshare.12149091.v1",
+  "waveform_release": "mimic3wdb-matched/1.0",
+  "subjects_in_workbook": 45,
+  "subjects_by_AF_status": {
+    "0": 22,
+    "1": 23
+  },
+  "named_waveforms": 68,
+  "waveforms_rejected_identifier_mismatch": 1,
+  "public_header_available": 67,
+  "layout_with_ECG_and_pleth": 49,
+  "inconsistent_segment_clocks": 1,
+  "unavailable_layout_headers": 0,
+  "paired_layout_and_complete_AF_annotation": 8,
+  "participants_with_paired_layout_and_complete_annotation": 8,
+  "complete_annotations_all_available_headers": 10,
+  "declared_and_header_duration_within_one_second": 18
+}

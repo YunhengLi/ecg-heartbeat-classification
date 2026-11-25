@@ -1,0 +1,340 @@
+{
+  "scope": "Independent device/activity heart-rate and notification stress test",
+  "source": "https://physionet.org/content/wrist/1.0.0/",
+  "source_manifest_sha256": "3d187a65462656a830072f536363f44c7e48c05fc251fbf3025c23c3f11e732e",
+  "baseline_model_lock_sha256": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+  "quality_model_lock_sha256": "5dc5eddca865828f89aeaf262b98fce6b5b702ae8e29f5542f22c0051e494759",
+  "native_ppg_and_ecg_hz": 256,
+  "model_ppg_hz": 100,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "maximum_interpolated_gap_seconds": 0.1,
+  "high_quality_minimum": 0.9,
+  "diagnostic_error_bpm": 10.0,
+  "motion_filter_lag_seconds": [
+    -0.25,
+    -0.125,
+    0.0,
+    0.125,
+    0.25
+  ],
+  "motion_filter_ridge": 0.1,
+  "all": {
+    "participants": 8,
+    "records": 19,
+    "source_ecg_seconds": 6786.07421875,
+    "decision_clock_seconds": 6320,
+    "scheduled_windows": 632,
+    "ppg_supported_windows": 591,
+    "paired_heart_rate_windows": 591,
+    "paired_high_quality_windows": 465,
+    "heart_rate": {
+      "direct_ppg": {
+        "paired_mae_bpm": 25.617504481278047,
+        "paired_median_absolute_error_bpm": 18.203335126412043,
+        "available_windows": 591,
+        "high_quality_windows_above_10_bpm_error": 326
+      },
+      "template_ecg": {
+        "paired_mae_bpm": 25.684980567322178,
+        "paired_median_absolute_error_bpm": 19.15232054766939,
+        "available_windows": 591,
+        "high_quality_windows_above_10_bpm_error": 324
+      },
+      "measured_ecg": {
+        "paired_mae_bpm": 7.153176903703647,
+        "paired_median_absolute_error_bpm": 0.4662740574342763,
+        "available_windows": 632,
+        "high_quality_windows_above_10_bpm_error": 80
+      }
+    },
+    "motion_filter": {
+      "paired_windows": 591,
+      "before_mae_bpm": 25.617504481278047,
+      "after_mae_bpm": 38.12745658313542,
+      "error_decreased_windows": 167,
+      "error_increased_windows": 390
+    },
+    "notifications": {
+      "baseline": {
+        "scoreable_decisions": 591,
+        "positive_decisions": 591,
+        "definite_starts": 14,
+        "possible_initial_starts": 17,
+        "starts_after_unavailable_decisions": 14,
+        "definite_starts_per_decision_clock_hour": 7.974683544303797
+      },
+      "quality": {
+        "scoreable_decisions": 591,
+        "positive_decisions": 573,
+        "definite_starts": 24,
+        "possible_initial_starts": 16,
+        "starts_after_unavailable_decisions": 13,
+        "definite_starts_per_decision_clock_hour": 13.670886075949367
+      },
+      "quality_interactions": {
+        "scoreable_decisions": 591,
+        "positive_decisions": 525,
+        "definite_starts": 40,
+        "possible_initial_starts": 13,
+        "starts_after_unavailable_decisions": 12,
+        "definite_starts_per_decision_clock_hour": 22.78481012658228
+      }
+    }
+  },
+  "by_activity": {
+    "walk": {
+      "participants": 6,
+      "records": 6,
+      "source_ecg_seconds": 2232.0234375,
+      "decision_clock_seconds": 2080,
+      "scheduled_windows": 208,
+      "ppg_supported_windows": 185,
+      "paired_heart_rate_windows": 185,
+      "paired_high_quality_windows": 184,
+      "heart_rate": {
+        "direct_ppg": {
+          "paired_mae_bpm": 40.1638484909008,
+          "paired_median_absolute_error_bpm": 36.729559748427675,
+          "available_windows": 185,
+          "high_quality_windows_above_10_bpm_error": 163
+        },
+        "template_ecg": {
+          "paired_mae_bpm": 40.27989183887936,
+          "paired_median_absolute_error_bpm": 36.52173913043478,
+          "available_windows": 185,
+          "high_quality_windows_above_10_bpm_error": 163
+        },
+        "measured_ecg": {
+          "paired_mae_bpm": 9.555360729449985,
+          "paired_median_absolute_error_bpm": 0.6692227256883854,
+          "available_windows": 208,
+          "high_quality_windows_above_10_bpm_error": 49
+        }
+      },
+      "motion_filter": {
+        "paired_windows": 185,
+        "before_mae_bpm": 40.1638484909008,
+        "after_mae_bpm": 67.373461001372,
+        "error_decreased_windows": 13,
+        "error_increased_windows": 169
+      },
+      "notifications": {
+        "baseline": {
+          "scoreable_decisions": 185,
+          "positive_decisions": 185,
+          "definite_starts": 7,
+          "possible_initial_starts": 6,
+          "starts_after_unavailable_decisions": 7,
+          "definite_starts_per_decision_clock_hour": 12.115384615384615
+        },
+        "quality": {
+          "scoreable_decisions": 185,
+          "positive_decisions": 174,
+          "definite_starts": 12,
+          "possible_initial_starts": 6,
+          "starts_after_unavailable_decisions": 6,
+          "definite_starts_per_decision_clock_hour": 20.76923076923077
+        },
+        "quality_interactions": {
+          "scoreable_decisions": 185,
+          "positive_decisions": 151,
+          "definite_starts": 15,
+          "possible_initial_starts": 5,
+          "starts_after_unavailable_decisions": 5,
+          "definite_starts_per_decision_clock_hour": 25.96153846153846
+        }
+      }
+    },
+    "run": {
+      "participants": 5,
+      "records": 5,
+      "source_ecg_seconds": 1496.01953125,
+      "decision_clock_seconds": 1370,
+      "scheduled_windows": 137,
+      "ppg_supported_windows": 124,
+      "paired_heart_rate_windows": 124,
+      "paired_high_quality_windows": 124,
+      "heart_rate": {
+        "direct_ppg": {
+          "paired_mae_bpm": 33.3962666585876,
+          "paired_median_absolute_error_bpm": 23.33316289137734,
+          "available_windows": 124,
+          "high_quality_windows_above_10_bpm_error": 115
+        },
+        "template_ecg": {
+          "paired_mae_bpm": 33.37429424812831,
+          "paired_median_absolute_error_bpm": 23.396226415094333,
+          "available_windows": 124,
+          "high_quality_windows_above_10_bpm_error": 114
+        },
+        "measured_ecg": {
+          "paired_mae_bpm": 18.892757584420323,
+          "paired_median_absolute_error_bpm": 1.2000468768311379,
+          "available_windows": 137,
+          "high_quality_windows_above_10_bpm_error": 30
+        }
+      },
+      "motion_filter": {
+        "paired_windows": 124,
+        "before_mae_bpm": 33.3962666585876,
+        "after_mae_bpm": 43.51379937087366,
+        "error_decreased_windows": 44,
+        "error_increased_windows": 74
+      },
+      "notifications": {
+        "baseline": {
+          "scoreable_decisions": 124,
+          "positive_decisions": 124,
+          "definite_starts": 5,
+          "possible_initial_starts": 4,
+          "starts_after_unavailable_decisions": 5,
+          "definite_starts_per_decision_clock_hour": 13.138686131386862
+        },
+        "quality": {
+          "scoreable_decisions": 124,
+          "positive_decisions": 124,
+          "definite_starts": 5,
+          "possible_initial_starts": 4,
+          "starts_after_unavailable_decisions": 5,
+          "definite_starts_per_decision_clock_hour": 13.138686131386862
+        },
+        "quality_interactions": {
+          "scoreable_decisions": 124,
+          "positive_decisions": 123,
+          "definite_starts": 6,
+          "possible_initial_starts": 3,
+          "starts_after_unavailable_decisions": 5,
+          "definite_starts_per_decision_clock_hour": 15.766423357664234
+        }
+      }
+    },
+    "low_resistance_bike": {
+      "participants": 5,
+      "records": 5,
+      "source_ecg_seconds": 1774.01953125,
+      "decision_clock_seconds": 1660,
+      "scheduled_windows": 166,
+      "ppg_supported_windows": 161,
+      "paired_heart_rate_windows": 161,
+      "paired_high_quality_windows": 94,
+      "heart_rate": {
+        "direct_ppg": {
+          "paired_mae_bpm": 15.37409298220911,
+          "paired_median_absolute_error_bpm": 10.453333333333347,
+          "available_windows": 161,
+          "high_quality_windows_above_10_bpm_error": 34
+        },
+        "template_ecg": {
+          "paired_mae_bpm": 15.17735406941443,
+          "paired_median_absolute_error_bpm": 10.119658119658112,
+          "available_windows": 161,
+          "high_quality_windows_above_10_bpm_error": 33
+        },
+        "measured_ecg": {
+          "paired_mae_bpm": 0.29173704654693156,
+          "paired_median_absolute_error_bpm": 0.0,
+          "available_windows": 166,
+          "high_quality_windows_above_10_bpm_error": 0
+        }
+      },
+      "motion_filter": {
+        "paired_windows": 161,
+        "before_mae_bpm": 15.37409298220911,
+        "after_mae_bpm": 21.99948519511383,
+        "error_decreased_windows": 46,
+        "error_increased_windows": 103
+      },
+      "notifications": {
+        "baseline": {
+          "scoreable_decisions": 161,
+          "positive_decisions": 161,
+          "definite_starts": 2,
+          "possible_initial_starts": 4,
+          "starts_after_unavailable_decisions": 2,
+          "definite_starts_per_decision_clock_hour": 4.337349397590361
+        },
+        "quality": {
+          "scoreable_decisions": 161,
+          "positive_decisions": 157,
+          "definite_starts": 4,
+          "possible_initial_starts": 4,
+          "starts_after_unavailable_decisions": 2,
+          "definite_starts_per_decision_clock_hour": 8.674698795180722
+        },
+        "quality_interactions": {
+          "scoreable_decisions": 161,
+          "positive_decisions": 142,
+          "definite_starts": 12,
+          "possible_initial_starts": 3,
+          "starts_after_unavailable_decisions": 2,
+          "definite_starts_per_decision_clock_hour": 26.02409638554217
+        }
+      }
+    },
+    "high_resistance_bike": {
+      "participants": 3,
+      "records": 3,
+      "source_ecg_seconds": 1284.01171875,
+      "decision_clock_seconds": 1210,
+      "scheduled_windows": 121,
+      "ppg_supported_windows": 121,
+      "paired_heart_rate_windows": 121,
+      "paired_high_quality_windows": 63,
+      "heart_rate": {
+        "direct_ppg": {
+          "paired_mae_bpm": 9.035265634860744,
+          "paired_median_absolute_error_bpm": 4.388066047764141,
+          "available_windows": 121,
+          "high_quality_windows_above_10_bpm_error": 14
+        },
+        "template_ecg": {
+          "paired_mae_bpm": 9.471711017777643,
+          "paired_median_absolute_error_bpm": 4.444444444444429,
+          "available_windows": 121,
+          "high_quality_windows_above_10_bpm_error": 14
+        },
+        "measured_ecg": {
+          "paired_mae_bpm": 0.5794562824663801,
+          "paired_median_absolute_error_bpm": 0.41370394311570635,
+          "available_windows": 121,
+          "high_quality_windows_above_10_bpm_error": 1
+        }
+      },
+      "motion_filter": {
+        "paired_windows": 121,
+        "before_mae_bpm": 9.035265634860744,
+        "after_mae_bpm": 9.352134851054164,
+        "error_decreased_windows": 64,
+        "error_increased_windows": 44
+      },
+      "notifications": {
+        "baseline": {
+          "scoreable_decisions": 121,
+          "positive_decisions": 121,
+          "definite_starts": 0,
+          "possible_initial_starts": 3,
+          "starts_after_unavailable_decisions": 0,
+          "definite_starts_per_decision_clock_hour": 0.0
+        },
+        "quality": {
+          "scoreable_decisions": 121,
+          "positive_decisions": 118,
+          "definite_starts": 3,
+          "possible_initial_starts": 2,
+          "starts_after_unavailable_decisions": 0,
+          "definite_starts_per_decision_clock_hour": 8.925619834710744
+        },
+        "quality_interactions": {
+          "scoreable_decisions": 121,
+          "positive_decisions": 109,
+          "definite_starts": 7,
+          "possible_initial_starts": 2,
+          "starts_after_unavailable_decisions": 0,
+          "definite_starts_per_decision_clock_hour": 20.826446280991735
+        }
+      }
+    }
+  },
+  "af_episode_labels_available": false
+}

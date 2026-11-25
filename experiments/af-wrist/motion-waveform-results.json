@@ -1,0 +1,150 @@
+{
+  "scope": "Development-only template ECG reconstruction with fixed motion frequency weights",
+  "original_verified_windows": 114,
+  "windows_with_verified_acceleration": 102,
+  "coherence_weight_band_hz": [
+    0.75,
+    3.5
+  ],
+  "reflection_seconds": 2,
+  "beat_synchronized_template_delay_ms": 300,
+  "coarse_synchronized_template_delay_ms": 190.0,
+  "large_motion_fraction_threshold": 0.5,
+  "all": {
+    "participants": 9,
+    "windows": 102,
+    "trimmed_measured_samples": 285600,
+    "common_samples": 285600,
+    "common_samples_fraction": 1.0,
+    "windows_with_common_support": 102,
+    "zero_waveform_normalized_mae": 0.2192914987438324,
+    "model_metrics": {
+      "original_ppg_template": {
+        "normalized_mae": 0.253042895327198,
+        "median_waveform_correlation": -0.022801514997729304,
+        "correlation_windows": 102,
+        "own_support_fraction": 1.0,
+        "native_qrs_scores": {
+          "reference_peaks": 3187,
+          "predicted_peaks": 3282,
+          "matched_peaks": 2153,
+          "precision": 0.6560024375380865,
+          "recall": 0.6755569501098212,
+          "f1": 0.6656361106817128,
+          "median_abs_timing_error_ms": 26.999999980907887,
+          "matched_consecutive_intervals": 1634,
+          "median_abs_rr_error_ms": 13.999999996449333
+        }
+      },
+      "motion_filtered_ppg_template": {
+        "normalized_mae": 0.25411579106775095,
+        "median_waveform_correlation": -0.030021497197139854,
+        "correlation_windows": 102,
+        "own_support_fraction": 1.0,
+        "native_qrs_scores": {
+          "reference_peaks": 3187,
+          "predicted_peaks": 3301,
+          "matched_peaks": 2102,
+          "precision": 0.6367767343229325,
+          "recall": 0.6595544399121431,
+          "f1": 0.6479654747225647,
+          "median_abs_timing_error_ms": 30.00000000334694,
+          "matched_consecutive_intervals": 1556,
+          "median_abs_rr_error_ms": 16.000000002095476
+        }
+      }
+    }
+  },
+  "by_ppg_motion_weight": {
+    "at_least_half_power_removed": {
+      "participants": 7,
+      "windows": 42,
+      "trimmed_measured_samples": 117600,
+      "common_samples": 117600,
+      "common_samples_fraction": 1.0,
+      "windows_with_common_support": 42,
+      "zero_waveform_normalized_mae": 0.20416135257844334,
+      "model_metrics": {
+        "original_ppg_template": {
+          "normalized_mae": 0.23680796695372253,
+          "median_waveform_correlation": -0.02885406166734447,
+          "correlation_windows": 42,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 1227,
+            "predicted_peaks": 1112,
+            "matched_peaks": 814,
+            "precision": 0.7320143884892086,
+            "recall": 0.6634066829665851,
+            "f1": 0.6960239418554938,
+            "median_abs_timing_error_ms": 28.999999990919605,
+            "matched_consecutive_intervals": 672,
+            "median_abs_rr_error_ms": 9.999999999417923
+          }
+        },
+        "motion_filtered_ppg_template": {
+          "normalized_mae": 0.2389316819515131,
+          "median_waveform_correlation": -0.04613520143182886,
+          "correlation_windows": 42,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 1227,
+            "predicted_peaks": 1127,
+            "matched_peaks": 781,
+            "precision": 0.6929902395740906,
+            "recall": 0.6365118174409128,
+            "f1": 0.6635514018691588,
+            "median_abs_timing_error_ms": 36.999999976251274,
+            "matched_consecutive_intervals": 612,
+            "median_abs_rr_error_ms": 12.000000001862645
+          }
+        }
+      }
+    },
+    "less_than_half_power_removed": {
+      "participants": 9,
+      "windows": 60,
+      "trimmed_measured_samples": 168000,
+      "common_samples": 168000,
+      "common_samples_fraction": 1.0,
+      "windows_with_common_support": 60,
+      "zero_waveform_normalized_mae": 0.22988260105960476,
+      "model_metrics": {
+        "original_ppg_template": {
+          "normalized_mae": 0.26440734518863074,
+          "median_waveform_correlation": -0.014588232173888082,
+          "correlation_windows": 60,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 1960,
+            "predicted_peaks": 2170,
+            "matched_peaks": 1339,
+            "precision": 0.6170506912442396,
+            "recall": 0.6831632653061225,
+            "f1": 0.6484261501210654,
+            "median_abs_timing_error_ms": 24.00000001071021,
+            "matched_consecutive_intervals": 962,
+            "median_abs_rr_error_ms": 17.99999999406282
+          }
+        },
+        "motion_filtered_ppg_template": {
+          "normalized_mae": 0.26474466744911734,
+          "median_waveform_correlation": -0.015332785074818688,
+          "correlation_windows": 60,
+          "own_support_fraction": 1.0,
+          "native_qrs_scores": {
+            "reference_peaks": 1960,
+            "predicted_peaks": 2174,
+            "matched_peaks": 1321,
+            "precision": 0.6076356945722171,
+            "recall": 0.6739795918367347,
+            "f1": 0.6390904692791485,
+            "median_abs_timing_error_ms": 26.000000007916242,
+            "matched_consecutive_intervals": 944,
+            "median_abs_rr_error_ms": 19.999999995779945
+          }
+        }
+      }
+    }
+  }
+}

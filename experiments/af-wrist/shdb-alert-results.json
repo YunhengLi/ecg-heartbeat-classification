@@ -1,0 +1,238 @@
+{
+  "scope": "Continuous AF event research reference using measured Holter R-peak intervals only",
+  "participants": 93,
+  "recordings": 98,
+  "folds": [
+    {
+      "fit_participants": 55,
+      "calibration_participants": 19,
+      "held_participants": 19,
+      "fit_af_windows": 4513,
+      "fit_non_af_windows": 6498,
+      "calibration": {
+        "10": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "10_and_30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        }
+      },
+      "relative_to_30_second_calibration": {
+        "10": "within_tolerance",
+        "10_and_30": "within_tolerance"
+      }
+    },
+    {
+      "fit_participants": 55,
+      "calibration_participants": 19,
+      "held_participants": 19,
+      "fit_af_windows": 4115,
+      "fit_non_af_windows": 6600,
+      "calibration": {
+        "10": {
+          "status": "target_met",
+          "threshold_candidates": 41
+        },
+        "30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "10_and_30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        }
+      },
+      "relative_to_30_second_calibration": {
+        "10": "within_tolerance",
+        "10_and_30": "within_tolerance"
+      }
+    },
+    {
+      "fit_participants": 55,
+      "calibration_participants": 19,
+      "held_participants": 19,
+      "fit_af_windows": 4495,
+      "fit_non_af_windows": 6600,
+      "calibration": {
+        "10": {
+          "status": "target_met",
+          "threshold_candidates": 41
+        },
+        "30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "10_and_30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        }
+      },
+      "relative_to_30_second_calibration": {
+        "10": "within_tolerance",
+        "10_and_30": "within_tolerance"
+      }
+    },
+    {
+      "fit_participants": 56,
+      "calibration_participants": 19,
+      "held_participants": 18,
+      "fit_af_windows": 4410,
+      "fit_non_af_windows": 6618,
+      "calibration": {
+        "10": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "10_and_30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        }
+      },
+      "relative_to_30_second_calibration": {
+        "10": "within_tolerance",
+        "10_and_30": "within_tolerance"
+      }
+    },
+    {
+      "fit_participants": 56,
+      "calibration_participants": 19,
+      "held_participants": 18,
+      "fit_af_windows": 4129,
+      "fit_non_af_windows": 6618,
+      "calibration": {
+        "10": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        },
+        "10_and_30": {
+          "status": "target_not_met",
+          "threshold_candidates": 41
+        }
+      },
+      "relative_to_30_second_calibration": {
+        "10": "within_tolerance",
+        "10_and_30": "within_tolerance"
+      }
+    }
+  ],
+  "target_episode_sensitivity": 0.8,
+  "decision_stride_seconds": 10,
+  "horizons_seconds": {
+    "10": {
+      "complete_episodes": 767,
+      "episodes_detected": 443,
+      "episode_sensitivity": 0.5775749674054759,
+      "false_starts": 9403,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 4.037119151235139,
+      "median_delay_seconds": 14.049999999999272,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 88
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 355
+        }
+      },
+      "participant_weighted_stable_auc": 0.9460382042295561
+    },
+    "30": {
+      "complete_episodes": 767,
+      "episodes_detected": 289,
+      "episode_sensitivity": 0.3767926988265971,
+      "false_starts": 4648,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 1.9955896857323114,
+      "median_delay_seconds": 28.889999999999873,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 15
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 274
+        }
+      },
+      "participant_weighted_stable_auc": 0.9557531820789128
+    },
+    "10_and_30": {
+      "complete_episodes": 767,
+      "episodes_detected": 291,
+      "episode_sensitivity": 0.379400260756193,
+      "false_starts": 4340,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 1.8633518149910135,
+      "median_delay_seconds": 29.725000000000364,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 18
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 273
+        }
+      },
+      "participant_weighted_stable_auc": 0.9557042517673178
+    }
+  },
+  "complete_episodes_with_available_in_episode_decision": 720,
+  "matched_compared_with_30_second_reference": {
+    "10": {
+      "complete_episodes": 767,
+      "episodes_detected": 464,
+      "episode_sensitivity": 0.6049543676662321,
+      "false_starts": 5483,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 2.3540917054368036,
+      "median_delay_seconds": 13.625,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 117
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 347
+        }
+      }
+    },
+    "10_and_30": {
+      "complete_episodes": 767,
+      "episodes_detected": 249,
+      "episode_sensitivity": 0.3246414602346806,
+      "false_starts": 2144,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 0.9205129703550077,
+      "median_delay_seconds": 33.84999999999991,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 9
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 240
+        }
+      }
+    }
+  },
+  "matched_sensitivity_tolerance": 0.1
+}

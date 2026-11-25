@@ -1,0 +1,62 @@
+{
+  "dataset": {
+    "name": "AFPPGECG v6",
+    "doi": "10.5281/zenodo.23921320",
+    "ecg_recordings": 39,
+    "paired_participants": 35,
+    "paired_payload_gib": 56.48
+  },
+  "audit": {
+    "selection": "Reference-selected feasibility clips",
+    "participants": 3,
+    "window_seconds": 30,
+    "windows": 22,
+    "windows_by_ecg_annotation": {
+      "non_af": 14,
+      "af": 8
+    },
+    "windows_by_sync_method": {
+      "beat": 19,
+      "coarse": 3
+    },
+    "windows_with_complete_ecg": 22,
+    "windows_with_complete_ppg": 21,
+    "lowest_ppg_observed_fraction": 0.6337,
+    "max_acceleration_rms_g_by_rhythm": {
+      "af": 0.599,
+      "non_af": 0.743
+    }
+  },
+  "feature_smoke": {
+    "participants": 1,
+    "reference_windows_by_rhythm": {
+      "af": 1,
+      "non_af": 1
+    },
+    "core_windows": 2,
+    "rddm_four_second_chunks": 16,
+    "routes": {
+      "native_ecg": {
+        "feature_columns": 7,
+        "windows_with_all_finite_features": 2,
+        "windows_with_usable_intervals": 2
+      },
+      "direct_ppg": {
+        "feature_columns": 9,
+        "windows_with_all_finite_features": 2,
+        "windows_with_usable_intervals": 2
+      },
+      "pulse_template": {
+        "feature_columns": 7,
+        "windows_with_all_finite_features": 2,
+        "windows_with_usable_intervals": 2
+      },
+      "rddm_timing_corrected": {
+        "feature_columns": 7,
+        "windows_with_all_finite_features": 2,
+        "windows_with_usable_intervals": 2
+      }
+    }
+  },
+  "model_performance_estimated": false
+}

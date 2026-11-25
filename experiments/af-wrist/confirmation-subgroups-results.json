@@ -1,0 +1,251 @@
+{
+  "scope": "Descriptive AF duration and contributor audit on the same 25 historical wrist participants",
+  "bootstrap_repetitions": 10000,
+  "results": {
+    "all_complete_episodes": {
+      "episodes": 260,
+      "contributors": 16,
+      "largest_contributor_episodes": 157,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 155,
+          "pooled_sensitivity": 0.5961538461538461,
+          "participant_average_sensitivity": 0.5565167300317648,
+          "largest_contributor_detections": 107,
+          "other_contributors_detections": 48,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_quality": {
+          "detected_episodes": 151,
+          "pooled_sensitivity": 0.5807692307692308,
+          "participant_average_sensitivity": 0.558692950838559,
+          "largest_contributor_detections": 102,
+          "other_contributors_detections": 49,
+          "paired_gain_over_original": 6,
+          "paired_loss_from_original": 10,
+          "paired_sensitivity_change_interval_95": [
+            -0.02790256509377494,
+            0.02702702702702703
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_entropy": {
+          "detected_episodes": 144,
+          "pooled_sensitivity": 0.5538461538461539,
+          "participant_average_sensitivity": 0.5445497272009084,
+          "largest_contributor_detections": 97,
+          "other_contributors_detections": 47,
+          "paired_gain_over_original": 10,
+          "paired_loss_from_original": 21,
+          "paired_sensitivity_change_interval_95": [
+            -0.06224087220250296,
+            0.014925373134328358
+          ],
+          "shared_detection_median_delay_change_s": 10.0
+        }
+      }
+    },
+    "up_to_10_s": {
+      "episodes": 12,
+      "contributors": 5,
+      "largest_contributor_episodes": 7,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "adjacent_quality": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        },
+        "adjacent_entropy": {
+          "detected_episodes": 0,
+          "pooled_sensitivity": 0.0,
+          "participant_average_sensitivity": 0.0,
+          "largest_contributor_detections": 0,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": null
+        }
+      }
+    },
+    "over_10_to_30_s": {
+      "episodes": 21,
+      "contributors": 5,
+      "largest_contributor_episodes": 12,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 3,
+          "pooled_sensitivity": 0.14285714285714285,
+          "participant_average_sensitivity": 0.13333333333333333,
+          "largest_contributor_detections": 2,
+          "other_contributors_detections": 1,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_quality": {
+          "detected_episodes": 3,
+          "pooled_sensitivity": 0.14285714285714285,
+          "participant_average_sensitivity": 0.13333333333333333,
+          "largest_contributor_detections": 2,
+          "other_contributors_detections": 1,
+          "paired_gain_over_original": 2,
+          "paired_loss_from_original": 2,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_entropy": {
+          "detected_episodes": 3,
+          "pooled_sensitivity": 0.14285714285714285,
+          "participant_average_sensitivity": 0.05,
+          "largest_contributor_detections": 3,
+          "other_contributors_detections": 0,
+          "paired_gain_over_original": 3,
+          "paired_loss_from_original": 3,
+          "paired_sensitivity_change_interval_95": [
+            -0.25,
+            0.07142857142857142
+          ],
+          "shared_detection_median_delay_change_s": null
+        }
+      }
+    },
+    "over_30_to_60_s": {
+      "episodes": 83,
+      "contributors": 13,
+      "largest_contributor_episodes": 52,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 42,
+          "pooled_sensitivity": 0.5060240963855421,
+          "participant_average_sensitivity": 0.3637708445400753,
+          "largest_contributor_detections": 32,
+          "other_contributors_detections": 10,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_quality": {
+          "detected_episodes": 40,
+          "pooled_sensitivity": 0.4819277108433735,
+          "participant_average_sensitivity": 0.39048771741079435,
+          "largest_contributor_detections": 28,
+          "other_contributors_detections": 12,
+          "paired_gain_over_original": 3,
+          "paired_loss_from_original": 5,
+          "paired_sensitivity_change_interval_95": [
+            -0.06557377049180328,
+            0.1111111111111111
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_entropy": {
+          "detected_episodes": 36,
+          "pooled_sensitivity": 0.43373493975903615,
+          "participant_average_sensitivity": 0.3475883091267707,
+          "largest_contributor_detections": 25,
+          "other_contributors_detections": 11,
+          "paired_gain_over_original": 5,
+          "paired_loss_from_original": 11,
+          "paired_sensitivity_change_interval_95": [
+            -0.1290352339007261,
+            0.09433962264150944
+          ],
+          "shared_detection_median_delay_change_s": 10.0
+        }
+      }
+    },
+    "over_60_s": {
+      "episodes": 144,
+      "contributors": 11,
+      "largest_contributor_episodes": 92,
+      "compared_routes": {
+        "original": {
+          "detected_episodes": 110,
+          "pooled_sensitivity": 0.7638888888888888,
+          "participant_average_sensitivity": 0.7972426124600037,
+          "largest_contributor_detections": 73,
+          "other_contributors_detections": 37,
+          "paired_gain_over_original": 0,
+          "paired_loss_from_original": 0,
+          "paired_sensitivity_change_interval_95": [
+            0.0,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 0.0
+        },
+        "adjacent_quality": {
+          "detected_episodes": 108,
+          "pooled_sensitivity": 0.75,
+          "participant_average_sensitivity": 0.7930077169207603,
+          "largest_contributor_detections": 72,
+          "other_contributors_detections": 36,
+          "paired_gain_over_original": 1,
+          "paired_loss_from_original": 3,
+          "paired_sensitivity_change_interval_95": [
+            -0.02830188679245283,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 10.0
+        },
+        "adjacent_entropy": {
+          "detected_episodes": 105,
+          "pooled_sensitivity": 0.7291666666666666,
+          "participant_average_sensitivity": 0.79004329004329,
+          "largest_contributor_detections": 69,
+          "other_contributors_detections": 36,
+          "paired_gain_over_original": 2,
+          "paired_loss_from_original": 7,
+          "paired_sensitivity_change_interval_95": [
+            -0.04090909090909091,
+            0.0
+          ],
+          "shared_detection_median_delay_change_s": 10.0
+        }
+      }
+    }
+  }
+}

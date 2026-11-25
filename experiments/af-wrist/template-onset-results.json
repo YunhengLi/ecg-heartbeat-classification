@@ -1,0 +1,302 @@
+{
+  "detected": {
+    "episodes": 12,
+    "scoreable_pure_30_s_episodes": 10,
+    "best_af_score_in_pure_30_s_episodes": 5,
+    "active_at_onset": 1,
+    "comparable_pre_onset_reference_score": 12,
+    "pre_onset_reference_peak_at_least_af_peak": 3,
+    "comparable_pre_onset_full_non_af_score": 8,
+    "pre_onset_full_non_af_peak_at_least_af_peak": 1,
+    "median_best_in_episode_margin": 0.057824212776099115,
+    "median_af_seconds_at_best_in_episode": 20.56899999998859,
+    "median_af_seconds_at_first_alert": 20.52400000000489,
+    "first_alert_before_30_s_in_af": 9,
+    "median_seconds_from_onset_to_first_alert": 20.52400000000489,
+    "trajectory_bins": [
+      {
+        "onset_offset_left_s_exclusive": -30,
+        "onset_offset_right_s_inclusive": -20,
+        "episodes_with_scored_reference_endpoint": 11,
+        "median_margin": -0.07486183712498229,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 6
+      },
+      {
+        "onset_offset_left_s_exclusive": -20,
+        "onset_offset_right_s_inclusive": -10,
+        "episodes_with_scored_reference_endpoint": 11,
+        "median_margin": -0.0881383470055539,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 9
+      },
+      {
+        "onset_offset_left_s_exclusive": -10,
+        "onset_offset_right_s_inclusive": 0,
+        "episodes_with_scored_reference_endpoint": 12,
+        "median_margin": -0.07548448668309687,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 11
+      },
+      {
+        "onset_offset_left_s_exclusive": 0,
+        "onset_offset_right_s_inclusive": 10,
+        "episodes_with_scored_reference_endpoint": 12,
+        "median_margin": -0.14787721715441624,
+        "median_target_af_seconds_in_30_s_input": 2.006999999983236,
+        "fully_observed_trailing_reference_endpoints": 11
+      },
+      {
+        "onset_offset_left_s_exclusive": 10,
+        "onset_offset_right_s_inclusive": 20,
+        "episodes_with_scored_reference_endpoint": 12,
+        "median_margin": -0.07554061280070817,
+        "median_target_af_seconds_in_30_s_input": 12.006999999983236,
+        "fully_observed_trailing_reference_endpoints": 12
+      },
+      {
+        "onset_offset_left_s_exclusive": 20,
+        "onset_offset_right_s_inclusive": 30,
+        "episodes_with_scored_reference_endpoint": 11,
+        "median_margin": -0.036840909538483735,
+        "median_target_af_seconds_in_30_s_input": 21.18599999998696,
+        "fully_observed_trailing_reference_endpoints": 11
+      },
+      {
+        "onset_offset_left_s_exclusive": 30,
+        "onset_offset_right_s_inclusive": 40,
+        "episodes_with_scored_reference_endpoint": 10,
+        "median_margin": -0.06586246624468195,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 10
+      },
+      {
+        "onset_offset_left_s_exclusive": 40,
+        "onset_offset_right_s_inclusive": 50,
+        "episodes_with_scored_reference_endpoint": 9,
+        "median_margin": -0.08080798512094611,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 9
+      },
+      {
+        "onset_offset_left_s_exclusive": 50,
+        "onset_offset_right_s_inclusive": 60,
+        "episodes_with_scored_reference_endpoint": 7,
+        "median_margin": -0.044719081408853834,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 7
+      }
+    ]
+  },
+  "scorable_misses": {
+    "episodes": 4,
+    "scoreable_pure_30_s_episodes": 3,
+    "best_af_score_in_pure_30_s_episodes": 2,
+    "active_at_onset": 2,
+    "comparable_pre_onset_reference_score": 4,
+    "pre_onset_reference_peak_at_least_af_peak": 2,
+    "comparable_pre_onset_full_non_af_score": 2,
+    "pre_onset_full_non_af_peak_at_least_af_peak": 2,
+    "median_best_in_episode_margin": -0.027461423140462515,
+    "median_af_seconds_at_best_in_episode": 21.69000000000233,
+    "median_af_seconds_at_first_alert": null,
+    "first_alert_before_30_s_in_af": 0,
+    "median_seconds_from_onset_to_first_alert": null,
+    "trajectory_bins": [
+      {
+        "onset_offset_left_s_exclusive": -30,
+        "onset_offset_right_s_inclusive": -20,
+        "episodes_with_scored_reference_endpoint": 3,
+        "median_margin": -0.08754202996902849,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": -20,
+        "onset_offset_right_s_inclusive": -10,
+        "episodes_with_scored_reference_endpoint": 3,
+        "median_margin": 0.035257022572596664,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 2
+      },
+      {
+        "onset_offset_left_s_exclusive": -10,
+        "onset_offset_right_s_inclusive": 0,
+        "episodes_with_scored_reference_endpoint": 4,
+        "median_margin": -0.03620128889126767,
+        "median_target_af_seconds_in_30_s_input": 0.0,
+        "fully_observed_trailing_reference_endpoints": 3
+      },
+      {
+        "onset_offset_left_s_exclusive": 0,
+        "onset_offset_right_s_inclusive": 10,
+        "episodes_with_scored_reference_endpoint": 4,
+        "median_margin": -0.08729685718476055,
+        "median_target_af_seconds_in_30_s_input": 6.0640000000130385,
+        "fully_observed_trailing_reference_endpoints": 3
+      },
+      {
+        "onset_offset_left_s_exclusive": 10,
+        "onset_offset_right_s_inclusive": 20,
+        "episodes_with_scored_reference_endpoint": 4,
+        "median_margin": -0.12932928611468855,
+        "median_target_af_seconds_in_30_s_input": 16.06400000001304,
+        "fully_observed_trailing_reference_endpoints": 4
+      },
+      {
+        "onset_offset_left_s_exclusive": 20,
+        "onset_offset_right_s_inclusive": 30,
+        "episodes_with_scored_reference_endpoint": 3,
+        "median_margin": -0.11696216370412571,
+        "median_target_af_seconds_in_30_s_input": 27.742000000027474,
+        "fully_observed_trailing_reference_endpoints": 3
+      },
+      {
+        "onset_offset_left_s_exclusive": 30,
+        "onset_offset_right_s_inclusive": 40,
+        "episodes_with_scored_reference_endpoint": 3,
+        "median_margin": -0.06605377725910144,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 3
+      },
+      {
+        "onset_offset_left_s_exclusive": 40,
+        "onset_offset_right_s_inclusive": 50,
+        "episodes_with_scored_reference_endpoint": 3,
+        "median_margin": -0.05911270900471499,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 3
+      },
+      {
+        "onset_offset_left_s_exclusive": 50,
+        "onset_offset_right_s_inclusive": 60,
+        "episodes_with_scored_reference_endpoint": 1,
+        "median_margin": -0.16215775972478752,
+        "median_target_af_seconds_in_30_s_input": 30.0,
+        "fully_observed_trailing_reference_endpoints": 1
+      }
+    ]
+  },
+  "unscorable_misses": {
+    "episodes": 1,
+    "scoreable_pure_30_s_episodes": 0,
+    "best_af_score_in_pure_30_s_episodes": 0,
+    "active_at_onset": 0,
+    "comparable_pre_onset_reference_score": 0,
+    "pre_onset_reference_peak_at_least_af_peak": 0,
+    "comparable_pre_onset_full_non_af_score": 0,
+    "pre_onset_full_non_af_peak_at_least_af_peak": 0,
+    "median_best_in_episode_margin": null,
+    "median_af_seconds_at_best_in_episode": null,
+    "median_af_seconds_at_first_alert": null,
+    "first_alert_before_30_s_in_af": 0,
+    "median_seconds_from_onset_to_first_alert": null,
+    "trajectory_bins": [
+      {
+        "onset_offset_left_s_exclusive": -30,
+        "onset_offset_right_s_inclusive": -20,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": -20,
+        "onset_offset_right_s_inclusive": -10,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": -10,
+        "onset_offset_right_s_inclusive": 0,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 0,
+        "onset_offset_right_s_inclusive": 10,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 10,
+        "onset_offset_right_s_inclusive": 20,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 20,
+        "onset_offset_right_s_inclusive": 30,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 30,
+        "onset_offset_right_s_inclusive": 40,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 40,
+        "onset_offset_right_s_inclusive": 50,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      },
+      {
+        "onset_offset_left_s_exclusive": 50,
+        "onset_offset_right_s_inclusive": 60,
+        "episodes_with_scored_reference_endpoint": 0,
+        "median_margin": null,
+        "median_target_af_seconds_in_30_s_input": null,
+        "fully_observed_trailing_reference_endpoints": 0
+      }
+    ]
+  },
+  "false_starts": {
+    "count": 6,
+    "with_fully_observed_trailing_reference": 6,
+    "with_observed_af_in_trailing_reference": 0,
+    "median_score_minus_cutoff": 0.12924079541687872
+  },
+  "paired_logit_attribution": {
+    "eligible_scored_misses": 2,
+    "baseline_fold_scores_reproduced": true,
+    "median_within_af_minus_pre_onset_logit": -0.31522971644017406,
+    "median_contribution_change_by_feature": {
+      "detected_beats_per_second": -0.0934924471649662,
+      "median_interval_s": -0.0880779682332501,
+      "interval_iqr_over_median": -0.00851847565265419,
+      "interval_cv": -0.0575062717410562,
+      "successive_interval_rmssd_over_median": 0.08599241517849364,
+      "successive_interval_pnn50": -0.153626968826741,
+      "valid_interval_fraction": 0.0
+    },
+    "negative_contribution_change_counts": {
+      "detected_beats_per_second": 1,
+      "median_interval_s": 1,
+      "interval_iqr_over_median": 1,
+      "interval_cv": 1,
+      "successive_interval_rmssd_over_median": 0,
+      "successive_interval_pnn50": 1,
+      "valid_interval_fraction": 0
+    },
+    "most_negative_contribution_counts": {
+      "median_interval_s": 1,
+      "successive_interval_pnn50": 1
+    }
+  }
+}

@@ -1,0 +1,296 @@
+{
+  "study": "Development-only neural ECG beat timing on paired native wrist inputs",
+  "wrist_epochs": 12,
+  "source_windows": 610,
+  "source_participants": 14,
+  "beat_tolerance_ms": 100,
+  "edge_seconds": 1.0,
+  "held_folds": [
+    {
+      "train_participants": 7,
+      "held_participants": 2,
+      "train_windows": 165,
+      "held_windows": 58
+    },
+    {
+      "train_participants": 7,
+      "held_participants": 2,
+      "train_windows": 166,
+      "held_windows": 57
+    },
+    {
+      "train_participants": 7,
+      "held_participants": 2,
+      "train_windows": 173,
+      "held_windows": 50
+    },
+    {
+      "train_participants": 7,
+      "held_participants": 2,
+      "train_windows": 195,
+      "held_windows": 28
+    },
+    {
+      "train_participants": 8,
+      "held_participants": 1,
+      "train_windows": 193,
+      "held_windows": 30
+    }
+  ],
+  "results": {
+    "overall": {
+      "participants": 9,
+      "windows": 223,
+      "routes": {
+        "template_archive_delay": {
+          "reference_peaks": 7549,
+          "predicted_peaks": 6874,
+          "matched_peaks": 4604,
+          "precision": 0.6697701483852196,
+          "recall": 0.6098821035898795,
+          "f1": 0.6384247382652708,
+          "median_abs_timing_error_ms": 25.99999999598367,
+          "matched_consecutive_intervals": 3419,
+          "median_abs_rr_error_ms": 14.000000002270099
+        },
+        "source_frozen_cnn": {
+          "reference_peaks": 7549,
+          "predicted_peaks": 11926,
+          "matched_peaks": 2176,
+          "precision": 0.18245849404662082,
+          "recall": 0.2882500993509074,
+          "f1": 0.22346598202824133,
+          "median_abs_timing_error_ms": 55.999999998603016,
+          "matched_consecutive_intervals": 262,
+          "median_abs_rr_error_ms": 68.00000002142042
+        },
+        "wrist_only_cnn": {
+          "reference_peaks": 7549,
+          "predicted_peaks": 5515,
+          "matched_peaks": 2983,
+          "precision": 0.5408884859474161,
+          "recall": 0.39515167571863824,
+          "f1": 0.45667483159828537,
+          "median_abs_timing_error_ms": 28.000000019092113,
+          "matched_consecutive_intervals": 1347,
+          "median_abs_rr_error_ms": 13.999999999941792
+        },
+        "source_initialized_wrist_cnn": {
+          "reference_peaks": 7549,
+          "predicted_peaks": 5715,
+          "matched_peaks": 3027,
+          "precision": 0.5296587926509186,
+          "recall": 0.40098026228639555,
+          "f1": 0.45642340168878165,
+          "median_abs_timing_error_ms": 29.99999999301508,
+          "matched_consecutive_intervals": 1408,
+          "median_abs_rr_error_ms": 11.999999999534339
+        }
+      }
+    },
+    "by_synchronization": {
+      "beat": {
+        "participants": 8,
+        "windows": 200,
+        "routes": {
+          "template_archive_delay": {
+            "reference_peaks": 6918,
+            "predicted_peaks": 5975,
+            "matched_peaks": 4548,
+            "precision": 0.7611715481171548,
+            "recall": 0.6574154379878577,
+            "f1": 0.7054991080431242,
+            "median_abs_timing_error_ms": 25.99999998928979,
+            "matched_consecutive_intervals": 3419,
+            "median_abs_rr_error_ms": 14.000000002270099
+          },
+          "source_frozen_cnn": {
+            "reference_peaks": 6918,
+            "predicted_peaks": 10611,
+            "matched_peaks": 1938,
+            "precision": 0.18264065592309867,
+            "recall": 0.28013876843018215,
+            "f1": 0.22111928803696732,
+            "median_abs_timing_error_ms": 56.49999999906868,
+            "matched_consecutive_intervals": 262,
+            "median_abs_rr_error_ms": 68.00000002142042
+          },
+          "wrist_only_cnn": {
+            "reference_peaks": 6918,
+            "predicted_peaks": 4810,
+            "matched_peaks": 2883,
+            "precision": 0.5993762993762993,
+            "recall": 0.41673894189071986,
+            "f1": 0.49164392905866305,
+            "median_abs_timing_error_ms": 27.999999998137355,
+            "matched_consecutive_intervals": 1331,
+            "median_abs_rr_error_ms": 13.9999999984866
+          },
+          "source_initialized_wrist_cnn": {
+            "reference_peaks": 6918,
+            "predicted_peaks": 4927,
+            "matched_peaks": 2906,
+            "precision": 0.5898112441648061,
+            "recall": 0.4200636021971668,
+            "f1": 0.4906711692697341,
+            "median_abs_timing_error_ms": 29.000000006054165,
+            "matched_consecutive_intervals": 1397,
+            "median_abs_rr_error_ms": 11.999999999534339
+          }
+        }
+      },
+      "coarse": {
+        "participants": 2,
+        "windows": 23,
+        "routes": {
+          "template_archive_delay": {
+            "reference_peaks": 631,
+            "predicted_peaks": 899,
+            "matched_peaks": 56,
+            "precision": 0.06229143492769744,
+            "recall": 0.08874801901743265,
+            "f1": 0.07320261437908497,
+            "median_abs_timing_error_ms": 55.99999998463318,
+            "matched_consecutive_intervals": 0,
+            "median_abs_rr_error_ms": null
+          },
+          "source_frozen_cnn": {
+            "reference_peaks": 631,
+            "predicted_peaks": 1315,
+            "matched_peaks": 238,
+            "precision": 0.18098859315589352,
+            "recall": 0.37717908082408874,
+            "f1": 0.2446043165467626,
+            "median_abs_timing_error_ms": 48.00000000803266,
+            "matched_consecutive_intervals": 0,
+            "median_abs_rr_error_ms": null
+          },
+          "wrist_only_cnn": {
+            "reference_peaks": 631,
+            "predicted_peaks": 705,
+            "matched_peaks": 100,
+            "precision": 0.14184397163120568,
+            "recall": 0.15847860538827258,
+            "f1": 0.1497005988023952,
+            "median_abs_timing_error_ms": 52.99999999580905,
+            "matched_consecutive_intervals": 16,
+            "median_abs_rr_error_ms": 24.999999997380655
+          },
+          "source_initialized_wrist_cnn": {
+            "reference_peaks": 631,
+            "predicted_peaks": 788,
+            "matched_peaks": 121,
+            "precision": 0.15355329949238578,
+            "recall": 0.19175911251980982,
+            "f1": 0.17054263565891473,
+            "median_abs_timing_error_ms": 58.00000000279397,
+            "matched_consecutive_intervals": 11,
+            "median_abs_rr_error_ms": 34.0000000060536
+          }
+        }
+      }
+    },
+    "by_rhythm": {
+      "AF": {
+        "participants": 7,
+        "windows": 77,
+        "routes": {
+          "template_archive_delay": {
+            "reference_peaks": 3439,
+            "predicted_peaks": 2766,
+            "matched_peaks": 1914,
+            "precision": 0.6919739696312365,
+            "recall": 0.5565571387031114,
+            "f1": 0.616921837228042,
+            "median_abs_timing_error_ms": 24.999999975553067,
+            "matched_consecutive_intervals": 1192,
+            "median_abs_rr_error_ms": 26.00000001839362
+          },
+          "source_frozen_cnn": {
+            "reference_peaks": 3439,
+            "predicted_peaks": 4603,
+            "matched_peaks": 1318,
+            "precision": 0.2863349989137519,
+            "recall": 0.3832509450421634,
+            "f1": 0.32777915941308133,
+            "median_abs_timing_error_ms": 54.999999983700434,
+            "matched_consecutive_intervals": 244,
+            "median_abs_rr_error_ms": 69.00000000081491
+          },
+          "wrist_only_cnn": {
+            "reference_peaks": 3439,
+            "predicted_peaks": 1492,
+            "matched_peaks": 808,
+            "precision": 0.5415549597855228,
+            "recall": 0.2349520209363187,
+            "f1": 0.3277225714865139,
+            "median_abs_timing_error_ms": 31.999999994732207,
+            "matched_consecutive_intervals": 218,
+            "median_abs_rr_error_ms": 32.99999997834675
+          },
+          "source_initialized_wrist_cnn": {
+            "reference_peaks": 3439,
+            "predicted_peaks": 1674,
+            "matched_peaks": 870,
+            "precision": 0.5197132616487455,
+            "recall": 0.2529805175923234,
+            "f1": 0.34030901623313126,
+            "median_abs_timing_error_ms": 29.99999999476131,
+            "matched_consecutive_intervals": 236,
+            "median_abs_rr_error_ms": 33.00000000395812
+          }
+        }
+      },
+      "non_AF": {
+        "participants": 9,
+        "windows": 146,
+        "routes": {
+          "template_archive_delay": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 4108,
+            "matched_peaks": 2690,
+            "precision": 0.6548198636806232,
+            "recall": 0.6545012165450121,
+            "f1": 0.6546605013385252,
+            "median_abs_timing_error_ms": 26.00000000325963,
+            "matched_consecutive_intervals": 2227,
+            "median_abs_rr_error_ms": 10.000000027939677
+          },
+          "source_frozen_cnn": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 7323,
+            "matched_peaks": 858,
+            "precision": 0.11716509627201967,
+            "recall": 0.20875912408759123,
+            "f1": 0.15009183941222776,
+            "median_abs_timing_error_ms": 56.00000002537854,
+            "matched_consecutive_intervals": 18,
+            "median_abs_rr_error_ms": 54.000000020023435
+          },
+          "wrist_only_cnn": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 4023,
+            "matched_peaks": 2175,
+            "precision": 0.540641312453393,
+            "recall": 0.5291970802919708,
+            "f1": 0.5348579859830321,
+            "median_abs_timing_error_ms": 27.999999986495823,
+            "matched_consecutive_intervals": 1129,
+            "median_abs_rr_error_ms": 12.000000015832484
+          },
+          "source_initialized_wrist_cnn": {
+            "reference_peaks": 4110,
+            "predicted_peaks": 4041,
+            "matched_peaks": 2157,
+            "precision": 0.5337787676317743,
+            "recall": 0.5248175182481751,
+            "f1": 0.5292602134707398,
+            "median_abs_timing_error_ms": 29.999999990686774,
+            "matched_consecutive_intervals": 1172,
+            "median_abs_rr_error_ms": 10.000000004656613
+          }
+        }
+      }
+    }
+  }
+}

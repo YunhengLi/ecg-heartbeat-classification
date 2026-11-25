@@ -1,0 +1,117 @@
+{
+  "scope": "Grouped Holter alert comparison for stable versus first recent-onset positive windows",
+  "positive_onset_window_seconds": 20.0,
+  "verified_pre_onset_seconds": 20.0,
+  "grouped_participants": 93,
+  "fit_receipts": [
+    {
+      "positive_fitting_participants": 38,
+      "positive_fitting_windows_per_model": 259,
+      "non_af_fitting_windows_per_model": 6498,
+      "calibration": {
+        "matched_stable_training": "target_not_met",
+        "recent_onset_training": "target_not_met",
+        "recent_onset_at_matched_calibration": "within_tolerance"
+      }
+    },
+    {
+      "positive_fitting_participants": 38,
+      "positive_fitting_windows_per_model": 369,
+      "non_af_fitting_windows_per_model": 6600,
+      "calibration": {
+        "matched_stable_training": "target_met",
+        "recent_onset_training": "target_not_met",
+        "recent_onset_at_matched_calibration": "within_tolerance"
+      }
+    },
+    {
+      "positive_fitting_participants": 36,
+      "positive_fitting_windows_per_model": 281,
+      "non_af_fitting_windows_per_model": 6600,
+      "calibration": {
+        "matched_stable_training": "target_met",
+        "recent_onset_training": "target_not_met",
+        "recent_onset_at_matched_calibration": "within_tolerance"
+      }
+    },
+    {
+      "positive_fitting_participants": 36,
+      "positive_fitting_windows_per_model": 245,
+      "non_af_fitting_windows_per_model": 6618,
+      "calibration": {
+        "matched_stable_training": "target_not_met",
+        "recent_onset_training": "target_not_met",
+        "recent_onset_at_matched_calibration": "within_tolerance"
+      }
+    },
+    {
+      "positive_fitting_participants": 39,
+      "positive_fitting_windows_per_model": 286,
+      "non_af_fitting_windows_per_model": 6618,
+      "calibration": {
+        "matched_stable_training": "target_not_met",
+        "recent_onset_training": "target_not_met",
+        "recent_onset_at_matched_calibration": "within_tolerance"
+      }
+    }
+  ],
+  "held_out_results": {
+    "matched_stable_training": {
+      "complete_episodes": 767,
+      "episodes_detected": 458,
+      "episode_sensitivity": 0.5971316818774446,
+      "false_starts": 9497,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 4.077477462435405,
+      "median_delay_seconds": 13.039999999997235,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 95
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 363
+        }
+      }
+    },
+    "recent_onset_training": {
+      "complete_episodes": 767,
+      "episodes_detected": 427,
+      "episode_sensitivity": 0.5567144719687093,
+      "false_starts": 13063,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 5.608517225628482,
+      "median_delay_seconds": 11.415000000000873,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 99
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 328
+        }
+      }
+    },
+    "recent_onset_at_matched_calibration": {
+      "complete_episodes": 767,
+      "episodes_detected": 423,
+      "episode_sensitivity": 0.5514993481095176,
+      "false_starts": 12438,
+      "ecg_observed_hours": 2329.136111111111,
+      "false_starts_per_ecg_hour": 5.340177390520329,
+      "median_delay_seconds": 11.455000000001746,
+      "duration_strata": {
+        "under_30_seconds": {
+          "complete_episodes": 309,
+          "detected": 96
+        },
+        "at_least_30_seconds": {
+          "complete_episodes": 458,
+          "detected": 327
+        }
+      }
+    }
+  }
+}

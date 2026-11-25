@@ -1,0 +1,305 @@
+{
+  "scope": "Short actual ECG timing versus short optical timing, with frozen development calibration",
+  "plan_sha256": "db36a56c415d9a6e45479baf4256dc7e9c57ba3d7675ad475f2429a2e6e3d565",
+  "results": {
+    "original_full": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 209,
+        "false_alerts_per_observed_wrist_hour": 16.85483870967742,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 44140.0,
+        "af_seconds_with_state": 1790.0,
+        "af_seconds_with_positive_state": 840.0,
+        "non_af_seconds_with_positive_state": 13570.0,
+        "scoreable_coverage": 0.9887992831541219,
+        "af_time_sensitivity": 0.4666666666666667,
+        "non_af_time_false_positive_rate": 0.3167600373482726,
+        "af_fraction_on_scoreable_time": 0.04055278658812868,
+        "predicted_af_fraction_on_scoreable_time": 0.3264612596284549,
+        "median_participant_absolute_af_fraction_error": 0.15083798882681565
+      },
+      "scoreable_rows": 4474
+    },
+    "short_full": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 350,
+        "false_alerts_per_observed_wrist_hour": 28.225806451612904,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 43860.0,
+        "af_seconds_with_state": 1760.0,
+        "af_seconds_with_positive_state": 590.0,
+        "non_af_seconds_with_positive_state": 10140.0,
+        "scoreable_coverage": 0.9825268817204301,
+        "af_time_sensitivity": 0.3277777777777778,
+        "non_af_time_false_positive_rate": 0.23669467787114845,
+        "af_fraction_on_scoreable_time": 0.04012767897856817,
+        "predicted_af_fraction_on_scoreable_time": 0.2446420428636571,
+        "median_participant_absolute_af_fraction_error": 0.09770114942528736
+      },
+      "scoreable_rows": 4446
+    },
+    "original_common": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 211,
+        "false_alerts_per_observed_wrist_hour": 17.016129032258064,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 43680.0,
+        "af_seconds_with_state": 1760.0,
+        "af_seconds_with_positive_state": 840.0,
+        "non_af_seconds_with_positive_state": 13410.0,
+        "scoreable_coverage": 0.978494623655914,
+        "af_time_sensitivity": 0.4666666666666667,
+        "non_af_time_false_positive_rate": 0.3130252100840336,
+        "af_fraction_on_scoreable_time": 0.040293040293040296,
+        "predicted_af_fraction_on_scoreable_time": 0.32623626373626374,
+        "median_participant_absolute_af_fraction_error": 0.14606741573033707
+      },
+      "scoreable_rows": 4403
+    },
+    "short_common": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 350,
+        "false_alerts_per_observed_wrist_hour": 28.225806451612904,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 43680.0,
+        "af_seconds_with_state": 1760.0,
+        "af_seconds_with_positive_state": 590.0,
+        "non_af_seconds_with_positive_state": 10110.0,
+        "scoreable_coverage": 0.978494623655914,
+        "af_time_sensitivity": 0.3277777777777778,
+        "non_af_time_false_positive_rate": 0.23599439775910364,
+        "af_fraction_on_scoreable_time": 0.040293040293040296,
+        "predicted_af_fraction_on_scoreable_time": 0.24496336996336995,
+        "median_participant_absolute_af_fraction_error": 0.09770114942528736
+      },
+      "scoreable_rows": 4403
+    },
+    "native_10s_common": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 74,
+        "false_alerts_per_observed_wrist_hour": 5.967741935483871,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 43680.0,
+        "af_seconds_with_state": 1760.0,
+        "af_seconds_with_positive_state": 0.0,
+        "non_af_seconds_with_positive_state": 920.0,
+        "scoreable_coverage": 0.978494623655914,
+        "af_time_sensitivity": 0.0,
+        "non_af_time_false_positive_rate": 0.021475256769374416,
+        "af_fraction_on_scoreable_time": 0.040293040293040296,
+        "predicted_af_fraction_on_scoreable_time": 0.021062271062271064,
+        "median_participant_absolute_af_fraction_error": 0.0
+      },
+      "scoreable_rows": 4403
+    },
+    "native_10s_full": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 77,
+        "false_alerts_per_observed_wrist_hour": 6.209677419354839,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 44210.0,
+        "af_seconds_with_state": 1790.0,
+        "af_seconds_with_positive_state": 0.0,
+        "non_af_seconds_with_positive_state": 990.0,
+        "scoreable_coverage": 0.9903673835125448,
+        "af_time_sensitivity": 0.0,
+        "non_af_time_false_positive_rate": 0.023109243697478993,
+        "af_fraction_on_scoreable_time": 0.040488577244967204,
+        "predicted_af_fraction_on_scoreable_time": 0.022393123727663423,
+        "median_participant_absolute_af_fraction_error": 0.0
+      },
+      "scoreable_rows": 4457
+    },
+    "native_30s_common": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 69,
+        "false_alerts_per_observed_wrist_hour": 5.564516129032258,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 43680.0,
+        "af_seconds_with_state": 1760.0,
+        "af_seconds_with_positive_state": 150.0,
+        "non_af_seconds_with_positive_state": 2420.0,
+        "scoreable_coverage": 0.978494623655914,
+        "af_time_sensitivity": 0.08333333333333333,
+        "non_af_time_false_positive_rate": 0.05648926237161531,
+        "af_fraction_on_scoreable_time": 0.040293040293040296,
+        "predicted_af_fraction_on_scoreable_time": 0.058836996336996336,
+        "median_participant_absolute_af_fraction_error": 0.0
+      },
+      "scoreable_rows": 4403
+    },
+    "native_30s_full": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 44640.0,
+        "wrist_non_af_seconds": 42840.0,
+        "wrist_false_alerts": 69,
+        "false_alerts_per_observed_wrist_hour": 5.564516129032258,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "state": {
+        "participants_or_independent_runs": 25,
+        "participants_with_ecg_af_time": 1,
+        "ecg_observed_seconds": 44640.0,
+        "ecg_af_seconds": 1800.0,
+        "scoreable_seconds": 44210.0,
+        "af_seconds_with_state": 1790.0,
+        "af_seconds_with_positive_state": 150.0,
+        "non_af_seconds_with_positive_state": 2650.0,
+        "scoreable_coverage": 0.9903673835125448,
+        "af_time_sensitivity": 0.08333333333333333,
+        "non_af_time_false_positive_rate": 0.06185807656395892,
+        "af_fraction_on_scoreable_time": 0.040488577244967204,
+        "predicted_af_fraction_on_scoreable_time": 0.06333408731056323,
+        "median_participant_absolute_af_fraction_error": 0.0
+      },
+      "scoreable_rows": 4457
+    }
+  },
+  "short_ecg_vs_short_ppg_changes": {
+    "episodes": {
+      "complete": 0,
+      "gained": 0,
+      "lost": 0,
+      "detected_by_both": 0,
+      "detected_by_neither": 0,
+      "baseline_median_delay_s": null,
+      "candidate_median_delay_s": null,
+      "median_delay_change_s_for_shared": null,
+      "shared_delayed": 0,
+      "shared_earlier": 0,
+      "shared_unchanged": 0
+    },
+    "false_starts": {
+      "baseline": 350,
+      "candidate": 74,
+      "shared_exact": 16,
+      "baseline_only_exact": 334,
+      "candidate_only_exact": 58
+    }
+  },
+  "short_ecg_vs_short_ppg_uncertainty": {
+    "resamples": 10000,
+    "seed": 2026,
+    "participants_with_complete_episodes": 0,
+    "false_starts_per_ecg_observed_wrist_hour_change": {
+      "point": -22.258064516129032,
+      "percentile_95": [
+        -31.966181912068677,
+        -12.963180802346734
+      ],
+      "valid_paired_draws": 10000
+    }
+  }
+}

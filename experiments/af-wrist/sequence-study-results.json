@@ -1,0 +1,506 @@
+{
+  "scope": "Development-only PPG sequence comparison on the original participant folds",
+  "development_participants": 10,
+  "outer_folds": 5,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "logistic_C": 1.0,
+  "target_episode_sensitivity": 0.8,
+  "sensitivity_tolerance": 0.1,
+  "context_support": {
+    "chronological_columns": [
+      "30_to_20_seconds_ago_median_interval_s",
+      "30_to_20_seconds_ago_interval_iqr_over_median",
+      "30_to_20_seconds_ago_successive_interval_rmssd_over_median",
+      "30_to_20_seconds_ago_interval_support",
+      "20_to_10_seconds_ago_median_interval_s",
+      "20_to_10_seconds_ago_interval_iqr_over_median",
+      "20_to_10_seconds_ago_successive_interval_rmssd_over_median",
+      "20_to_10_seconds_ago_interval_support",
+      "10_to_0_seconds_ago_median_interval_s",
+      "10_to_0_seconds_ago_interval_iqr_over_median",
+      "10_to_0_seconds_ago_successive_interval_rmssd_over_median",
+      "10_to_0_seconds_ago_interval_support"
+    ],
+    "order_invariant_columns": [
+      "sorted_bin_1_median_interval_s",
+      "sorted_bin_1_interval_iqr_over_median",
+      "sorted_bin_1_successive_interval_rmssd_over_median",
+      "sorted_bin_1_interval_support",
+      "sorted_bin_2_median_interval_s",
+      "sorted_bin_2_interval_iqr_over_median",
+      "sorted_bin_2_successive_interval_rmssd_over_median",
+      "sorted_bin_2_interval_support",
+      "sorted_bin_3_median_interval_s",
+      "sorted_bin_3_interval_iqr_over_median",
+      "sorted_bin_3_successive_interval_rmssd_over_median",
+      "sorted_bin_3_interval_support"
+    ],
+    "classifier_fit": {
+      "shared_rows": 114,
+      "supported_rows_by_bin_oldest_first": [
+        114,
+        114,
+        112
+      ],
+      "rows_with_all_bins_supported": 112
+    },
+    "evaluation": {
+      "shared_rows": 513,
+      "supported_rows_by_bin_oldest_first": [
+        512,
+        512,
+        512
+      ],
+      "rows_with_all_bins_supported": 510
+    },
+    "preceding_history": {
+      "shared_rows": 175,
+      "supported_rows_by_bin_oldest_first": [
+        173,
+        174,
+        174
+      ],
+      "rows_with_all_bins_supported": 171
+    }
+  },
+  "baseline": {
+    "complete_episodes": 17,
+    "episodes_detected": 12,
+    "episode_sensitivity": 0.7058823529411765,
+    "median_delay_seconds_in_detected_episodes": 20.52400000000489,
+    "wrist_ecg_observed_seconds": 2790.0,
+    "wrist_non_af_seconds": 2040.0,
+    "wrist_false_alerts": 6,
+    "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 12,
+    "possible_non_af_alert_timestamps": 0,
+    "inner_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  },
+  "order_invariant": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 9,
+      "episode_sensitivity": 0.5294117647058824,
+      "median_delay_seconds_in_detected_episodes": 20.612000000022817,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 5,
+      "false_alerts_per_observed_wrist_hour": 6.451612903225806,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 9,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 1,
+        "lost": 4,
+        "detected_by_both": 8,
+        "detected_by_neither": 4,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 20.612000000022817,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 1,
+        "shared_earlier": 2,
+        "shared_unchanged": 5
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 5,
+        "shared_exact": 2,
+        "baseline_only_exact": 4,
+        "candidate_only_exact": 3
+      }
+    },
+    "sensitivity_change": -0.17647058823529416,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 2,
+        "shared_exact": 0,
+        "baseline_only_exact": 3,
+        "candidate_only_exact": 2
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 2,
+        "gained": 2,
+        "lost": 3,
+        "both": 0,
+        "neither": 5
+      }
+    },
+    "inner_calibration_status_counts": {
+      "target_not_met": 5
+    }
+  },
+  "chronological": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 9,
+      "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 3,
+        "lost": 3,
+        "detected_by_both": 9,
+        "detected_by_neither": 2,
+        "baseline_median_delay_s": 20.52400000000489,
+        "candidate_median_delay_s": 22.89999999999418,
+        "median_delay_change_s_for_shared": 0.0,
+        "shared_delayed": 4,
+        "shared_earlier": 2,
+        "shared_unchanged": 3
+      },
+      "false_starts": {
+        "baseline": 6,
+        "candidate": 9,
+        "shared_exact": 2,
+        "baseline_only_exact": 4,
+        "candidate_only_exact": 7
+      }
+    },
+    "sensitivity_change": 0.0,
+    "within_sensitivity_tolerance": true,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 3,
+        "candidate": 7,
+        "shared_exact": 3,
+        "baseline_only_exact": 0,
+        "candidate_only_exact": 4
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 3,
+        "candidate": 7,
+        "gained": 4,
+        "lost": 0,
+        "both": 3,
+        "neither": 3
+      }
+    },
+    "inner_calibration_status_counts": {
+      "target_met": 2,
+      "target_not_met": 3
+    }
+  },
+  "chronological_vs_order_invariant": {
+    "summary": {
+      "complete_episodes": 17,
+      "episodes_detected": 12,
+      "episode_sensitivity": 0.7058823529411765,
+      "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 9,
+      "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 12,
+      "possible_non_af_alert_timestamps": 0
+    },
+    "paired_changes": {
+      "episodes": {
+        "complete": 17,
+        "gained": 4,
+        "lost": 1,
+        "detected_by_both": 8,
+        "detected_by_neither": 4,
+        "baseline_median_delay_s": 20.612000000022817,
+        "candidate_median_delay_s": 22.89999999999418,
+        "median_delay_change_s_for_shared": 5.0,
+        "shared_delayed": 4,
+        "shared_earlier": 2,
+        "shared_unchanged": 2
+      },
+      "false_starts": {
+        "baseline": 5,
+        "candidate": 9,
+        "shared_exact": 1,
+        "baseline_only_exact": 4,
+        "candidate_only_exact": 8
+      }
+    },
+    "sensitivity_change": 0.17647058823529416,
+    "within_sensitivity_tolerance": false,
+    "both_reach_sensitivity_target": false,
+    "pre_onset_comparison": {
+      "complete_episodes": 17,
+      "supported_episodes": 10,
+      "excluded_insufficient_ecg_coverage": 3,
+      "excluded_prior_af": 4,
+      "pre_onset_starts": {
+        "baseline": 2,
+        "candidate": 7,
+        "shared_exact": 0,
+        "baseline_only_exact": 2,
+        "candidate_only_exact": 7
+      },
+      "episodes_with_pre_onset_start": {
+        "baseline": 2,
+        "candidate": 7,
+        "gained": 5,
+        "lost": 0,
+        "both": 2,
+        "neither": 3
+      }
+    }
+  },
+  "nested_regularization_followup": {
+    "C_values": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "baseline": {
+      "complete_episodes": 17,
+      "episodes_detected": 13,
+      "episode_sensitivity": 0.7647058823529411,
+      "median_delay_seconds_in_detected_episodes": 24.713999999978114,
+      "wrist_ecg_observed_seconds": 2790.0,
+      "wrist_non_af_seconds": 2040.0,
+      "wrist_false_alerts": 6,
+      "false_alerts_per_observed_wrist_hour": 7.741935483870968,
+      "monitor_blocks_with_unknown_cutoff_state": 0,
+      "episode_blocks_with_unknown_cutoff_state": 0,
+      "possibly_detected_episodes": 13,
+      "possible_non_af_alert_timestamps": 0,
+      "selected_C_counts": {
+        "1.0": 2,
+        "10.0": 3
+      },
+      "inner_calibration_status_counts": {
+        "target_not_met": 5
+      }
+    },
+    "order_invariant": {
+      "summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 8,
+        "episode_sensitivity": 0.47058823529411764,
+        "median_delay_seconds_in_detected_episodes": 15.65700000000652,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 4,
+        "false_alerts_per_observed_wrist_hour": 5.161290322580645,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 8,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 17,
+          "gained": 0,
+          "lost": 5,
+          "detected_by_both": 8,
+          "detected_by_neither": 4,
+          "baseline_median_delay_s": 24.713999999978114,
+          "candidate_median_delay_s": 15.65700000000652,
+          "median_delay_change_s_for_shared": 5.0,
+          "shared_delayed": 4,
+          "shared_earlier": 2,
+          "shared_unchanged": 2
+        },
+        "false_starts": {
+          "baseline": 6,
+          "candidate": 4,
+          "shared_exact": 0,
+          "baseline_only_exact": 6,
+          "candidate_only_exact": 4
+        }
+      },
+      "sensitivity_change": -0.2941176470588235,
+      "within_sensitivity_tolerance": false,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 17,
+        "supported_episodes": 10,
+        "excluded_insufficient_ecg_coverage": 3,
+        "excluded_prior_af": 4,
+        "pre_onset_starts": {
+          "baseline": 1,
+          "candidate": 2,
+          "shared_exact": 0,
+          "baseline_only_exact": 1,
+          "candidate_only_exact": 2
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 1,
+          "candidate": 2,
+          "gained": 2,
+          "lost": 1,
+          "both": 0,
+          "neither": 7
+        }
+      },
+      "selected_C_counts": {
+        "1.0": 2,
+        "10.0": 3
+      },
+      "inner_calibration_status_counts": {
+        "target_not_met": 5
+      }
+    },
+    "chronological": {
+      "summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 12,
+        "episode_sensitivity": 0.7058823529411765,
+        "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 9,
+        "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 12,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 17,
+          "gained": 0,
+          "lost": 1,
+          "detected_by_both": 12,
+          "detected_by_neither": 4,
+          "baseline_median_delay_s": 24.713999999978114,
+          "candidate_median_delay_s": 22.89999999999418,
+          "median_delay_change_s_for_shared": 5.0,
+          "shared_delayed": 6,
+          "shared_earlier": 3,
+          "shared_unchanged": 3
+        },
+        "false_starts": {
+          "baseline": 6,
+          "candidate": 9,
+          "shared_exact": 2,
+          "baseline_only_exact": 4,
+          "candidate_only_exact": 7
+        }
+      },
+      "sensitivity_change": -0.05882352941176461,
+      "within_sensitivity_tolerance": true,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 17,
+        "supported_episodes": 10,
+        "excluded_insufficient_ecg_coverage": 3,
+        "excluded_prior_af": 4,
+        "pre_onset_starts": {
+          "baseline": 1,
+          "candidate": 7,
+          "shared_exact": 0,
+          "baseline_only_exact": 1,
+          "candidate_only_exact": 7
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 1,
+          "candidate": 7,
+          "gained": 6,
+          "lost": 0,
+          "both": 1,
+          "neither": 3
+        }
+      },
+      "selected_C_counts": {
+        "1.0": 4,
+        "10.0": 1
+      },
+      "inner_calibration_status_counts": {
+        "target_met": 3,
+        "target_not_met": 2
+      }
+    },
+    "chronological_vs_order_invariant": {
+      "summary": {
+        "complete_episodes": 17,
+        "episodes_detected": 12,
+        "episode_sensitivity": 0.7058823529411765,
+        "median_delay_seconds_in_detected_episodes": 22.89999999999418,
+        "wrist_ecg_observed_seconds": 2790.0,
+        "wrist_non_af_seconds": 2040.0,
+        "wrist_false_alerts": 9,
+        "false_alerts_per_observed_wrist_hour": 11.612903225806452,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 12,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "paired_changes": {
+        "episodes": {
+          "complete": 17,
+          "gained": 5,
+          "lost": 1,
+          "detected_by_both": 7,
+          "detected_by_neither": 4,
+          "baseline_median_delay_s": 15.65700000000652,
+          "candidate_median_delay_s": 22.89999999999418,
+          "median_delay_change_s_for_shared": 10.0,
+          "shared_delayed": 4,
+          "shared_earlier": 2,
+          "shared_unchanged": 1
+        },
+        "false_starts": {
+          "baseline": 4,
+          "candidate": 9,
+          "shared_exact": 1,
+          "baseline_only_exact": 3,
+          "candidate_only_exact": 8
+        }
+      },
+      "sensitivity_change": 0.23529411764705888,
+      "within_sensitivity_tolerance": false,
+      "both_reach_sensitivity_target": false,
+      "pre_onset_comparison": {
+        "complete_episodes": 17,
+        "supported_episodes": 10,
+        "excluded_insufficient_ecg_coverage": 3,
+        "excluded_prior_af": 4,
+        "pre_onset_starts": {
+          "baseline": 2,
+          "candidate": 7,
+          "shared_exact": 0,
+          "baseline_only_exact": 2,
+          "candidate_only_exact": 7
+        },
+        "episodes_with_pre_onset_start": {
+          "baseline": 2,
+          "candidate": 7,
+          "gained": 5,
+          "lost": 0,
+          "both": 2,
+          "neither": 3
+        }
+      }
+    }
+  }
+}

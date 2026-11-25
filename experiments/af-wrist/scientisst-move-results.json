@@ -1,0 +1,250 @@
+{
+  "scope": "Fixed wrist spectral estimator on an independent activity cohort",
+  "source": "https://physionet.org/content/scientisst-move-biosignals/1.0.1/",
+  "source_manifest_sha256": "f8fddf94f7da24e97edc6f60da7d7bc03d21551a265fd511bd106d55b74124ee",
+  "source_participant_status": {
+    "clock_verified": 14,
+    "missing_wrist_file": 1,
+    "missing_shared_activity_clock": 2
+  },
+  "files_with_incomplete_final_edf_record": 13,
+  "feature_window_seconds": 30,
+  "decision_stride_seconds": 10,
+  "ppg_hz": 64,
+  "accelerometer_hz": 32,
+  "ecg_hz": 500,
+  "minimum_ecg_peak_agreement_fraction": 0.8,
+  "ecg_peak_match_tolerance_seconds": 0.1,
+  "max_ecg_heart_rate_difference_bpm": 5.0,
+  "heart_rate_search_band_hz": [
+    0.75,
+    3.5
+  ],
+  "all": {
+    "participants_with_paired_estimates": 14,
+    "scheduled_activity_windows": 3026,
+    "windows_with_ecg_consensus": 1813,
+    "windows_with_wrist_inputs": 3014,
+    "paired_windows": 1809,
+    "estimators": {
+      "ppg_intervals": {
+        "pooled_mae_bpm": 23.940435468288612,
+        "pooled_median_error_bpm": 19.64071856287444,
+        "participant_mean_mae_bpm": 22.387503259234617
+      },
+      "ppg_spectral_peak": {
+        "pooled_mae_bpm": 32.8943688989188,
+        "pooled_median_error_bpm": 24.8726851851863,
+        "participant_mean_mae_bpm": 32.643150188084704
+      },
+      "ppg_spectrum_weighted_by_motion_coherence": {
+        "pooled_mae_bpm": 14.808567171850306,
+        "pooled_median_error_bpm": 1.9659353348729809,
+        "participant_mean_mae_bpm": 15.815743343152914
+      }
+    },
+    "participants_with_lower_mae_after_motion_weighting": 9
+  },
+  "by_activity": {
+    "baseline": {
+      "participants_with_paired_estimates": 5,
+      "scheduled_activity_windows": 30,
+      "windows_with_ecg_consensus": 23,
+      "windows_with_wrist_inputs": 30,
+      "paired_windows": 23,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 7.901913525834039,
+          "pooled_median_error_bpm": 3.7282518641259657,
+          "participant_mean_mae_bpm": 9.705667645880313
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 3.307086409627263,
+          "pooled_median_error_bpm": 0.937500000000071,
+          "participant_mean_mae_bpm": 5.7136608853440265
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 3.7332754450258285,
+          "pooled_median_error_bpm": 1.4551158301160712,
+          "participant_mean_mae_bpm": 5.955877567961095
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 4
+    },
+    "lift": {
+      "participants_with_paired_estimates": 12,
+      "scheduled_activity_windows": 55,
+      "windows_with_ecg_consensus": 55,
+      "windows_with_wrist_inputs": 55,
+      "paired_windows": 55,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 17.685623723804202,
+          "pooled_median_error_bpm": 15.541401273885327,
+          "participant_mean_mae_bpm": 18.396021830410934
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 25.779377536628534,
+          "pooled_median_error_bpm": 18.636565836298715,
+          "participant_mean_mae_bpm": 23.50400121796363
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 21.431317080895077,
+          "pooled_median_error_bpm": 5.857371794871796,
+          "participant_mean_mae_bpm": 20.062003360090024
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 5
+    },
+    "greetings": {
+      "participants_with_paired_estimates": 10,
+      "scheduled_activity_windows": 24,
+      "windows_with_ecg_consensus": 21,
+      "windows_with_wrist_inputs": 24,
+      "paired_windows": 21,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 15.352297092790737,
+          "pooled_median_error_bpm": 12.324929971988766,
+          "participant_mean_mae_bpm": 12.29025836599056
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 21.956004337059113,
+          "pooled_median_error_bpm": 15.041747337850929,
+          "participant_mean_mae_bpm": 23.066825339300745
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 19.253733613955053,
+          "pooled_median_error_bpm": 15.489738805970163,
+          "participant_mean_mae_bpm": 18.718445709671116
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 3
+    },
+    "gesticulate": {
+      "participants_with_paired_estimates": 11,
+      "scheduled_activity_windows": 106,
+      "windows_with_ecg_consensus": 104,
+      "windows_with_wrist_inputs": 106,
+      "paired_windows": 104,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 12.897990722311905,
+          "pooled_median_error_bpm": 10.45126597262336,
+          "participant_mean_mae_bpm": 10.927058750782747
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 24.99997331835908,
+          "pooled_median_error_bpm": 16.863675536498953,
+          "participant_mean_mae_bpm": 22.714399656522914
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 25.311247011730245,
+          "pooled_median_error_bpm": 14.123726428659339,
+          "participant_mean_mae_bpm": 22.929088694302386
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 3
+    },
+    "jumps": {
+      "participants_with_paired_estimates": 2,
+      "scheduled_activity_windows": 4,
+      "windows_with_ecg_consensus": 2,
+      "windows_with_wrist_inputs": 4,
+      "paired_windows": 2,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 10.120451121715618,
+          "pooled_median_error_bpm": 10.120451121715618,
+          "participant_mean_mae_bpm": 10.120451121715618
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 13.733140515655009,
+          "pooled_median_error_bpm": 13.733140515655009,
+          "participant_mean_mae_bpm": 13.733140515655009
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 17.95189051565501,
+          "pooled_median_error_bpm": 17.95189051565501,
+          "participant_mean_mae_bpm": 17.95189051565501
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 0
+    },
+    "walk_before": {
+      "participants_with_paired_estimates": 11,
+      "scheduled_activity_windows": 242,
+      "windows_with_ecg_consensus": 174,
+      "windows_with_wrist_inputs": 242,
+      "paired_windows": 174,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 9.658648699343619,
+          "pooled_median_error_bpm": 7.2066134981430565,
+          "participant_mean_mae_bpm": 12.256788518685125
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 18.175583745927355,
+          "pooled_median_error_bpm": 16.694049970327498,
+          "participant_mean_mae_bpm": 18.440790400251412
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 16.467248448510198,
+          "pooled_median_error_bpm": 7.461866136108483,
+          "participant_mean_mae_bpm": 16.785201050063698
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 3
+    },
+    "run": {
+      "participants_with_paired_estimates": 13,
+      "scheduled_activity_windows": 2355,
+      "windows_with_ecg_consensus": 1258,
+      "windows_with_wrist_inputs": 2343,
+      "paired_windows": 1254,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 28.579107172589016,
+          "pooled_median_error_bpm": 25.7945647167206,
+          "participant_mean_mae_bpm": 24.67053331242479
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 37.472670945306575,
+          "pooled_median_error_bpm": 28.623417721518564,
+          "participant_mean_mae_bpm": 35.47143373494603
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 13.120587842322635,
+          "pooled_median_error_bpm": 1.5692101226989053,
+          "participant_mean_mae_bpm": 13.781642589170161
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 11
+    },
+    "walk_after": {
+      "participants_with_paired_estimates": 8,
+      "scheduled_activity_windows": 210,
+      "windows_with_ecg_consensus": 176,
+      "windows_with_wrist_inputs": 210,
+      "paired_windows": 176,
+      "estimators": {
+        "ppg_intervals": {
+          "pooled_mae_bpm": 16.76681251026019,
+          "pooled_median_error_bpm": 12.435296179836456,
+          "participant_mean_mae_bpm": 14.322846980370521
+        },
+        "ppg_spectral_peak": {
+          "pooled_mae_bpm": 27.103204839678504,
+          "pooled_median_error_bpm": 21.298167293233178,
+          "participant_mean_mae_bpm": 18.592311964701604
+        },
+        "ppg_spectrum_weighted_by_motion_coherence": {
+          "pooled_mae_bpm": 17.80107942462905,
+          "pooled_median_error_bpm": 1.8363027451450762,
+          "participant_mean_mae_bpm": 9.93340890959742
+        }
+      },
+      "participants_with_lower_mae_after_motion_weighting": 6
+    }
+  }
+}

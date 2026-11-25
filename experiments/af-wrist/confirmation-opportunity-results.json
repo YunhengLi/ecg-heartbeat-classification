@@ -1,0 +1,217 @@
+{
+  "scope": "Scoreability ceilings on unchanged ECG intervals, independent of alarm probabilities",
+  "decision_stride_s": 10,
+  "input_window_s": 30,
+  "quality_boundary": 0.4,
+  "target_sensitivity": 0.8,
+  "development": {
+    "complete_episodes": 17,
+    "target_needed_episodes": 14,
+    "routes": {
+      "original": {
+        "scoreable_endpoint": 16,
+        "required_prior_endpoint_within_same_AF_episode": 16,
+        "required_input_windows_wholly_within_AF": 13,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 0,
+            "scoreable_endpoint": 0,
+            "required_prior_endpoint_within_same_AF_episode": 0,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 3,
+            "scoreable_endpoint": 3,
+            "required_prior_endpoint_within_same_AF_episode": 3,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 6,
+            "scoreable_endpoint": 6,
+            "required_prior_endpoint_within_same_AF_episode": 6,
+            "required_input_windows_wholly_within_AF": 6
+          },
+          "over_60_s": {
+            "complete_episodes": 8,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 7,
+            "required_input_windows_wholly_within_AF": 7
+          }
+        },
+        "median_first_scoreable_endpoint_s": 3.4550000000017462,
+        "reaches_target_under_scoreability_only": true
+      },
+      "adjacent_10_seconds": {
+        "scoreable_endpoint": 16,
+        "required_prior_endpoint_within_same_AF_episode": 16,
+        "required_input_windows_wholly_within_AF": 12,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 0,
+            "scoreable_endpoint": 0,
+            "required_prior_endpoint_within_same_AF_episode": 0,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 3,
+            "scoreable_endpoint": 3,
+            "required_prior_endpoint_within_same_AF_episode": 3,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 6,
+            "scoreable_endpoint": 6,
+            "required_prior_endpoint_within_same_AF_episode": 6,
+            "required_input_windows_wholly_within_AF": 5
+          },
+          "over_60_s": {
+            "complete_episodes": 8,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 7,
+            "required_input_windows_wholly_within_AF": 7
+          }
+        },
+        "median_first_scoreable_endpoint_s": 3.4550000000017462,
+        "reaches_target_under_scoreability_only": true
+      },
+      "nonoverlapping_30_seconds": {
+        "scoreable_endpoint": 16,
+        "required_prior_endpoint_within_same_AF_episode": 16,
+        "required_input_windows_wholly_within_AF": 11,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 0,
+            "scoreable_endpoint": 0,
+            "required_prior_endpoint_within_same_AF_episode": 0,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 3,
+            "scoreable_endpoint": 3,
+            "required_prior_endpoint_within_same_AF_episode": 3,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 6,
+            "scoreable_endpoint": 6,
+            "required_prior_endpoint_within_same_AF_episode": 6,
+            "required_input_windows_wholly_within_AF": 4
+          },
+          "over_60_s": {
+            "complete_episodes": 8,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 7,
+            "required_input_windows_wholly_within_AF": 7
+          }
+        },
+        "median_first_scoreable_endpoint_s": 3.4550000000017462,
+        "reaches_target_under_scoreability_only": true
+      }
+    }
+  },
+  "historical": {
+    "complete_episodes": 260,
+    "target_needed_episodes": 208,
+    "routes": {
+      "original": {
+        "scoreable_endpoint": 253,
+        "required_prior_endpoint_within_same_AF_episode": 253,
+        "required_input_windows_wholly_within_AF": 206,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 12,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 7,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 21,
+            "scoreable_endpoint": 21,
+            "required_prior_endpoint_within_same_AF_episode": 21,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 83,
+            "scoreable_endpoint": 83,
+            "required_prior_endpoint_within_same_AF_episode": 83,
+            "required_input_windows_wholly_within_AF": 64
+          },
+          "over_60_s": {
+            "complete_episodes": 144,
+            "scoreable_endpoint": 142,
+            "required_prior_endpoint_within_same_AF_episode": 142,
+            "required_input_windows_wholly_within_AF": 142
+          }
+        },
+        "median_first_scoreable_endpoint_s": 5.304000000003725,
+        "reaches_target_under_scoreability_only": true
+      },
+      "adjacent_10_seconds": {
+        "scoreable_endpoint": 253,
+        "required_prior_endpoint_within_same_AF_episode": 244,
+        "required_input_windows_wholly_within_AF": 184,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 12,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 1,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 21,
+            "scoreable_endpoint": 21,
+            "required_prior_endpoint_within_same_AF_episode": 18,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 83,
+            "scoreable_endpoint": 83,
+            "required_prior_endpoint_within_same_AF_episode": 83,
+            "required_input_windows_wholly_within_AF": 42
+          },
+          "over_60_s": {
+            "complete_episodes": 144,
+            "scoreable_endpoint": 142,
+            "required_prior_endpoint_within_same_AF_episode": 142,
+            "required_input_windows_wholly_within_AF": 142
+          }
+        },
+        "median_first_scoreable_endpoint_s": 5.304000000003725,
+        "reaches_target_under_scoreability_only": true
+      },
+      "nonoverlapping_30_seconds": {
+        "scoreable_endpoint": 253,
+        "required_prior_endpoint_within_same_AF_episode": 233,
+        "required_input_windows_wholly_within_AF": 175,
+        "by_duration": {
+          "up_to_10_s": {
+            "complete_episodes": 12,
+            "scoreable_endpoint": 7,
+            "required_prior_endpoint_within_same_AF_episode": 1,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_10_to_30_s": {
+            "complete_episodes": 21,
+            "scoreable_endpoint": 21,
+            "required_prior_endpoint_within_same_AF_episode": 12,
+            "required_input_windows_wholly_within_AF": 0
+          },
+          "over_30_to_60_s": {
+            "complete_episodes": 83,
+            "scoreable_endpoint": 83,
+            "required_prior_endpoint_within_same_AF_episode": 78,
+            "required_input_windows_wholly_within_AF": 34
+          },
+          "over_60_s": {
+            "complete_episodes": 144,
+            "scoreable_endpoint": 142,
+            "required_prior_endpoint_within_same_AF_episode": 142,
+            "required_input_windows_wholly_within_AF": 141
+          }
+        },
+        "median_first_scoreable_endpoint_s": 5.304000000003725,
+        "reaches_target_under_scoreability_only": true
+      }
+    }
+  }
+}

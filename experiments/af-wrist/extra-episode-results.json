@@ -1,0 +1,37 @@
+{
+  "scope": "One additional rhythm-enriched development case scored without threshold retuning",
+  "source_release_doi": "10.5281/zenodo.23921320",
+  "source_inventory_sha256": "f23e0440140112fd5ac8046694c940f0aaba1d98ecf415191ac5031ca86ce4a0",
+  "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+  "verified_private_plan_sha256": "8f3fac43239e3bcbb00a755fa6e564cd097e3e5d011ec638f47ea7255192ed9a",
+  "protected_stable_bundle_sha256": "85c57708e6f929ac91c1fd4d4b352130fb01a61f230faf68405e2da13544bd6a",
+  "protected_transition_bundle_sha256": "03d6ad114e780bf79df5e89f2be83d625c161f1e403e125ffdc9534d3b469db8",
+  "network_requests": 0,
+  "episode_duration_seconds": 5.755999999993946,
+  "evaluation_block_seconds": 30.0,
+  "native_prehistory_seconds": 90,
+  "additional_wrist_false_alert_exposure_seconds": 0,
+  "retained_original_development_episodes": 17,
+  "retained_original_wrist_exposure_seconds": 2790.0,
+  "new_complete_episode_contributors": 1,
+  "candidate_results": {
+    "baseline": {
+      "detected": 0,
+      "in_episode_positive": 0,
+      "available_decisions": 3,
+      "available_predecessor_decisions": 7,
+      "in_episode_decisions": 1,
+      "alert_active_at_onset": true,
+      "episode_outcome": "already_active_at_onset"
+    },
+    "quality_interactions": {
+      "detected": 0,
+      "in_episode_positive": 1,
+      "available_decisions": 3,
+      "available_predecessor_decisions": 7,
+      "in_episode_decisions": 1,
+      "alert_active_at_onset": true,
+      "episode_outcome": "already_active_at_onset"
+    }
+  }
+}

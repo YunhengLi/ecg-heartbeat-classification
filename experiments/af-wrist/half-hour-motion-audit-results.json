@@ -1,0 +1,182 @@
+{
+  "scope": "Match observed wrist motion at fixed false starts to same-block non-alert controls",
+  "reference_plan_sha256": "db36a56c415d9a6e45479baf4256dc7e9c57ba3d7675ad475f2429a2e6e3d565",
+  "coverage": {
+    "blocks_with_native_motion": 25,
+    "plain_false_starts_with_clean_reference_and_motion": 204,
+    "confirmation_false_starts_with_clean_reference_and_motion": 166,
+    "plain_only_exact_starts_with_clean_reference_and_motion": 126,
+    "shared_exact_starts_with_clean_reference_and_motion": 78
+  },
+  "maximum_control_distance_seconds": 120,
+  "groups": {
+    "confirmation_false_starts": {
+      "matched_pairs": 151,
+      "participants": 19,
+      "features": {
+        "PPG_quality": {
+          "median_case": 0.4169257910767651,
+          "median_control": 0.38438543366944283,
+          "mean_paired_difference_by_participant": -0.013187464102506444,
+          "participant_bootstrap_95_interval": [
+            -0.0452216790979249,
+            0.01670951123162862
+          ]
+        },
+        "pulse_band_entropy": {
+          "median_case": 0.5949127588669136,
+          "median_control": 0.5612170604487908,
+          "mean_paired_difference_by_participant": 0.04512022817393634,
+          "participant_bootstrap_95_interval": [
+            0.011598106985256778,
+            0.08294669113399546
+          ]
+        },
+        "motion_weighted_pulse_power_fraction": {
+          "median_case": 0.5728589371839757,
+          "median_control": 0.5782948485102569,
+          "mean_paired_difference_by_participant": 0.004377217766761335,
+          "participant_bootstrap_95_interval": [
+            -0.04973267121381767,
+            0.06669392840479582
+          ]
+        },
+        "log_relative_acceleration_variation": {
+          "median_case": 0.879253849115244,
+          "median_control": 0.5111456611763842,
+          "mean_paired_difference_by_participant": 0.2338067612951575,
+          "participant_bootstrap_95_interval": [
+            -0.025457054404086236,
+            0.5736067792144325
+          ]
+        }
+      }
+    },
+    "plain_false_starts": {
+      "matched_pairs": 178,
+      "participants": 21,
+      "features": {
+        "PPG_quality": {
+          "median_case": 0.3448461163440466,
+          "median_control": 0.3745302870997449,
+          "mean_paired_difference_by_participant": -0.05972073820228002,
+          "participant_bootstrap_95_interval": [
+            -0.10338380388759989,
+            -0.018095742692490067
+          ]
+        },
+        "pulse_band_entropy": {
+          "median_case": 0.583840554278502,
+          "median_control": 0.5629194115805385,
+          "mean_paired_difference_by_participant": 0.07284836683884392,
+          "participant_bootstrap_95_interval": [
+            0.03150743640287786,
+            0.12078824328041307
+          ]
+        },
+        "motion_weighted_pulse_power_fraction": {
+          "median_case": 0.5805864610715735,
+          "median_control": 0.5529990205813554,
+          "mean_paired_difference_by_participant": -0.04277372508881626,
+          "participant_bootstrap_95_interval": [
+            -0.11840662946605571,
+            0.015276145787622568
+          ]
+        },
+        "log_relative_acceleration_variation": {
+          "median_case": 0.738994939014873,
+          "median_control": 0.48366719524033536,
+          "mean_paired_difference_by_participant": 0.21116084026559445,
+          "participant_bootstrap_95_interval": [
+            0.003689379532327551,
+            0.4205662931970191
+          ]
+        }
+      }
+    },
+    "plain_only_exact_starts": {
+      "matched_pairs": 114,
+      "participants": 21,
+      "features": {
+        "PPG_quality": {
+          "median_case": 0.23784080992395723,
+          "median_control": 0.33711170665424955,
+          "mean_paired_difference_by_participant": -0.141646357499148,
+          "participant_bootstrap_95_interval": [
+            -0.19431868299199692,
+            -0.08973731974355836
+          ]
+        },
+        "pulse_band_entropy": {
+          "median_case": 0.5843006928632328,
+          "median_control": 0.5615559381968658,
+          "mean_paired_difference_by_participant": 0.07425404221140408,
+          "participant_bootstrap_95_interval": [
+            0.027550211181825976,
+            0.12774118720679076
+          ]
+        },
+        "motion_weighted_pulse_power_fraction": {
+          "median_case": 0.5866536275452503,
+          "median_control": 0.5509890052209594,
+          "mean_paired_difference_by_participant": -0.01251911493426807,
+          "participant_bootstrap_95_interval": [
+            -0.09226718194315334,
+            0.05002014211913983
+          ]
+        },
+        "log_relative_acceleration_variation": {
+          "median_case": 0.6748992128762437,
+          "median_control": 0.43918144365457623,
+          "mean_paired_difference_by_participant": 0.21355069081411776,
+          "participant_bootstrap_95_interval": [
+            -0.035562107413946706,
+            0.4766821253617279
+          ]
+        }
+      }
+    },
+    "shared_exact_starts": {
+      "matched_pairs": 75,
+      "participants": 15,
+      "features": {
+        "PPG_quality": {
+          "median_case": 0.5179626522191081,
+          "median_control": 0.4359998389920588,
+          "mean_paired_difference_by_participant": 0.1152069637902965,
+          "participant_bootstrap_95_interval": [
+            0.017062317371314986,
+            0.23576593490715453
+          ]
+        },
+        "pulse_band_entropy": {
+          "median_case": 0.5839080218181559,
+          "median_control": 0.5652842109964078,
+          "mean_paired_difference_by_participant": 0.06376355187536556,
+          "participant_bootstrap_95_interval": [
+            0.012912472474277377,
+            0.1197684744608465
+          ]
+        },
+        "motion_weighted_pulse_power_fraction": {
+          "median_case": 0.5772486309347717,
+          "median_control": 0.5974843326836062,
+          "mean_paired_difference_by_participant": -0.028753389472683924,
+          "participant_bootstrap_95_interval": [
+            -0.11507119816677057,
+            0.059167815426018885
+          ]
+        },
+        "log_relative_acceleration_variation": {
+          "median_case": 0.9749605909297667,
+          "median_control": 0.493600836856685,
+          "mean_paired_difference_by_participant": 0.2373469789551141,
+          "participant_bootstrap_95_interval": [
+            0.005229258261041205,
+            0.5234173951845497
+          ]
+        }
+      }
+    }
+  }
+}

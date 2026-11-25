@@ -1,0 +1,64 @@
+{
+  "prespecified_roster_size": 25,
+  "decoded_roster_members": 25,
+  "roster_members_without_decoded_archives": 0,
+  "feature_window_seconds": 30,
+  "original_30_second_grid": {
+    "decision_stride_seconds": 30,
+    "complete_reference_episodes": 260,
+    "partial_reference_episodes": 82,
+    "complete_reference_episodes_in_wrist_monitoring": 1,
+    "complete_reference_episodes_with_usable_raw_input_endpoint": 236,
+    "reference_observed_seconds": 54510,
+    "monitoring_observed_seconds": 7500,
+    "monitoring_observed_non_af_seconds": 6872.005999999994,
+    "monitoring_raw_input_opportunity_seconds": 7500,
+    "monitoring_raw_input_opportunity_non_af_seconds": 6872.005999999994,
+    "prehistory_input_states": {},
+    "last_prehistory_input_states_by_block": {},
+    "evaluation_input_states": {
+      "available": 1809,
+      "unavailable": 12
+    },
+    "monitoring_blocks": 25,
+    "evaluation_blocks": 250
+  },
+  "ten_second_grid": {
+    "decision_stride_seconds": 10,
+    "complete_reference_episodes": 260,
+    "partial_reference_episodes": 82,
+    "complete_reference_episodes_in_wrist_monitoring": 1,
+    "complete_reference_episodes_with_usable_raw_input_endpoint": 253,
+    "reference_observed_seconds": 54510,
+    "monitoring_observed_seconds": 7500,
+    "monitoring_observed_non_af_seconds": 6872.005999999994,
+    "monitoring_raw_input_opportunity_seconds": 7500,
+    "monitoring_raw_input_opportunity_non_af_seconds": 6872.005999999994,
+    "prehistory_input_states": {
+      "available": 1723,
+      "unavailable": 27
+    },
+    "last_prehistory_input_states_by_block": {
+      "available": 247,
+      "unavailable": 3
+    },
+    "evaluation_input_states": {
+      "available": 5425,
+      "unavailable": 38
+    },
+    "monitoring_blocks": 25,
+    "evaluation_blocks": 250
+  },
+  "source_recovery": {
+    "participants_attempted": 25,
+    "participants_with_prespecified_schedule_verified": 25,
+    "participants_with_completed_source_schedule": 25,
+    "participants_with_unresolved_source_gaps": 0,
+    "participants_with_unresolved_predecessor_ranges": 0,
+    "scheduled_episode_runs": 225,
+    "decoded_episode_runs": 225,
+    "complete_ecg_episode_runs": 224,
+    "complete_ecg_episode_runs_with_native_ppg_opportunity": 222,
+    "wrist_blocks": 25
+  }
+}

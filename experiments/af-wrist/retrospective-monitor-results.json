@@ -1,0 +1,200 @@
+{
+  "scope": "New times on the previously compared retrospective 25-person roster",
+  "plan_receipt": {
+    "scope": "previously scored 25-person roster, disjoint new times",
+    "source_protocol_sha256": "db3fd9297f112986ae34d04804daee6bbaa8f875b690ecbb0ccfb22055262e68",
+    "block_seconds": 300,
+    "predecessor_seconds": 90,
+    "scheduled_blocks": 50,
+    "scheduled_seconds": 15000,
+    "participants_with_planned_blocks": 25
+  },
+  "plan_sha256": "76cbec1ec4b862456665b92ec47fdf59d4b870e1fc893de0231c89562bbaae43",
+  "fit_participants": 5,
+  "calibration_participants": 5,
+  "coverage": {
+    "scheduled_decisions": 1500,
+    "observed_wrist_decisions": 1500,
+    "scoreable_decisions_per_route": 1500
+  },
+  "baseline": {
+    "complete_episodes": 0,
+    "episodes_detected": 0,
+    "episode_sensitivity": null,
+    "median_delay_seconds_in_detected_episodes": null,
+    "wrist_ecg_observed_seconds": 14490.0,
+    "wrist_non_af_seconds": 11475.032000000007,
+    "wrist_false_alerts": 44,
+    "false_alerts_per_observed_wrist_hour": 10.93167701863354,
+    "monitor_blocks_with_unknown_cutoff_state": 0,
+    "episode_blocks_with_unknown_cutoff_state": 0,
+    "possibly_detected_episodes": 0,
+    "possible_non_af_alert_timestamps": 0
+  },
+  "variants": {
+    "quality": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 14490.0,
+        "wrist_non_af_seconds": 11475.032000000007,
+        "wrist_false_alerts": 76,
+        "false_alerts_per_observed_wrist_hour": 18.88198757763975,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "sensitivity_change": null,
+      "within_sensitivity_tolerance": null,
+      "paired_changes": {
+        "episodes": {
+          "complete": 0,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 0,
+          "detected_by_neither": 0,
+          "baseline_median_delay_s": null,
+          "candidate_median_delay_s": null,
+          "median_delay_change_s_for_shared": null,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 0
+        },
+        "false_starts": {
+          "baseline": 44,
+          "candidate": 76,
+          "shared_exact": 25,
+          "baseline_only_exact": 19,
+          "candidate_only_exact": 51
+        }
+      },
+      "paired_participant_uncertainty": {
+        "resamples": 10000,
+        "seed": 2026,
+        "participants_with_complete_episodes": 0,
+        "false_starts_per_ecg_observed_wrist_hour_change": {
+          "point": 7.950310559006211,
+          "percentile_95": [
+            3.4031060094530723,
+            12.957027522935778
+          ],
+          "valid_paired_draws": 10000
+        }
+      }
+    },
+    "quality_interactions": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 14490.0,
+        "wrist_non_af_seconds": 11475.032000000007,
+        "wrist_false_alerts": 71,
+        "false_alerts_per_observed_wrist_hour": 17.63975155279503,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "sensitivity_change": null,
+      "within_sensitivity_tolerance": null,
+      "paired_changes": {
+        "episodes": {
+          "complete": 0,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 0,
+          "detected_by_neither": 0,
+          "baseline_median_delay_s": null,
+          "candidate_median_delay_s": null,
+          "median_delay_change_s_for_shared": null,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 0
+        },
+        "false_starts": {
+          "baseline": 44,
+          "candidate": 71,
+          "shared_exact": 20,
+          "baseline_only_exact": 24,
+          "candidate_only_exact": 51
+        }
+      },
+      "paired_participant_uncertainty": {
+        "resamples": 10000,
+        "seed": 2026,
+        "participants_with_complete_episodes": 0,
+        "false_starts_per_ecg_observed_wrist_hour_change": {
+          "point": 6.708074534161491,
+          "percentile_95": [
+            2.443991853360489,
+            11.30498602085142
+          ],
+          "valid_paired_draws": 10000
+        }
+      }
+    },
+    "quality_template_plus_ppg_spectrum": {
+      "summary": {
+        "complete_episodes": 0,
+        "episodes_detected": 0,
+        "episode_sensitivity": null,
+        "median_delay_seconds_in_detected_episodes": null,
+        "wrist_ecg_observed_seconds": 14490.0,
+        "wrist_non_af_seconds": 11475.032000000007,
+        "wrist_false_alerts": 71,
+        "false_alerts_per_observed_wrist_hour": 17.63975155279503,
+        "monitor_blocks_with_unknown_cutoff_state": 0,
+        "episode_blocks_with_unknown_cutoff_state": 0,
+        "possibly_detected_episodes": 0,
+        "possible_non_af_alert_timestamps": 0
+      },
+      "sensitivity_change": null,
+      "within_sensitivity_tolerance": null,
+      "paired_changes": {
+        "episodes": {
+          "complete": 0,
+          "gained": 0,
+          "lost": 0,
+          "detected_by_both": 0,
+          "detected_by_neither": 0,
+          "baseline_median_delay_s": null,
+          "candidate_median_delay_s": null,
+          "median_delay_change_s_for_shared": null,
+          "shared_delayed": 0,
+          "shared_earlier": 0,
+          "shared_unchanged": 0
+        },
+        "false_starts": {
+          "baseline": 44,
+          "candidate": 71,
+          "shared_exact": 19,
+          "baseline_only_exact": 25,
+          "candidate_only_exact": 52
+        }
+      },
+      "paired_participant_uncertainty": {
+        "resamples": 10000,
+        "seed": 2026,
+        "participants_with_complete_episodes": 0,
+        "false_starts_per_ecg_observed_wrist_hour_change": {
+          "point": 6.708074534161491,
+          "percentile_95": [
+            1.9807427785419531,
+            12.129380053908356
+          ],
+          "valid_paired_draws": 10000
+        }
+      }
+    }
+  },
+  "pinned_model_hashes": {
+    "template": "f7533f83303e511c51365747f0d6aff8add57850d3afa6cc57f7383466437438",
+    "quality_variants": "5dc5eddca865828f89aeaf262b98fce6b5b702ae8e29f5542f22c0051e494759",
+    "quality_template_plus_ppg_spectrum": "fe639167e77c0c7b6951dc682992b67bf332cf0b6bf945a4f1b295fc6e9b7400"
+  }
+}
